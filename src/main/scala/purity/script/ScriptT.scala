@@ -7,18 +7,16 @@ import purity.script.ScriptT.Definition
 import scala.util.control.NoStackTrace
 
 /**
- * This represents a program with dependencies D, domain failures E, and which produces an A. Also it can accumulate logging.
+ * This represents a program with dependencies D, domain failures E, and which produces an A, while side effects should
+ * be handled by F. Also it accumulates logging.
  *
- * The objective of this data type is to achieve monadic, lazy, composable and reasonable computations across our services.
+ * One may see this data type as a handcrafted `ReaderT[WriterT[EitherT[F, E, ?], LogLine], D, A]` or a way to compose
+ * functions with this signature: `D ⇒ F[(List[LogLine], Either[E, A])]`
  *
- * You should use the start dependencies, and pure functions to start building a script, the fail function to fail a script,
- * then map, flatMap, inject, mapFailure, adaptFailure to compose Script programs, and on the end of your program you
- * can execute it by using the fold function, which requires the promised dependencies, a function to handle the logging,
- * a function to handle the failures, and a function to handle the produced value, after that you need to handle async
- * computations using the returned F[_].
+ * Use functions provided by the ScriptDSL type class to create and compose Script programs.
  *
  * Note that domain failures are supposed to model what can possible go wrong within the domain of the function, lower
- * level exceptions (like network failure) should be handled within the F[_] that the function run returns.
+ * level exceptions (like network failure) should be handled within the F[_] that the function `run` returns.
  *
  * @param definition function.
  * @tparam F should be a monad that handles async, like Future, IO, Task, or Streams.
@@ -48,16 +46,17 @@ case class ScriptT[F[+_], -D, +E, +A](definition: Definition[F, D, E, A])(dsl: S
     dsl.leftMap(this)(f)
 
   /**
-   * Just like [[MonadError]] `handleErrorWith`, but does a mapping on the failure through the process.
-   * Also one may see this as the flatMap of mapFailure (mapFailure creates a Functor, adaptFailure creates a Monad)
+   * Just like [[MonadError]] `handleErrorWith`, but does a mapping on the failure type through the process.
+   * Also one may see this as the flatMap of mapFailure (mapFailure creates a Functor, recover creates a Monad)
    *
    *  Useful for when your original failure E is a coproduct, and you wish to handle just 1 or 2 errors but still keep
    *  others. i.e:
    *  {{{
-   *  val failed: Script[D, Either[Int, Int], String] = Script.fail(Left(1))
-   *  val handled: Script[D, Int, String] = Script.adaptFailure {
-   *    case Left(_) => Script.pure("This is now ok")
-   *    case Right(e) => Script.fail(e)
+   *  import purity.script.io._
+   *  val failed: Script[D, Either[Int, String], String] = fail(Left(1))
+   *  val handled: Script[D, String, String] = failed.recover {
+   *    case Left(_) => Script.pure("The Int failure is now ok")
+   *    case Right(e) => Script.fail(e) // The String failure is still a failure
    *  }
    *  }}}
    */
@@ -70,16 +69,12 @@ case class ScriptT[F[+_], -D, +E, +A](definition: Definition[F, D, E, A])(dsl: S
    *  case class AkkaD(system: ActorSystem)
    *  case class Dependencies(akka: AkkaD, uri: String)
    *
-   *  val pingActor: Script[AkkaD, Nothing, Ping] = ...
+   *  val ping: Script[AkkaD, Nothing, Pong] = ...
    *
-   *  val restOfProgram: Script[Dependencies, Nothing, String] = for {
-   *    ping <- pingActor.inject[Dependencies](_.akka)
-   *  } yield ping.toString
+   *  val restOfProgram: Script[Dependencies, Nothing, Pong] = for {
+   *    pong <- ping.inject[Dependencies](_.akka)
+   *  } yield pong
    *  }}}
-   *
-   * @param di function that injects dependencies from upper container D2 to local dependencies D
-   * @tparam D2 upper dependencies container
-   * @return a ScriptT that now instead of requiring dependencies D, now requires dependencies D2
    */
   def contramap[D2](di: D2 ⇒ D): ScriptT[F, D2, E, A] =
     dsl.contramap(this)(di)
@@ -98,9 +93,7 @@ case class ScriptT[F[+_], -D, +E, +A](definition: Definition[F, D, E, A])(dsl: S
 
   /**
    * Adds the promised dependencies, runs a logger with the log lines, and removes the failures by adding a function
-   * that will handle them. Produces an IO monad that can finally be executed.
-   *
-   * Note that no actual computation is done until you run the IO monad (see cats effects library).
+   * that will handle them. Produces an F that can finally be executed.
    *
    * @param dependencies required for the computation.
    * @param logger function with side effects that does the actual logging.
@@ -116,7 +109,7 @@ case class ScriptT[F[+_], -D, +E, +A](definition: Definition[F, D, E, A])(dsl: S
   def run[B](dependencies: D, logger: LoggerFunction, onFailure: E ⇒ B, onSuccess: A ⇒ B)(implicit F: MonadError[F, Throwable]): F[B] =
     dsl.fold(this)(dependencies, logger, onFailure, onSuccess)
 
-  /** Same as `run` but the failure and success handlers return an IO instead of a pure value. */
+  /** Same as `run` but the failure and success handlers return an F instead of a pure value. (Like a map vs flatMap) */
   def foldF[B](dependencies: D, logger: LoggerFunction, onFailure: E ⇒ F[B], onSuccess: A ⇒ F[B])(implicit F: MonadError[F, Throwable]): F[B] =
     dsl.foldF(this)(dependencies, logger, onFailure, onSuccess)
 

@@ -8,7 +8,7 @@ import purity.script.{ ScriptDSL, ScriptT }
 /**
  * A data type for lazy consistency checks on a data structure.
  *
- * A [[Proposition]] wraps a function that checks for proposition of a logical statement over a type. Combinators like leftMap,
+ * A [[Proposition]] wraps a function that checks a proposition of a logical statement over a type. Combinators like leftMap,
  * contramap, &&, ||, and not, can be used to easily create more complex checks.
  *
  * {{{
@@ -21,7 +21,7 @@ import purity.script.{ ScriptDSL, ScriptT }
  * scala> a.check(9)
  * res1: purity.Proposition[String] = True
  *
- * scala> val b = Proposition[String, String](x => if(x.length > 2) unsound("name code should be less than 3") else True)
+ * scala> val b = Proposition[String, String](x => if(x.length > 2) False("name code should be less than 3") else True)
  * b: purity.Proposition[String,String] = Proposition($$Lambda$7807/2059704745@1b0408f0)
  *
  * scala> val c = a.contramap[User](_.age) && b.contramap[User](_.name)
@@ -33,7 +33,7 @@ import purity.script.{ ScriptDSL, ScriptT }
  *
  * @param check function. Should check for proposition of a logical statement over type A
  * @tparam E type of the failure in case of an False result.
- * @tparam A type to be checked for proposition.
+ * @tparam A type to be checked for consistency.
  */
 case class Proposition[+E, -A](check: A ⇒ Truth[E]) {
 

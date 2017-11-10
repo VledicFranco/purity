@@ -5,14 +5,14 @@ import cats.data.NonEmptyList
 import purity.Truth.{ True, False }
 
 /**
- * Coproduct that represents logical proposition. Proposition is either True or False(e)
+ * Coproduct that represents a logical truth. Proposition is either True or False(e)
  *
  * One may also view the [[Truth]] data type as an inverse [[Option]], or a [[cats.data.Validated]] with the
  * [[cats.data.Validated.Valid]] type set to [[Unit]].
  *
  * Contains combinators map, not, &&, ||
  *
- * @tparam E type which encodes possible failures (The Unsound data type will contain a non empty list of these)
+ * @tparam E type which encodes possible failures (The False data type will contain a non empty list of these)
  */
 sealed trait Truth[+E] { p ⇒
 
