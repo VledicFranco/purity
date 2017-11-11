@@ -11,7 +11,7 @@ val scalacheck  = "org.scalacheck" %% "scalacheck"  % "1.13.5"
 
 lazy val root = Project("purity", file("."))
   .settings(
-    organization := "purity",
+    organization := "com.francoara",
     scalaVersion := "2.12.4",
     libraryDependencies ++= Seq(
       cats,
