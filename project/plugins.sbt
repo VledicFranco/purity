@@ -1,0 +1,6 @@
+addSbtPlugin("com.jsuereth" % "sbt-pgp" % "1.1.0")
+addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "2.0")
+addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.0-RC12")
+addSbtPlugin("com.typesafe.sbt" % "sbt-git" % "0.9.3")
+addSbtPlugin("com.47deg" % "sbt-microsites" % "0.7.6")
+addSbtPlugin("com.eed3si9n" % "sbt-unidoc" % "0.4.1")

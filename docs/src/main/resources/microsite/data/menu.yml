@@ -1,0 +1,17 @@
+options:
+
+  - title: Data Types
+    url: datatypes.html
+    menu_type: data
+
+  - title: Script
+    url: datatypes/script.html
+    menu_type: data
+
+  - title: Truth
+    url: datatypes/either.html
+    menu_type: data
+
+  - title: Proposition
+    url: datatypes/eval.html
+    menu_type: data

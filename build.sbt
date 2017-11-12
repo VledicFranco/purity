@@ -1,31 +1,98 @@
+import microsites.ExtraMdFileConfig
 import sbt._
 import sbt.Keys._
 
-val cats        = "org.typelevel"  %% "cats-core"   % "1.0.0-RC1"
-val catsLaws    = "org.typelevel"  %% "cats-laws"   % "1.0.0-RC1"
-val catsEffect  = "org.typelevel"  %% "cats-effect" % "0.5"
-val shapeless   = "com.chuusai"    %% "shapeless"   % "2.3.2"
-val discipline  = "org.typelevel"  %% "discipline"  % "0.8"
-val scalaTest   = "org.scalatest"  %% "scalatest"   % "3.0.4"
-val scalacheck  = "org.scalacheck" %% "scalacheck"  % "1.13.5"
+organization in ThisBuild := "com.francoara"
 
-lazy val root = Project("purity", file("."))
-  .settings(
-    organization := "com.francoara",
-    scalaVersion := "2.12.4",
-    libraryDependencies ++= Seq(
-      cats,
-      catsEffect,
-      shapeless,
-      scalaTest % Test,
-      scalacheck % Test,
-      discipline % Test,
-      catsLaws % Test
-    ),
-    scalacOptions ++= Seq(
-      "-language:higherKinds",
-      "-Ypartial-unification"
-    ),
-    resolvers += Resolver.sonatypeRepo("releases"),
-    addCompilerPlugin("org.spire-math" %% "kind-projector" % "0.9.4")
-  )
+lazy val purity = project.in(file("."))
+  .settings(moduleName := "root")
+  .settings(commonSettings)
+  .settings(noPublishSettings)
+  .aggregate(core)
+
+lazy val core = project.in(file("core"))
+  .settings(moduleName := "purity-core", name := "Purity core")
+  .settings(commonSettings)
+  .settings(publishSettings)
+  .settings(librarySettings)
+  .settings(testSettings)
+
+lazy val docs = project
+  .dependsOn(core)
+  .enablePlugins(MicrositesPlugin)
+  .enablePlugins(ScalaUnidocPlugin)
+  .settings(moduleName := "purity-docs")
+  .settings(commonSettings)
+  .settings(docSettings)
+  .settings(noPublishSettings)
+
+lazy val commonSettings = Seq(
+  scalaVersion := "2.12.4",
+  scalacOptions ++= Seq(
+    "-language:higherKinds",
+    "-Ypartial-unification"
+  ),
+  addCompilerPlugin("org.spire-math" %% "kind-projector" % "0.9.4")
+)
+
+lazy val catsVersion = "1.0.0-RC1"
+lazy val catsEffectVersion = "0.5"
+
+lazy val librarySettings = Seq(
+  resolvers += Resolver.sonatypeRepo("releases"),
+  libraryDependencies ++=
+    "org.typelevel"  %% "cats-core"   % "1.0.0-RC1" ::
+    "org.typelevel"  %% "cats-effect" % "0.5"       :: Nil
+)
+
+lazy val disciplineVersion = "0.8"
+lazy val scalaCheckVersion = "1.13.5"
+lazy val scalaTestVersion = "3.0.4"
+
+lazy val testSettings = Seq(
+  libraryDependencies ++=
+    "org.typelevel"  %% "cats-laws"   % "1.0.0-RC1" % Test ::
+    "org.typelevel"  %% "discipline"  % "0.8"       % Test ::
+    "org.scalatest"  %% "scalatest"   % "3.0.4"     % Test ::
+    "org.scalacheck" %% "scalacheck"  % "1.13.5"    % Test :: Nil
+)
+
+lazy val publishSettings = Seq(
+  homepage := Some(url("https://github.com/francoara/purity")),
+  licenses := Seq("MIT" -> url("http://opensource.org/licenses/MIT")),
+  scmInfo := Some(ScmInfo(url("https://github.com/francoara/purity"), "scm:git:git@github.com:francoara/purity.git")),
+  autoAPIMappings := true,
+  apiURL := Some(url("http://typelevel.org/cats/api/")),
+  pomExtra :=
+    <developers>
+      <developer>
+        <id>francoara</id>
+        <name>Francisco M. Aramburo Torres</name>
+        <url>https://github.com/francoara/</url>
+      </developer>
+    </developers>
+)
+
+lazy val docsMappingsAPIDir = settingKey[String]("Name of subdirectory in site target directory for api docs")
+
+lazy val docSettings = Seq(
+  micrositeName := "Purity",
+  micrositeDescription := "Easy pure code in Scala",
+  micrositeAuthor := "Francisco M. Aramburo Torres",
+  micrositeHomepage := "https://francoara.github.io/purity/",
+  micrositeDocumentationUrl := "api/",
+  micrositeGithubOwner := "FrancoAra",
+  micrositeGithubRepo := "purity",
+  autoAPIMappings := true,
+  ghpagesNoJekyll := false,
+  fork in tut := true,
+  git.remoteRepo := "git@github.com:FrancoAra/purity.git",
+  docsMappingsAPIDir := "api",
+  addMappingsToSiteDir(mappings in (ScalaUnidoc, packageDoc), docsMappingsAPIDir)
+)
+
+lazy val noPublishSettings = Seq(
+  publish := {},
+  publishLocal := {},
+  publishArtifact := false
+)
