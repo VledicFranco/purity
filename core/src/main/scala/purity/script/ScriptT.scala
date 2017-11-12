@@ -62,11 +62,10 @@ case class ScriptT[F[+_], -D, +E, +A](definition: Definition[F, D, E, A]) {
     this.leftMap(f)
 
   /**
-   * Just like [[cats.MonadError]] `handleErrorWith`, but does a mapping on the failure type through the process.
-   * Also one may see this as the flatMap of mapFailure (mapFailure creates a Functor, recover creates a Monad)
+   * One may see this as the flatMap of mapFailure (mapFailure creates a Functor, handleFailureWith creates a Monad)
    *
    *  Useful for when your original failure E is a coproduct, and you wish to handle just 1 or 2 errors but still keep
-   *  others. i.e:
+   *  the others. i.e:
    *  {{{
    *  import purity.script.io._
    *  val failed: Script[D, Either[Int, String], String] = fail(Left(1))
@@ -76,19 +75,13 @@ case class ScriptT[F[+_], -D, +E, +A](definition: Definition[F, D, E, A]) {
    *  }
    *  }}}
    */
-  def handleErrorWith[E2, DD <: D, AA >: A](f: (E) ⇒ ScriptT[F, DD, E2, AA])(implicit M: Monad[F]): ScriptT[F, DD, E2, AA] =
+  def handleFailureWith[E2, DD <: D, AA >: A](f: E ⇒ ScriptT[F, DD, E2, AA])(implicit M: Monad[F]): ScriptT[F, DD, E2, AA] =
     ScriptT[F, DD, E2, AA](d ⇒ M.flatMap(definition(d)) {
       case (logs, Right(a)) ⇒ M.pure((logs, Right(a)))
       case (logs, Left(e)) ⇒ M.map(f(e).definition(d)) {
         case (moreLogs, ea) ⇒ (logs ++ moreLogs, ea)
       }
     })
-
-  /**
-   * handleErrorWith alias
-   */
-  def recover[E2, DD <: D, AA >: A](f: E ⇒ ScriptT[F, DD, E2, AA])(implicit M: Monad[F]): ScriptT[F, DD, E2, AA] =
-    this.handleErrorWith(f)
 
   /**
    * Injects the required dependencies from an upper level container.
@@ -112,16 +105,21 @@ case class ScriptT[F[+_], -D, +E, +A](definition: Definition[F, D, E, A]) {
   def inject[D2](di: D2 ⇒ D): ScriptT[F, D2, E, A] =
     this.contramap(di)
 
+  /**
+   * Adds a log line if the Script's domain failure E has failed.
+   */
   def logFailure(f: E ⇒ LogLine)(implicit M: Functor[F]): ScriptT[F, D, E, A] =
     ScriptT[F, D, E, A](d ⇒ M.map(definition(d)) {
       case (logs, Left(e))  ⇒ (logs :+ f(e), Left(e))
       case (logs, Right(a)) ⇒ (logs, Right(a))
     })
 
+  /**
+   * Adds a log line if the inner F[_] monad error has failed.
+   */
   def logError(f: Throwable ⇒ LogLine)(implicit M: MonadError[F, Throwable]): ScriptT[F, D, E, A] =
     ScriptT[F, D, E, A] { d ⇒
-      val fa = definition(d)
-      fa.recoverWith {
+      definition(d).recoverWith {
         case ExceptionWithLogs(logs, e) ⇒ M.raiseError(ExceptionWithLogs(logs :+ f(e), e))
         case e: Throwable               ⇒ M.raiseError(ExceptionWithLogs(List(f(e)), e))
       }
@@ -136,7 +134,7 @@ case class ScriptT[F[+_], -D, +E, +A](definition: Definition[F, D, E, A]) {
    * @param onFailure handler function.
    * @param onSuccess handler function.
    * @tparam B type which already contains an answer to domain failures, for example the `Result` data type from an http library.
-   * @return an IO monad that still needs to be run and handled.
+   * @return an F monad error with the result.
    */
   def fold[B](dependencies: D, logger: LoggerFunction, onFailure: E ⇒ B, onSuccess: A ⇒ B)(implicit M: MonadError[F, Throwable]): F[B] =
     M.map(definition(dependencies)) {
@@ -202,7 +200,7 @@ private[purity] trait ScriptTInstances {
         ScriptT[F, Any, E, Nothing](_ ⇒ M.pure((Nil, Left(e))))
 
       override def handleErrorWith[A](fa: ScriptT[F, D, E, A])(f: (E) ⇒ ScriptT[F, D, E, A]): ScriptT[F, D, E, A] =
-        fa.handleErrorWith(f)
+        fa.handleFailureWith(f)
     }
   }
 }

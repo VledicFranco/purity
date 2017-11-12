@@ -5,7 +5,7 @@ import cats.data.NonEmptyList
 import purity.Truth.{ True, False }
 
 /**
- * Coproduct that represents a logical truth. Proposition is either True or False(e)
+ * Coproduct that represents a logical truth. Truth is either True or False(e)
  *
  * One may also view the Truth data type as an inverse Option, or a cats Validated with the Valid type parameter
  * set to Unit.

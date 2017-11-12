@@ -36,10 +36,10 @@ trait ScriptDSL[F[+_]] {
     opt.fold[ScriptT[F, Any, E, A]](fail(_), pure(_))
 
   def handleErrorWith[E, E2, D, A](sa: ScriptT[F, D, E, A])(f: (E) ⇒ ScriptT[F, D, E2, A])(implicit M: Monad[F]): ScriptT[F, D, E2, A] =
-    sa.handleErrorWith(f)
+    sa.handleFailureWith(f)
 
   def recover[E, E2, D, A](sa: ScriptT[F, D, E, A])(f: (E) ⇒ ScriptT[F, D, E2, A])(implicit M: Monad[F]): ScriptT[F, D, E2, A] =
-    sa.handleErrorWith(f)
+    sa.handleFailureWith(f)
 
   def leftMap[E, E2, D, A](sa: ScriptT[F, D, E, A])(f: E ⇒ E2)(implicit F: Functor[F]): ScriptT[F, D, E2, A] =
     sa.leftMap(f)

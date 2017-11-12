@@ -5,13 +5,24 @@ options:
     menu_type: data
 
   - title: Script
-    url: datatypes/script.html
+    url: script.html
     menu_type: data
+    menu_section: script
 
-  - title: Truth
-    url: datatypes/either.html
-    menu_type: data
+    nested_options:
+      - title: Handling Dependencies
+        url: script/dependencies.html
+        menu_section: script
+      - title: Handling Failures
+        url: script/failures.html
+        menu_section: script
+      - title: Handling Errors
+        url: script/errors.html
+        menu_section: script
+      - title: Handling Logging
+        url: script/logging.html
+        menu_section: script
 
   - title: Proposition
-    url: datatypes/eval.html
+    url: proposition.html
     menu_type: data
