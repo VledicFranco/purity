@@ -19,7 +19,7 @@
       <script type="text/javascript" src="../lib/scheduler.js"></script>
       <script type="text/javascript" src="../lib/template.js"></script>
       <script type="text/javascript" src="../lib/tools.tooltip.js"></script>
-      
+      <script type="text/javascript" src="../lib/modernizr.custom.js"></script><script type="text/javascript" src="../lib/diagrams.js" id="diagrams-js"></script>
       <script type="text/javascript">
         /* this variable can be used by the JS to determine the path to the root document */
         var toRoot = '../';
@@ -224,23 +224,23 @@
       </span>
       
       <p class="shortcomment cmt">A data type for lazy consistency checks on a data structure.</p><div class="fullcomment"><div class="comment cmt"><p>A data type for lazy consistency checks on a data structure.</p><p>A <a href="Proposition.html" class="extype" name="purity.Proposition">Proposition</a> wraps a function that checks a proposition of a logical statement over a type. Combinators like leftMap,
-contramap, &amp;&amp;, ||, and not, can be used to easily create more complex checks.</p><pre>scala&gt; <span class="kw">val</span> a = Proposition[<span class="std">String</span>, <span class="std">Int</span>](x <span class="kw">=&gt;</span> <span class="kw">if</span>(x &gt; <span class="num">10</span>) False(<span class="lit">"age should be less than 10"</span>) <span class="kw">else</span> True)
-a: purity.Proposition[<span class="std">String</span>,<span class="std">Int</span>] = Proposition($$Lambda$7806/<span class="num">1294210606</span>@<span class="num">142</span>fe5e1)
+contramap, &amp;&amp;, ||, and not, can be used to easily create more complex checks.</p><pre><span class="kw">val</span> a = Proposition[<span class="std">String</span>, <span class="std">Int</span>](x <span class="kw">=&gt;</span> <span class="kw">if</span>(x &gt; <span class="num">10</span>) False(<span class="lit">"age should be less than 10"</span>) <span class="kw">else</span> True)
+<span class="cmt">//a: purity.Proposition[String,Int] = Proposition</span>
 
-scala&gt; a.check(<span class="num">21</span>)
-res0: purity.Proposition[<span class="std">String</span>] = False(NonEmptyList(age should be less than <span class="num">10</span>))
+a.check(<span class="num">21</span>)
+<span class="cmt">//res0: purity.Truth[String] = False(NonEmptyList(age should be less than 10))</span>
 
-scala&gt; a.check(<span class="num">9</span>)
-res1: purity.Proposition[<span class="std">String</span>] = True
+a.check(<span class="num">9</span>)
+<span class="cmt">//res1: purity.Truth[String] = True</span>
 
-scala&gt; <span class="kw">val</span> b = Proposition[<span class="std">String</span>, <span class="std">String</span>](x <span class="kw">=&gt;</span> <span class="kw">if</span>(x.length &gt; <span class="num">2</span>) False(<span class="lit">"name code should be less than 3"</span>) <span class="kw">else</span> True)
-b: purity.Proposition[<span class="std">String</span>,<span class="std">String</span>] = Proposition($$Lambda$7807/<span class="num">2059704745</span>@<span class="num">1</span>b0408f0)
+<span class="kw">val</span> b = Proposition[<span class="std">String</span>, <span class="std">String</span>](x <span class="kw">=&gt;</span> <span class="kw">if</span>(x.length &gt; <span class="num">2</span>) False(<span class="lit">"name code should be less than 3"</span>) <span class="kw">else</span> True)
+<span class="cmt">//b: purity.Proposition[String,String] = Proposition</span>
 
-scala&gt; <span class="kw">val</span> c = a.contramap[User](_.age) &amp;&amp; b.contramap[User](_.name)
-c: purity.Proposition[<span class="std">String</span>,User] = Proposition(purity.Proposition$$Lambda$7813/<span class="num">1772294329</span>@<span class="num">5</span>ea95f08)
+<span class="kw">val</span> c = a.contramap[User](_.age) &amp;&amp; b.contramap[User](_.name)
+<span class="cmt">//c: purity.Proposition[String,User] = Proposition</span>
 
-scala&gt; c.check(User(<span class="lit">"FAF"</span>, <span class="num">21</span>))
-res3: purity.Proposition[<span class="std">String</span>] = False(NonEmptyList(age should be less than <span class="num">10</span>, name code should be less than <span class="num">3</span>))</pre></div><dl class="paramcmts block"><dt class="tparam">E</dt><dd class="cmt"><p>type of the failure in case of an False result.</p></dd><dt class="tparam">A</dt><dd class="cmt"><p>type to be checked for consistency.</p></dd><dt class="param">check</dt><dd class="cmt"><p>function. Should check for proposition of a logical statement over type A</p></dd></dl></div>
+c.check(User(<span class="lit">"FAF"</span>, <span class="num">21</span>))
+<span class="cmt">//res3: purity.Truth[String] = False(NonEmptyList(age should be less than 10, name code should be less than 3))</span></pre></div><dl class="paramcmts block"><dt class="tparam">E</dt><dd class="cmt"><p>type of the failure in case of an False result.</p></dd><dt class="tparam">A</dt><dd class="cmt"><p>type to be checked for consistency.</p></dd><dt class="param">check</dt><dd class="cmt"><p>function. Should check for proposition of a logical statement over type A</p></dd></dl></div>
     </li><li name="purity.Truth" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="Truth[+E]extendsAnyRef"></a><a id="Truth[+E]:Truth[E]"></a>
       <span class="permalink">
@@ -256,8 +256,8 @@ res3: purity.Proposition[<span class="std">String</span>] = False(NonEmptyList(a
         <a title="Coproduct that represents a logical truth." href="Truth.html"><span class="name">Truth</span></a><span class="tparams">[<span name="E">+E</span>]</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.12.4/scala/collection/immutable/List.html#scala.AnyRef" class="extype" name="scala.collection.immutable.List">AnyRef</a></span>
       </span>
       
-      <p class="shortcomment cmt">Coproduct that represents a logical truth.</p><div class="fullcomment"><div class="comment cmt"><p>Coproduct that represents a logical truth. Proposition is either True or False(e)</p><p>One may also view the <a href="Truth.html" class="extype" name="purity.Truth">Truth</a> data type as an inverse <span class="extype" name="Option">Option</span>, or a <span class="extype" name="cats.data.Validated">cats.data.Validated</span> with the
-<a href="http://typelevel.org/cats/api/cats/data/Validated$$Valid.html" class="extype" name="cats.data.Validated.Valid">cats.data.Validated.Valid</a> type set to <span class="extype" name="Unit">Unit</span>.</p><p>Contains combinators map, not, &amp;&amp;, ||
+      <p class="shortcomment cmt">Coproduct that represents a logical truth.</p><div class="fullcomment"><div class="comment cmt"><p>Coproduct that represents a logical truth. Proposition is either True or False(e)</p><p>One may also view the Truth data type as an inverse Option, or a cats Validated with the Valid type parameter
+set to Unit.</p><p>Contains combinators map, not, &amp;&amp;, ||
 </p></div><dl class="paramcmts block"><dt class="tparam">E</dt><dd class="cmt"><p>type which encodes possible failures (The False data type will contain a non empty list of these)</p></dd></dl></div>
     </li></ol>
             </div>

@@ -19,7 +19,7 @@
       <script type="text/javascript" src="../lib/scheduler.js"></script>
       <script type="text/javascript" src="../lib/template.js"></script>
       <script type="text/javascript" src="../lib/tools.tooltip.js"></script>
-      
+      <script type="text/javascript" src="../lib/modernizr.custom.js"></script><script type="text/javascript" src="../lib/diagrams.js" id="diagrams-js"></script>
       <script type="text/javascript">
         /* this variable can be used by the JS to determine the path to the root document */
         var toRoot = '../';
@@ -159,9 +159,9 @@
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Coproduct that represents a logical truth. Proposition is either True or False(e)</p><p>One may also view the <a href="" class="extype" name="purity.Truth">Truth</a> data type as an inverse <span class="extype" name="Option">Option</span>, or a <span class="extype" name="cats.data.Validated">cats.data.Validated</span> with the
-<a href="http://typelevel.org/cats/api/cats/data/Validated$$Valid.html" class="extype" name="cats.data.Validated.Valid">cats.data.Validated.Valid</a> type set to <span class="extype" name="Unit">Unit</span>.</p><p>Contains combinators map, not, &amp;&amp;, ||
-</p></div><dl class="paramcmts block"><dt class="tparam">E</dt><dd class="cmt"><p>type which encodes possible failures (The False data type will contain a non empty list of these)</p></dd></dl><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="purity.Truth">Truth</a>[<span class="extype" name="purity.Truth.E">E</span>]</dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Coproduct that represents a logical truth. Proposition is either True or False(e)</p><p>One may also view the Truth data type as an inverse Option, or a cats Validated with the Valid type parameter
+set to Unit.</p><p>Contains combinators map, not, &amp;&amp;, ||
+</p></div><dl class="paramcmts block"><dt class="tparam">E</dt><dd class="cmt"><p>type which encodes possible failures (The False data type will contain a non empty list of these)</p></dd></dl><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="purity.Truth">Truth</a>[<span class="extype" name="purity.Truth.E">E</span>]</dd><dt>Source</dt><dd><a href="https://github.com/FrancoAra/purity/tree/master/core/src/main/scala/purity/Truth.scala" target="_blank">Truth.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>

@@ -19,7 +19,7 @@
       <script type="text/javascript" src="../lib/scheduler.js"></script>
       <script type="text/javascript" src="../lib/template.js"></script>
       <script type="text/javascript" src="../lib/tools.tooltip.js"></script>
-      
+      <script type="text/javascript" src="../lib/modernizr.custom.js"></script><script type="text/javascript" src="../lib/diagrams.js" id="diagrams-js"></script>
       <script type="text/javascript">
         /* this variable can be used by the JS to determine the path to the root document */
         var toRoot = '../';
@@ -160,23 +160,23 @@
 
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A data type for lazy consistency checks on a data structure.</p><p>A <a href="" class="extype" name="purity.Proposition">Proposition</a> wraps a function that checks a proposition of a logical statement over a type. Combinators like leftMap,
-contramap, &amp;&amp;, ||, and not, can be used to easily create more complex checks.</p><pre>scala&gt; <span class="kw">val</span> a = Proposition[<span class="std">String</span>, <span class="std">Int</span>](x <span class="kw">=&gt;</span> <span class="kw">if</span>(x &gt; <span class="num">10</span>) False(<span class="lit">"age should be less than 10"</span>) <span class="kw">else</span> True)
-a: purity.Proposition[<span class="std">String</span>,<span class="std">Int</span>] = Proposition($$Lambda$7806/<span class="num">1294210606</span>@<span class="num">142</span>fe5e1)
+contramap, &amp;&amp;, ||, and not, can be used to easily create more complex checks.</p><pre><span class="kw">val</span> a = Proposition[<span class="std">String</span>, <span class="std">Int</span>](x <span class="kw">=&gt;</span> <span class="kw">if</span>(x &gt; <span class="num">10</span>) False(<span class="lit">"age should be less than 10"</span>) <span class="kw">else</span> True)
+<span class="cmt">//a: purity.Proposition[String,Int] = Proposition</span>
 
-scala&gt; a.check(<span class="num">21</span>)
-res0: purity.Proposition[<span class="std">String</span>] = False(NonEmptyList(age should be less than <span class="num">10</span>))
+a.check(<span class="num">21</span>)
+<span class="cmt">//res0: purity.Truth[String] = False(NonEmptyList(age should be less than 10))</span>
 
-scala&gt; a.check(<span class="num">9</span>)
-res1: purity.Proposition[<span class="std">String</span>] = True
+a.check(<span class="num">9</span>)
+<span class="cmt">//res1: purity.Truth[String] = True</span>
 
-scala&gt; <span class="kw">val</span> b = Proposition[<span class="std">String</span>, <span class="std">String</span>](x <span class="kw">=&gt;</span> <span class="kw">if</span>(x.length &gt; <span class="num">2</span>) False(<span class="lit">"name code should be less than 3"</span>) <span class="kw">else</span> True)
-b: purity.Proposition[<span class="std">String</span>,<span class="std">String</span>] = Proposition($$Lambda$7807/<span class="num">2059704745</span>@<span class="num">1</span>b0408f0)
+<span class="kw">val</span> b = Proposition[<span class="std">String</span>, <span class="std">String</span>](x <span class="kw">=&gt;</span> <span class="kw">if</span>(x.length &gt; <span class="num">2</span>) False(<span class="lit">"name code should be less than 3"</span>) <span class="kw">else</span> True)
+<span class="cmt">//b: purity.Proposition[String,String] = Proposition</span>
 
-scala&gt; <span class="kw">val</span> c = a.contramap[User](_.age) &amp;&amp; b.contramap[User](_.name)
-c: purity.Proposition[<span class="std">String</span>,User] = Proposition(purity.Proposition$$Lambda$7813/<span class="num">1772294329</span>@<span class="num">5</span>ea95f08)
+<span class="kw">val</span> c = a.contramap[User](_.age) &amp;&amp; b.contramap[User](_.name)
+<span class="cmt">//c: purity.Proposition[String,User] = Proposition</span>
 
-scala&gt; c.check(User(<span class="lit">"FAF"</span>, <span class="num">21</span>))
-res3: purity.Proposition[<span class="std">String</span>] = False(NonEmptyList(age should be less than <span class="num">10</span>, name code should be less than <span class="num">3</span>))</pre></div><dl class="paramcmts block"><dt class="tparam">E</dt><dd class="cmt"><p>type of the failure in case of an False result.</p></dd><dt class="tparam">A</dt><dd class="cmt"><p>type to be checked for consistency.</p></dd><dt class="param">check</dt><dd class="cmt"><p>function. Should check for proposition of a logical statement over type A</p></dd></dl><div class="toggleContainer block">
+c.check(User(<span class="lit">"FAF"</span>, <span class="num">21</span>))
+<span class="cmt">//res3: purity.Truth[String] = False(NonEmptyList(age should be less than 10, name code should be less than 3))</span></pre></div><dl class="paramcmts block"><dt class="tparam">E</dt><dd class="cmt"><p>type of the failure in case of an False result.</p></dd><dt class="tparam">A</dt><dd class="cmt"><p>type to be checked for consistency.</p></dd><dt class="param">check</dt><dd class="cmt"><p>function. Should check for proposition of a logical statement over type A</p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/FrancoAra/purity/tree/master/core/src/main/scala/purity/Proposition.scala" target="_blank">Proposition.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -579,6 +579,22 @@ res3: purity.Proposition[<span class="std">String</span>] = False(NonEmptyList(a
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="purity.Proposition#toString" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="toString():String"></a>
+      <span class="permalink">
+      <a href="../purity/Proposition.html#toString():String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="purity.Proposition">Proposition</a> → AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <span class="permalink">
