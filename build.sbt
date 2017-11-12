@@ -1,4 +1,3 @@
-import microsites.ExtraMdFileConfig
 import sbt._
 import sbt.Keys._
 
@@ -41,8 +40,8 @@ lazy val catsEffectVersion = "0.5"
 lazy val librarySettings = Seq(
   resolvers += Resolver.sonatypeRepo("releases"),
   libraryDependencies ++=
-    "org.typelevel"  %% "cats-core"   % "1.0.0-RC1" ::
-    "org.typelevel"  %% "cats-effect" % "0.5"       :: Nil
+    "org.typelevel"  %% "cats-core"   % catsVersion       ::
+    "org.typelevel"  %% "cats-effect" % catsEffectVersion :: Nil
 )
 
 lazy val disciplineVersion = "0.8"
@@ -51,10 +50,10 @@ lazy val scalaTestVersion = "3.0.4"
 
 lazy val testSettings = Seq(
   libraryDependencies ++=
-    "org.typelevel"  %% "cats-laws"   % "1.0.0-RC1" % Test ::
-    "org.typelevel"  %% "discipline"  % "0.8"       % Test ::
-    "org.scalatest"  %% "scalatest"   % "3.0.4"     % Test ::
-    "org.scalacheck" %% "scalacheck"  % "1.13.5"    % Test :: Nil
+    "org.typelevel"  %% "cats-laws"   % catsVersion       % Test ::
+    "org.typelevel"  %% "discipline"  % disciplineVersion % Test ::
+    "org.scalatest"  %% "scalatest"   % scalaTestVersion  % Test ::
+    "org.scalacheck" %% "scalacheck"  % scalaCheckVersion % Test :: Nil
 )
 
 lazy val publishSettings = Seq(
