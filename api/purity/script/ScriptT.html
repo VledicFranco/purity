@@ -426,7 +426,7 @@ level exceptions (like network failure) should be handled within the F[_] that t
       <p class="shortcomment cmt">Adds the promised dependencies, runs a logger with the log lines, and removes the failures by adding a function
 that will handle them.</p><div class="fullcomment"><div class="comment cmt"><p>Adds the promised dependencies, runs a logger with the log lines, and removes the failures by adding a function
 that will handle them. Produces an F that can finally be executed.
-</p></div><dl class="paramcmts block"><dt class="tparam">B</dt><dd class="cmt"><p>type which already contains an answer to domain failures, for example the <code>Result</code> data type from an http library.</p></dd><dt class="param">dependencies</dt><dd class="cmt"><p>required for the computation.</p></dd><dt class="param">logger</dt><dd class="cmt"><p>function with side effects that does the actual logging.</p></dd><dt class="param">onFailure</dt><dd class="cmt"><p>handler function.</p></dd><dt class="param">onSuccess</dt><dd class="cmt"><p>handler function.</p></dd><dt>returns</dt><dd class="cmt"><p>an IO monad that still needs to be run and handled.</p></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="tparam">B</dt><dd class="cmt"><p>type which already contains an answer to domain failures, for example the <code>Result</code> data type from an http library.</p></dd><dt class="param">dependencies</dt><dd class="cmt"><p>required for the computation.</p></dd><dt class="param">logger</dt><dd class="cmt"><p>function with side effects that does the actual logging.</p></dd><dt class="param">onFailure</dt><dd class="cmt"><p>handler function.</p></dd><dt class="param">onSuccess</dt><dd class="cmt"><p>handler function.</p></dd><dt>returns</dt><dd class="cmt"><p>an F monad error with the result.</p></dd></dl></div>
     </li><li name="purity.script.ScriptT#foldF" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="foldF[B](dependencies:D,logger:purity.logging.LoggerFunction,onFailure:E=&gt;F[B],onSuccess:A=&gt;F[B])(implicitM:cats.MonadError[F,Throwable]):F[B]"></a><a id="foldF[B](D,LoggerFunction,(E)⇒F[B],(A)⇒F[B])(MonadError[F,Throwable]):F[B]"></a>
       <span class="permalink">
@@ -462,10 +462,10 @@ that will handle them. Produces an F that can finally be executed.
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="purity.script.ScriptT#handleErrorWith" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="handleErrorWith[E2,DD&lt;:D,AA&gt;:A](f:E=&gt;purity.script.ScriptT[F,DD,E2,AA])(implicitM:cats.Monad[F]):purity.script.ScriptT[F,DD,E2,AA]"></a><a id="handleErrorWith[E2,DD&lt;:D,AA&gt;:A]((E)⇒ScriptT[F,DD,E2,AA])(Monad[F]):ScriptT[F,DD,E2,AA]"></a>
+    </li><li name="purity.script.ScriptT#handleFailureWith" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="handleFailureWith[E2,DD&lt;:D,AA&gt;:A](f:E=&gt;purity.script.ScriptT[F,DD,E2,AA])(implicitM:cats.Monad[F]):purity.script.ScriptT[F,DD,E2,AA]"></a><a id="handleFailureWith[E2,DD&lt;:D,AA&gt;:A]((E)⇒ScriptT[F,DD,E2,AA])(Monad[F]):ScriptT[F,DD,E2,AA]"></a>
       <span class="permalink">
-      <a href="../../purity/script/ScriptT.html#handleErrorWith[E2,DD&lt;:D,AA&gt;:A](f:E=&gt;purity.script.ScriptT[F,DD,E2,AA])(implicitM:cats.Monad[F]):purity.script.ScriptT[F,DD,E2,AA]" title="Permalink">
+      <a href="../../purity/script/ScriptT.html#handleFailureWith[E2,DD&lt;:D,AA&gt;:A](f:E=&gt;purity.script.ScriptT[F,DD,E2,AA])(implicitM:cats.Monad[F]):purity.script.ScriptT[F,DD,E2,AA]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -474,12 +474,11 @@ that will handle them. Produces an F that can finally be executed.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">handleErrorWith</span><span class="tparams">[<span name="E2">E2</span>, <span name="DD">DD &lt;: <span class="extype" name="purity.script.ScriptT.D">D</span></span>, <span name="AA">AA &gt;: <span class="extype" name="purity.script.ScriptT.A">A</span></span>]</span><span class="params">(<span name="f">f: (<span class="extype" name="purity.script.ScriptT.E">E</span>) ⇒ <a href="" class="extype" name="purity.script.ScriptT">ScriptT</a>[<span class="extype" name="purity.script.ScriptT.F">F</span>, <span class="extype" name="purity.script.ScriptT.handleErrorWith.DD">DD</span>, <span class="extype" name="purity.script.ScriptT.handleErrorWith.E2">E2</span>, <span class="extype" name="purity.script.ScriptT.handleErrorWith.AA">AA</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="M">M: <a href="http://typelevel.org/cats/api/cats/Monad.html#cats.Monad" class="extype" name="cats.Monad">Monad</a>[<span class="extype" name="purity.script.ScriptT.F">F</span>]</span>)</span><span class="result">: <a href="" class="extype" name="purity.script.ScriptT">ScriptT</a>[<span class="extype" name="purity.script.ScriptT.F">F</span>, <span class="extype" name="purity.script.ScriptT.handleErrorWith.DD">DD</span>, <span class="extype" name="purity.script.ScriptT.handleErrorWith.E2">E2</span>, <span class="extype" name="purity.script.ScriptT.handleErrorWith.AA">AA</span>]</span>
+        <span class="name">handleFailureWith</span><span class="tparams">[<span name="E2">E2</span>, <span name="DD">DD &lt;: <span class="extype" name="purity.script.ScriptT.D">D</span></span>, <span name="AA">AA &gt;: <span class="extype" name="purity.script.ScriptT.A">A</span></span>]</span><span class="params">(<span name="f">f: (<span class="extype" name="purity.script.ScriptT.E">E</span>) ⇒ <a href="" class="extype" name="purity.script.ScriptT">ScriptT</a>[<span class="extype" name="purity.script.ScriptT.F">F</span>, <span class="extype" name="purity.script.ScriptT.handleFailureWith.DD">DD</span>, <span class="extype" name="purity.script.ScriptT.handleFailureWith.E2">E2</span>, <span class="extype" name="purity.script.ScriptT.handleFailureWith.AA">AA</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="M">M: <a href="http://typelevel.org/cats/api/cats/Monad.html#cats.Monad" class="extype" name="cats.Monad">Monad</a>[<span class="extype" name="purity.script.ScriptT.F">F</span>]</span>)</span><span class="result">: <a href="" class="extype" name="purity.script.ScriptT">ScriptT</a>[<span class="extype" name="purity.script.ScriptT.F">F</span>, <span class="extype" name="purity.script.ScriptT.handleFailureWith.DD">DD</span>, <span class="extype" name="purity.script.ScriptT.handleFailureWith.E2">E2</span>, <span class="extype" name="purity.script.ScriptT.handleFailureWith.AA">AA</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">Just like <a href="http://typelevel.org/cats/api/cats/MonadError.html" class="extype" name="cats.MonadError">cats.MonadError</a> <code>handleErrorWith</code>, but does a mapping on the failure type through the process.</p><div class="fullcomment"><div class="comment cmt"><p>Just like <a href="http://typelevel.org/cats/api/cats/MonadError.html" class="extype" name="cats.MonadError">cats.MonadError</a> <code>handleErrorWith</code>, but does a mapping on the failure type through the process.
-Also one may see this as the flatMap of mapFailure (mapFailure creates a Functor, recover creates a Monad)</p><p> Useful for when your original failure E is a coproduct, and you wish to handle just 1 or 2 errors but still keep
- others. i.e:</p><pre><span class="kw">import</span> purity.script.io._
+      <p class="shortcomment cmt">One may see this as the flatMap of mapFailure (mapFailure creates a Functor, handleFailureWith creates a Monad)</p><div class="fullcomment"><div class="comment cmt"><p>One may see this as the flatMap of mapFailure (mapFailure creates a Functor, handleFailureWith creates a Monad)</p><p> Useful for when your original failure E is a coproduct, and you wish to handle just 1 or 2 errors but still keep
+ the others. i.e:</p><pre><span class="kw">import</span> purity.script.io._
 <span class="kw">val</span> failed: Script[D, Either[<span class="std">Int</span>, <span class="std">String</span>], <span class="std">String</span>] = fail(Left(<span class="num">1</span>))
 <span class="kw">val</span> handled: Script[D, <span class="std">String</span>, <span class="std">String</span>] = failed.recover {
   <span class="kw">case</span> Left(_) <span class="kw">=&gt;</span> Script.pure(<span class="lit">"The Int failure is now ok"</span>)
@@ -551,7 +550,7 @@ which you require it's produced value.
         <span class="name">logError</span><span class="params">(<span name="f">f: (<span class="extype" name="scala.Throwable">Throwable</span>) ⇒ <a href="../logging/LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="M">M: <a href="http://typelevel.org/cats/api/cats/MonadError.html#cats.MonadError" class="extype" name="cats.MonadError">MonadError</a>[<span class="extype" name="purity.script.ScriptT.F">F</span>, <span class="extype" name="scala.Throwable">Throwable</span>]</span>)</span><span class="result">: <a href="" class="extype" name="purity.script.ScriptT">ScriptT</a>[<span class="extype" name="purity.script.ScriptT.F">F</span>, <span class="extype" name="purity.script.ScriptT.D">D</span>, <span class="extype" name="purity.script.ScriptT.E">E</span>, <span class="extype" name="purity.script.ScriptT.A">A</span>]</span>
       </span>
       
-      
+      <p class="shortcomment cmt">Adds a log line if the inner F[_] monad error has failed.</p>
     </li><li name="purity.script.ScriptT#logFailure" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="logFailure(f:E=&gt;purity.logging.LogLine)(implicitM:cats.Functor[F]):purity.script.ScriptT[F,D,E,A]"></a><a id="logFailure((E)⇒LogLine)(Functor[F]):ScriptT[F,D,E,A]"></a>
       <span class="permalink">
@@ -567,7 +566,7 @@ which you require it's produced value.
         <span class="name">logFailure</span><span class="params">(<span name="f">f: (<span class="extype" name="purity.script.ScriptT.E">E</span>) ⇒ <a href="../logging/LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="M">M: <a href="http://typelevel.org/cats/api/cats/Functor.html#cats.Functor" class="extype" name="cats.Functor">Functor</a>[<span class="extype" name="purity.script.ScriptT.F">F</span>]</span>)</span><span class="result">: <a href="" class="extype" name="purity.script.ScriptT">ScriptT</a>[<span class="extype" name="purity.script.ScriptT.F">F</span>, <span class="extype" name="purity.script.ScriptT.D">D</span>, <span class="extype" name="purity.script.ScriptT.E">E</span>, <span class="extype" name="purity.script.ScriptT.A">A</span>]</span>
       </span>
       
-      
+      <p class="shortcomment cmt">Adds a log line if the Script's domain failure E has failed.</p>
     </li><li name="purity.script.ScriptT#map" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="map[B](f:A=&gt;B)(implicitF:cats.Functor[F]):purity.script.ScriptT[F,D,E,B]"></a><a id="map[B]((A)⇒B)(Functor[F]):ScriptT[F,D,E,B]"></a>
       <span class="permalink">
@@ -655,23 +654,6 @@ which you require it's produced value.
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="purity.script.ScriptT#recover" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="recover[E2,DD&lt;:D,AA&gt;:A](f:E=&gt;purity.script.ScriptT[F,DD,E2,AA])(implicitM:cats.Monad[F]):purity.script.ScriptT[F,DD,E2,AA]"></a><a id="recover[E2,DD&lt;:D,AA&gt;:A]((E)⇒ScriptT[F,DD,E2,AA])(Monad[F]):ScriptT[F,DD,E2,AA]"></a>
-      <span class="permalink">
-      <a href="../../purity/script/ScriptT.html#recover[E2,DD&lt;:D,AA&gt;:A](f:E=&gt;purity.script.ScriptT[F,DD,E2,AA])(implicitM:cats.Monad[F]):purity.script.ScriptT[F,DD,E2,AA]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">recover</span><span class="tparams">[<span name="E2">E2</span>, <span name="DD">DD &lt;: <span class="extype" name="purity.script.ScriptT.D">D</span></span>, <span name="AA">AA &gt;: <span class="extype" name="purity.script.ScriptT.A">A</span></span>]</span><span class="params">(<span name="f">f: (<span class="extype" name="purity.script.ScriptT.E">E</span>) ⇒ <a href="" class="extype" name="purity.script.ScriptT">ScriptT</a>[<span class="extype" name="purity.script.ScriptT.F">F</span>, <span class="extype" name="purity.script.ScriptT.recover.DD">DD</span>, <span class="extype" name="purity.script.ScriptT.recover.E2">E2</span>, <span class="extype" name="purity.script.ScriptT.recover.AA">AA</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="M">M: <a href="http://typelevel.org/cats/api/cats/Monad.html#cats.Monad" class="extype" name="cats.Monad">Monad</a>[<span class="extype" name="purity.script.ScriptT.F">F</span>]</span>)</span><span class="result">: <a href="" class="extype" name="purity.script.ScriptT">ScriptT</a>[<span class="extype" name="purity.script.ScriptT.F">F</span>, <span class="extype" name="purity.script.ScriptT.recover.DD">DD</span>, <span class="extype" name="purity.script.ScriptT.recover.E2">E2</span>, <span class="extype" name="purity.script.ScriptT.recover.AA">AA</span>]</span>
-      </span>
-      
-      <p class="shortcomment cmt">handleErrorWith alias
-</p>
     </li><li name="purity.script.ScriptT#run" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="run[B](dependencies:D,logger:purity.logging.LoggerFunction,onFailure:E=&gt;B,onSuccess:A=&gt;B)(implicitF:cats.MonadError[F,Throwable]):F[B]"></a><a id="run[B](D,LoggerFunction,(E)⇒B,(A)⇒B)(MonadError[F,Throwable]):F[B]"></a>
       <span class="permalink">
