@@ -1,9 +1,9 @@
 package purity
 
-import purity.Truth.{ False, True }
-import cats.{ Contravariant, MonadError }
+import cats.{Contravariant, MonadError}
 import cats.data.NonEmptyList
-import purity.script.{ ScriptDSL, ScriptT }
+import purity.script.{ScriptDSL, ScriptT}
+import purity.Truth.{False, True}
 
 /**
  * A data type for lazy consistency checks on a data structure.
@@ -12,23 +12,23 @@ import purity.script.{ ScriptDSL, ScriptT }
  * contramap, &&, ||, and not, can be used to easily create more complex checks.
  *
  * {{{
- * scala> val a = Proposition[String, Int](x => if(x > 10) False("age should be less than 10") else True)
- * a: purity.Proposition[String,Int] = Proposition($$Lambda$7806/1294210606@142fe5e1)
+ * val a = Proposition[String, Int](x => if(x > 10) False("age should be less than 10") else True)
+ * //a: purity.Proposition[String,Int] = Proposition
  *
- * scala> a.check(21)
- * res0: purity.Proposition[String] = False(NonEmptyList(age should be less than 10))
+ * a.check(21)
+ * //res0: purity.Truth[String] = False(NonEmptyList(age should be less than 10))
  *
- * scala> a.check(9)
- * res1: purity.Proposition[String] = True
+ * a.check(9)
+ * //res1: purity.Truth[String] = True
  *
- * scala> val b = Proposition[String, String](x => if(x.length > 2) False("name code should be less than 3") else True)
- * b: purity.Proposition[String,String] = Proposition($$Lambda$7807/2059704745@1b0408f0)
+ * val b = Proposition[String, String](x => if(x.length > 2) False("name code should be less than 3") else True)
+ * //b: purity.Proposition[String,String] = Proposition
  *
- * scala> val c = a.contramap[User](_.age) && b.contramap[User](_.name)
- * c: purity.Proposition[String,User] = Proposition(purity.Proposition$$Lambda$7813/1772294329@5ea95f08)
+ * val c = a.contramap[User](_.age) && b.contramap[User](_.name)
+ * //c: purity.Proposition[String,User] = Proposition
  *
- * scala> c.check(User("FAF", 21))
- * res3: purity.Proposition[String] = False(NonEmptyList(age should be less than 10, name code should be less than 3))
+ * c.check(User("FAF", 21))
+ * //res3: purity.Truth[String] = False(NonEmptyList(age should be less than 10, name code should be less than 3))
  * }}}
  *
  * @param check function. Should check for proposition of a logical statement over type A
@@ -57,6 +57,8 @@ case class Proposition[+E, -A](check: A ⇒ Truth[E]) {
       case True     ⇒ dsl.ok
       case False(e) ⇒ dsl.fail(e)
     }
+
+  override def toString: String = "Proposition"
 }
 
 object Proposition extends PropositionFunctions with PropositionInstances

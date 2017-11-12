@@ -62,7 +62,7 @@ case class ScriptT[F[+_], -D, +E, +A](definition: Definition[F, D, E, A]) {
     this.leftMap(f)
 
   /**
-   * Just like [[MonadError]] `handleErrorWith`, but does a mapping on the failure type through the process.
+   * Just like [[cats.MonadError]] `handleErrorWith`, but does a mapping on the failure type through the process.
    * Also one may see this as the flatMap of mapFailure (mapFailure creates a Functor, recover creates a Monad)
    *
    *  Useful for when your original failure E is a coproduct, and you wish to handle just 1 or 2 errors but still keep
