@@ -1,21 +1,15 @@
 package purity.script
 
-import cats.{ Applicative, Functor, Monad, MonadError }
+import cats.{ Applicative, Functor }
 import purity.logging.LogLine._
-import purity.logging.{ LogLine, LoggerFunction }
+import purity.logging.LogLine
 
 trait ScriptDSL[F[+_]] {
 
   type Script[-D, +E, +A] = ScriptT[F, D, E, A]
 
-  def map[A, B, D, E](sa: ScriptT[F, D, E, A])(f: A ⇒ B)(implicit F: Functor[F]): ScriptT[F, D, E, B] =
-    sa.map(f)
-
   def pure[A](a: A)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, A] =
     ScriptT[F, Any, Nothing, A](_ ⇒ F.pure((Nil, Right(a))))
-
-  def flatMap[A, B, D, E](sa: ScriptT[F, D, E, A])(f: (A) ⇒ ScriptT[F, D, E, B])(implicit M: MonadError[F, Throwable]): ScriptT[F, D, E, B] =
-    sa.flatMap(f)
 
   def raiseError[E](e: E)(implicit F: Applicative[F]): ScriptT[F, Any, E, Nothing] =
     ScriptT[F, Any, E, Nothing](_ ⇒ F.pure((Nil, Left(e))))
@@ -34,24 +28,6 @@ trait ScriptDSL[F[+_]] {
 
   def find[E, A](opt: Either[E, A])(implicit F: Applicative[F]): ScriptT[F, Any, E, A] =
     opt.fold[ScriptT[F, Any, E, A]](fail(_), pure(_))
-
-  def handleErrorWith[E, E2, D, A](sa: ScriptT[F, D, E, A])(f: (E) ⇒ ScriptT[F, D, E2, A])(implicit M: Monad[F]): ScriptT[F, D, E2, A] =
-    sa.handleFailureWith(f)
-
-  def recover[E, E2, D, A](sa: ScriptT[F, D, E, A])(f: (E) ⇒ ScriptT[F, D, E2, A])(implicit M: Monad[F]): ScriptT[F, D, E2, A] =
-    sa.handleFailureWith(f)
-
-  def leftMap[E, E2, D, A](sa: ScriptT[F, D, E, A])(f: E ⇒ E2)(implicit F: Functor[F]): ScriptT[F, D, E2, A] =
-    sa.leftMap(f)
-
-  def mapFailure[E, E2, D, A](sa: ScriptT[F, D, E, A])(f: E ⇒ E2)(implicit F: Functor[F]): ScriptT[F, D, E2, A] =
-    sa.leftMap(f)
-
-  def contramap[D2, D, E, A](sa: ScriptT[F, D, E, A])(di: D2 ⇒ D): ScriptT[F, D2, E, A] =
-    sa.contramap(di)
-
-  def inject[D2, D, E, A](sa: ScriptT[F, D, E, A])(di: D2 ⇒ D): ScriptT[F, D2, E, A] =
-    sa.contramap(di)
 
   def unit(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
     ScriptT[F, Any, Nothing, Unit](_ ⇒ F.pure((Nil, Right(()))))
@@ -74,90 +50,66 @@ trait ScriptDSL[F[+_]] {
   def scriptE[E, A](fae: F[Either[E, A]])(implicit F: Functor[F]): ScriptT[F, Any, E, A] =
     this.liftFE(fae)
 
-  def fold[A, B, D, E](sa: ScriptT[F, D, E, A])(dependencies: D, logger: LoggerFunction, onFailure: E ⇒ B, onSuccess: A ⇒ B)(implicit M: MonadError[F, Throwable]): F[B] =
-    sa.fold(dependencies, logger, onFailure, onSuccess)
-
-  def run[A, B, D, E](sa: ScriptT[F, D, E, A])(dependencies: D, logger: LoggerFunction, onFailure: E ⇒ B, onSuccess: A ⇒ B)(implicit M: MonadError[F, Throwable]): F[B] =
-    sa.fold(dependencies, logger, onFailure, onSuccess)
-
-  def foldF[A, B, D, E](sa: ScriptT[F, D, E, A])(dependencies: D, logger: LoggerFunction, onFailure: E ⇒ F[B], onSuccess: A ⇒ F[B])(implicit M: MonadError[F, Throwable]): F[B] =
-    sa.foldF(dependencies, logger, onFailure, onSuccess)
-
-  def runF[A, B, D, E](sa: ScriptT[F, D, E, A])(dependencies: D, logger: LoggerFunction, onFailure: E ⇒ F[B], onSuccess: A ⇒ F[B])(implicit M: MonadError[F, Throwable]): F[B] =
-    sa.foldF(dependencies, logger, onFailure, onSuccess)
-
   def dependencies[D](implicit F: Applicative[F]): ScriptT[F, D, Nothing, D] =
     ScriptT[F, D, Nothing, D](d ⇒ F.pure((Nil, Right(d))))
 
-  def log(logLine: LogLine)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
-    ScriptT[F, Any, Nothing, Unit](_ ⇒ F.pure((List(logLine), Right(()))))
+  object log {
 
-  def debug(message: String)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
-    log(Debug(message))
+    def liftLog(logLine: LogLine)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
+      ScriptT[F, Any, Nothing, Unit](_ ⇒ F.pure((List(logLine), Right(()))))
 
-  def debug(e: Throwable)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
-    log(Debug(e.getMessage, Some(e)))
+    def debug(message: String)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
+      liftLog(Debug(message))
 
-  def debug(message: String, e: Throwable)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
-    log(Debug(message, Some(e)))
+    def debug(e: Throwable)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
+      liftLog(Debug(e.getMessage, Some(e)))
 
-  def error(message: String)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
-    log(Error(message, None))
+    def debug(message: String, e: Throwable)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
+      liftLog(Debug(message, Some(e)))
 
-  def error(e: Throwable)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
-    log(Error(e.getMessage, Some(e)))
+    def error(message: String)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
+      liftLog(Error(message, None))
 
-  def error(message: String, e: Throwable)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
-    log(Error(message, Some(e)))
+    def error(e: Throwable)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
+      liftLog(Error(e.getMessage, Some(e)))
 
-  def fatal(message: String)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
-    log(Fatal(message, None))
+    def error(message: String, e: Throwable)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
+      liftLog(Error(message, Some(e)))
 
-  def fatal(e: Throwable)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
-    log(Fatal(e.getMessage, Some(e)))
+    def fatal(message: String)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
+      liftLog(Fatal(message, None))
 
-  def fatal(message: String, e: Throwable)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
-    log(Fatal(message, Some(e)))
+    def fatal(e: Throwable)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
+      liftLog(Fatal(e.getMessage, Some(e)))
 
-  def info(message: String)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
-    log(Info(message))
+    def fatal(message: String, e: Throwable)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
+      liftLog(Fatal(message, Some(e)))
 
-  def info(e: Throwable)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
-    log(Info(e.getMessage, Some(e)))
+    def info(message: String)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
+      liftLog(Info(message))
 
-  def info(message: String, e: Throwable)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
-    log(Info(message, Some(e)))
+    def info(e: Throwable)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
+      liftLog(Info(e.getMessage, Some(e)))
 
-  def off(message: String)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
-    log(Off(message))
+    def info(message: String, e: Throwable)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
+      liftLog(Info(message, Some(e)))
 
-  def off(e: Throwable)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
-    log(Off(e.getMessage, Some(e)))
+    def trace(message: String)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
+      liftLog(Trace(message))
 
-  def off(message: String, e: Throwable)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
-    log(Off(message, Some(e)))
+    def trace(e: Throwable)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
+      liftLog(Trace(e.getMessage, Some(e)))
 
-  def trace(message: String)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
-    log(Trace(message))
+    def trace(message: String, e: Throwable)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
+      liftLog(Trace(message, Some(e)))
 
-  def trace(e: Throwable)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
-    log(Trace(e.getMessage, Some(e)))
+    def warn(message: String)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
+      liftLog(Warn(message))
 
-  def trace(message: String, e: Throwable)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
-    log(Trace(message, Some(e)))
+    def warn(e: Throwable)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
+      liftLog(Warn(e.getMessage, Some(e)))
 
-  def warn(message: String)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
-    log(Warn(message))
-
-  def warn(e: Throwable)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
-    log(Warn(e.getMessage, Some(e)))
-
-  def warn(message: String, e: Throwable)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
-    log(Warn(message, Some(e)))
-
-  def logFailure[D, E, A](sa: ScriptT[F, D, E, A])(f: E ⇒ LogLine)(implicit M: Functor[F]): ScriptT[F, D, E, A] =
-    sa.logFailure(f)
-
-  def logError[D, E, A](sa: ScriptT[F, D, E, A])(f: Throwable ⇒ LogLine)(implicit M: MonadError[F, Throwable]): ScriptT[F, D, E, A] =
-    sa.logError(f)
+    def warn(message: String, e: Throwable)(implicit F: Applicative[F]): ScriptT[F, Any, Nothing, Unit] =
+      liftLog(Warn(message, Some(e)))
+  }
 }

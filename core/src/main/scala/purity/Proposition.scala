@@ -52,6 +52,18 @@ case class Proposition[+E, -A](check: A ⇒ Truth[E]) {
   def ||[EE >: E, AA <: A](g: Proposition[EE, AA]): Proposition[EE, AA] =
     Proposition[EE, AA](a ⇒ check(a) || g.check(a))
 
+  def optional: Proposition[E, Option[A]] =
+    Proposition {
+      case Some(a) => check(a)
+      case None => True
+    }
+
+  def required[EE >: E](e: EE): Proposition[EE, Option[A]] =
+    Proposition {
+      case Some(a) => check(a)
+      case None => False(e)
+    }
+
   def script[F[+_], E2](dsl: ScriptDSL[F])(a: A)(implicit ev: MonadError[F, Throwable]): ScriptT[F, Any, NonEmptyList[E], Unit] =
     check(a) match {
       case True     ⇒ dsl.ok
@@ -72,16 +84,16 @@ private[purity] trait PropositionFunctions {
 
 private[purity] trait PropositionInstances {
 
-  implicit def stdContravariantCartesian[E]: Contravariant[Proposition[E, ?]] =
-    contravariantCartesianAnd[E]
+  implicit def stdContravariant[E]: Contravariant[Proposition[E, ?]] =
+    contravariantAnd[E]
 
-  def contravariantCartesianAnd[E]: Contravariant[Proposition[E, ?]] =
+  def contravariantAnd[E]: Contravariant[Proposition[E, ?]] =
     new Contravariant[Proposition[E, ?]] {
       override def contramap[A, B](fa: Proposition[E, A])(f: (B) ⇒ A): Proposition[E, B] =
         fa.contramap(f)
     }
 
-  def contravariantCartesianOr[E]: Contravariant[Proposition[E, ?]] =
+  def contravariantOr[E]: Contravariant[Proposition[E, ?]] =
     new Contravariant[Proposition[E, ?]] {
       override def contramap[A, B](fa: Proposition[E, A])(f: (B) ⇒ A): Proposition[E, B] =
         fa.contramap(f)
