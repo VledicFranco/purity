@@ -6,8 +6,7 @@ import purity.logging.LogLine._
 
 case class LoggerFunction(f: LogLine ⇒ Unit, level: LogLevel) {
 
-  def log(line: LogLine): Unit =
-    if (line.level.compare(level) != -1) f(line)
+  def log(line: LogLine): Unit = if (line.level >= level) f(line)
 
   def debug(message: String): Unit = log(Debug(message, None))
 

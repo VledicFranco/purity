@@ -57,19 +57,30 @@ lazy val testSettings = Seq(
 )
 
 lazy val publishSettings = Seq(
-  homepage := Some(url("https://github.com/francoara/purity")),
+  publishMavenStyle := true,
+  homepage := Some(url("https://francoara.github.io/purity")),
   licenses := Seq("MIT" -> url("http://opensource.org/licenses/MIT")),
   scmInfo := Some(ScmInfo(url("https://github.com/francoara/purity"), "scm:git:git@github.com:francoara/purity.git")),
   autoAPIMappings := true,
   apiURL := Some(url("http://typelevel.org/cats/api/")),
-  pomExtra :=
-    <developers>
-      <developer>
-        <id>francoara</id>
-        <name>Francisco M. Aramburo Torres</name>
-        <url>https://github.com/francoara/</url>
-      </developer>
-    </developers>
+  publishArtifact in Test := false,
+  pomIncludeRepository := { _ => false },
+  publishTo := version { (v: String) =>
+    val nexus = "https://oss.sonatype.org/"
+    if (v.trim.endsWith("SNAPSHOT"))
+      Some("snapshots" at nexus + "content/repositories/snapshots")
+    else
+      Some("releases"  at nexus + "service/local/staging/deploy/maven2")
+  }.value,
+  developers := List(
+    Developer(
+      id = "francoara",
+      name = "Francisco M. Arámburo Torres",
+      email = "atfm05@gmail.com",
+      url = url("https://github.com/FrancoAra")
+    )
+  ),
+  useGpg := true
 )
 
 lazy val docsMappingsAPIDir = settingKey[String]("Name of subdirectory in site target directory for api docs")
