@@ -25,6 +25,21 @@ lazy val docs = project
   .settings(docSettings)
   .settings(noPublishSettings)
 
+lazy val http4s = project.in(file("http4s"))
+  .settings(moduleName := "purity-http4s", name := "Purity http4s")
+  .settings(commonSettings)
+  .settings(publishSettings)
+  .settings(librarySettings)
+  .settings {
+    libraryDependencies ++=
+      "com.typesafe" % "config"               % "1.3.1"       ::
+      "org.http4s"   %% "http4s-dsl"          % http4sVersion ::
+      "org.http4s"   %% "http4s-circe"        % http4sVersion ::
+      "org.http4s"   %% "http4s-blaze-client" % http4sVersion :: Nil
+  }
+  .settings(testSettings)
+  .dependsOn(core)
+
 lazy val commonSettings = Seq(
   scalaVersion := "2.12.4",
   scalacOptions ++= Seq(
@@ -36,6 +51,7 @@ lazy val commonSettings = Seq(
 
 lazy val catsVersion = "1.0.0-RC1"
 lazy val catsEffectVersion = "0.5"
+lazy val http4sVersion = "0.18.0-M5"
 
 lazy val librarySettings = Seq(
   resolvers += Resolver.sonatypeRepo("releases"),
