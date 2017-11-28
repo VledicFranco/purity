@@ -1,39 +1,5 @@
----
-layout: docs
-title:  "Script"
-section: "data"
----
+package purity
 
-## Script
-
-Script is a monad built from the ground up with the objective of handling the most common basic requirements of a
-developers day to day programs. It is designed to be as easy as possible to use. It can be used to address
-dependency injection, domain failure handling, low level error handling, IO, and mocking, all of these while being
-highly compositional, referential transparent and type safe. Script is not a silver bullet, but hopefully it will be a
-useful tool for several of your use cases.
-
-### Small overview of the Script type
-
-Script is in reality an implementation of `ScriptT[F[_], D, E, A]` (a monad transformer) where:
-
-* `F[_]` is a monad that is able to handle IO or asynchronicity (Like Future, IO or Task).
-* `D` represents some dependencies.
-* `E` represents some domain failures.
-* `A` represents a pure value.
-
-Also Script accumulates log lines using the `purity.logging.LogLine` type.
-
-For ease of use, purity provides two implementations of the ScriptT, one with `cats.effects.IO` and the other with
-Scala's Future. The former (which is recommended over Futures) is located at `purity.script.io.Script`, and the latter
-at `purity.script.future.Script`. Also the same packages contain all of the functions you will need.
-
-#### A quick example in code
-
-This is the full example that we will use in the next tutorials. Each part will be explained, modified with alternatives,
-and improved upon! As well most of the code can be found in the `example` project folder within the repository of the
-project.
-
-```scala
 import cats.effect.IO
 import purity.script.io.{Script, dependencies, find, log, script, scriptE}
 import purity.logging.{ColorPrint, LogLevel, LoggerFunction}
@@ -143,19 +109,3 @@ object UserAuth0 {
   def successHandler(age: Int): Response =
     Response(200, s"Here is the age you were looking for! :: $age")
 }
-```
-
-#### For those familiar with monad transformers:
-
-One may see Script as a a stack of a `ReaderT` (for dependencies) with `WriterT`
-(for logs) with EitherT (for domain failures) and an `F[_]` like `IO` or `Future` (for IO, async and low level errors).
-The differences between this two are:
-
-1) Script provides several functions to add syntax and ease of use of this common stack
-2) And most importantly, Script has variance annotations, leveraging Scala's subtyping system, we will see how this may
-become powerful when composing dependencies.
-
-### Difference between domain failures and low level errors
-
-Domain failures are supposed to model what can possible go wrong within the "business" domain of the function, lower
-level exceptions (like network failure) should be handled within the F[_] that the function `run` returns.

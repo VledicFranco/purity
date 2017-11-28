@@ -3,6 +3,30 @@ import sbt.Keys._
 
 organization in ThisBuild := "com.francoara"
 
+lazy val catsVersion = "1.0.0-RC1"
+
+lazy val http4sVersion = "0.18.0-M5"
+
+lazy val cats = Def.setting("org.typelevel" %% "cats-core" % catsVersion)
+
+lazy val catsLaws = Def.setting("org.typelevel"  %% "cats-laws" % catsVersion)
+
+lazy val catsEffects = Def.setting("org.typelevel"  %% "cats-effect" % "0.5")
+
+lazy val tlConfig = Def.setting("com.typesafe" % "config" % "1.3.1")
+
+lazy val http4sDsl = Def.setting("org.http4s"  %% "http4s-dsl" % http4sVersion)
+
+lazy val http4sCirce = Def.setting("org.http4s" %% "http4s-circe" % http4sVersion)
+
+lazy val http4sClient = Def.setting("org.http4s" %% "http4s-blaze-client" % http4sVersion)
+
+lazy val discipline = Def.setting("org.typelevel" %% "discipline" % "0.8" % Test)
+
+lazy val scalatest = Def.setting("org.scalatest" %% "scalatest" % "3.0.4"  % Test)
+
+lazy val scalacheck = Def.setting("org.scalacheck" %% "scalacheck" % "1.13.5" % Test)
+
 lazy val purity = project.in(file("."))
   .settings(moduleName := "root")
   .settings(commonSettings)
@@ -25,18 +49,21 @@ lazy val docs = project
   .settings(docSettings)
   .settings(noPublishSettings)
 
+lazy val example = project.dependsOn(core, http4s)
+  .settings(moduleName := "purity-example")
+  .settings(commonSettings)
+  .settings(librarySettings)
+  .settings(testSettings)
+  .settings(noPublishSettings)
+  .aggregate(core, http4s)
+  .dependsOn(core, http4s)
+
 lazy val http4s = project.in(file("http4s"))
   .settings(moduleName := "purity-http4s", name := "Purity http4s")
   .settings(commonSettings)
   .settings(publishSettings)
   .settings(librarySettings)
-  .settings {
-    libraryDependencies ++=
-      "com.typesafe" % "config"               % "1.3.1"       ::
-      "org.http4s"   %% "http4s-dsl"          % http4sVersion ::
-      "org.http4s"   %% "http4s-circe"        % http4sVersion ::
-      "org.http4s"   %% "http4s-blaze-client" % http4sVersion :: Nil
-  }
+  .settings(libraryDependencies ++= tlConfig.value :: http4sDsl.value :: http4sCirce.value :: http4sClient.value :: Nil)
   .settings(testSettings)
   .dependsOn(core)
 
@@ -49,28 +76,13 @@ lazy val commonSettings = Seq(
   addCompilerPlugin("org.spire-math" %% "kind-projector" % "0.9.4")
 )
 
-lazy val catsVersion = "1.0.0-RC1"
-lazy val catsEffectVersion = "0.5"
-lazy val http4sVersion = "0.18.0-M5"
-
 lazy val librarySettings = Seq(
   resolvers += Resolver.sonatypeRepo("releases"),
-  libraryDependencies ++=
-    "org.typelevel"  %% "cats-core"   % catsVersion       ::
-    "org.typelevel"  %% "cats-effect" % catsEffectVersion :: Nil
+  libraryDependencies ++= cats.value :: catsEffects.value :: Nil
 )
 
-lazy val disciplineVersion = "0.8"
-lazy val scalaCheckVersion = "1.13.5"
-lazy val scalaTestVersion = "3.0.4"
-
-lazy val testSettings = Seq(
-  libraryDependencies ++=
-    "org.typelevel"  %% "cats-laws"   % catsVersion       % Test ::
-    "org.typelevel"  %% "discipline"  % disciplineVersion % Test ::
-    "org.scalatest"  %% "scalatest"   % scalaTestVersion  % Test ::
-    "org.scalacheck" %% "scalacheck"  % scalaCheckVersion % Test :: Nil
-)
+lazy val testSettings =
+  Seq(libraryDependencies ++= catsLaws.value :: discipline.value :: scalatest.value :: scalacheck.value :: Nil)
 
 lazy val publishSettings = Seq(
   publishMavenStyle := true,
@@ -97,6 +109,12 @@ lazy val publishSettings = Seq(
     )
   ),
   useGpg := true
+)
+
+lazy val noPublishSettings = Seq(
+  publish := {},
+  publishLocal := {},
+  publishArtifact := false
 )
 
 lazy val docsMappingsAPIDir = settingKey[String]("Name of subdirectory in site target directory for api docs")
@@ -134,10 +152,4 @@ lazy val docSettings = Seq(
   ),
   git.remoteRepo := "git@github.com:FrancoAra/purity.git",
   includeFilter in makeSite := "*.html" | "*.css" | "*.png" | "*.jpg" | "*.gif" | "*.js" | "*.swf" | "*.yml" | "*.md"
-)
-
-lazy val noPublishSettings = Seq(
-  publish := {},
-  publishLocal := {},
-  publishArtifact := false
 )
