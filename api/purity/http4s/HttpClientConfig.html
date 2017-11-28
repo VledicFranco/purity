@@ -85,10 +85,10 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="_root_">root</a></dd></dl></div>
-    </li><li name="purity.logging" visbl="pub" class="indented2 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="logging"></a><a id="logging:logging"></a>
+    </li><li name="purity.http4s" visbl="pub" class="indented2 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="http4s"></a><a id="http4s:http4s"></a>
       <span class="permalink">
-      <a href="../purity/index.html#logging" title="Permalink">
+      <a href="../purity/index.html#http4s" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -97,65 +97,57 @@
         <span class="kind">package</span>
       </span>
       <span class="symbol">
-        <a title="" href="index.html"><span class="name">logging</span></a>
+        <a title="" href="index.html"><span class="name">http4s</span></a>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="purity">purity</a></dd></dl></div>
-    </li><li name="purity.logging.LogLine" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="LogLine"></a><a id="LogLine:LogLine"></a>
-      <span class="permalink">
-      <a href="../../purity/logging/index.html#LogLine" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a title="" href="LogLine$.html"><span class="name">LogLine</span></a>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="purity.logging">logging</a></dd></dl></div>
-    </li><li class="current-entities indented3">
+    </li><li class="current-entities indented2">
                         <span class="separator"></span>
-                        <a class="class" href="LogLine$$Debug.html" title=""></a>
-                        <a href="LogLine$$Debug.html" title="">Debug</a>
-                      </li><li class="current-entities indented3">
+                        <a class="trait" href="ConfigObject.html" title="Mix in with dependencies that require to extract configuration from the application.conf file."></a>
+                        <a href="ConfigObject.html" title="Mix in with dependencies that require to extract configuration from the application.conf file.">ConfigObject</a>
+                      </li><li class="current-entities indented2">
                         <span class="separator"></span>
-                        <a class="class" href="LogLine$$Error.html" title=""></a>
-                        <a href="LogLine$$Error.html" title="">Error</a>
-                      </li><li class="current-entities indented3">
+                        <a class="class" href="HttpClient.html" title="Intended to be used inside services which are dependencies."></a>
+                        <a href="HttpClient.html" title="Intended to be used inside services which are dependencies.">HttpClient</a>
+                      </li><li class="current-entities indented2">
                         <span class="separator"></span>
-                        <a class="class" href="LogLine$$Fatal.html" title=""></a>
-                        <a href="LogLine$$Fatal.html" title="">Fatal</a>
-                      </li><li class="current-entities indented3">
+                        <a class="trait" href="" title="Intended to be mixed in services which are dependencies."></a>
+                        <a href="" title="Intended to be mixed in services which are dependencies.">HttpClientConfig</a>
+                      </li><li class="current-entities indented2">
                         <span class="separator"></span>
-                        <a class="class" href="LogLine$$Info.html" title=""></a>
-                        <a href="LogLine$$Info.html" title="">Info</a>
-                      </li><li class="current-entities indented3">
+                        <a class="class" href="RequestHandler.html" title=""></a>
+                        <a href="RequestHandler.html" title="">RequestHandler</a>
+                      </li><li class="current-entities indented2">
                         <span class="separator"></span>
-                        <a class="class" href="" title=""></a>
-                        <a href="" title="">Off</a>
-                      </li><li class="current-entities indented3">
+                        <a class="class" href="ServiceUnexpectedEntity.html" title="IO.raiseError this when the service responded without the right content type or the data was corrupt."></a>
+                        <a href="ServiceUnexpectedEntity.html" title="IO.raiseError this when the service responded without the right content type or the data was corrupt.">ServiceUnexpectedEntity</a>
+                      </li><li class="current-entities indented2">
                         <span class="separator"></span>
-                        <a class="class" href="LogLine$$Trace.html" title=""></a>
-                        <a href="LogLine$$Trace.html" title="">Trace</a>
-                      </li><li class="current-entities indented3">
+                        <a class="class" href="ServiceUnexpectedModel.html" title="IO.raiseError this when the service responded with a different json than the one expected by the circe decoder."></a>
+                        <a href="ServiceUnexpectedModel.html" title="IO.raiseError this when the service responded with a different json than the one expected by the circe decoder.">ServiceUnexpectedModel</a>
+                      </li><li class="current-entities indented2">
                         <span class="separator"></span>
-                        <a class="class" href="LogLine$$Warn.html" title=""></a>
-                        <a href="LogLine$$Warn.html" title="">Warn</a>
+                        <a class="class" href="ServiceUnexpectedStatus.html" title="IO.raiseError this when the service responded with not a successful status."></a>
+                        <a href="ServiceUnexpectedStatus.html" title="IO.raiseError this when the service responded with not a successful status.">ServiceUnexpectedStatus</a>
+                      </li><li class="current-entities indented2">
+                        <span class="separator"></span>
+                        <a class="class" href="SimpleServiceConfig.html" title="Intended to be used inside services which are dependencies."></a>
+                        <a href="SimpleServiceConfig.html" title="Intended to be used inside services which are dependencies.">SimpleServiceConfig</a>
+                      </li><li class="current-entities indented2">
+                        <span class="separator"></span>
+                        <a class="trait" href="UnexpectedServiceResponse.html" title="Exceptions to be used to fail IO monads when requesting other services."></a>
+                        <a href="UnexpectedServiceResponse.html" title="Exceptions to be used to fail IO monads when requesting other services.">UnexpectedServiceResponse</a>
                       </li>
               </ul>
             </div>
           </div>
           <div id="content">
-            <body class="class type">
+            <body class="trait type">
       <div id="definition">
-        <div class="big-circle class">c</div>
-        <p id="owner"><a href="../index.html" class="extype" name="purity">purity</a>.<a href="index.html" class="extype" name="purity.logging">logging</a>.<a href="LogLine$.html" class="extype" name="purity.logging.LogLine">LogLine</a></p>
-        <h1>Off<span class="permalink">
-      <a href="../../purity/logging/LogLine$$Off.html" title="Permalink">
+        <div class="big-circle trait">t</div>
+        <p id="owner"><a href="../index.html" class="extype" name="purity">purity</a>.<a href="index.html" class="extype" name="purity.http4s">http4s</a></p>
+        <h1>HttpClientConfig<span class="permalink">
+      <a href="../../purity/http4s/HttpClientConfig.html" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span></h1>
@@ -165,19 +157,22 @@
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">case class</span>
+        <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">Off</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="e">e: <a href="http://www.scala-lang.org/api/2.12.4/scala/Option.html#scala.Option" class="extype" name="scala.Option">Option</a>[<span class="extype" name="scala.Throwable">Throwable</span>] = <span class="symbol">None</span></span>)</span><span class="result"> extends <a href="LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Product.html#scala.Product" class="extype" name="scala.Product">Product</a> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a></span>
+        <span class="name">HttpClientConfig</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.12.4/scala/collection/immutable/List.html#scala.AnyRef" class="extype" name="scala.collection.immutable.List">AnyRef</a></span>
       </span>
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/FrancoAra/purity/tree/master/core/src/main/scala/purity/logging/LogLine.scala" target="_blank">LogLine.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Intended to be mixed in services which are dependencies.
+The maxTotalConnections and maxConnectionsPerRequestKey properties can be overriden to configure the http client.
+See <a href="HttpClient.html" class="extype" name="purity.http4s.HttpClient">HttpClient</a> documentation, that is the client the services should be using.
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/FrancoAra/purity/tree/master/http4s/src/main/scala/purity/http4s/HttpClientConfig.scala" target="_blank">HttpClientConfig.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
-          <div class="superTypes hiddenContent"><a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a>, <span class="extype" name="java.io.Serializable">Serializable</span>, <a href="http://www.scala-lang.org/api/2.12.4/scala/Product.html#scala.Product" class="extype" name="scala.Product">Product</a>, <a href="http://www.scala-lang.org/api/2.12.4/scala/Equals.html#scala.Equals" class="extype" name="scala.Equals">Equals</a>, <a href="LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a>, <a href="http://www.scala-lang.org/api/2.12.4/scala/collection/immutable/List.html#scala.AnyRef" class="extype" name="scala.collection.immutable.List">AnyRef</a>, <a href="http://www.scala-lang.org/api/2.12.4/scala/collection/immutable/List.html#scala.Any" class="extype" name="scala.collection.immutable.List">Any</a></div>
+          <div class="superTypes hiddenContent"><a href="http://www.scala-lang.org/api/2.12.4/scala/collection/immutable/List.html#scala.AnyRef" class="extype" name="scala.collection.immutable.List">AnyRef</a>, <a href="http://www.scala-lang.org/api/2.12.4/scala/collection/immutable/List.html#scala.Any" class="extype" name="scala.collection.immutable.List">Any</a></div>
         </div></div>
         
 
@@ -203,7 +198,7 @@
                   <span class="filtertype">Inherited<br />
                   </span>
                   <ol id="linearization">
-                    <li class="in" name="purity.logging.LogLine.Off"><span>Off</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="purity.logging.LogLine"><span>LogLine</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                    <li class="in" name="purity.http4s.HttpClientConfig"><span>HttpClientConfig</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                   </ol>
                 </div><div class="ancestors">
               <span class="filtertype"></span>
@@ -221,26 +216,7 @@
 
       <div id="template">
         <div id="allMembers">
-        <div id="constructors" class="members">
-              <h3>Instance Constructors</h3>
-              <ol><li name="purity.logging.LogLine.Off#&lt;init&gt;" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(message:String,e:Option[Throwable]):purity.logging.LogLine.Off"></a><a id="&lt;init&gt;:Off"></a>
-      <span class="permalink">
-      <a href="../../purity/logging/LogLine$$Off.html#&lt;init&gt;(message:String,e:Option[Throwable]):purity.logging.LogLine.Off" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">new</span>
-      </span>
-      <span class="symbol">
-        <span class="name">Off</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="e">e: <a href="http://www.scala-lang.org/api/2.12.4/scala/Option.html#scala.Option" class="extype" name="scala.Option">Option</a>[<span class="extype" name="scala.Throwable">Throwable</span>] = <span class="symbol">None</span></span>)</span>
-      </span>
-      
-      
-    </li></ol>
-            </div>
+        
 
         
 
@@ -252,7 +228,7 @@
                 <li name="scala.AnyRef#!=" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:Any):Boolean"></a><a id="!=(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$$Off.html#!=(x$1:Any):Boolean" title="Permalink">
+      <a href="../../purity/http4s/HttpClientConfig.html#!=(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -268,7 +244,7 @@
     </li><li name="scala.AnyRef###" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="##():Int"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$$Off.html###():Int" title="Permalink">
+      <a href="../../purity/http4s/HttpClientConfig.html###():Int" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -284,7 +260,7 @@
     </li><li name="scala.AnyRef#==" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="==(x$1:Any):Boolean"></a><a id="==(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$$Off.html#==(x$1:Any):Boolean" title="Permalink">
+      <a href="../../purity/http4s/HttpClientConfig.html#==(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -300,7 +276,7 @@
     </li><li name="scala.Any#asInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$$Off.html#asInstanceOf[T0]:T0" title="Permalink">
+      <a href="../../purity/http4s/HttpClientConfig.html#asInstanceOf[T0]:T0" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -313,10 +289,26 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="purity.http4s.HttpClientConfig#client" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="client:purity.http4s.HttpClient"></a><a id="client:HttpClient"></a>
+      <span class="permalink">
+      <a href="../../purity/http4s/HttpClientConfig.html#client:purity.http4s.HttpClient" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">client</span><span class="result">: <a href="HttpClient.html" class="extype" name="purity.http4s.HttpClient">HttpClient</a></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a><a id="clone():AnyRef"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$$Off.html#clone():Object" title="Permalink">
+      <a href="../../purity/http4s/HttpClientConfig.html#clone():Object" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -337,26 +329,10 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="purity.logging.LogLine.Off#e" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="e:Option[Throwable]"></a>
-      <span class="permalink">
-      <a href="../../purity/logging/LogLine$$Off.html#e:Option[Throwable]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">e</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.4/scala/Option.html#scala.Option" class="extype" name="scala.Option">Option</a>[<span class="extype" name="scala.Throwable">Throwable</span>]</span>
-      </span>
-      
-      
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$$Off.html#eq(x$1:AnyRef):Boolean" title="Permalink">
+      <a href="../../purity/http4s/HttpClientConfig.html#eq(x$1:AnyRef):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -369,26 +345,26 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="purity.logging.LogLine#error" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="error:Option[Throwable]"></a>
+    </li><li name="scala.AnyRef#equals" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="equals(x$1:Any):Boolean"></a><a id="equals(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$$Off.html#error:Option[Throwable]" title="Permalink">
+      <a href="../../purity/http4s/HttpClientConfig.html#equals(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">val</span>
+        <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">error</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.4/scala/Option.html#scala.Option" class="extype" name="scala.Option">Option</a>[<span class="extype" name="scala.Throwable">Throwable</span>]</span>
+        <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.12.4/scala/collection/immutable/List.html#scala.Any" class="extype" name="scala.collection.immutable.List">Any</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.4/scala/Boolean.html#scala.Boolean" class="extype" name="scala.Boolean">Boolean</a></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$$Off.html#finalize():Unit" title="Permalink">
+      <a href="../../purity/http4s/HttpClientConfig.html#finalize():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -410,7 +386,7 @@
     </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$$Off.html#getClass():Class[_]" title="Permalink">
+      <a href="../../purity/http4s/HttpClientConfig.html#getClass():Class[_]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -426,10 +402,29 @@
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="scala.AnyRef#hashCode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="hashCode():Int"></a>
+      <span class="permalink">
+      <a href="../../purity/http4s/HttpClientConfig.html#hashCode():Int" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">hashCode</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.4/scala/Int.html#scala.Int" class="extype" name="scala.Int">Int</a></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd><dt>Annotations</dt><dd>
+                <span class="name">@native</span><span class="args">()</span>
+              
+        </dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$$Off.html#isInstanceOf[T0]:Boolean" title="Permalink">
+      <a href="../../purity/http4s/HttpClientConfig.html#isInstanceOf[T0]:Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -442,10 +437,10 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="purity.logging.LogLine#level" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="level:purity.logging.LogLevel"></a><a id="level:LogLevel"></a>
+    </li><li name="purity.http4s.HttpClientConfig#maxConnectionsPerRequestKey" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="maxConnectionsPerRequestKey:org.http4s.client.RequestKey=&gt;Int"></a><a id="maxConnectionsPerRequestKey:(RequestKey)⇒Int"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$$Off.html#level:purity.logging.LogLevel" title="Permalink">
+      <a href="../../purity/http4s/HttpClientConfig.html#maxConnectionsPerRequestKey:org.http4s.client.RequestKey=&gt;Int" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -454,14 +449,14 @@
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">level</span><span class="result">: <a href="LogLevel.html" class="extype" name="purity.logging.LogLevel">LogLevel</a></span>
+        <span class="name">maxConnectionsPerRequestKey</span><span class="result">: (<span class="extype" name="org.http4s.client.RequestKey">RequestKey</span>) ⇒ <a href="http://www.scala-lang.org/api/2.12.4/scala/Int.html#scala.Int" class="extype" name="scala.Int">Int</a></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a></dd></dl></div>
-    </li><li name="purity.logging.LogLine#line" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="line:String"></a>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
+    </li><li name="purity.http4s.HttpClientConfig#maxTotalConnections" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="maxTotalConnections:Int"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$$Off.html#line:String" title="Permalink">
+      <a href="../../purity/http4s/HttpClientConfig.html#maxTotalConnections:Int" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -470,30 +465,14 @@
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">line</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">maxTotalConnections</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.4/scala/Int.html#scala.Int" class="extype" name="scala.Int">Int</a></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a></dd></dl></div>
-    </li><li name="purity.logging.LogLine.Off#message" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="message:String"></a>
-      <span class="permalink">
-      <a href="../../purity/logging/LogLine$$Off.html#message:String" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">message</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      
-      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$$Off.html#ne(x$1:AnyRef):Boolean" title="Permalink">
+      <a href="../../purity/http4s/HttpClientConfig.html#ne(x$1:AnyRef):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -509,7 +488,7 @@
     </li><li name="scala.AnyRef#notify" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$$Off.html#notify():Unit" title="Permalink">
+      <a href="../../purity/http4s/HttpClientConfig.html#notify():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -528,7 +507,7 @@
     </li><li name="scala.AnyRef#notifyAll" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notifyAll():Unit"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$$Off.html#notifyAll():Unit" title="Permalink">
+      <a href="../../purity/http4s/HttpClientConfig.html#notifyAll():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -544,10 +523,26 @@
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="purity.http4s.HttpClientConfig#shutDownClientPool" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="shutDownClientPool:cats.effect.IO[Unit]"></a><a id="shutDownClientPool:IO[Unit]"></a>
+      <span class="permalink">
+      <a href="../../purity/http4s/HttpClientConfig.html#shutDownClientPool:cats.effect.IO[Unit]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">shutDownClientPool</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
+      </span>
+      
+      
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$$Off.html#synchronized[T0](x$1:=&gt;T0):T0" title="Permalink">
+      <a href="../../purity/http4s/HttpClientConfig.html#synchronized[T0](x$1:=&gt;T0):T0" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -560,10 +555,26 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#toString" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="toString():String"></a>
+      <span class="permalink">
+      <a href="../../purity/http4s/HttpClientConfig.html#toString():String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$$Off.html#wait():Unit" title="Permalink">
+      <a href="../../purity/http4s/HttpClientConfig.html#wait():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -585,7 +596,7 @@
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait(x$1:Long,x$2:Int):Unit"></a><a id="wait(Long,Int):Unit"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$$Off.html#wait(x$1:Long,x$2:Int):Unit" title="Permalink">
+      <a href="../../purity/http4s/HttpClientConfig.html#wait(x$1:Long,x$2:Int):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -607,7 +618,7 @@
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait(x$1:Long):Unit"></a><a id="wait(Long):Unit"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$$Off.html#wait(x$1:Long):Unit" title="Permalink">
+      <a href="../../purity/http4s/HttpClientConfig.html#wait(x$1:Long):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -638,17 +649,7 @@
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="scala.Serializable">
-              <h3>Inherited from <a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a></h3>
-            </div><div class="parent" name="java.io.Serializable">
-              <h3>Inherited from <span class="extype" name="java.io.Serializable">Serializable</span></h3>
-            </div><div class="parent" name="scala.Product">
-              <h3>Inherited from <a href="http://www.scala-lang.org/api/2.12.4/scala/Product.html#scala.Product" class="extype" name="scala.Product">Product</a></h3>
-            </div><div class="parent" name="scala.Equals">
-              <h3>Inherited from <a href="http://www.scala-lang.org/api/2.12.4/scala/Equals.html#scala.Equals" class="extype" name="scala.Equals">Equals</a></h3>
-            </div><div class="parent" name="purity.logging.LogLine">
-              <h3>Inherited from <a href="LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a></h3>
-            </div><div class="parent" name="scala.AnyRef">
+        <div class="parent" name="scala.AnyRef">
               <h3>Inherited from <a href="http://www.scala-lang.org/api/2.12.4/scala/collection/immutable/List.html#scala.AnyRef" class="extype" name="scala.collection.immutable.List">AnyRef</a></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <a href="http://www.scala-lang.org/api/2.12.4/scala/collection/immutable/List.html#scala.Any" class="extype" name="scala.collection.immutable.List">Any</a></h3>
