@@ -2,4 +2,4 @@ package purity.script
 
 import cats.effect.IO
 
-object io extends ScriptDSL[IO]
+object io extends ScriptDsl[IO]

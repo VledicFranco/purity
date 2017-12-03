@@ -9,7 +9,7 @@ import io.circe.syntax._
 import org.http4s._
 import org.http4s.circe.CirceInstances
 import org.http4s.dsl.Http4sDsl
-import purity.script.ScriptDSL
+import purity.script.ScriptDsl
 
 object JsonRequestHandler {
 
@@ -40,7 +40,7 @@ case class JsonRequestHandler[F[+_]](
                                       errorHandler: ErrorHandler[F],
                                       jsonPrinter: Printer = JsonRequestHandler.DefaultJsonPrinter)
                                     (implicit effect: Effect[F])
-  extends ScriptDSL[F] with Http4sDsl[F] {
+  extends ScriptDsl[F] with Http4sDsl[F] {
 
   private val circeInstances: CirceInstances = new CirceInstances {
     override protected def defaultPrinter: Printer = jsonPrinter

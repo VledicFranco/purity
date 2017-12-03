@@ -2,7 +2,7 @@ package purity
 
 import cats.{Contravariant, MonadError}
 import cats.data.NonEmptyList
-import purity.script.{ScriptDSL, ScriptT}
+import purity.script.{ScriptDsl, ScriptT}
 import purity.Truth.{False, True}
 
 /**
@@ -64,7 +64,7 @@ case class Proposition[+E, -A](check: A ⇒ Truth[E]) {
       case None => False(e)
     }
 
-  def script[F[+_], E2](dsl: ScriptDSL[F])(a: A)(implicit ev: MonadError[F, Throwable]): ScriptT[F, Any, NonEmptyList[E], Unit] =
+  def script[F[+_], E2](dsl: ScriptDsl[F])(a: A)(implicit ev: MonadError[F, Throwable]): ScriptT[F, Any, NonEmptyList[E], Unit] =
     check(a) match {
       case True     ⇒ dsl.ok
       case False(e) ⇒ dsl.fail(e)

@@ -10,7 +10,7 @@ import org.http4s.dsl.Http4sDsl
 import org.http4s.headers.{Accept, MediaRangeAndQValue}
 import purity.http4s.JsonPooledClient.ServiceError
 import purity.logging.LogLine
-import purity.script.ScriptDSL
+import purity.script.ScriptDsl
 
 object JsonPooledClient {
 
@@ -37,7 +37,7 @@ case class JsonPooledClient[F[+_]](
                                     config: BlazeClientConfig = BlazeClientConfig.defaultConfig,
                                     jsonPrinter: Printer = JsonPooledClient.DefaultJsonPrinter)
                                   (implicit effect: Effect[F])
-  extends ScriptDSL[F] with Http4sDsl[F] {
+  extends ScriptDsl[F] with Http4sDsl[F] {
 
   private val circe: CirceInstances = new CirceInstances {
     override protected def defaultPrinter: Printer = jsonPrinter
