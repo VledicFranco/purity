@@ -4,7 +4,7 @@ import org.http4s.{Uri, UriTemplate}
 
 /**
   * Intended to be used inside services which are dependencies.
-  * Basic configuration of a service. Can create the correct [[org.http4s.Uri]] of the endpoints.
+  * Basic configuration of a service. Can create the correct org.http4s.Uri of the endpoints.
   *
   * Note: This has impure methods that throw exceptions when trying to build the URLs and URIs, this is because this
   * objects should be instantiated when booting the server, and the server should NOT boot if the configured endpoints
@@ -38,3 +38,4 @@ case class SimpleServiceConfig(https: Boolean, host: String, port: Int) {
     root.resolve(p)
   }
 }
+
