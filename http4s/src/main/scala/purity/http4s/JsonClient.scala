@@ -1,22 +1,18 @@
 package purity.http4s
 
+import cats.data.EitherT
 import cats.effect.Effect
 import io.circe.{Decoder, Encoder, Json, Printer}
-import org.http4s.{EntityDecoder, MessageFailure, Request, Response, Uri}
-import org.http4s.client.{Client, RequestKey}
+import org.http4s.{EntityDecoder, InvalidMessageBodyFailure, MessageFailure, Request, Response, Uri}
+import org.http4s.client.Client
 import org.http4s.circe.CirceInstances
-import org.http4s.client.blaze.{BlazeClientConfig, PooledHttp1Client}
 import org.http4s.dsl.Http4sDsl
 import org.http4s.headers.{Accept, MediaRangeAndQValue}
-import purity.http4s.JsonPooledClient.ServiceError
+import purity.http4s.JsonClient.ServiceError
 import purity.logging.LogLine
 import purity.script.ScriptDsl
 
-object JsonPooledClient {
-
-  val DefaultMaxTotalConnections = 10
-
-  val DefaultMaxWaitQueueLimit = 256
+object JsonClient {
 
   val DefaultJsonPrinter: Printer =
     Printer.noSpaces.copy(dropNullValues = true)
@@ -30,13 +26,10 @@ object JsonPooledClient {
   * - Adds logging between requests and responses.
   * - Lifts possible ServiceFailures to the Script type.
   */
-case class JsonPooledClient[F[+_]](
-                                    maxTotalConnections: Int = JsonPooledClient.DefaultMaxTotalConnections,
-                                    maxWaitQueueLimit: Int = JsonPooledClient.DefaultMaxWaitQueueLimit,
-                                    maxConnectionsPerRequestKey: RequestKey => Int = _ => JsonPooledClient.DefaultMaxTotalConnections,
-                                    config: BlazeClientConfig = BlazeClientConfig.defaultConfig,
-                                    jsonPrinter: Printer = JsonPooledClient.DefaultJsonPrinter)
-                                  (implicit effect: Effect[F])
+case class JsonClient[F[+_]](
+    client: Client[F],
+    jsonPrinter: Printer = JsonClient.DefaultJsonPrinter)
+    (implicit effect: Effect[F])
   extends ScriptDsl[F] with Http4sDsl[F] {
 
   private val circe: CirceInstances = new CirceInstances {
@@ -44,13 +37,7 @@ case class JsonPooledClient[F[+_]](
     override implicit def jsonDecoder[G[_]: Effect]: EntityDecoder[G, Json] = CirceInstances.defaultJsonDecoder
   }
 
-  private val clientPool: Client[F] = PooledHttp1Client[F](
-    maxTotalConnections = maxTotalConnections,
-    maxConnectionsPerRequestKey = maxConnectionsPerRequestKey,
-    maxWaitQueueLimit = maxWaitQueueLimit,
-    config = config)
-
-  def shutDownClientPool: F[Unit] = clientPool.shutdown
+  def shutdown: F[Unit] = client.shutdown
 
   def on(uri: Uri): OnUri = OnUri(uri)
 
@@ -59,24 +46,32 @@ case class JsonPooledClient[F[+_]](
       r <- liftF(request)
       from = s"${r.method.name}: ${r.uri.renderString}"
       _ <- log.debug(from)
-      a <- liftFE(fire(r)(circe.jsonOf[F, A]))
+      a <- liftFE(fire(r))
         .logFailure { e =>
           LogLine.error(s"($from) -> (response status code: ${e.response.status.code}): ${e.failure.message}", e.failure)
         }
-    } yield a
+      _ <- log.debug(s"POST json response: ${a._2}")
+    } yield a._1
   }
 
   def fetchAs[A](request: Request[F])(implicit decoder: Decoder[A]): Script[Any, ServiceError[F], A] =
     fetchAs(effect.pure(request))
 
   /** Same as client.fetchAs from http4s, but it lifts the Message error into an F[Either[ServiceError[F], A]]. */
-  private def fire[A](request: Request[F])(implicit d: EntityDecoder[F, A]): F[Either[ServiceError[F], A]] = {
-    val r = if (d.consumes.nonEmpty) {
-      val m = d.consumes.toList
-      request.putHeaders(Accept(MediaRangeAndQValue(m.head), m.tail.map(MediaRangeAndQValue(_)): _*))
-    } else request
-    clientPool.fetch(r) { response =>
-      d.decode(response, strict = false).leftMap(e => ServiceError(request, response, e)).value
+  private def fire[A](request: Request[F])(implicit decoder: Decoder[A]): F[Either[ServiceError[F], (A, Json)]] = {
+    val m = circe.jsonDecoder.consumes.toList
+    val r = request.putHeaders(Accept(MediaRangeAndQValue(m.head), m.tail.map(MediaRangeAndQValue(_)): _*))
+    client.fetch(r) { response =>
+      val jsonAndA =
+        for {
+          json <- circe.jsonDecoder.decode(response, strict = false)
+          decodeLift = EitherT[F, io.circe.DecodingFailure, A](effect.pure(decoder(json.hcursor)))
+          failureMapped: EitherT[F, org.http4s.DecodeFailure, A] = decodeLift.leftMap { failure: io.circe.DecodingFailure =>
+            InvalidMessageBodyFailure(s"Could not decode JSON: $json", Some(failure))
+          }
+          a <- failureMapped
+        } yield (a, json)
+      jsonAndA.leftMap(e => ServiceError(request, response, e)).value
     }
   }
 
@@ -92,7 +87,10 @@ case class JsonPooledClient[F[+_]](
   case class PartiallyAppliedRequest[A](uri: Uri, body: A) {
 
     def andExpect[B](implicit encoder: Encoder[A], decoder: Decoder[B]): Script[Any, ServiceError[F], B] =
-      fetchAs[B](Request.apply[F](method = POST, uri = uri).withBody(body)(effect, circe.jsonEncoderOf))
+      for {
+        _ <- log.debug(s"POST body: ${encoder(body).pretty(Printer.spaces2)}")
+        response <- fetchAs[B](Request.apply[F](method = POST, uri = uri).withBody(body)(effect, circe.jsonEncoderOf))
+      } yield response
   }
 }
 

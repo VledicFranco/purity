@@ -2,13 +2,13 @@ package purity.http4s
 
 import cats.implicits._
 import cats.effect.Effect
-import com.tnt.api.order.common.JsonRequestHandler.ErrorHandler
 import purity.logging.LoggerFunction
 import io.circe._
 import io.circe.syntax._
 import org.http4s._
 import org.http4s.circe.CirceInstances
 import org.http4s.dsl.Http4sDsl
+import purity.http4s.JsonRequestHandler.ErrorHandler
 import purity.script.ScriptDsl
 
 object JsonRequestHandler {
