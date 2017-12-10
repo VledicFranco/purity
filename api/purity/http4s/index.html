@@ -102,41 +102,17 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="purity">purity</a></dd></dl></div>
     </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="trait" href="ConfigObject.html" title="Mix in with dependencies that require to extract configuration from the application.conf file."></a>
-                        <a href="ConfigObject.html" title="Mix in with dependencies that require to extract configuration from the application.conf file.">ConfigObject</a>
+                        <a class="object" href="JsonClient$.html" title=""></a>
+                        <a class="class" href="JsonClient.html" title="Extra layer on top of a Blaze pooled http client."></a>
+                        <a href="JsonClient.html" title="Extra layer on top of a Blaze pooled http client.">JsonClient</a>
                       </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="class" href="HttpClient.html" title="Intended to be used inside services which are dependencies."></a>
-                        <a href="HttpClient.html" title="Intended to be used inside services which are dependencies.">HttpClient</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="trait" href="HttpClientConfig.html" title="Intended to be mixed in services which are dependencies."></a>
-                        <a href="HttpClientConfig.html" title="Intended to be mixed in services which are dependencies.">HttpClientConfig</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="class" href="RequestHandler.html" title=""></a>
-                        <a href="RequestHandler.html" title="">RequestHandler</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="class" href="ServiceUnexpectedEntity.html" title="IO.raiseError this when the service responded without the right content type or the data was corrupt."></a>
-                        <a href="ServiceUnexpectedEntity.html" title="IO.raiseError this when the service responded without the right content type or the data was corrupt.">ServiceUnexpectedEntity</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="class" href="ServiceUnexpectedModel.html" title="IO.raiseError this when the service responded with a different json than the one expected by the circe decoder."></a>
-                        <a href="ServiceUnexpectedModel.html" title="IO.raiseError this when the service responded with a different json than the one expected by the circe decoder.">ServiceUnexpectedModel</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="class" href="ServiceUnexpectedStatus.html" title="IO.raiseError this when the service responded with not a successful status."></a>
-                        <a href="ServiceUnexpectedStatus.html" title="IO.raiseError this when the service responded with not a successful status.">ServiceUnexpectedStatus</a>
+                        <a class="object" href="JsonRequestHandler$.html" title=""></a>
+                        <a class="class" href="JsonRequestHandler.html" title=""></a>
+                        <a href="JsonRequestHandler.html" title="">JsonRequestHandler</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
                         <a class="class" href="SimpleServiceConfig.html" title="Intended to be used inside services which are dependencies."></a>
                         <a href="SimpleServiceConfig.html" title="Intended to be used inside services which are dependencies.">SimpleServiceConfig</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="trait" href="UnexpectedServiceResponse.html" title="Exceptions to be used to fail IO monads when requesting other services."></a>
-                        <a href="UnexpectedServiceResponse.html" title="Exceptions to be used to fail IO monads when requesting other services.">UnexpectedServiceResponse</a>
                       </li><li name="purity.logging" visbl="pub" class="indented2 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="logging"></a><a id="logging:logging"></a>
       <span class="permalink">
@@ -200,7 +176,31 @@
           <div id="comment" class="fullcommenttop"></div>
         
 
-      
+      <div id="mbrsel">
+        <div class="toggle"></div>
+        <div id="memberfilter">
+          <i class="material-icons arrow"></i>
+          <span class="input">
+            <input id="mbrsel-input" placeholder="Filter all members" type="text" accesskey="/" />
+          </span>
+          <i class="clear material-icons"></i>
+        </div>
+        <div id="filterby">
+          <div id="order">
+            <span class="filtertype">Ordering</span>
+            <ol>
+              
+              <li class="alpha in"><span>Alphabetic</span></li>
+              
+            </ol>
+          </div>
+          
+          <div id="visbl">
+              <span class="filtertype">Visibility</span>
+              <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+            </div>
+        </div>
+      </div>
 
       <div id="template">
         <div id="allMembers">
@@ -208,26 +208,10 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="purity.http4s.ConfigObject" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="ConfigObjectextendsAnyRef"></a><a id="ConfigObject:ConfigObject"></a>
+              <ol><li name="purity.http4s.JsonClient" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="JsonClient[F[+_]]extendsScriptDsl[F]withHttp4sDsl[F]withProductwithSerializable"></a><a id="JsonClient[F[+_]]:JsonClient[F]"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/index.html#ConfigObjectextendsAnyRef" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">trait</span>
-      </span>
-      <span class="symbol">
-        <a title="Mix in with dependencies that require to extract configuration from the application.conf file." href="ConfigObject.html"><span class="name">ConfigObject</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.12.4/scala/collection/immutable/List.html#scala.AnyRef" class="extype" name="scala.collection.immutable.List">AnyRef</a></span>
-      </span>
-      
-      <p class="shortcomment cmt">Mix in with dependencies that require to extract configuration from the application.conf file.</p>
-    </li><li name="purity.http4s.HttpClient" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="HttpClientextendsProductwithSerializable"></a><a id="HttpClient:HttpClient"></a>
-      <span class="permalink">
-      <a href="../../purity/http4s/index.html#HttpClientextendsProductwithSerializable" title="Permalink">
+      <a href="../../purity/http4s/index.html#JsonClient[F[+_]]extendsScriptDsl[F]withHttp4sDsl[F]withProductwithSerializable" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -236,37 +220,18 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a title="Intended to be used inside services which are dependencies." href="HttpClient.html"><span class="name">HttpClient</span></a><span class="params">(<span name="client">client: <span class="extype" name="org.http4s.client.Client">Client</span>[<span class="extype" name="cats.effect.IO">IO</span>]</span>)</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.12.4/scala/Product.html#scala.Product" class="extype" name="scala.Product">Product</a> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a></span>
+        <a title="Extra layer on top of a Blaze pooled http client." href="JsonClient.html"><span class="name">JsonClient</span></a><span class="tparams">[<span name="F">F<span class="tparams">[<span name="_">+_</span>]</span></span>]</span><span class="params">(<span name="client">client: <span class="extype" name="org.http4s.client.Client">Client</span>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>]</span>, <span name="jsonPrinter">jsonPrinter: <a href="https://circe.github.io/circe/api/io/circe/Printer.html#io.circe.Printer" class="extype" name="io.circe.Printer">Printer</a> = <span class="symbol"><span class="name"><a href="JsonClient$.html">JsonClient.DefaultJsonPrinter</a></span></span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="effect">effect: <span class="extype" name="cats.effect.Effect">Effect</span>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>]</span>)</span><span class="result"> extends <a href="../script/ScriptDsl.html" class="extype" name="purity.script.ScriptDsl">ScriptDsl</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>] with <span class="extype" name="org.http4s.dsl.Http4sDsl">Http4sDsl</span>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>] with <a href="http://www.scala-lang.org/api/2.12.4/scala/Product.html#scala.Product" class="extype" name="scala.Product">Product</a> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a></span>
       </span>
       
-      <p class="shortcomment cmt">Intended to be used inside services which are dependencies.</p><div class="fullcomment"><div class="comment cmt"><p>Intended to be used inside services which are dependencies.
-- Lifts http4s client operations into the Script type.
+      <p class="shortcomment cmt">Extra layer on top of a Blaze pooled http client.</p><div class="fullcomment"><div class="comment cmt"><p>Extra layer on top of a Blaze pooled http client.
+- Lifts http4s client operations to the Script type.
 - Adds logging between requests and responses.
-- Adds possible IO failures: ServiceUnexpectedStatus, ServiceUnexpectedEntity and ServiceUnexpectedJson
+- Lifts possible ServiceFailures to the Script type.
 </p></div></div>
-    </li><li name="purity.http4s.HttpClientConfig" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="HttpClientConfigextendsAnyRef"></a><a id="HttpClientConfig:HttpClientConfig"></a>
+    </li><li name="purity.http4s.JsonRequestHandler" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="JsonRequestHandler[F[+_]]extendsScriptDsl[F]withHttp4sDsl[F]withProductwithSerializable"></a><a id="JsonRequestHandler[F[+_]]:JsonRequestHandler[F]"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/index.html#HttpClientConfigextendsAnyRef" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">trait</span>
-      </span>
-      <span class="symbol">
-        <a title="Intended to be mixed in services which are dependencies." href="HttpClientConfig.html"><span class="name">HttpClientConfig</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.12.4/scala/collection/immutable/List.html#scala.AnyRef" class="extype" name="scala.collection.immutable.List">AnyRef</a></span>
-      </span>
-      
-      <p class="shortcomment cmt">Intended to be mixed in services which are dependencies.</p><div class="fullcomment"><div class="comment cmt"><p>Intended to be mixed in services which are dependencies.
-The maxTotalConnections and maxConnectionsPerRequestKey properties can be overriden to configure the http client.
-See <a href="HttpClient.html" class="extype" name="purity.http4s.HttpClient">HttpClient</a> documentation, that is the client the services should be using.
-</p></div></div>
-    </li><li name="purity.http4s.RequestHandler" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="RequestHandler[D]extendsProductwithSerializable"></a><a id="RequestHandler[D]:RequestHandler[D]"></a>
-      <span class="permalink">
-      <a href="../../purity/http4s/index.html#RequestHandler[D]extendsProductwithSerializable" title="Permalink">
+      <a href="../../purity/http4s/index.html#JsonRequestHandler[F[+_]]extendsScriptDsl[F]withHttp4sDsl[F]withProductwithSerializable" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -275,58 +240,10 @@ See <a href="HttpClient.html" class="extype" name="purity.http4s.HttpClient">Htt
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a title="" href="RequestHandler.html"><span class="name">RequestHandler</span></a><span class="tparams">[<span name="D">D</span>]</span><span class="params">(<span name="errorHandler">errorHandler: (<span class="extype" name="scala.Throwable">Throwable</span>) ⇒ <span class="extype" name="cats.effect.IO">IO</span>[<span class="extype" name="org.http4s.Response">Response</span>[<span class="extype" name="cats.effect.IO">IO</span>]]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="config">config: <span class="extype" name="purity.http4s.RequestHandler.D">D</span></span>, <span name="logger">logger: <a href="../logging/LoggerFunction.html" class="extype" name="purity.logging.LoggerFunction">LoggerFunction</a></span>)</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.12.4/scala/Product.html#scala.Product" class="extype" name="scala.Product">Product</a> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a></span>
+        <a title="" href="JsonRequestHandler.html"><span class="name">JsonRequestHandler</span></a><span class="tparams">[<span name="F">F<span class="tparams">[<span name="_">+_</span>]</span></span>]</span><span class="params">(<span name="errorHandler">errorHandler: <a href="JsonRequestHandler$$ErrorHandler.html" class="extype" name="purity.http4s.JsonRequestHandler.ErrorHandler">ErrorHandler</a>[<span class="extype" name="purity.http4s.JsonRequestHandler.F">F</span>]</span>, <span name="jsonPrinter">jsonPrinter: <a href="https://circe.github.io/circe/api/io/circe/Printer.html#io.circe.Printer" class="extype" name="io.circe.Printer">Printer</a> = <span class="defval" name='<span class="name"><a href="JsonRequestHandler$.html">JsonRequestHandler.DefaultJsonPrinter</a></span>'>...</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="effect">effect: <span class="extype" name="cats.effect.Effect">Effect</span>[<span class="extype" name="purity.http4s.JsonRequestHandler.F">F</span>]</span>)</span><span class="result"> extends <a href="../script/ScriptDsl.html" class="extype" name="purity.script.ScriptDsl">ScriptDsl</a>[<span class="extype" name="purity.http4s.JsonRequestHandler.F">F</span>] with <span class="extype" name="org.http4s.dsl.Http4sDsl">Http4sDsl</span>[<span class="extype" name="purity.http4s.JsonRequestHandler.F">F</span>] with <a href="http://www.scala-lang.org/api/2.12.4/scala/Product.html#scala.Product" class="extype" name="scala.Product">Product</a> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a></span>
       </span>
       
       
-    </li><li name="purity.http4s.ServiceUnexpectedEntity" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="ServiceUnexpectedEntityextendsRuntimeExceptionwithUnexpectedServiceResponsewithProductwithSerializable"></a><a id="ServiceUnexpectedEntity:ServiceUnexpectedEntity"></a>
-      <span class="permalink">
-      <a href="../../purity/http4s/index.html#ServiceUnexpectedEntityextendsRuntimeExceptionwithUnexpectedServiceResponsewithProductwithSerializable" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">case class</span>
-      </span>
-      <span class="symbol">
-        <a title="IO.raiseError this when the service responded without the right content type or the data was corrupt." href="ServiceUnexpectedEntity.html"><span class="name">ServiceUnexpectedEntity</span></a><span class="params">(<span name="uri">uri: <span class="extype" name="org.http4s.Uri">Uri</span></span>, <span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result"> extends <span class="extype" name="scala.RuntimeException">RuntimeException</span> with <a href="UnexpectedServiceResponse.html" class="extype" name="purity.http4s.UnexpectedServiceResponse">UnexpectedServiceResponse</a> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Product.html#scala.Product" class="extype" name="scala.Product">Product</a> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a></span>
-      </span>
-      
-      <p class="shortcomment cmt">IO.raiseError this when the service responded without the right content type or the data was corrupt.</p>
-    </li><li name="purity.http4s.ServiceUnexpectedModel" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="ServiceUnexpectedModelextendsRuntimeExceptionwithUnexpectedServiceResponsewithProductwithSerializable"></a><a id="ServiceUnexpectedModel:ServiceUnexpectedModel"></a>
-      <span class="permalink">
-      <a href="../../purity/http4s/index.html#ServiceUnexpectedModelextendsRuntimeExceptionwithUnexpectedServiceResponsewithProductwithSerializable" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">case class</span>
-      </span>
-      <span class="symbol">
-        <a title="IO.raiseError this when the service responded with a different json than the one expected by the circe decoder." href="ServiceUnexpectedModel.html"><span class="name">ServiceUnexpectedModel</span></a><span class="params">(<span name="uri">uri: <span class="extype" name="org.http4s.Uri">Uri</span></span>, <span name="json">json: <a href="https://circe.github.io/circe/api/io/circe/Json.html#io.circe.Json" class="extype" name="io.circe.Json">Json</a></span>, <span name="failure">failure: <a href="https://circe.github.io/circe/api/io/circe/DecodingFailure.html#io.circe.DecodingFailure" class="extype" name="io.circe.DecodingFailure">DecodingFailure</a></span>)</span><span class="result"> extends <span class="extype" name="scala.RuntimeException">RuntimeException</span> with <a href="UnexpectedServiceResponse.html" class="extype" name="purity.http4s.UnexpectedServiceResponse">UnexpectedServiceResponse</a> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Product.html#scala.Product" class="extype" name="scala.Product">Product</a> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a></span>
-      </span>
-      
-      <p class="shortcomment cmt">IO.raiseError this when the service responded with a different json than the one expected by the circe decoder.</p>
-    </li><li name="purity.http4s.ServiceUnexpectedStatus" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="ServiceUnexpectedStatusextendsRuntimeExceptionwithUnexpectedServiceResponsewithProductwithSerializable"></a><a id="ServiceUnexpectedStatus:ServiceUnexpectedStatus"></a>
-      <span class="permalink">
-      <a href="../../purity/http4s/index.html#ServiceUnexpectedStatusextendsRuntimeExceptionwithUnexpectedServiceResponsewithProductwithSerializable" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">case class</span>
-      </span>
-      <span class="symbol">
-        <a title="IO.raiseError this when the service responded with not a successful status." href="ServiceUnexpectedStatus.html"><span class="name">ServiceUnexpectedStatus</span></a><span class="params">(<span name="uri">uri: <span class="extype" name="org.http4s.Uri">Uri</span></span>, <span name="json">json: <a href="https://circe.github.io/circe/api/io/circe/Json.html#io.circe.Json" class="extype" name="io.circe.Json">Json</a></span>, <span name="status">status: <span class="extype" name="org.http4s.Status">Status</span></span>)</span><span class="result"> extends <span class="extype" name="scala.RuntimeException">RuntimeException</span> with <a href="UnexpectedServiceResponse.html" class="extype" name="purity.http4s.UnexpectedServiceResponse">UnexpectedServiceResponse</a> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Product.html#scala.Product" class="extype" name="scala.Product">Product</a> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a></span>
-      </span>
-      
-      <p class="shortcomment cmt">IO.raiseError this when the service responded with not a successful status.</p>
     </li><li name="purity.http4s.SimpleServiceConfig" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="SimpleServiceConfigextendsProductwithSerializable"></a><a id="SimpleServiceConfig:SimpleServiceConfig"></a>
       <span class="permalink">
@@ -347,30 +264,49 @@ Basic configuration of a service. Can create the correct org.http4s.Uri of the e
 objects should be instantiated when booting the server, and the server should NOT boot if the configured endpoints
 are invalid.
 </p></div></div>
-    </li><li name="purity.http4s.UnexpectedServiceResponse" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="UnexpectedServiceResponseextendsRuntimeExceptionwithNoStackTracewithProductwithSerializable"></a><a id="UnexpectedServiceResponse:UnexpectedServiceResponse"></a>
-      <span class="permalink">
-      <a href="../../purity/http4s/index.html#UnexpectedServiceResponseextendsRuntimeExceptionwithNoStackTracewithProductwithSerializable" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier">sealed </span>
-        <span class="kind">trait</span>
-      </span>
-      <span class="symbol">
-        <a title="Exceptions to be used to fail IO monads when requesting other services." href="UnexpectedServiceResponse.html"><span class="name">UnexpectedServiceResponse</span></a><span class="result"> extends <span class="extype" name="scala.RuntimeException">RuntimeException</span> with <a href="http://www.scala-lang.org/api/2.12.4/scala/util/control/NoStackTrace.html#scala.util.control.NoStackTrace" class="extype" name="scala.util.control.NoStackTrace">NoStackTrace</a> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Product.html#scala.Product" class="extype" name="scala.Product">Product</a> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a></span>
-      </span>
-      
-      <p class="shortcomment cmt">Exceptions to be used to fail IO monads when requesting other services.</p><div class="fullcomment"><div class="comment cmt"><p>Exceptions to be used to fail IO monads when requesting other services. They add more data about the failure that
-can be used for logging or creating more sensible responses to the client.
-</p></div></div>
     </li></ol>
             </div>
 
         
 
-        
+        <div class="values members">
+              <h3>Value Members</h3>
+              <ol>
+                <li name="purity.http4s.JsonClient" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="JsonClient"></a><a id="JsonClient:JsonClient"></a>
+      <span class="permalink">
+      <a href="../../purity/http4s/index.html#JsonClient" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="JsonClient$.html"><span class="name">JsonClient</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a></span>
+      </span>
+      
+      
+    </li><li name="purity.http4s.JsonRequestHandler" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="JsonRequestHandler"></a><a id="JsonRequestHandler:JsonRequestHandler"></a>
+      <span class="permalink">
+      <a href="../../purity/http4s/index.html#JsonRequestHandler" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="JsonRequestHandler$.html"><span class="name">JsonRequestHandler</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a></span>
+      </span>
+      
+      
+    </li>
+              </ol>
+            </div>
 
         
 

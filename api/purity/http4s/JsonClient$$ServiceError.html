@@ -101,42 +101,26 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="purity">purity</a></dd></dl></div>
-    </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="trait" href="ConfigObject.html" title="Mix in with dependencies that require to extract configuration from the application.conf file."></a>
-                        <a href="ConfigObject.html" title="Mix in with dependencies that require to extract configuration from the application.conf file.">ConfigObject</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="class" href="HttpClient.html" title="Intended to be used inside services which are dependencies."></a>
-                        <a href="HttpClient.html" title="Intended to be used inside services which are dependencies.">HttpClient</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="trait" href="HttpClientConfig.html" title="Intended to be mixed in services which are dependencies."></a>
-                        <a href="HttpClientConfig.html" title="Intended to be mixed in services which are dependencies.">HttpClientConfig</a>
-                      </li><li class="current-entities indented2">
+    </li><li name="purity.http4s.JsonClient" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="JsonClient"></a><a id="JsonClient:JsonClient"></a>
+      <span class="permalink">
+      <a href="../../purity/http4s/index.html#JsonClient" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="JsonClient$.html"><span class="name">JsonClient</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="purity.http4s">http4s</a></dd></dl></div>
+    </li><li class="current-entities indented3">
                         <span class="separator"></span>
                         <a class="class" href="" title=""></a>
-                        <a href="" title="">RequestHandler</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="class" href="ServiceUnexpectedEntity.html" title="IO.raiseError this when the service responded without the right content type or the data was corrupt."></a>
-                        <a href="ServiceUnexpectedEntity.html" title="IO.raiseError this when the service responded without the right content type or the data was corrupt.">ServiceUnexpectedEntity</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="class" href="ServiceUnexpectedModel.html" title="IO.raiseError this when the service responded with a different json than the one expected by the circe decoder."></a>
-                        <a href="ServiceUnexpectedModel.html" title="IO.raiseError this when the service responded with a different json than the one expected by the circe decoder.">ServiceUnexpectedModel</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="class" href="ServiceUnexpectedStatus.html" title="IO.raiseError this when the service responded with not a successful status."></a>
-                        <a href="ServiceUnexpectedStatus.html" title="IO.raiseError this when the service responded with not a successful status.">ServiceUnexpectedStatus</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="class" href="SimpleServiceConfig.html" title="Intended to be used inside services which are dependencies."></a>
-                        <a href="SimpleServiceConfig.html" title="Intended to be used inside services which are dependencies.">SimpleServiceConfig</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="trait" href="UnexpectedServiceResponse.html" title="Exceptions to be used to fail IO monads when requesting other services."></a>
-                        <a href="UnexpectedServiceResponse.html" title="Exceptions to be used to fail IO monads when requesting other services.">UnexpectedServiceResponse</a>
+                        <a href="" title="">ServiceError</a>
                       </li>
               </ul>
             </div>
@@ -145,9 +129,9 @@
             <body class="class type">
       <div id="definition">
         <div class="big-circle class">c</div>
-        <p id="owner"><a href="../index.html" class="extype" name="purity">purity</a>.<a href="index.html" class="extype" name="purity.http4s">http4s</a></p>
-        <h1>RequestHandler<span class="permalink">
-      <a href="../../purity/http4s/RequestHandler.html" title="Permalink">
+        <p id="owner"><a href="../index.html" class="extype" name="purity">purity</a>.<a href="index.html" class="extype" name="purity.http4s">http4s</a>.<a href="JsonClient$.html" class="extype" name="purity.http4s.JsonClient">JsonClient</a></p>
+        <h1>ServiceError<span class="permalink">
+      <a href="../../purity/http4s/JsonClient$$ServiceError.html" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span></h1>
@@ -160,16 +144,16 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">RequestHandler</span><span class="tparams">[<span name="D">D</span>]</span><span class="params">(<span name="errorHandler">errorHandler: (<span class="extype" name="scala.Throwable">Throwable</span>) ⇒ <span class="extype" name="cats.effect.IO">IO</span>[<span class="extype" name="org.http4s.Response">Response</span>[<span class="extype" name="cats.effect.IO">IO</span>]]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="config">config: <span class="extype" name="purity.http4s.RequestHandler.D">D</span></span>, <span name="logger">logger: <a href="../logging/LoggerFunction.html" class="extype" name="purity.logging.LoggerFunction">LoggerFunction</a></span>)</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.12.4/scala/Product.html#scala.Product" class="extype" name="scala.Product">Product</a> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a></span>
+        <span class="name">ServiceError</span><span class="tparams">[<span name="F">F<span class="tparams">[<span name="_">_</span>]</span></span>]</span><span class="params">(<span name="request">request: <span class="extype" name="org.http4s.Request">Request</span>[<span class="extype" name="purity.http4s.JsonClient.ServiceError.F">F</span>]</span>, <span name="response">response: <span class="extype" name="org.http4s.Response">Response</span>[<span class="extype" name="purity.http4s.JsonClient.ServiceError.F">F</span>]</span>, <span name="failure">failure: <span class="extype" name="org.http4s.MessageFailure">MessageFailure</span></span>)</span><span class="result"> extends <span class="extype" name="scala.RuntimeException">RuntimeException</span> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Product.html#scala.Product" class="extype" name="scala.Product">Product</a> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a></span>
       </span>
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/FrancoAra/purity/tree/master/http4s/src/main/scala/purity/http4s/RequestHandler.scala" target="_blank">RequestHandler.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/FrancoAra/purity/tree/master/http4s/src/main/scala/purity/http4s/JsonClient.scala" target="_blank">JsonClient.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
-          <div class="superTypes hiddenContent"><a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a>, <span class="extype" name="java.io.Serializable">Serializable</span>, <a href="http://www.scala-lang.org/api/2.12.4/scala/Product.html#scala.Product" class="extype" name="scala.Product">Product</a>, <a href="http://www.scala-lang.org/api/2.12.4/scala/Equals.html#scala.Equals" class="extype" name="scala.Equals">Equals</a>, <a href="http://www.scala-lang.org/api/2.12.4/scala/collection/immutable/List.html#scala.AnyRef" class="extype" name="scala.collection.immutable.List">AnyRef</a>, <a href="http://www.scala-lang.org/api/2.12.4/scala/collection/immutable/List.html#scala.Any" class="extype" name="scala.collection.immutable.List">Any</a></div>
+          <div class="superTypes hiddenContent"><a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a>, <a href="http://www.scala-lang.org/api/2.12.4/scala/Product.html#scala.Product" class="extype" name="scala.Product">Product</a>, <a href="http://www.scala-lang.org/api/2.12.4/scala/Equals.html#scala.Equals" class="extype" name="scala.Equals">Equals</a>, <span class="extype" name="java.lang.RuntimeException">RuntimeException</span>, <span class="extype" name="java.lang.Exception">Exception</span>, <span class="extype" name="java.lang.Throwable">Throwable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <a href="http://www.scala-lang.org/api/2.12.4/scala/collection/immutable/List.html#scala.AnyRef" class="extype" name="scala.collection.immutable.List">AnyRef</a>, <a href="http://www.scala-lang.org/api/2.12.4/scala/collection/immutable/List.html#scala.Any" class="extype" name="scala.collection.immutable.List">Any</a></div>
         </div></div>
         
 
@@ -195,7 +179,7 @@
                   <span class="filtertype">Inherited<br />
                   </span>
                   <ol id="linearization">
-                    <li class="in" name="purity.http4s.RequestHandler"><span>RequestHandler</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                    <li class="in" name="purity.http4s.JsonClient.ServiceError"><span>ServiceError</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="java.lang.RuntimeException"><span>RuntimeException</span></li><li class="in" name="java.lang.Exception"><span>Exception</span></li><li class="in" name="java.lang.Throwable"><span>Throwable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                   </ol>
                 </div><div class="ancestors">
               <span class="filtertype"></span>
@@ -215,10 +199,10 @@
         <div id="allMembers">
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
-              <ol><li name="purity.http4s.RequestHandler#&lt;init&gt;" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(errorHandler:Throwable=&gt;cats.effect.IO[org.http4s.Response[cats.effect.IO]])(implicitconfig:D,implicitlogger:purity.logging.LoggerFunction):purity.http4s.RequestHandler[D]"></a><a id="&lt;init&gt;:RequestHandler[D]"></a>
+              <ol><li name="purity.http4s.JsonClient.ServiceError#&lt;init&gt;" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="&lt;init&gt;(request:org.http4s.Request[F],response:org.http4s.Response[F],failure:org.http4s.MessageFailure):purity.http4s.JsonClient.ServiceError[F]"></a><a id="&lt;init&gt;:ServiceError[F]"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/RequestHandler.html#&lt;init&gt;(errorHandler:Throwable=&gt;cats.effect.IO[org.http4s.Response[cats.effect.IO]])(implicitconfig:D,implicitlogger:purity.logging.LoggerFunction):purity.http4s.RequestHandler[D]" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$$ServiceError.html#&lt;init&gt;(request:org.http4s.Request[F],response:org.http4s.Response[F],failure:org.http4s.MessageFailure):purity.http4s.JsonClient.ServiceError[F]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -227,7 +211,7 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">RequestHandler</span><span class="params">(<span name="errorHandler">errorHandler: (<span class="extype" name="scala.Throwable">Throwable</span>) ⇒ <span class="extype" name="cats.effect.IO">IO</span>[<span class="extype" name="org.http4s.Response">Response</span>[<span class="extype" name="cats.effect.IO">IO</span>]]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="config">config: <span class="extype" name="purity.http4s.RequestHandler.D">D</span></span>, <span name="logger">logger: <a href="../logging/LoggerFunction.html" class="extype" name="purity.logging.LoggerFunction">LoggerFunction</a></span>)</span>
+        <span class="name">ServiceError</span><span class="params">(<span name="request">request: <span class="extype" name="org.http4s.Request">Request</span>[<span class="extype" name="purity.http4s.JsonClient.ServiceError.F">F</span>]</span>, <span name="response">response: <span class="extype" name="org.http4s.Response">Response</span>[<span class="extype" name="purity.http4s.JsonClient.ServiceError.F">F</span>]</span>, <span name="failure">failure: <span class="extype" name="org.http4s.MessageFailure">MessageFailure</span></span>)</span>
       </span>
       
       
@@ -244,7 +228,7 @@
                 <li name="scala.AnyRef#!=" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:Any):Boolean"></a><a id="!=(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/RequestHandler.html#!=(x$1:Any):Boolean" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$$ServiceError.html#!=(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -260,7 +244,7 @@
     </li><li name="scala.AnyRef###" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="##():Int"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/RequestHandler.html###():Int" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$$ServiceError.html###():Int" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -276,7 +260,7 @@
     </li><li name="scala.AnyRef#==" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="==(x$1:Any):Boolean"></a><a id="==(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/RequestHandler.html#==(x$1:Any):Boolean" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$$ServiceError.html#==(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -289,30 +273,26 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="purity.http4s.RequestHandler#apply" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="apply[Req,Res,E](request:org.http4s.Request[cats.effect.IO],f:Req=&gt;purity.script.io.Script[D,E,Res])(failureHandler:E=&gt;cats.effect.IO[org.http4s.Response[cats.effect.IO]])(implicitevidence$1:io.circe.Decoder[Req],implicitevidence$2:io.circe.Encoder[Res]):cats.effect.IO[org.http4s.Response[cats.effect.IO]]"></a><a id="apply[Req,Res,E](Request[IO],(Req)⇒script.io.Script[D,E,Res])((E)⇒IO[Response[IO]])(Decoder[Req],Encoder[Res]):IO[Response[IO]]"></a>
+    </li><li name="java.lang.Throwable#addSuppressed" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="addSuppressed(x$1:Throwable):Unit"></a><a id="addSuppressed(Throwable):Unit"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/RequestHandler.html#apply[Req,Res,E](request:org.http4s.Request[cats.effect.IO],f:Req=&gt;purity.script.io.Script[D,E,Res])(failureHandler:E=&gt;cats.effect.IO[org.http4s.Response[cats.effect.IO]])(implicitevidence$1:io.circe.Decoder[Req],implicitevidence$2:io.circe.Encoder[Res]):cats.effect.IO[org.http4s.Response[cats.effect.IO]]" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$$ServiceError.html#addSuppressed(x$1:Throwable):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
       <span class="modifier_kind">
-        <span class="modifier"></span>
+        <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">apply</span><span class="tparams">[<span name="Req">Req</span>, <span name="Res">Res</span>, <span name="E">E</span>]</span><span class="params">(<span name="request">request: <span class="extype" name="org.http4s.Request">Request</span>[<span class="extype" name="cats.effect.IO">IO</span>]</span>, <span name="f">f: (<span class="extype" name="purity.http4s.RequestHandler.apply.Req">Req</span>) ⇒ <a href="../script/io$.html#Script[-D,+E,+A]=purity.script.ScriptT[F,D,E,A]" class="extmbr" name="purity.script.io.Script">script.io.Script</a>[<span class="extype" name="purity.http4s.RequestHandler.D">D</span>, <span class="extype" name="purity.http4s.RequestHandler.apply.E">E</span>, <span class="extype" name="purity.http4s.RequestHandler.apply.Res">Res</span>]</span>)</span><span class="params">(<span name="failureHandler">failureHandler: (<span class="extype" name="purity.http4s.RequestHandler.apply.E">E</span>) ⇒ <span class="extype" name="cats.effect.IO">IO</span>[<span class="extype" name="org.http4s.Response">Response</span>[<span class="extype" name="cats.effect.IO">IO</span>]]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="https://circe.github.io/circe/api/io/circe/Decoder.html#io.circe.Decoder" class="extype" name="io.circe.Decoder">Decoder</a>[<span class="extype" name="purity.http4s.RequestHandler.apply.Req">Req</span>]</span>, <span name="arg1">arg1: <a href="https://circe.github.io/circe/api/io/circe/Encoder.html#io.circe.Encoder" class="extype" name="io.circe.Encoder">Encoder</a>[<span class="extype" name="purity.http4s.RequestHandler.apply.Res">Res</span>]</span>)</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<span class="extype" name="org.http4s.Response">Response</span>[<span class="extype" name="cats.effect.IO">IO</span>]]</span>
+        <span class="name">addSuppressed</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="java.lang.Throwable">Throwable</span></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a></span>
       </span>
       
-      <p class="shortcomment cmt">Runs a Script function (A =&gt; Script[D, E, B]) to handle an http request and produce a response for http4s.</p><div class="fullcomment"><div class="comment cmt"><p>Runs a Script function (A =&gt; Script[D, E, B]) to handle an http request and produce a response for http4s.
-This function also handle format of responses and handles lower level errors (failed IO monads).
-The configuration and logger required by the Script should be implicitly provided, as well as a function that should
-map the Script failures to valid http4s responses.
-</p></div></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Throwable</dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/RequestHandler.html#asInstanceOf[T0]:T0" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$$ServiceError.html#asInstanceOf[T0]:T0" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -328,7 +308,7 @@ map the Script failures to valid http4s responses.
     </li><li name="scala.AnyRef#clone" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a><a id="clone():AnyRef"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/RequestHandler.html#clone():Object" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$$ServiceError.html#clone():Object" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -352,7 +332,7 @@ map the Script failures to valid http4s responses.
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/RequestHandler.html#eq(x$1:AnyRef):Boolean" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$$ServiceError.html#eq(x$1:AnyRef):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -365,10 +345,10 @@ map the Script failures to valid http4s responses.
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="purity.http4s.RequestHandler#errorHandler" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="errorHandler:Throwable=&gt;cats.effect.IO[org.http4s.Response[cats.effect.IO]]"></a><a id="errorHandler:(Throwable)⇒IO[Response[IO]]"></a>
+    </li><li name="purity.http4s.JsonClient.ServiceError#failure" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="failure:org.http4s.MessageFailure"></a><a id="failure:MessageFailure"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/RequestHandler.html#errorHandler:Throwable=&gt;cats.effect.IO[org.http4s.Response[cats.effect.IO]]" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$$ServiceError.html#failure:org.http4s.MessageFailure" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -377,14 +357,30 @@ map the Script failures to valid http4s responses.
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">errorHandler</span><span class="result">: (<span class="extype" name="scala.Throwable">Throwable</span>) ⇒ <span class="extype" name="cats.effect.IO">IO</span>[<span class="extype" name="org.http4s.Response">Response</span>[<span class="extype" name="cats.effect.IO">IO</span>]]</span>
+        <span class="name">failure</span><span class="result">: <span class="extype" name="org.http4s.MessageFailure">MessageFailure</span></span>
       </span>
       
       
+    </li><li name="java.lang.Throwable#fillInStackTrace" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="fillInStackTrace():Throwable"></a>
+      <span class="permalink">
+      <a href="../../purity/http4s/JsonClient$$ServiceError.html#fillInStackTrace():Throwable" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fillInStackTrace</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Throwable">Throwable</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Throwable</dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/RequestHandler.html#finalize():Unit" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$$ServiceError.html#finalize():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -403,10 +399,26 @@ map the Script failures to valid http4s responses.
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="java.lang.Throwable#getCause" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getCause():Throwable"></a>
+      <span class="permalink">
+      <a href="../../purity/http4s/JsonClient$$ServiceError.html#getCause():Throwable" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getCause</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Throwable">Throwable</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Throwable</dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/RequestHandler.html#getClass():Class[_]" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$$ServiceError.html#getClass():Class[_]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -422,10 +434,90 @@ map the Script failures to valid http4s responses.
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="java.lang.Throwable#getLocalizedMessage" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getLocalizedMessage():String"></a>
+      <span class="permalink">
+      <a href="../../purity/http4s/JsonClient$$ServiceError.html#getLocalizedMessage():String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getLocalizedMessage</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Throwable</dd></dl></div>
+    </li><li name="java.lang.Throwable#getMessage" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getMessage():String"></a>
+      <span class="permalink">
+      <a href="../../purity/http4s/JsonClient$$ServiceError.html#getMessage():String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getMessage</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Throwable</dd></dl></div>
+    </li><li name="java.lang.Throwable#getStackTrace" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getStackTrace():Array[StackTraceElement]"></a>
+      <span class="permalink">
+      <a href="../../purity/http4s/JsonClient$$ServiceError.html#getStackTrace():Array[StackTraceElement]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getStackTrace</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="java.lang.StackTraceElement">StackTraceElement</span>]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Throwable</dd></dl></div>
+    </li><li name="java.lang.Throwable#getSuppressed" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getSuppressed():Array[Throwable]"></a>
+      <span class="permalink">
+      <a href="../../purity/http4s/JsonClient$$ServiceError.html#getSuppressed():Array[Throwable]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getSuppressed</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="java.lang.Throwable">Throwable</span>]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Throwable</dd></dl></div>
+    </li><li name="java.lang.Throwable#initCause" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="initCause(x$1:Throwable):Throwable"></a><a id="initCause(Throwable):Throwable"></a>
+      <span class="permalink">
+      <a href="../../purity/http4s/JsonClient$$ServiceError.html#initCause(x$1:Throwable):Throwable" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">initCause</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="java.lang.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="java.lang.Throwable">Throwable</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Throwable</dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/RequestHandler.html#isInstanceOf[T0]:Boolean" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$$ServiceError.html#isInstanceOf[T0]:Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -441,7 +533,7 @@ map the Script failures to valid http4s responses.
     </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/RequestHandler.html#ne(x$1:AnyRef):Boolean" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$$ServiceError.html#ne(x$1:AnyRef):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -454,26 +546,10 @@ map the Script failures to valid http4s responses.
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="purity.http4s.RequestHandler#noFailure" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="noFailure[Req,Res](request:org.http4s.Request[cats.effect.IO],f:Req=&gt;purity.script.io.Script[D,Nothing,Res])(implicitevidence$3:io.circe.Decoder[Req],implicitevidence$4:io.circe.Encoder[Res]):cats.effect.IO[org.http4s.Response[cats.effect.IO]]"></a><a id="noFailure[Req,Res](Request[IO],(Req)⇒script.io.Script[D,Nothing,Res])(Decoder[Req],Encoder[Res]):IO[Response[IO]]"></a>
-      <span class="permalink">
-      <a href="../../purity/http4s/RequestHandler.html#noFailure[Req,Res](request:org.http4s.Request[cats.effect.IO],f:Req=&gt;purity.script.io.Script[D,Nothing,Res])(implicitevidence$3:io.circe.Decoder[Req],implicitevidence$4:io.circe.Encoder[Res]):cats.effect.IO[org.http4s.Response[cats.effect.IO]]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">noFailure</span><span class="tparams">[<span name="Req">Req</span>, <span name="Res">Res</span>]</span><span class="params">(<span name="request">request: <span class="extype" name="org.http4s.Request">Request</span>[<span class="extype" name="cats.effect.IO">IO</span>]</span>, <span name="f">f: (<span class="extype" name="purity.http4s.RequestHandler.noFailure.Req">Req</span>) ⇒ <a href="../script/io$.html#Script[-D,+E,+A]=purity.script.ScriptT[F,D,E,A]" class="extmbr" name="purity.script.io.Script">script.io.Script</a>[<span class="extype" name="purity.http4s.RequestHandler.D">D</span>, <a href="http://www.scala-lang.org/api/2.12.4/scala/collection/immutable/List.html#scala.Nothing" class="extype" name="scala.collection.immutable.List">Nothing</a>, <span class="extype" name="purity.http4s.RequestHandler.noFailure.Res">Res</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="https://circe.github.io/circe/api/io/circe/Decoder.html#io.circe.Decoder" class="extype" name="io.circe.Decoder">Decoder</a>[<span class="extype" name="purity.http4s.RequestHandler.noFailure.Req">Req</span>]</span>, <span name="arg1">arg1: <a href="https://circe.github.io/circe/api/io/circe/Encoder.html#io.circe.Encoder" class="extype" name="io.circe.Encoder">Encoder</a>[<span class="extype" name="purity.http4s.RequestHandler.noFailure.Res">Res</span>]</span>)</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<span class="extype" name="org.http4s.Response">Response</span>[<span class="extype" name="cats.effect.IO">IO</span>]]</span>
-      </span>
-      
-      
     </li><li name="scala.AnyRef#notify" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/RequestHandler.html#notify():Unit" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$$ServiceError.html#notify():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -492,7 +568,7 @@ map the Script failures to valid http4s responses.
     </li><li name="scala.AnyRef#notifyAll" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notifyAll():Unit"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/RequestHandler.html#notifyAll():Unit" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$$ServiceError.html#notifyAll():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -508,10 +584,106 @@ map the Script failures to valid http4s responses.
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="java.lang.Throwable#printStackTrace" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="printStackTrace(x$1:java.io.PrintWriter):Unit"></a><a id="printStackTrace(PrintWriter):Unit"></a>
+      <span class="permalink">
+      <a href="../../purity/http4s/JsonClient$$ServiceError.html#printStackTrace(x$1:java.io.PrintWriter):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">printStackTrace</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="java.io.PrintWriter">PrintWriter</span></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Throwable</dd></dl></div>
+    </li><li name="java.lang.Throwable#printStackTrace" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="printStackTrace(x$1:java.io.PrintStream):Unit"></a><a id="printStackTrace(PrintStream):Unit"></a>
+      <span class="permalink">
+      <a href="../../purity/http4s/JsonClient$$ServiceError.html#printStackTrace(x$1:java.io.PrintStream):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">printStackTrace</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="java.io.PrintStream">PrintStream</span></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Throwable</dd></dl></div>
+    </li><li name="java.lang.Throwable#printStackTrace" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="printStackTrace():Unit"></a>
+      <span class="permalink">
+      <a href="../../purity/http4s/JsonClient$$ServiceError.html#printStackTrace():Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">printStackTrace</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Throwable</dd></dl></div>
+    </li><li name="purity.http4s.JsonClient.ServiceError#request" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="request:org.http4s.Request[F]"></a><a id="request:Request[F]"></a>
+      <span class="permalink">
+      <a href="../../purity/http4s/JsonClient$$ServiceError.html#request:org.http4s.Request[F]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">request</span><span class="result">: <span class="extype" name="org.http4s.Request">Request</span>[<span class="extype" name="purity.http4s.JsonClient.ServiceError.F">F</span>]</span>
+      </span>
+      
+      
+    </li><li name="purity.http4s.JsonClient.ServiceError#response" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="response:org.http4s.Response[F]"></a><a id="response:Response[F]"></a>
+      <span class="permalink">
+      <a href="../../purity/http4s/JsonClient$$ServiceError.html#response:org.http4s.Response[F]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">response</span><span class="result">: <span class="extype" name="org.http4s.Response">Response</span>[<span class="extype" name="purity.http4s.JsonClient.ServiceError.F">F</span>]</span>
+      </span>
+      
+      
+    </li><li name="java.lang.Throwable#setStackTrace" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setStackTrace(x$1:Array[StackTraceElement]):Unit"></a><a id="setStackTrace(Array[StackTraceElement]):Unit"></a>
+      <span class="permalink">
+      <a href="../../purity/http4s/JsonClient$$ServiceError.html#setStackTrace(x$1:Array[StackTraceElement]):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setStackTrace</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="java.lang.StackTraceElement">StackTraceElement</span>]</span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Throwable</dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/RequestHandler.html#synchronized[T0](x$1:=&gt;T0):T0" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$$ServiceError.html#synchronized[T0](x$1:=&gt;T0):T0" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -524,10 +696,26 @@ map the Script failures to valid http4s responses.
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="java.lang.Throwable#toString" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="toString():String"></a>
+      <span class="permalink">
+      <a href="../../purity/http4s/JsonClient$$ServiceError.html#toString():String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Throwable → AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/RequestHandler.html#wait():Unit" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$$ServiceError.html#wait():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -549,7 +737,7 @@ map the Script failures to valid http4s responses.
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait(x$1:Long,x$2:Int):Unit"></a><a id="wait(Long,Int):Unit"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/RequestHandler.html#wait(x$1:Long,x$2:Int):Unit" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$$ServiceError.html#wait(x$1:Long,x$2:Int):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -571,7 +759,7 @@ map the Script failures to valid http4s responses.
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait(x$1:Long):Unit"></a><a id="wait(Long):Unit"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/RequestHandler.html#wait(x$1:Long):Unit" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$$ServiceError.html#wait(x$1:Long):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -604,12 +792,18 @@ map the Script failures to valid http4s responses.
         <div id="inheritedMembers">
         <div class="parent" name="scala.Serializable">
               <h3>Inherited from <a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a></h3>
-            </div><div class="parent" name="java.io.Serializable">
-              <h3>Inherited from <span class="extype" name="java.io.Serializable">Serializable</span></h3>
             </div><div class="parent" name="scala.Product">
               <h3>Inherited from <a href="http://www.scala-lang.org/api/2.12.4/scala/Product.html#scala.Product" class="extype" name="scala.Product">Product</a></h3>
             </div><div class="parent" name="scala.Equals">
               <h3>Inherited from <a href="http://www.scala-lang.org/api/2.12.4/scala/Equals.html#scala.Equals" class="extype" name="scala.Equals">Equals</a></h3>
+            </div><div class="parent" name="java.lang.RuntimeException">
+              <h3>Inherited from <span class="extype" name="java.lang.RuntimeException">RuntimeException</span></h3>
+            </div><div class="parent" name="java.lang.Exception">
+              <h3>Inherited from <span class="extype" name="java.lang.Exception">Exception</span></h3>
+            </div><div class="parent" name="java.lang.Throwable">
+              <h3>Inherited from <span class="extype" name="java.lang.Throwable">Throwable</span></h3>
+            </div><div class="parent" name="java.io.Serializable">
+              <h3>Inherited from <span class="extype" name="java.io.Serializable">Serializable</span></h3>
             </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <a href="http://www.scala-lang.org/api/2.12.4/scala/collection/immutable/List.html#scala.AnyRef" class="extype" name="scala.collection.immutable.List">AnyRef</a></h3>
             </div><div class="parent" name="scala.Any">
