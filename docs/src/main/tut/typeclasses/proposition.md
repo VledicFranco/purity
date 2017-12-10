@@ -1,7 +1,7 @@
 ---
 layout: docs
 title:  "Proposition"
-section: "data"
+section: "typeclasses"
 ---
 
 ## Proposition

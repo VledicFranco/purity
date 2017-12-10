@@ -2,9 +2,8 @@
 layout: docs
 title:  "Data Types"
 section: "data"
-position: 1
+position: 10
 ---
 # Data Types
 
-- [Script]({{site.baseurl}}/script.html)
-- [Proposition]({{site.baseurl}}/proposition.html)
+- [Script]({{site.baseurl}}/datatypes/script.html)

@@ -1,28 +1,54 @@
 options:
 
+  # Data Types Menu
+
   - title: Data Types
     url: datatypes.html
     menu_type: data
 
   - title: Script
-    url: script.html
+    url: datatypes/script.html
     menu_type: data
     menu_section: script
 
     nested_options:
-      - title: Handling Dependencies
-        url: script/dependencies.html
+      - title: Dependencies
+        url: datatypes/script/dependencies.html
         menu_section: script
-      - title: Handling Failures
-        url: script/failures.html
+      - title: Failures
+        url: datatypes/script/failures.html
         menu_section: script
-      - title: Handling Errors
-        url: script/errors.html
+      - title: Effects and Errors
+        url: datatypes/script/errors.html
         menu_section: script
-      - title: Handling Logging
-        url: script/logging.html
+      - title: Logging
+        url: datatypes/script/logging.html
         menu_section: script
 
+  # Type Classes Menu
+
+  - title: Type Classes
+    url: typeclasses.html
+    menu_type: typeclasses
+
   - title: Proposition
-    url: proposition.html
-    menu_type: data
+    url: typeclasses/proposition.html
+    menu_type: typeclasses
+
+  # Http4s Integration Menu
+
+  - title: http4s Integration
+    url: http4s.html
+    menu_type: http4s
+
+  - title: JsonClient
+    url: http4s/jsonclient.html
+    menu_type: http4s
+
+  - title: JsonRequestHandler
+    url: http4s/jsonrequesthandler.html
+    menu_type: http4s
+
+  - title: SimpleServiceConfig
+    url: http4s/simpleserviceconfig.html
+    menu_type: http4s
