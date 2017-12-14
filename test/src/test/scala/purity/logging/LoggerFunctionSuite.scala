@@ -2,6 +2,7 @@ package purity.logging
 
 import purity.PuritySuite
 import Generators._
+import cats.kernel.Monoid
 
 class LoggerFunctionSuite extends PuritySuite {
 
@@ -9,7 +10,7 @@ class LoggerFunctionSuite extends PuritySuite {
     forAll { lines: List[LogLine] ⇒
       val console = MutableConsole(LogLevel.AllLevel)
       lines.foreach(console.logger.log)
-      console.lines.length shouldEqual lines.length
+      console.buffer.length shouldEqual lines.length
     }
   }
 
@@ -17,7 +18,7 @@ class LoggerFunctionSuite extends PuritySuite {
     forAll { lines: List[LogLine] ⇒
       val console = MutableConsole(LogLevel.FatalLevel)
       lines.foreach(console.logger.log)
-      console.lines.length shouldEqual lines.count {
+      console.buffer.length shouldEqual lines.count {
         case _: LogLine.Fatal => true
         case _ => false
       }
@@ -28,7 +29,7 @@ class LoggerFunctionSuite extends PuritySuite {
     forAll { lines: List[LogLine] ⇒
       val console = MutableConsole(LogLevel.ErrorLevel)
       lines.foreach(console.logger.log)
-      console.lines.length shouldEqual lines.count {
+      console.buffer.length shouldEqual lines.count {
         case _: LogLine.Fatal => true
         case _: LogLine.Error => true
         case _ => false
@@ -40,7 +41,7 @@ class LoggerFunctionSuite extends PuritySuite {
     forAll { lines: List[LogLine] ⇒
       val console = MutableConsole(LogLevel.WarnLevel)
       lines.foreach(console.logger.log)
-      console.lines.length shouldEqual lines.count {
+      console.buffer.length shouldEqual lines.count {
         case _: LogLine.Fatal => true
         case _: LogLine.Error => true
         case _: LogLine.Warn => true
@@ -53,7 +54,7 @@ class LoggerFunctionSuite extends PuritySuite {
     forAll { lines: List[LogLine] ⇒
       val console = MutableConsole(LogLevel.InfoLevel)
       lines.foreach(console.logger.log)
-      console.lines.length shouldEqual lines.count {
+      console.buffer.length shouldEqual lines.count {
         case _: LogLine.Debug => false
         case _: LogLine.Trace => false
         case _ => true
@@ -65,7 +66,7 @@ class LoggerFunctionSuite extends PuritySuite {
     forAll { lines: List[LogLine] ⇒
       val console = MutableConsole(LogLevel.DebugLevel)
       lines.foreach(console.logger.log)
-      console.lines.length shouldEqual lines.count {
+      console.buffer.length shouldEqual lines.count {
         case _: LogLine.Trace => false
         case _ => true
       }
@@ -76,7 +77,49 @@ class LoggerFunctionSuite extends PuritySuite {
     forAll { lines: List[LogLine] ⇒
       val console = MutableConsole(LogLevel.OffLevel)
       lines.foreach(console.logger.log)
-      console.lines.length shouldEqual 0
+      console.buffer.length shouldEqual 0
+    }
+  }
+
+  test("LoggerFunction monoid laws: associativity") {
+    forAll { lines: List[LogLine] =>
+      val buffer = MutableConsole.emptyBuffer
+      val a = MutableConsole(LogLevel.FatalLevel, buffer)
+      val b = MutableConsole(LogLevel.ErrorLevel, buffer)
+      val c = MutableConsole(LogLevel.DebugLevel, buffer)
+      val abxc = (a.logger |+| b.logger) |+| c.logger
+      val axbc = a.logger |+| (b.logger |+| c.logger)
+      lines.foreach(abxc.log)
+      val resultA = a.flush()
+      lines.foreach(axbc.log)
+      val resultB = a.flush()
+      resultA shouldEqual resultB
+    }
+  }
+
+  test("LoggerFunction monoid laws: left identity") {
+    forAll { lines: List[LogLine] =>
+      val console = MutableConsole(LogLevel.AllLevel)
+      val zero = Monoid[LoggerFunction].empty
+      val composed = zero |+| console.logger
+      lines.foreach(console.logger.log)
+      val resultA = console.flush()
+      lines.foreach(console.logger.log)
+      val resultB = console.flush()
+      resultA shouldEqual resultB
+    }
+  }
+
+  test("LoggerFunction monoid laws: right identity") {
+    forAll { lines: List[LogLine] =>
+      val console = MutableConsole(LogLevel.AllLevel)
+      val zero = Monoid[LoggerFunction].empty
+      val composed = console.logger |+| zero
+      lines.foreach(console.logger.log)
+      val resultA = console.flush()
+      lines.foreach(console.logger.log)
+      val resultB = console.flush()
+      resultA shouldEqual resultB
     }
   }
 }
