@@ -1,6 +1,7 @@
 package purity.logging
 
 import cats.implicits._
+import cats.kernel.Monoid
 import purity.logging.LogLevel._
 import purity.logging.LogLine._
 
@@ -43,4 +44,21 @@ case class LoggerFunction(f: LogLine ⇒ Unit, level: LogLevel) {
   def warn(e: Throwable): Unit = log(Warn(e.getMessage, Some(e)))
 
   def warn(message: String, e: Throwable): Unit = log(Warn(message, Some(e)))
+
+  def andThen(that: LoggerFunction): LoggerFunction =
+    LoggerFunction({ line => log(line); that.log(line) }, if (level >= that.level) level else that.level)
+
+  def compose(that: LoggerFunction): LoggerFunction =
+    that.andThen(this)
+}
+
+object LoggerFunction {
+
+  val VoidLogs: LoggerFunction = LoggerFunction(_ => (), OffLevel)
+
+  implicit val monoidInstanceForLoggerFunctions: Monoid[LoggerFunction] =
+    new Monoid[LoggerFunction] {
+      override def empty: LoggerFunction = VoidLogs
+      override def combine(x: LoggerFunction, y: LoggerFunction): LoggerFunction = x andThen y
+    }
 }
