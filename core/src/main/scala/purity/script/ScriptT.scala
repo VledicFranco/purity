@@ -181,26 +181,44 @@ object ScriptT extends ScriptTInstances {
 
 private[purity] trait ScriptTInstances {
 
-  implicit def stdMonadErrorForScript[F[+_], D, E](implicit M: MonadError[F, Throwable]): MonadError[ScriptT[F, D, E, ?], E] = {
-    new MonadError[ScriptT[F, D, E, ?], E] {
-      override def flatMap[A, B](fa: ScriptT[F, D, E, A])(f: (A) ⇒ ScriptT[F, D, E, B]): ScriptT[F, D, E, B] =
-        fa.flatMap(f)
-
-      override def tailRecM[A, B](a: A)(f: (A) ⇒ ScriptT[F, D, E, Either[A, B]]): ScriptT[F, D, E, B] =
-        ScriptT[F, D, E, B](d ⇒ M.tailRecM(a)(a0 ⇒ M.map(f(a0).definition(d)) {
-          case (logs, Left(e))         ⇒ Right((logs, Left(e)))
-          case (_, Right(Left(a1)))    ⇒ Left(a1)
-          case (logs, Right(Right(b))) ⇒ Right((logs, Right(b)))
-        }))
-
-      override def pure[A](x: A): ScriptT[F, D, E, A] =
-        ScriptT[F, Any, Nothing, A](_ ⇒ M.pure((Nil, Right(x))))
-
-      override def raiseError[A](e: E): ScriptT[F, D, E, A] =
-        ScriptT[F, Any, E, Nothing](_ ⇒ M.pure((Nil, Left(e))))
-
-      override def handleErrorWith[A](fa: ScriptT[F, D, E, A])(f: (E) ⇒ ScriptT[F, D, E, A]): ScriptT[F, D, E, A] =
-        fa.handleFailureWith(f)
+  implicit def stdMonadErrorForScript[F[+_], D, E, E2](implicit F0: MonadError[F, Throwable]): MonadError[ScriptT[F, D, E, ?], E] =
+    new ScriptTMonadError[F, D, E] {
+      override implicit val F: MonadError[F, Throwable] = F0
     }
-  }
 }
+
+private[purity] trait ScriptTFunctor[F[+_], D, E] extends Functor[ScriptT[F, D, E, ?]] {
+
+  implicit val F: Functor[F]
+
+  override def map[A, B](fa: ScriptT[F, D, E, A])(f: A => B): ScriptT[F, D, E, B] = fa map f
+}
+
+private[purity] trait ScriptTMonad[F[+_], D, E] extends Monad[ScriptT[F, D, E, ?]] {
+
+  // Required by ScriptT's flatMap because it handles logs with failed F's
+  implicit val F: MonadError[F, Throwable]
+
+  def flatMap[A, B](fa: ScriptT[F, D, E, A])(f: (A) ⇒ ScriptT[F, D, E, B]): ScriptT[F, D, E, B] =
+    fa.flatMap(f)
+
+  def tailRecM[A, B](a: A)(f: (A) ⇒ ScriptT[F, D, E, Either[A, B]]): ScriptT[F, D, E, B] =
+    ScriptT[F, D, E, B](d ⇒ F.tailRecM(a)(a0 ⇒ F.map(f(a0).definition(d)) {
+      case (logs, Left(e))         ⇒ Right((logs, Left(e)))
+      case (_, Right(Left(a1)))    ⇒ Left(a1)
+      case (logs, Right(Right(b))) ⇒ Right((logs, Right(b)))
+    }))
+
+  def pure[A](x: A): ScriptT[F, D, E, A] =
+    ScriptT[F, Any, Nothing, A](_ ⇒ F.pure((Nil, Right(x))))
+}
+
+private[purity] trait ScriptTMonadError[F[+_], D, E] extends MonadError[ScriptT[F, D, E, ?], E] with ScriptTMonad[F, D, E] {
+
+  override def raiseError[A](e: E): ScriptT[F, D, E, A] =
+    ScriptT[F, Any, E, Nothing](_ ⇒ F.pure((Nil, Left(e))))
+
+  override def handleErrorWith[A](fa: ScriptT[F, D, E, A])(f: (E) ⇒ ScriptT[F, D, E, A]): ScriptT[F, D, E, A] =
+    fa.handleFailureWith(f)
+}
+
