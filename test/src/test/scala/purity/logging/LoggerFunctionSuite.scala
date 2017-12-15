@@ -1,8 +1,8 @@
 package purity.logging
 
 import purity.PuritySuite
-import Generators._
 import cats.kernel.Monoid
+import purity.discipline.arbitrary._
 
 class LoggerFunctionSuite extends PuritySuite {
 

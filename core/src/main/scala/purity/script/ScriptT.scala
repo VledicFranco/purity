@@ -181,7 +181,8 @@ object ScriptT extends ScriptTInstances {
 
 private[purity] trait ScriptTInstances {
 
-  implicit def stdMonadErrorForScript[F[+_], D, E, E2](implicit F0: MonadError[F, Throwable]): MonadError[ScriptT[F, D, E, ?], E] =
+
+  implicit def stdMonadErrorForScript[F[+_], D, E](implicit F0: MonadError[F, Throwable]): MonadError[ScriptT[F, D, E, ?], E] =
     new ScriptTMonadError[F, D, E] {
       override implicit val F: MonadError[F, Throwable] = F0
     }
