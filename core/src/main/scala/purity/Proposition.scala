@@ -35,22 +35,22 @@ import purity.Truth.{False, True}
  * @tparam E type of the failure in case of an False result.
  * @tparam A type to be checked for consistency.
  */
-case class Proposition[+E, -A](check: A ⇒ Truth[E]) {
+case class Proposition[+E, -A](check: A => Truth[E]) {
 
-  def contramap[B](f: B ⇒ A): Proposition[E, B] =
+  def contramap[B](f: B => A): Proposition[E, B] =
     Proposition(f andThen check)
 
-  def leftMap[E2](f: E ⇒ E2): Proposition[E2, A] =
+  def leftMap[E2](f: E => E2): Proposition[E2, A] =
     Proposition[E2, A](check(_).map(f))
 
   def not[EE >: E](e: EE): Proposition[EE, A] =
     Proposition[EE, A](check(_).not(e))
 
   def &&[EE >: E, AA <: A](g: Proposition[EE, AA]): Proposition[EE, AA] =
-    Proposition[EE, AA](a ⇒ check(a) && g.check(a))
+    Proposition[EE, AA](a => check(a) && g.check(a))
 
   def ||[EE >: E, AA <: A](g: Proposition[EE, AA]): Proposition[EE, AA] =
-    Proposition[EE, AA](a ⇒ check(a) || g.check(a))
+    Proposition[EE, AA](a => check(a) || g.check(a))
 
   def optional: Proposition[E, Option[A]] =
     Proposition {
@@ -66,8 +66,8 @@ case class Proposition[+E, -A](check: A ⇒ Truth[E]) {
 
   def script[F[+_], E2](dsl: ScriptDsl[F])(a: A)(implicit ev: MonadError[F, Throwable]): ScriptT[F, Any, NonEmptyList[E], Unit] =
     check(a) match {
-      case True     ⇒ dsl.ok
-      case False(e) ⇒ dsl.fail(e)
+      case True     => dsl.ok
+      case False(e) => dsl.fail(e)
     }
 
   override def toString: String = "Proposition"
@@ -77,9 +77,9 @@ object Proposition extends PropositionFunctions with PropositionInstances
 
 private[purity] trait PropositionFunctions {
 
-  def thatIsTrue[E, A]: Proposition[E, A] = Proposition(_ ⇒ True)
+  def thatIsTrue[E, A]: Proposition[E, A] = Proposition(_ => True)
 
-  def thatIsFalse[E, A](e: E): Proposition[E, A] = Proposition(_ ⇒ Truth.isFalse(e))
+  def thatIsFalse[E, A](e: E): Proposition[E, A] = Proposition(_ => Truth.isFalse(e))
 }
 
 private[purity] trait PropositionInstances {
@@ -89,13 +89,13 @@ private[purity] trait PropositionInstances {
 
   def contravariantAnd[E]: Contravariant[Proposition[E, ?]] =
     new Contravariant[Proposition[E, ?]] {
-      override def contramap[A, B](fa: Proposition[E, A])(f: (B) ⇒ A): Proposition[E, B] =
+      override def contramap[A, B](fa: Proposition[E, A])(f: (B) => A): Proposition[E, B] =
         fa.contramap(f)
     }
 
   def contravariantOr[E]: Contravariant[Proposition[E, ?]] =
     new Contravariant[Proposition[E, ?]] {
-      override def contramap[A, B](fa: Proposition[E, A])(f: (B) ⇒ A): Proposition[E, B] =
+      override def contramap[A, B](fa: Proposition[E, A])(f: (B) => A): Proposition[E, B] =
         fa.contramap(f)
     }
 }

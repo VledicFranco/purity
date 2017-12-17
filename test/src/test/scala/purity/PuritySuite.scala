@@ -30,12 +30,12 @@ trait ScriptSuite[F[+_]] extends AsyncPuritySuite with ScriptDsl[F] {
 
   protected def assertThat[D, E, A]
       (script: Script[D, E, A])
-      (f: A ⇒ Assertion)
+      (f: A => Assertion)
       (implicit logger: LoggerFunction, dependencies: D, effect: Effect[F]): Future[Assertion] = {
     val p = Promise[Assertion]
     val Fa = script
       .logError(LogLine.fatal)
-      .fold(dependencies, logger, e ⇒ fail(s"Test failed with Script failure: $e"), f)
+      .fold(dependencies, logger, e => fail(s"Test failed with Script failure: $e"), f)
     effect.runAsync(Fa) {
       case Left(e) => IO { p.failure(e) }
       case Right(a0) => IO { p.success(a0) }
@@ -71,9 +71,9 @@ trait ScriptSuite[F[+_]] extends AsyncPuritySuite with ScriptDsl[F] {
       (implicit logger: LoggerFunction): AfterScript[Any, E, A] =
     AfterScript(script)(logger, Unit)
 
-  protected def propositionAssertion[A](p: Proposition[String, A]): A ⇒ Assertion =
-    a ⇒ p.check(a) match {
-      case True           ⇒ assert(1 == 1)
-      case False(reasons) ⇒ fail(reasons.toList.mkString(" and "))
+  protected def propositionAssertion[A](p: Proposition[String, A]): A => Assertion =
+    a => p.check(a) match {
+      case True           => assert(1 == 1)
+      case False(reasons) => fail(reasons.toList.mkString(" and "))
     }
 }

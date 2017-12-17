@@ -24,7 +24,7 @@ case class SimpleServiceConfig(https: Boolean, host: String, port: Int) {
     * Root of the service path (e.g. https://example.com:9000) Since this should be valid as soon as the server boots,
     * this should throw an exception if the config is wrong.
     */
-  val root: Uri = template.toUriIfPossible.fold[Uri](e ⇒ throw e, identity)
+  val root: Uri = template.toUriIfPossible.fold[Uri](e => throw e, identity)
 
   /**
     * Builds an endpoint Uri with this service root and from a relative path string.
@@ -32,8 +32,8 @@ case class SimpleServiceConfig(https: Boolean, host: String, port: Int) {
     */
   def endpoint(path: String): Uri = {
     val p: Uri = Uri.fromString(path) match {
-      case Left(e)    ⇒ throw new Exception("The configuration is wrong! Fix it before using it.\n" + e.getMessage)
-      case Right(uri) ⇒ uri
+      case Left(e)    => throw new Exception("The configuration is wrong! Fix it before using it.\n" + e.getMessage)
+      case Right(uri) => uri
     }
     root.resolve(p)
   }

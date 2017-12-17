@@ -1,13 +1,13 @@
 package purity.logging
 
 import purity.PuritySuite
-import Generators._
 import cats.kernel.Monoid
+import purity.discipline.arbitrary._
 
 class LoggerFunctionSuite extends PuritySuite {
 
   test("LoggerFunction.log with level All") {
-    forAll { lines: List[LogLine] ⇒
+    forAll { lines: List[LogLine] =>
       val console = MutableConsole(LogLevel.AllLevel)
       lines.foreach(console.logger.log)
       console.buffer.length shouldEqual lines.length
@@ -15,7 +15,7 @@ class LoggerFunctionSuite extends PuritySuite {
   }
 
   test("LoggerFunction.log with level Fatal") {
-    forAll { lines: List[LogLine] ⇒
+    forAll { lines: List[LogLine] =>
       val console = MutableConsole(LogLevel.FatalLevel)
       lines.foreach(console.logger.log)
       console.buffer.length shouldEqual lines.count {
@@ -26,7 +26,7 @@ class LoggerFunctionSuite extends PuritySuite {
   }
 
   test("LoggerFunction.log with level Error") {
-    forAll { lines: List[LogLine] ⇒
+    forAll { lines: List[LogLine] =>
       val console = MutableConsole(LogLevel.ErrorLevel)
       lines.foreach(console.logger.log)
       console.buffer.length shouldEqual lines.count {
@@ -38,7 +38,7 @@ class LoggerFunctionSuite extends PuritySuite {
   }
 
   test("LoggerFunction.log with level Warn") {
-    forAll { lines: List[LogLine] ⇒
+    forAll { lines: List[LogLine] =>
       val console = MutableConsole(LogLevel.WarnLevel)
       lines.foreach(console.logger.log)
       console.buffer.length shouldEqual lines.count {
@@ -51,7 +51,7 @@ class LoggerFunctionSuite extends PuritySuite {
   }
 
   test("LoggerFunction.log with level Info") {
-    forAll { lines: List[LogLine] ⇒
+    forAll { lines: List[LogLine] =>
       val console = MutableConsole(LogLevel.InfoLevel)
       lines.foreach(console.logger.log)
       console.buffer.length shouldEqual lines.count {
@@ -63,7 +63,7 @@ class LoggerFunctionSuite extends PuritySuite {
   }
 
   test("LoggerFunction.log with level Debug") {
-    forAll { lines: List[LogLine] ⇒
+    forAll { lines: List[LogLine] =>
       val console = MutableConsole(LogLevel.DebugLevel)
       lines.foreach(console.logger.log)
       console.buffer.length shouldEqual lines.count {
@@ -74,7 +74,7 @@ class LoggerFunctionSuite extends PuritySuite {
   }
 
   test("LoggerFunction.log with level Off") {
-    forAll { lines: List[LogLine] ⇒
+    forAll { lines: List[LogLine] =>
       val console = MutableConsole(LogLevel.OffLevel)
       lines.foreach(console.logger.log)
       console.buffer.length shouldEqual 0
