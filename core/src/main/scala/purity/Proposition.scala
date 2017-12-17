@@ -35,7 +35,9 @@ import purity.Truth.{False, True}
  * @tparam E type of the failure in case of an False result.
  * @tparam A type to be checked for consistency.
  */
-case class Proposition[+E, -A](check: A => Truth[E]) {
+trait Proposition[+E, -A] {
+
+  def check(a: A): Truth[E]
 
   def contramap[B](f: B => A): Proposition[E, B] =
     Proposition(f andThen check)
@@ -73,7 +75,10 @@ case class Proposition[+E, -A](check: A => Truth[E]) {
   override def toString: String = "Proposition"
 }
 
-object Proposition extends PropositionFunctions with PropositionInstances
+object Proposition extends PropositionFunctions with PropositionInstances {
+
+  def apply[E, A](f: A => Truth[E]): Proposition[E, A] = (a: A) => f(a)
+}
 
 private[purity] trait PropositionFunctions {
 
