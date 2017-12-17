@@ -6,7 +6,7 @@ import org.http4s.dsl.io.uri
 import purity.http4s.JsonEchoService.{Ping, Pong}
 import purity.http4s.JsonClient.ServiceError
 import purity.ScriptSuite
-import purity.logging.{LogLevel, LoggerFunction, MutableConsole}
+import purity.logging.{LogLevel, Logger, MutableConsole}
 
 class JsonClientSpec extends ScriptSuite[IO] {
 
@@ -14,9 +14,9 @@ class JsonClientSpec extends ScriptSuite[IO] {
 
   val console: MutableConsole = MutableConsole(LogLevel.DebugLevel)
 
-  implicit val logger: LoggerFunction = console.logger
+  implicit val logger: Logger[IO] = console.logger
 
-  val response: Independent[ServiceError[IO], Pong] = jsonClient.on(uri("/ping")).post(Ping("pang")).andExpect[Pong]
+  val response: Script[Logger[IO], ServiceError[IO], Pong] = jsonClient.on(uri("/ping")).post(Ping("pang")).andExpect[Pong]
 
   describe("JsonClient") {
 

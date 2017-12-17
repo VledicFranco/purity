@@ -2,7 +2,7 @@ package purity
 
 import cats.effect.IO
 import purity.script.io.{Script, dependencies, find, log, script, scriptE}
-import purity.logging.{ColorPrint, LogLevel, LoggerFunction}
+import purity.logging.{ColorPrint, LogLevel, Logger}
 
 object UserAuth0 {
 
@@ -96,7 +96,7 @@ object UserAuth0 {
       val authServiceToken: String = "1234567890"
     }
 
-  val logger: LoggerFunction = ColorPrint(LogLevel.AllLevel)
+  val logger: Logger = ColorPrint(LogLevel.AllLevel)
 
   def failureHandler(failure: GetUserFailure): Response =
     failure match {

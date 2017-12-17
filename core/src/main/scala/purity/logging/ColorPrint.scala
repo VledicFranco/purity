@@ -1,34 +1,37 @@
 package purity.logging
 
-import purity.logging.LogLevel._
+import cats.effect.IO
 import purity.logging.LogLine._
+
+trait ColorPrint extends Logger[IO] {
+
+  override def logEffect(line: LogLine): IO[Unit] = line match {
+    case Fatal(message, e) =>
+      pr(Console.BOLD + Console.RED + "[FATAL] " + message, e)
+    case Error(message, e) =>
+      pr(Console.RED + "[ERROR] " + message, e)
+    case Warn(message, e) =>
+      pr(Console.YELLOW + "[WARN] " + message, e)
+    case Info(message, e) =>
+      pr(Console.GREEN + "[INFO] " + message, e)
+    case Debug(message, e) =>
+      pr(Console.MAGENTA + "[DEBUG] " + message, e)
+    case Trace(message, e) =>
+      pr(Console.CYAN + "[TRACE] " + message, e)
+  }
+
+  private def pr(message: String, e: Option[Throwable]): IO[Unit] =
+    IO {
+      println(message)
+      e.foreach(_.printStackTrace())
+      print(Console.RESET)
+    }
+}
 
 object ColorPrint {
 
-  def apply(level: LogLevel = AllLevel): LoggerFunction = LoggerFunction({
-    case Fatal(message, e) =>
-      println(Console.BOLD + Console.RED + "[FATAL] " + message)
-      e.foreach(_.printStackTrace())
-      print(Console.RESET)
-    case Error(message, e) =>
-      println(Console.RED + "[ERROR] " + message)
-      e.foreach(_.printStackTrace())
-      print(Console.RESET)
-    case Warn(message, e) =>
-      println(Console.YELLOW + "[WARN] " + message)
-      e.foreach(_.printStackTrace())
-      print(Console.RESET)
-    case Info(message, e) =>
-      println(Console.GREEN + "[INFO] " + message)
-      e.foreach(_.printStackTrace())
-      print(Console.RESET)
-    case Debug(message, e) =>
-      println(Console.MAGENTA + "[DEBUG] " + message)
-      e.foreach(_.printStackTrace())
-      print(Console.RESET)
-    case Trace(message, e) =>
-      println(Console.CYAN + "[TRACE] " + message)
-      e.foreach(_.printStackTrace())
-      print(Console.RESET)
-  }, level)
+  def apply(l: LogLevel): ColorPrint =
+    new ColorPrint {
+      override val level: LogLevel = l
+    }
 }
