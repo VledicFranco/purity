@@ -9,7 +9,7 @@ import org.http4s.circe.CirceInstances
 import org.http4s.dsl.Http4sDsl
 import org.http4s.headers.{Accept, MediaRangeAndQValue}
 import purity.http4s.JsonClient.ServiceError
-import purity.logging.LogLine
+import purity.logging.{LogLine, Logger}
 import purity.script.ScriptDsl
 
 object JsonClient {
@@ -41,7 +41,7 @@ case class JsonClient[F[+_]](
 
   def on(uri: Uri): OnUri = OnUri(uri)
 
-  def fetchAs[A](request: F[Request[F]])(implicit decoder: Decoder[A]): Script[Any, ServiceError[F], A] = {
+  def fetchAs[A](request: F[Request[F]])(implicit decoder: Decoder[A]): Script[Logger[F], ServiceError[F], A] = {
     for {
       r <- liftF(request)
       from = s"${r.method.name}: ${r.uri.renderString}"
@@ -54,7 +54,7 @@ case class JsonClient[F[+_]](
     } yield a._1
   }
 
-  def fetchAs[A](request: Request[F])(implicit decoder: Decoder[A]): Script[Any, ServiceError[F], A] =
+  def fetchAs[A](request: Request[F])(implicit decoder: Decoder[A]): Script[Logger[F], ServiceError[F], A] =
     fetchAs(effect.pure(request))
 
   /** Same as client.fetchAs from http4s, but it lifts the Message error into an F[Either[ServiceError[F], A]]. */
@@ -77,7 +77,7 @@ case class JsonClient[F[+_]](
 
   case class OnUri(uri: Uri) {
 
-    def get[A](implicit decoder: Decoder[A]): Script[Any, ServiceError[F], A] =
+    def get[A](implicit decoder: Decoder[A]): Script[Logger[F], ServiceError[F], A] =
       fetchAs[A](Request[F](method = GET, uri = uri))
 
     def post[A](body: A): PartiallyAppliedRequest[A] =
@@ -86,7 +86,7 @@ case class JsonClient[F[+_]](
 
   case class PartiallyAppliedRequest[A](uri: Uri, body: A) {
 
-    def andExpect[B](implicit encoder: Encoder[A], decoder: Decoder[B]): Script[Any, ServiceError[F], B] =
+    def andExpect[B](implicit encoder: Encoder[A], decoder: Decoder[B]): Script[Logger[F], ServiceError[F], B] =
       for {
         _ <- log.debug(s"POST body: ${encoder(body).pretty(Printer.spaces2)}")
         response <- fetchAs[B](Request.apply[F](method = POST, uri = uri).withBody(body)(effect, circe.jsonEncoderOf))

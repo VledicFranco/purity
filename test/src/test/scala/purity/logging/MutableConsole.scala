@@ -1,5 +1,7 @@
 package purity.logging
 
+import cats.implicits._
+import cats.effect.IO
 import purity.Proposition
 import purity.Truth.{False, True}
 import purity.logging.MutableConsole.ConsoleBuffer
@@ -8,12 +10,19 @@ import scala.collection.mutable
 
 case class MutableConsole(level: LogLevel, buffer: ConsoleBuffer = MutableConsole.emptyBuffer) {
 
-  val logger = LoggerFunction(line => buffer += line, level)
+  val logger: Logger[IO] = Logger[IO](line => IO(buffer += line), level)
 
-  def flush(): List[LogLine] = {
-    val cpy = buffer.toList
-    buffer.clear()
-    cpy
+  def log(line: LogLine): IO[Unit] = logger.log(line)
+
+  def log(lines: List[LogLine]): IO[Unit] = lines.traverse(logger.log).void
+
+  def flush(loglines: IO[Unit]): List[LogLine] = {
+    val io: IO[List[LogLine]] = for {
+      _ <- loglines
+      cpy <- IO(buffer.toList)
+      _ <- IO(buffer.clear())
+    } yield cpy
+    io.unsafeRunSync()
   }
 }
 

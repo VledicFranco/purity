@@ -1,12 +1,13 @@
 package purity.script
 
-import cats.{ Applicative, Functor }
+import cats.effect.Effect
+import cats.{Applicative, Functor, MonadError}
 import purity.logging.LogLine._
-import purity.logging.LogLine
+import purity.logging.{LogLine, Logger}
 
 trait ScriptDsl[F[+_]] {
 
-  type Script[-D, +E, +A] = ScriptT[F, D, E, A]
+  type Script[-Dependencies, +Failures, +Value] = ScriptT[F, Dependencies, Failures, Value]
 
   type Independent[+E, +A] = ScriptT[F, Any, E, A]
 
@@ -16,51 +17,47 @@ trait ScriptDsl[F[+_]] {
 
   type Failed[+E] = ScriptT[F, Any, E, Nothing]
 
-  type SideEffect = ScriptT[F, Any, Nothing, Unit]
+  type SideEffect[-D] = ScriptT[F, D, Nothing, Unit]
 
   type Dependencies[D] = ScriptT[F, D, Nothing, D]
 
-  def build[D, E, A](value: Either[E, A], logs: List[LogLine])(implicit F: Applicative[F]): ScriptT[F, D, E, A] =
-    ScriptT[F, D, E, A](_ => F.pure((logs, value)))
+  type NoDependencies = Any
 
-  def buildNoLogs[D, E, A](value: Either[E, A])(implicit F: Applicative[F]): ScriptT[F, D, E, A] =
-    this.build[D, E, A](value, Nil)
+  def build[D, E, A](value: Either[E, A])(implicit F: Applicative[F]): ScriptT[F, D, E, A] =
+    ScriptT[F, D, E, A](_ => F.pure(value))
 
   def pure[A](a: A)(implicit F: Applicative[F]): Value[A] =
-    this.buildNoLogs(Right(a))
+    this.build(Right(a))
 
-  def raiseError[E](e: E)(implicit F: Applicative[F]): Failed[E] =
-    this.buildNoLogs(Left(e))
+  def raiseFailure[E](e: E)(implicit F: Applicative[F]): Failed[E] =
+    this.build(Left(e))
 
-  def raiseError[E](e: E, logLine: LogLine)(implicit F: Applicative[F]): Failed[E] =
-    this.build(Left(e), List(logLine))
+  def raiseError(e: Throwable)(implicit F: MonadError[F, Throwable]): SideEffect[NoDependencies] =
+    ScriptT(_ => F.raiseError(e))
 
   def fail[E](e: E)(implicit F: Applicative[F]): Failed[E] =
-    this.raiseError(e)
+    this.raiseFailure(e)
 
-  def fail[E](e: E, logLine: LogLine)(implicit F: Applicative[F]): Failed[E] =
-    this.raiseError(e, logLine)
-
-  def find[E, A](e: => E)(opt: Option[A])(implicit F: Applicative[F]): Independent[E, A] =
+  def find[E, A](opt: Option[A])(e: => E)(implicit F: Applicative[F]): Independent[E, A] =
     opt.fold[ScriptT[F, Any, E, A]](fail(e))(pure(_))
 
   def find[E, A](opt: Either[E, A])(implicit F: Applicative[F]): Independent[E, A] =
     opt.fold[ScriptT[F, Any, E, A]](fail(_), pure(_))
 
-  def unit(implicit F: Applicative[F]): SideEffect =
+  def unit(implicit F: Applicative[F]): SideEffect[NoDependencies] =
     this.pure(())
 
-  def start(implicit F: Applicative[F]): SideEffect =
+  def start(implicit F: Applicative[F]): SideEffect[NoDependencies] =
     this.unit
 
   def ok[E](implicit F: Applicative[F]): Independent[E, Unit] =
     this.unit
 
   def liftF[A](sa: F[A])(implicit F: Functor[F]): Value[A] =
-    ScriptT[F, Any, Nothing, A](_ => F.map(sa)(a => (Nil, Right(a))))
+    ScriptT[F, Any, Nothing, A](_ => F.map(sa)(a => Right(a)))
 
   def liftFE[E, A](fae: F[Either[E, A]])(implicit F: Functor[F]): Independent[E, A] =
-    ScriptT[F, Any, E, A](_ => F.map(fae)(ea => (Nil, ea)))
+    ScriptT[F, Any, E, A](_ => F.map(fae)(ea => ea))
 
   def script[A](sa: F[A])(implicit F: Functor[F]): Value[A] =
     this.liftF(sa)
@@ -69,65 +66,65 @@ trait ScriptDsl[F[+_]] {
     this.liftFE(fae)
 
   def dependencies[D](implicit F: Applicative[F]): Dependencies[D] =
-    ScriptT[F, D, Nothing, D](d => F.pure((Nil, Right(d))))
+    ScriptT[F, D, Nothing, D](d => F.pure(Right(d)))
 
   object log {
 
-    def liftLog(logLine: LogLine)(implicit F: Applicative[F]): SideEffect =
-      ScriptT[F, Any, Nothing, Unit](_ => F.pure((List(logLine), Right(()))))
+    def logline(line: LogLine)(implicit F: Effect[F]): SideEffect[Logger[F]] =
+      dependencies[Logger[F]].flatMap(l => script(l.log(line)))
 
-    def debug(message: String)(implicit F: Applicative[F]): SideEffect =
-      liftLog(Debug(message))
+    def debug(message: String)(implicit F: Effect[F]): SideEffect[Logger[F]] =
+      logline(Debug(message))
 
-    def debug(e: Throwable)(implicit F: Applicative[F]): SideEffect =
-      liftLog(Debug(e.getMessage, Some(e)))
+    def debug(e: Throwable)(implicit F: Effect[F]): SideEffect[Logger[F]] =
+      logline(Debug(e.getMessage, Some(e)))
 
-    def debug(message: String, e: Throwable)(implicit F: Applicative[F]): SideEffect =
-      liftLog(Debug(message, Some(e)))
+    def debug(message: String, e: Throwable)(implicit F: Effect[F]): SideEffect[Logger[F]] =
+      logline(Debug(message, Some(e)))
 
-    def error(message: String)(implicit F: Applicative[F]): SideEffect =
-      liftLog(Error(message, None))
+    def error(message: String)(implicit F: Effect[F]): SideEffect[Logger[F]] =
+      logline(Error(message, None))
 
-    def error(e: Throwable)(implicit F: Applicative[F]): SideEffect =
-      liftLog(Error(e.getMessage, Some(e)))
+    def error(e: Throwable)(implicit F: Effect[F]): SideEffect[Logger[F]] =
+      logline(Error(e.getMessage, Some(e)))
 
-    def error(message: String, e: Throwable)(implicit F: Applicative[F]): SideEffect =
-      liftLog(Error(message, Some(e)))
+    def error(message: String, e: Throwable)(implicit F: Effect[F]): SideEffect[Logger[F]] =
+      logline(Error(message, Some(e)))
 
-    def fatal(message: String)(implicit F: Applicative[F]): SideEffect =
-      liftLog(Fatal(message, None))
+    def fatal(message: String)(implicit F: Effect[F]): SideEffect[Logger[F]] =
+      logline(Fatal(message, None))
 
-    def fatal(e: Throwable)(implicit F: Applicative[F]): SideEffect =
-      liftLog(Fatal(e.getMessage, Some(e)))
+    def fatal(e: Throwable)(implicit F: Effect[F]): SideEffect[Logger[F]] =
+      logline(Fatal(e.getMessage, Some(e)))
 
-    def fatal(message: String, e: Throwable)(implicit F: Applicative[F]): SideEffect =
-      liftLog(Fatal(message, Some(e)))
+    def fatal(message: String, e: Throwable)(implicit F: Effect[F]): SideEffect[Logger[F]] =
+      logline(Fatal(message, Some(e)))
 
-    def info(message: String)(implicit F: Applicative[F]): SideEffect =
-      liftLog(Info(message))
+    def info(message: String)(implicit F: Effect[F]): SideEffect[Logger[F]] =
+      logline(Info(message))
 
-    def info(e: Throwable)(implicit F: Applicative[F]): SideEffect =
-      liftLog(Info(e.getMessage, Some(e)))
+    def info(e: Throwable)(implicit F: Effect[F]): SideEffect[Logger[F]] =
+      logline(Info(e.getMessage, Some(e)))
 
-    def info(message: String, e: Throwable)(implicit F: Applicative[F]): SideEffect =
-      liftLog(Info(message, Some(e)))
+    def info(message: String, e: Throwable)(implicit F: Effect[F]): SideEffect[Logger[F]] =
+      logline(Info(message, Some(e)))
 
-    def trace(message: String)(implicit F: Applicative[F]): SideEffect =
-      liftLog(Trace(message))
+    def trace(message: String)(implicit F: Effect[F]): SideEffect[Logger[F]] =
+      logline(Trace(message))
 
-    def trace(e: Throwable)(implicit F: Applicative[F]): SideEffect =
-      liftLog(Trace(e.getMessage, Some(e)))
+    def trace(e: Throwable)(implicit F: Effect[F]): SideEffect[Logger[F]] =
+      logline(Trace(e.getMessage, Some(e)))
 
-    def trace(message: String, e: Throwable)(implicit F: Applicative[F]): SideEffect =
-      liftLog(Trace(message, Some(e)))
+    def trace(message: String, e: Throwable)(implicit F: Effect[F]): SideEffect[Logger[F]] =
+      logline(Trace(message, Some(e)))
 
-    def warn(message: String)(implicit F: Applicative[F]): SideEffect =
-      liftLog(Warn(message))
+    def warn(message: String)(implicit F: Effect[F]): SideEffect[Logger[F]] =
+      logline(Warn(message))
 
-    def warn(e: Throwable)(implicit F: Applicative[F]): SideEffect =
-      liftLog(Warn(e.getMessage, Some(e)))
+    def warn(e: Throwable)(implicit F: Effect[F]): SideEffect[Logger[F]] =
+      logline(Warn(e.getMessage, Some(e)))
 
-    def warn(message: String, e: Throwable)(implicit F: Applicative[F]): SideEffect =
-      liftLog(Warn(message, Some(e)))
+    def warn(message: String, e: Throwable)(implicit F: Effect[F]): SideEffect[Logger[F]] =
+      logline(Warn(message, Some(e)))
   }
 }
