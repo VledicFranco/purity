@@ -14,7 +14,7 @@ import purity.Truth.{ True, False }
  *
  * @tparam E type which encodes possible failures (The False data type will contain a non empty list of these)
  */
-sealed trait Truth[+E] { p ⇒
+sealed trait Truth[+E] { p =>
 
   def isTrue: Boolean
 
@@ -22,7 +22,7 @@ sealed trait Truth[+E] { p ⇒
 
   def counterExamples: NonEmptyList[E]
 
-  def map[B](f: E ⇒ B): Truth[B] =
+  def map[B](f: E => B): Truth[B] =
     if (isFalse) False(counterExamples.map(f))
     else True
 
@@ -40,10 +40,10 @@ sealed trait Truth[+E] { p ⇒
     if (isFalse && q.isFalse) False(counterExamples concatNel q.counterExamples)
     else True
 
-  def ifWhenFalse(f: NonEmptyList[E] ⇒ Boolean): Boolean =
+  def ifWhenFalse(f: NonEmptyList[E] => Boolean): Boolean =
     isFalse && f(counterExamples)
 
-  def fold[A](ifFalse: NonEmptyList[E] ⇒ A)(ifTrue: ⇒ A): A =
+  def fold[A](ifFalse: NonEmptyList[E] => A)(ifTrue: => A): A =
     if (isTrue) ifTrue else ifFalse(counterExamples)
 
   def counterExamplesSet[EE >: E]: Set[EE] = counterExamples.toList.toSet
@@ -75,7 +75,7 @@ private[purity] trait TruthInstances {
 
   implicit def stdFunctorForProposition: Functor[Truth] =
     new Functor[Truth] {
-      override def map[A, B](fa: Truth[A])(f: (A) ⇒ B): Truth[B] = fa.map(f)
+      override def map[A, B](fa: Truth[A])(f: (A) => B): Truth[B] = fa.map(f)
     }
 
   /** Monoid using the && combinator */

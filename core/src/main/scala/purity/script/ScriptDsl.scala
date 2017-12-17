@@ -21,7 +21,7 @@ trait ScriptDsl[F[+_]] {
   type Dependencies[D] = ScriptT[F, D, Nothing, D]
 
   def build[D, E, A](value: Either[E, A], logs: List[LogLine])(implicit F: Applicative[F]): ScriptT[F, D, E, A] =
-    ScriptT[F, D, E, A](_ ⇒ F.pure((logs, value)))
+    ScriptT[F, D, E, A](_ => F.pure((logs, value)))
 
   def buildNoLogs[D, E, A](value: Either[E, A])(implicit F: Applicative[F]): ScriptT[F, D, E, A] =
     this.build[D, E, A](value, Nil)
@@ -57,10 +57,10 @@ trait ScriptDsl[F[+_]] {
     this.unit
 
   def liftF[A](sa: F[A])(implicit F: Functor[F]): Value[A] =
-    ScriptT[F, Any, Nothing, A](_ ⇒ F.map(sa)(a ⇒ (Nil, Right(a))))
+    ScriptT[F, Any, Nothing, A](_ => F.map(sa)(a => (Nil, Right(a))))
 
   def liftFE[E, A](fae: F[Either[E, A]])(implicit F: Functor[F]): Independent[E, A] =
-    ScriptT[F, Any, E, A](_ ⇒ F.map(fae)(ea ⇒ (Nil, ea)))
+    ScriptT[F, Any, E, A](_ => F.map(fae)(ea => (Nil, ea)))
 
   def script[A](sa: F[A])(implicit F: Functor[F]): Value[A] =
     this.liftF(sa)
@@ -69,12 +69,12 @@ trait ScriptDsl[F[+_]] {
     this.liftFE(fae)
 
   def dependencies[D](implicit F: Applicative[F]): Dependencies[D] =
-    ScriptT[F, D, Nothing, D](d ⇒ F.pure((Nil, Right(d))))
+    ScriptT[F, D, Nothing, D](d => F.pure((Nil, Right(d))))
 
   object log {
 
     def liftLog(logLine: LogLine)(implicit F: Applicative[F]): SideEffect =
-      ScriptT[F, Any, Nothing, Unit](_ ⇒ F.pure((List(logLine), Right(()))))
+      ScriptT[F, Any, Nothing, Unit](_ => F.pure((List(logLine), Right(()))))
 
     def debug(message: String)(implicit F: Applicative[F]): SideEffect =
       liftLog(Debug(message))

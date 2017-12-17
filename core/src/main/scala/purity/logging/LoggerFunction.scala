@@ -5,7 +5,7 @@ import cats.kernel.Monoid
 import purity.logging.LogLevel._
 import purity.logging.LogLine._
 
-case class LoggerFunction(f: LogLine ⇒ Unit, level: LogLevel) {
+case class LoggerFunction(f: LogLine => Unit, level: LogLevel) {
 
   def log(line: LogLine): Unit = if (line.level >= level) f(line)
 
