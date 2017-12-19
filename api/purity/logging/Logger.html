@@ -110,49 +110,54 @@
                         <a class="trait" href="LogLevel.html" title=""></a>
                         <a href="LogLevel.html" title="">LogLevel</a>
                       </li><li class="current-entities indented2">
-                        <a class="object" href="" title=""></a>
+                        <a class="object" href="LogLine$.html" title=""></a>
                         <a class="class" href="LogLine.html" title=""></a>
                         <a href="LogLine.html" title="">LogLine</a>
                       </li><li class="current-entities indented2">
                         <a class="object" href="Logger$.html" title=""></a>
-                        <a class="trait" href="Logger.html" title=""></a>
-                        <a href="Logger.html" title="">Logger</a>
+                        <a class="trait" href="" title=""></a>
+                        <a href="" title="">Logger</a>
                       </li>
               </ul>
             </div>
           </div>
           <div id="content">
-            <body class="object value">
+            <body class="trait type">
       <div id="definition">
-        <a href="LogLine.html" title="See companion class"><div class="big-circle object-companion-class">o</div></a>
+        <a href="Logger$.html" title="See companion object"><div class="big-circle trait-companion-object">t</div></a>
         <p id="owner"><a href="../index.html" class="extype" name="purity">purity</a>.<a href="index.html" class="extype" name="purity.logging">logging</a></p>
-        <h1><a href="LogLine.html" title="See companion class">LogLine</a><span class="permalink">
-      <a href="../../purity/logging/LogLine$.html" title="Permalink">
+        <h1><a href="Logger$.html" title="See companion object">Logger</a><span class="permalink">
+      <a href="../../purity/logging/Logger.html" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span></h1>
         <h3><span class="morelinks"><div>
-            Companion <a href="LogLine.html" title="See companion class">class LogLine</a>
+            Companion <a href="Logger$.html" title="See companion object">object Logger</a>
           </div></span></h3>
       </div>
 
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">object</span>
+        <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">LogLine</span>
+        <span class="name">Logger</span><span class="tparams">[<span name="F">F<span class="tparams">[<span name="_">+_</span>]</span></span>]</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.12.4/scala/collection/immutable/List.html#scala.AnyRef" class="extype" name="scala.collection.immutable.List">AnyRef</a></span>
       </span>
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/FrancoAra/purity/tree/master/core/src/main/scala/purity/logging/LogLine.scala" target="_blank">LogLine.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/FrancoAra/purity/tree/master/core/src/main/scala/purity/logging/Logger.scala" target="_blank">Logger.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
           <div class="superTypes hiddenContent"><a href="http://www.scala-lang.org/api/2.12.4/scala/collection/immutable/List.html#scala.AnyRef" class="extype" name="scala.collection.immutable.List">AnyRef</a>, <a href="http://www.scala-lang.org/api/2.12.4/scala/collection/immutable/List.html#scala.Any" class="extype" name="scala.collection.immutable.List">Any</a></div>
-        </div></div>
+        </div><div class="toggleContainer block">
+            <span class="toggle">
+              Known Subclasses
+            </span>
+            <div class="subClasses hiddenContent"><a href="ColorPrint.html" class="extype" name="purity.logging.ColorPrint">ColorPrint</a></div>
+          </div></div>
         
 
       <div id="mbrsel">
@@ -177,7 +182,7 @@
                   <span class="filtertype">Inherited<br />
                   </span>
                   <ol id="linearization">
-                    <li class="in" name="purity.logging.LogLine"><span>LogLine</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                    <li class="in" name="purity.logging.Logger"><span>Logger</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                   </ol>
                 </div><div class="ancestors">
               <span class="filtertype"></span>
@@ -197,116 +202,52 @@
         <div id="allMembers">
         
 
-        <div id="types" class="types members">
-              <h3>Type Members</h3>
-              <ol><li name="purity.logging.LogLine.Debug" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="DebugextendsLogLinewithProductwithSerializable"></a><a id="Debug:Debug"></a>
-      <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#DebugextendsLogLinewithProductwithSerializable" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">case class</span>
-      </span>
-      <span class="symbol">
-        <a title="" href="LogLine$$Debug.html"><span class="name">Debug</span></a><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="e">e: <a href="http://www.scala-lang.org/api/2.12.4/scala/Option.html#scala.Option" class="extype" name="scala.Option">Option</a>[<span class="extype" name="scala.Throwable">Throwable</span>] = <span class="symbol">None</span></span>)</span><span class="result"> extends <a href="LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Product.html#scala.Product" class="extype" name="scala.Product">Product</a> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a></span>
-      </span>
-      
-      
-    </li><li name="purity.logging.LogLine.Error" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="ErrorextendsLogLinewithProductwithSerializable"></a><a id="Error:Error"></a>
-      <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#ErrorextendsLogLinewithProductwithSerializable" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">case class</span>
-      </span>
-      <span class="symbol">
-        <a title="" href="LogLine$$Error.html"><span class="name">Error</span></a><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="e">e: <a href="http://www.scala-lang.org/api/2.12.4/scala/Option.html#scala.Option" class="extype" name="scala.Option">Option</a>[<span class="extype" name="scala.Throwable">Throwable</span>] = <span class="symbol">None</span></span>)</span><span class="result"> extends <a href="LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Product.html#scala.Product" class="extype" name="scala.Product">Product</a> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a></span>
-      </span>
-      
-      
-    </li><li name="purity.logging.LogLine.Fatal" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="FatalextendsLogLinewithProductwithSerializable"></a><a id="Fatal:Fatal"></a>
-      <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#FatalextendsLogLinewithProductwithSerializable" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">case class</span>
-      </span>
-      <span class="symbol">
-        <a title="" href="LogLine$$Fatal.html"><span class="name">Fatal</span></a><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="e">e: <a href="http://www.scala-lang.org/api/2.12.4/scala/Option.html#scala.Option" class="extype" name="scala.Option">Option</a>[<span class="extype" name="scala.Throwable">Throwable</span>] = <span class="symbol">None</span></span>)</span><span class="result"> extends <a href="LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Product.html#scala.Product" class="extype" name="scala.Product">Product</a> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a></span>
-      </span>
-      
-      
-    </li><li name="purity.logging.LogLine.Info" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="InfoextendsLogLinewithProductwithSerializable"></a><a id="Info:Info"></a>
-      <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#InfoextendsLogLinewithProductwithSerializable" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">case class</span>
-      </span>
-      <span class="symbol">
-        <a title="" href="LogLine$$Info.html"><span class="name">Info</span></a><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="e">e: <a href="http://www.scala-lang.org/api/2.12.4/scala/Option.html#scala.Option" class="extype" name="scala.Option">Option</a>[<span class="extype" name="scala.Throwable">Throwable</span>] = <span class="symbol">None</span></span>)</span><span class="result"> extends <a href="LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Product.html#scala.Product" class="extype" name="scala.Product">Product</a> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a></span>
-      </span>
-      
-      
-    </li><li name="purity.logging.LogLine.Trace" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="TraceextendsLogLinewithProductwithSerializable"></a><a id="Trace:Trace"></a>
-      <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#TraceextendsLogLinewithProductwithSerializable" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">case class</span>
-      </span>
-      <span class="symbol">
-        <a title="" href="LogLine$$Trace.html"><span class="name">Trace</span></a><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="e">e: <a href="http://www.scala-lang.org/api/2.12.4/scala/Option.html#scala.Option" class="extype" name="scala.Option">Option</a>[<span class="extype" name="scala.Throwable">Throwable</span>] = <span class="symbol">None</span></span>)</span><span class="result"> extends <a href="LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Product.html#scala.Product" class="extype" name="scala.Product">Product</a> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a></span>
-      </span>
-      
-      
-    </li><li name="purity.logging.LogLine.Warn" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="WarnextendsLogLinewithProductwithSerializable"></a><a id="Warn:Warn"></a>
-      <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#WarnextendsLogLinewithProductwithSerializable" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">case class</span>
-      </span>
-      <span class="symbol">
-        <a title="" href="LogLine$$Warn.html"><span class="name">Warn</span></a><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="e">e: <a href="http://www.scala-lang.org/api/2.12.4/scala/Option.html#scala.Option" class="extype" name="scala.Option">Option</a>[<span class="extype" name="scala.Throwable">Throwable</span>] = <span class="symbol">None</span></span>)</span><span class="result"> extends <a href="LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Product.html#scala.Product" class="extype" name="scala.Product">Product</a> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a></span>
-      </span>
-      
-      
-    </li></ol>
-            </div>
-
         
 
         <div class="values members">
-              <h3>Value Members</h3>
+              <h3>Abstract Value Members</h3>
+              <ol><li name="purity.logging.Logger#level" visbl="prt" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="level:purity.logging.LogLevel"></a><a id="level:LogLevel"></a>
+      <span class="permalink">
+      <a href="../../purity/logging/Logger.html#level:purity.logging.LogLevel" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">level</span><span class="result">: <a href="LogLevel.html" class="extype" name="purity.logging.LogLevel">LogLevel</a></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
+    </li><li name="purity.logging.Logger#logEffect" visbl="prt" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="logEffect(line:purity.logging.LogLine):F[Unit]"></a><a id="logEffect(LogLine):F[Unit]"></a>
+      <span class="permalink">
+      <a href="../../purity/logging/Logger.html#logEffect(line:purity.logging.LogLine):F[Unit]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logEffect</span><span class="params">(<span name="line">line: <a href="LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a></span>)</span><span class="result">: <span class="extype" name="purity.logging.Logger.F">F</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
+    </li></ol>
+            </div>
+
+        <div class="values members">
+              <h3>Concrete Value Members</h3>
               <ol>
                 <li name="scala.AnyRef#!=" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:Any):Boolean"></a><a id="!=(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#!=(x$1:Any):Boolean" title="Permalink">
+      <a href="../../purity/logging/Logger.html#!=(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -322,7 +263,7 @@
     </li><li name="scala.AnyRef###" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="##():Int"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html###():Int" title="Permalink">
+      <a href="../../purity/logging/Logger.html###():Int" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -338,7 +279,7 @@
     </li><li name="scala.AnyRef#==" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="==(x$1:Any):Boolean"></a><a id="==(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#==(x$1:Any):Boolean" title="Permalink">
+      <a href="../../purity/logging/Logger.html#==(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -351,10 +292,26 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="purity.logging.Logger#andThen" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="andThen(that:purity.logging.Logger[F])(implicitev:cats.Applicative[F]):purity.logging.Logger[F]"></a><a id="andThen(Logger[F])(Applicative[F]):Logger[F]"></a>
+      <span class="permalink">
+      <a href="../../purity/logging/Logger.html#andThen(that:purity.logging.Logger[F])(implicitev:cats.Applicative[F]):purity.logging.Logger[F]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">andThen</span><span class="params">(<span name="that">that: <a href="" class="extype" name="purity.logging.Logger">Logger</a>[<span class="extype" name="purity.logging.Logger.F">F</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ev">ev: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="purity.logging.Logger.F">F</span>]</span>)</span><span class="result">: <a href="" class="extype" name="purity.logging.Logger">Logger</a>[<span class="extype" name="purity.logging.Logger.F">F</span>]</span>
+      </span>
+      
+      
     </li><li name="scala.Any#asInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#asInstanceOf[T0]:T0" title="Permalink">
+      <a href="../../purity/logging/Logger.html#asInstanceOf[T0]:T0" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -370,7 +327,7 @@
     </li><li name="scala.AnyRef#clone" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a><a id="clone():AnyRef"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#clone():Object" title="Permalink">
+      <a href="../../purity/logging/Logger.html#clone():Object" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -391,10 +348,10 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="purity.logging.LogLine#debug" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="debug(message:String,e:Throwable):purity.logging.LogLine"></a><a id="debug(String,Throwable):LogLine"></a>
+    </li><li name="purity.logging.Logger#compose" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="compose(that:purity.logging.Logger[F])(implicitev:cats.Applicative[F]):purity.logging.Logger[F]"></a><a id="compose(Logger[F])(Applicative[F]):Logger[F]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#debug(message:String,e:Throwable):purity.logging.LogLine" title="Permalink">
+      <a href="../../purity/logging/Logger.html#compose(that:purity.logging.Logger[F])(implicitev:cats.Applicative[F]):purity.logging.Logger[F]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -403,14 +360,14 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">debug</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <a href="LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a></span>
+        <span class="name">compose</span><span class="params">(<span name="that">that: <a href="" class="extype" name="purity.logging.Logger">Logger</a>[<span class="extype" name="purity.logging.Logger.F">F</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ev">ev: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="purity.logging.Logger.F">F</span>]</span>)</span><span class="result">: <a href="" class="extype" name="purity.logging.Logger">Logger</a>[<span class="extype" name="purity.logging.Logger.F">F</span>]</span>
       </span>
       
       
-    </li><li name="purity.logging.LogLine#debug" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="debug(e:Throwable):purity.logging.LogLine"></a><a id="debug(Throwable):LogLine"></a>
+    </li><li name="purity.logging.Logger#debug" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="debug(message:String,e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]"></a><a id="debug(String,Throwable)(Applicative[F]):F[Unit]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#debug(e:Throwable):purity.logging.LogLine" title="Permalink">
+      <a href="../../purity/logging/Logger.html#debug(message:String,e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -419,14 +376,14 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">debug</span><span class="params">(<span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <a href="LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a></span>
+        <span class="name">debug</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="purity.logging.Logger.F">F</span>]</span>)</span><span class="result">: <span class="extype" name="purity.logging.Logger.F">F</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
       </span>
       
       
-    </li><li name="purity.logging.LogLine#debug" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="debug(message:String):purity.logging.LogLine"></a><a id="debug(String):LogLine"></a>
+    </li><li name="purity.logging.Logger#debug" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="debug(e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]"></a><a id="debug(Throwable)(Applicative[F]):F[Unit]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#debug(message:String):purity.logging.LogLine" title="Permalink">
+      <a href="../../purity/logging/Logger.html#debug(e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -435,14 +392,30 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">debug</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a></span>
+        <span class="name">debug</span><span class="params">(<span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="purity.logging.Logger.F">F</span>]</span>)</span><span class="result">: <span class="extype" name="purity.logging.Logger.F">F</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
+      </span>
+      
+      
+    </li><li name="purity.logging.Logger#debug" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="debug(message:String)(implicitF:cats.Applicative[F]):F[Unit]"></a><a id="debug(String)(Applicative[F]):F[Unit]"></a>
+      <span class="permalink">
+      <a href="../../purity/logging/Logger.html#debug(message:String)(implicitF:cats.Applicative[F]):F[Unit]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">debug</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="purity.logging.Logger.F">F</span>]</span>)</span><span class="result">: <span class="extype" name="purity.logging.Logger.F">F</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
       </span>
       
       
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#eq(x$1:AnyRef):Boolean" title="Permalink">
+      <a href="../../purity/logging/Logger.html#eq(x$1:AnyRef):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -458,7 +431,7 @@
     </li><li name="scala.AnyRef#equals" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="equals(x$1:Any):Boolean"></a><a id="equals(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#equals(x$1:Any):Boolean" title="Permalink">
+      <a href="../../purity/logging/Logger.html#equals(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -471,10 +444,10 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="purity.logging.LogLine#error" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="error(message:String,e:Throwable):purity.logging.LogLine"></a><a id="error(String,Throwable):LogLine"></a>
+    </li><li name="purity.logging.Logger#error" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="error(message:String,e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]"></a><a id="error(String,Throwable)(Applicative[F]):F[Unit]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#error(message:String,e:Throwable):purity.logging.LogLine" title="Permalink">
+      <a href="../../purity/logging/Logger.html#error(message:String,e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -483,14 +456,14 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">error</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <a href="LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a></span>
+        <span class="name">error</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="purity.logging.Logger.F">F</span>]</span>)</span><span class="result">: <span class="extype" name="purity.logging.Logger.F">F</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
       </span>
       
       
-    </li><li name="purity.logging.LogLine#error" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="error(e:Throwable):purity.logging.LogLine"></a><a id="error(Throwable):LogLine"></a>
+    </li><li name="purity.logging.Logger#error" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="error(e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]"></a><a id="error(Throwable)(Applicative[F]):F[Unit]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#error(e:Throwable):purity.logging.LogLine" title="Permalink">
+      <a href="../../purity/logging/Logger.html#error(e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -499,14 +472,14 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">error</span><span class="params">(<span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <a href="LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a></span>
+        <span class="name">error</span><span class="params">(<span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="purity.logging.Logger.F">F</span>]</span>)</span><span class="result">: <span class="extype" name="purity.logging.Logger.F">F</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
       </span>
       
       
-    </li><li name="purity.logging.LogLine#error" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="error(message:String):purity.logging.LogLine"></a><a id="error(String):LogLine"></a>
+    </li><li name="purity.logging.Logger#error" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="error(message:String)(implicitF:cats.Applicative[F]):F[Unit]"></a><a id="error(String)(Applicative[F]):F[Unit]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#error(message:String):purity.logging.LogLine" title="Permalink">
+      <a href="../../purity/logging/Logger.html#error(message:String)(implicitF:cats.Applicative[F]):F[Unit]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -515,14 +488,14 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">error</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a></span>
+        <span class="name">error</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="purity.logging.Logger.F">F</span>]</span>)</span><span class="result">: <span class="extype" name="purity.logging.Logger.F">F</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
       </span>
       
       
-    </li><li name="purity.logging.LogLine#fatal" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="fatal(message:String,e:Throwable):purity.logging.LogLine"></a><a id="fatal(String,Throwable):LogLine"></a>
+    </li><li name="purity.logging.Logger#fatal" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="fatal(message:String,e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]"></a><a id="fatal(String,Throwable)(Applicative[F]):F[Unit]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#fatal(message:String,e:Throwable):purity.logging.LogLine" title="Permalink">
+      <a href="../../purity/logging/Logger.html#fatal(message:String,e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -531,14 +504,14 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">fatal</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <a href="LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a></span>
+        <span class="name">fatal</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="purity.logging.Logger.F">F</span>]</span>)</span><span class="result">: <span class="extype" name="purity.logging.Logger.F">F</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
       </span>
       
       
-    </li><li name="purity.logging.LogLine#fatal" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="fatal(e:Throwable):purity.logging.LogLine"></a><a id="fatal(Throwable):LogLine"></a>
+    </li><li name="purity.logging.Logger#fatal" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="fatal(e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]"></a><a id="fatal(Throwable)(Applicative[F]):F[Unit]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#fatal(e:Throwable):purity.logging.LogLine" title="Permalink">
+      <a href="../../purity/logging/Logger.html#fatal(e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -547,14 +520,14 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">fatal</span><span class="params">(<span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <a href="LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a></span>
+        <span class="name">fatal</span><span class="params">(<span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="purity.logging.Logger.F">F</span>]</span>)</span><span class="result">: <span class="extype" name="purity.logging.Logger.F">F</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
       </span>
       
       
-    </li><li name="purity.logging.LogLine#fatal" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="fatal(message:String):purity.logging.LogLine"></a><a id="fatal(String):LogLine"></a>
+    </li><li name="purity.logging.Logger#fatal" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="fatal(message:String)(implicitF:cats.Applicative[F]):F[Unit]"></a><a id="fatal(String)(Applicative[F]):F[Unit]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#fatal(message:String):purity.logging.LogLine" title="Permalink">
+      <a href="../../purity/logging/Logger.html#fatal(message:String)(implicitF:cats.Applicative[F]):F[Unit]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -563,14 +536,14 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">fatal</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a></span>
+        <span class="name">fatal</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="purity.logging.Logger.F">F</span>]</span>)</span><span class="result">: <span class="extype" name="purity.logging.Logger.F">F</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
       </span>
       
       
     </li><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#finalize():Unit" title="Permalink">
+      <a href="../../purity/logging/Logger.html#finalize():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -592,7 +565,7 @@
     </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#getClass():Class[_]" title="Permalink">
+      <a href="../../purity/logging/Logger.html#getClass():Class[_]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -611,7 +584,7 @@
     </li><li name="scala.AnyRef#hashCode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#hashCode():Int" title="Permalink">
+      <a href="../../purity/logging/Logger.html#hashCode():Int" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -627,10 +600,10 @@
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="purity.logging.LogLine#info" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="info(message:String,e:Throwable):purity.logging.LogLine"></a><a id="info(String,Throwable):LogLine"></a>
+    </li><li name="purity.logging.Logger#info" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="info(message:String,e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]"></a><a id="info(String,Throwable)(Applicative[F]):F[Unit]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#info(message:String,e:Throwable):purity.logging.LogLine" title="Permalink">
+      <a href="../../purity/logging/Logger.html#info(message:String,e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -639,14 +612,14 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">info</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <a href="LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a></span>
+        <span class="name">info</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="purity.logging.Logger.F">F</span>]</span>)</span><span class="result">: <span class="extype" name="purity.logging.Logger.F">F</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
       </span>
       
       
-    </li><li name="purity.logging.LogLine#info" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="info(e:Throwable):purity.logging.LogLine"></a><a id="info(Throwable):LogLine"></a>
+    </li><li name="purity.logging.Logger#info" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="info(e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]"></a><a id="info(Throwable)(Applicative[F]):F[Unit]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#info(e:Throwable):purity.logging.LogLine" title="Permalink">
+      <a href="../../purity/logging/Logger.html#info(e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -655,14 +628,14 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">info</span><span class="params">(<span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <a href="LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a></span>
+        <span class="name">info</span><span class="params">(<span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="purity.logging.Logger.F">F</span>]</span>)</span><span class="result">: <span class="extype" name="purity.logging.Logger.F">F</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
       </span>
       
       
-    </li><li name="purity.logging.LogLine#info" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="info(message:String):purity.logging.LogLine"></a><a id="info(String):LogLine"></a>
+    </li><li name="purity.logging.Logger#info" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="info(message:String)(implicitF:cats.Applicative[F]):F[Unit]"></a><a id="info(String)(Applicative[F]):F[Unit]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#info(message:String):purity.logging.LogLine" title="Permalink">
+      <a href="../../purity/logging/Logger.html#info(message:String)(implicitF:cats.Applicative[F]):F[Unit]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -671,14 +644,14 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">info</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a></span>
+        <span class="name">info</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="purity.logging.Logger.F">F</span>]</span>)</span><span class="result">: <span class="extype" name="purity.logging.Logger.F">F</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
       </span>
       
       
     </li><li name="scala.Any#isInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#isInstanceOf[T0]:Boolean" title="Permalink">
+      <a href="../../purity/logging/Logger.html#isInstanceOf[T0]:Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -691,42 +664,26 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="purity.logging.LogLine#logLineOrder" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="logLineOrder:cats.Order[purity.logging.LogLine]"></a><a id="logLineOrder:Order[LogLine]"></a>
+    </li><li name="purity.logging.Logger#log" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="log(line:purity.logging.LogLine)(implicitF:cats.Applicative[F]):F[Unit]"></a><a id="log(LogLine)(Applicative[F]):F[Unit]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#logLineOrder:cats.Order[purity.logging.LogLine]" title="Permalink">
+      <a href="../../purity/logging/Logger.html#log(line:purity.logging.LogLine)(implicitF:cats.Applicative[F]):F[Unit]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
       <span class="modifier_kind">
-        <span class="modifier">implicit </span>
-        <span class="kind">val</span>
+        <span class="modifier"></span>
+        <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">logLineOrder</span><span class="result">: <span class="extype" name="cats.Order">Order</span>[<a href="LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a>]</span>
-      </span>
-      
-      
-    </li><li name="purity.logging.LogLine#logLineOrdering" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="logLineOrdering:Ordering[purity.logging.LogLine]"></a><a id="logLineOrdering:Ordering[LogLine]"></a>
-      <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#logLineOrdering:Ordering[purity.logging.LogLine]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier">implicit </span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">logLineOrdering</span><span class="result">: <span class="extype" name="scala.Ordering">Ordering</span>[<a href="LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a>]</span>
+        <span class="name">log</span><span class="params">(<span name="line">line: <a href="LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="purity.logging.Logger.F">F</span>]</span>)</span><span class="result">: <span class="extype" name="purity.logging.Logger.F">F</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
       </span>
       
       
     </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#ne(x$1:AnyRef):Boolean" title="Permalink">
+      <a href="../../purity/logging/Logger.html#ne(x$1:AnyRef):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -742,7 +699,7 @@
     </li><li name="scala.AnyRef#notify" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#notify():Unit" title="Permalink">
+      <a href="../../purity/logging/Logger.html#notify():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -761,7 +718,7 @@
     </li><li name="scala.AnyRef#notifyAll" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notifyAll():Unit"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#notifyAll():Unit" title="Permalink">
+      <a href="../../purity/logging/Logger.html#notifyAll():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -780,7 +737,7 @@
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#synchronized[T0](x$1:=&gt;T0):T0" title="Permalink">
+      <a href="../../purity/logging/Logger.html#synchronized[T0](x$1:=&gt;T0):T0" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -796,7 +753,7 @@
     </li><li name="scala.AnyRef#toString" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#toString():String" title="Permalink">
+      <a href="../../purity/logging/Logger.html#toString():String" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -809,10 +766,10 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="purity.logging.LogLine#trace" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="trace(message:String,e:Throwable):purity.logging.LogLine"></a><a id="trace(String,Throwable):LogLine"></a>
+    </li><li name="purity.logging.Logger#trace" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="trace(message:String,e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]"></a><a id="trace(String,Throwable)(Applicative[F]):F[Unit]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#trace(message:String,e:Throwable):purity.logging.LogLine" title="Permalink">
+      <a href="../../purity/logging/Logger.html#trace(message:String,e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -821,14 +778,14 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">trace</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <a href="LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a></span>
+        <span class="name">trace</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="purity.logging.Logger.F">F</span>]</span>)</span><span class="result">: <span class="extype" name="purity.logging.Logger.F">F</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
       </span>
       
       
-    </li><li name="purity.logging.LogLine#trace" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="trace(e:Throwable):purity.logging.LogLine"></a><a id="trace(Throwable):LogLine"></a>
+    </li><li name="purity.logging.Logger#trace" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="trace(e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]"></a><a id="trace(Throwable)(Applicative[F]):F[Unit]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#trace(e:Throwable):purity.logging.LogLine" title="Permalink">
+      <a href="../../purity/logging/Logger.html#trace(e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -837,14 +794,14 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">trace</span><span class="params">(<span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <a href="LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a></span>
+        <span class="name">trace</span><span class="params">(<span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="purity.logging.Logger.F">F</span>]</span>)</span><span class="result">: <span class="extype" name="purity.logging.Logger.F">F</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
       </span>
       
       
-    </li><li name="purity.logging.LogLine#trace" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="trace(message:String):purity.logging.LogLine"></a><a id="trace(String):LogLine"></a>
+    </li><li name="purity.logging.Logger#trace" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="trace(message:String)(implicitF:cats.Applicative[F]):F[Unit]"></a><a id="trace(String)(Applicative[F]):F[Unit]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#trace(message:String):purity.logging.LogLine" title="Permalink">
+      <a href="../../purity/logging/Logger.html#trace(message:String)(implicitF:cats.Applicative[F]):F[Unit]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -853,14 +810,14 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">trace</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a></span>
+        <span class="name">trace</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="purity.logging.Logger.F">F</span>]</span>)</span><span class="result">: <span class="extype" name="purity.logging.Logger.F">F</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
       </span>
       
       
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#wait():Unit" title="Permalink">
+      <a href="../../purity/logging/Logger.html#wait():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -882,7 +839,7 @@
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait(x$1:Long,x$2:Int):Unit"></a><a id="wait(Long,Int):Unit"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#wait(x$1:Long,x$2:Int):Unit" title="Permalink">
+      <a href="../../purity/logging/Logger.html#wait(x$1:Long,x$2:Int):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -904,7 +861,7 @@
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait(x$1:Long):Unit"></a><a id="wait(Long):Unit"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#wait(x$1:Long):Unit" title="Permalink">
+      <a href="../../purity/logging/Logger.html#wait(x$1:Long):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -925,10 +882,10 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="purity.logging.LogLine#warn" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="warn(message:String,e:Throwable):purity.logging.LogLine"></a><a id="warn(String,Throwable):LogLine"></a>
+    </li><li name="purity.logging.Logger#warn" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="warn(message:String,e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]"></a><a id="warn(String,Throwable)(Applicative[F]):F[Unit]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#warn(message:String,e:Throwable):purity.logging.LogLine" title="Permalink">
+      <a href="../../purity/logging/Logger.html#warn(message:String,e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -937,14 +894,14 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">warn</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <a href="LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a></span>
+        <span class="name">warn</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="purity.logging.Logger.F">F</span>]</span>)</span><span class="result">: <span class="extype" name="purity.logging.Logger.F">F</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
       </span>
       
       
-    </li><li name="purity.logging.LogLine#warn" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="warn(e:Throwable):purity.logging.LogLine"></a><a id="warn(Throwable):LogLine"></a>
+    </li><li name="purity.logging.Logger#warn" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="warn(e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]"></a><a id="warn(Throwable)(Applicative[F]):F[Unit]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#warn(e:Throwable):purity.logging.LogLine" title="Permalink">
+      <a href="../../purity/logging/Logger.html#warn(e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -953,14 +910,14 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">warn</span><span class="params">(<span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <a href="LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a></span>
+        <span class="name">warn</span><span class="params">(<span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="purity.logging.Logger.F">F</span>]</span>)</span><span class="result">: <span class="extype" name="purity.logging.Logger.F">F</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
       </span>
       
       
-    </li><li name="purity.logging.LogLine#warn" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="warn(message:String):purity.logging.LogLine"></a><a id="warn(String):LogLine"></a>
+    </li><li name="purity.logging.Logger#warn" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="warn(message:String)(implicitF:cats.Applicative[F]):F[Unit]"></a><a id="warn(String)(Applicative[F]):F[Unit]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/LogLine$.html#warn(message:String):purity.logging.LogLine" title="Permalink">
+      <a href="../../purity/logging/Logger.html#warn(message:String)(implicitF:cats.Applicative[F]):F[Unit]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -969,7 +926,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">warn</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a></span>
+        <span class="name">warn</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="purity.logging.Logger.F">F</span>]</span>)</span><span class="result">: <span class="extype" name="purity.logging.Logger.F">F</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
       </span>
       
       

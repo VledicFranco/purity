@@ -314,6 +314,22 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Http4sDsl</dd></dl></div>
+    </li><li name="purity.script.ScriptDsl.NoDependencies" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="NoDependencies=Any"></a><a id="NoDependencies:NoDependencies"></a>
+      <span class="permalink">
+      <a href="../../purity/http4s/JsonClient.html#NoDependencies=Any" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">NoDependencies</span><span class="result alias"> = <a href="http://www.scala-lang.org/api/2.12.4/scala/collection/immutable/List.html#scala.Any" class="extype" name="scala.collection.immutable.List">Any</a></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../script/ScriptDsl.html" class="extype" name="purity.script.ScriptDsl">ScriptDsl</a></dd></dl></div>
     </li><li name="purity.http4s.JsonClient.OnUri" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="OnUriextendsProductwithSerializable"></a><a id="OnUri:OnUri"></a>
       <span class="permalink">
@@ -475,9 +491,9 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Http4sDsl</dd></dl></div>
     </li><li name="purity.script.ScriptDsl.Script" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="Script[-D,+E,+A]=purity.script.ScriptT[F,D,E,A]"></a><a id="Script[-D,+E,+A]:Script[D,E,A]"></a>
+      <a id="Script[-Dependencies,+Failures,+Value]=purity.script.ScriptT[F,Dependencies,Failures,Value]"></a><a id="Script[-Dependencies,+Failures,+Value]:Script[Dependencies,Failures,Value]"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/JsonClient.html#Script[-D,+E,+A]=purity.script.ScriptT[F,D,E,A]" title="Permalink">
+      <a href="../../purity/http4s/JsonClient.html#Script[-Dependencies,+Failures,+Value]=purity.script.ScriptT[F,Dependencies,Failures,Value]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -486,14 +502,14 @@
         <span class="kind">type</span>
       </span>
       <span class="symbol">
-        <span class="name">Script</span><span class="tparams">[<span name="D">-D</span>, <span name="E">+E</span>, <span name="A">+A</span>]</span><span class="result alias"> = <a href="../script/ScriptT.html" class="extype" name="purity.script.ScriptT">ScriptT</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>, <span class="extype" name="purity.script.ScriptDsl.Script.D">D</span>, <span class="extype" name="purity.script.ScriptDsl.Script.E">E</span>, <span class="extype" name="purity.script.ScriptDsl.Script.A">A</span>]</span>
+        <span class="name">Script</span><span class="tparams">[<span name="Dependencies">-Dependencies</span>, <span name="Failures">+Failures</span>, <span name="Value">+Value</span>]</span><span class="result alias"> = <a href="../script/ScriptT.html" class="extype" name="purity.script.ScriptT">ScriptT</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>, <span class="extype" name="purity.script.ScriptDsl.Script.Dependencies">Dependencies</span>, <span class="extype" name="purity.script.ScriptDsl.Script.Failures">Failures</span>, <span class="extype" name="purity.script.ScriptDsl.Script.Value">Value</span>]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../script/ScriptDsl.html" class="extype" name="purity.script.ScriptDsl">ScriptDsl</a></dd></dl></div>
     </li><li name="purity.script.ScriptDsl.SideEffect" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="SideEffect=purity.script.ScriptT[F,Any,Nothing,Unit]"></a><a id="SideEffect:SideEffect"></a>
+      <a id="SideEffect[-D]=purity.script.ScriptT[F,D,Nothing,Unit]"></a><a id="SideEffect[-D]:SideEffect[D]"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/JsonClient.html#SideEffect=purity.script.ScriptT[F,Any,Nothing,Unit]" title="Permalink">
+      <a href="../../purity/http4s/JsonClient.html#SideEffect[-D]=purity.script.ScriptT[F,D,Nothing,Unit]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -502,7 +518,7 @@
         <span class="kind">type</span>
       </span>
       <span class="symbol">
-        <span class="name">SideEffect</span><span class="result alias"> = <a href="../script/ScriptT.html" class="extype" name="purity.script.ScriptT">ScriptT</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>, <a href="http://www.scala-lang.org/api/2.12.4/scala/collection/immutable/List.html#scala.Any" class="extype" name="scala.collection.immutable.List">Any</a>, <a href="http://www.scala-lang.org/api/2.12.4/scala/collection/immutable/List.html#scala.Nothing" class="extype" name="scala.collection.immutable.List">Nothing</a>, <a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
+        <span class="name">SideEffect</span><span class="tparams">[<span name="D">-D</span>]</span><span class="result alias"> = <a href="../script/ScriptT.html" class="extype" name="purity.script.ScriptT">ScriptT</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>, <span class="extype" name="purity.script.ScriptDsl.SideEffect.D">D</span>, <a href="http://www.scala-lang.org/api/2.12.4/scala/collection/immutable/List.html#scala.Nothing" class="extype" name="scala.collection.immutable.List">Nothing</a>, <a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../script/ScriptDsl.html" class="extype" name="purity.script.ScriptDsl">ScriptDsl</a></dd></dl></div>
@@ -1939,9 +1955,9 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>EntityDecoderInstances</dd></dl></div>
     </li><li name="purity.script.ScriptDsl#build" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="build[D,E,A](value:Either[E,A],logs:List[purity.logging.LogLine])(implicitF:cats.Applicative[F]):purity.script.ScriptT[F,D,E,A]"></a><a id="build[D,E,A](Either[E,A],List[LogLine])(Applicative[F]):ScriptT[F,D,E,A]"></a>
+      <a id="build[D,E,A](value:Either[E,A])(implicitF:cats.Applicative[F]):purity.script.ScriptT[F,D,E,A]"></a><a id="build[D,E,A](Either[E,A])(Applicative[F]):ScriptT[F,D,E,A]"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/JsonClient.html#build[D,E,A](value:Either[E,A],logs:List[purity.logging.LogLine])(implicitF:cats.Applicative[F]):purity.script.ScriptT[F,D,E,A]" title="Permalink">
+      <a href="../../purity/http4s/JsonClient.html#build[D,E,A](value:Either[E,A])(implicitF:cats.Applicative[F]):purity.script.ScriptT[F,D,E,A]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -1950,23 +1966,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">build</span><span class="tparams">[<span name="D">D</span>, <span name="E">E</span>, <span name="A">A</span>]</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Either">Either</span>[<span class="extype" name="purity.script.ScriptDsl.build.E">E</span>, <span class="extype" name="purity.script.ScriptDsl.build.A">A</span>]</span>, <span name="logs">logs: <span class="extype" name="scala.List">List</span>[<a href="../logging/LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>]</span>)</span><span class="result">: <a href="../script/ScriptT.html" class="extype" name="purity.script.ScriptT">ScriptT</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>, <span class="extype" name="purity.script.ScriptDsl.build.D">D</span>, <span class="extype" name="purity.script.ScriptDsl.build.E">E</span>, <span class="extype" name="purity.script.ScriptDsl.build.A">A</span>]</span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../script/ScriptDsl.html" class="extype" name="purity.script.ScriptDsl">ScriptDsl</a></dd></dl></div>
-    </li><li name="purity.script.ScriptDsl#buildNoLogs" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="buildNoLogs[D,E,A](value:Either[E,A])(implicitF:cats.Applicative[F]):purity.script.ScriptT[F,D,E,A]"></a><a id="buildNoLogs[D,E,A](Either[E,A])(Applicative[F]):ScriptT[F,D,E,A]"></a>
-      <span class="permalink">
-      <a href="../../purity/http4s/JsonClient.html#buildNoLogs[D,E,A](value:Either[E,A])(implicitF:cats.Applicative[F]):purity.script.ScriptT[F,D,E,A]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">buildNoLogs</span><span class="tparams">[<span name="D">D</span>, <span name="E">E</span>, <span name="A">A</span>]</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Either">Either</span>[<span class="extype" name="purity.script.ScriptDsl.buildNoLogs.E">E</span>, <span class="extype" name="purity.script.ScriptDsl.buildNoLogs.A">A</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>]</span>)</span><span class="result">: <a href="../script/ScriptT.html" class="extype" name="purity.script.ScriptT">ScriptT</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>, <span class="extype" name="purity.script.ScriptDsl.buildNoLogs.D">D</span>, <span class="extype" name="purity.script.ScriptDsl.buildNoLogs.E">E</span>, <span class="extype" name="purity.script.ScriptDsl.buildNoLogs.A">A</span>]</span>
+        <span class="name">build</span><span class="tparams">[<span name="D">D</span>, <span name="E">E</span>, <span name="A">A</span>]</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Either">Either</span>[<span class="extype" name="purity.script.ScriptDsl.build.E">E</span>, <span class="extype" name="purity.script.ScriptDsl.build.A">A</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>]</span>)</span><span class="result">: <a href="../script/ScriptT.html" class="extype" name="purity.script.ScriptT">ScriptT</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>, <span class="extype" name="purity.script.ScriptDsl.build.D">D</span>, <span class="extype" name="purity.script.ScriptDsl.build.E">E</span>, <span class="extype" name="purity.script.ScriptDsl.build.A">A</span>]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../script/ScriptDsl.html" class="extype" name="purity.script.ScriptDsl">ScriptDsl</a></dd></dl></div>
@@ -2203,22 +2203,6 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>EntityDecoderInstances</dd></dl></div>
     </li><li name="purity.script.ScriptDsl#fail" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="fail[E](e:E,logLine:purity.logging.LogLine)(implicitF:cats.Applicative[F]):ScriptDsl.this.Failed[E]"></a><a id="fail[E](E,LogLine)(Applicative[F]):Failed[E]"></a>
-      <span class="permalink">
-      <a href="../../purity/http4s/JsonClient.html#fail[E](e:E,logLine:purity.logging.LogLine)(implicitF:cats.Applicative[F]):ScriptDsl.this.Failed[E]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">fail</span><span class="tparams">[<span name="E">E</span>]</span><span class="params">(<span name="e">e: <span class="extype" name="purity.script.ScriptDsl.fail.E">E</span></span>, <span name="logLine">logLine: <a href="../logging/LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>]</span>)</span><span class="result">: <a href="#Failed[+E]=purity.script.ScriptT[F,Any,E,Nothing]" class="extmbr" name="purity.http4s.JsonClient.Failed">Failed</a>[<span class="extype" name="purity.script.ScriptDsl.fail.E">E</span>]</span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../script/ScriptDsl.html" class="extype" name="purity.script.ScriptDsl">ScriptDsl</a></dd></dl></div>
-    </li><li name="purity.script.ScriptDsl#fail" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="fail[E](e:E)(implicitF:cats.Applicative[F]):ScriptDsl.this.Failed[E]"></a><a id="fail[E](E)(Applicative[F]):Failed[E]"></a>
       <span class="permalink">
       <a href="../../purity/http4s/JsonClient.html#fail[E](e:E)(implicitF:cats.Applicative[F]):ScriptDsl.this.Failed[E]" title="Permalink">
@@ -2235,9 +2219,9 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../script/ScriptDsl.html" class="extype" name="purity.script.ScriptDsl">ScriptDsl</a></dd></dl></div>
     </li><li name="purity.http4s.JsonClient#fetchAs" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="fetchAs[A](request:org.http4s.Request[F])(implicitdecoder:io.circe.Decoder[A]):JsonClient.this.Script[Any,purity.http4s.JsonClient.ServiceError[F],A]"></a><a id="fetchAs[A](Request[F])(Decoder[A]):Script[Any,ServiceError[F],A]"></a>
+      <a id="fetchAs[A](request:org.http4s.Request[F])(implicitdecoder:io.circe.Decoder[A]):JsonClient.this.Script[purity.logging.Logger[F],purity.http4s.JsonClient.ServiceError[F],A]"></a><a id="fetchAs[A](Request[F])(Decoder[A]):Script[Logger[F],ServiceError[F],A]"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/JsonClient.html#fetchAs[A](request:org.http4s.Request[F])(implicitdecoder:io.circe.Decoder[A]):JsonClient.this.Script[Any,purity.http4s.JsonClient.ServiceError[F],A]" title="Permalink">
+      <a href="../../purity/http4s/JsonClient.html#fetchAs[A](request:org.http4s.Request[F])(implicitdecoder:io.circe.Decoder[A]):JsonClient.this.Script[purity.logging.Logger[F],purity.http4s.JsonClient.ServiceError[F],A]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -2246,14 +2230,14 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">fetchAs</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="request">request: <span class="extype" name="org.http4s.Request">Request</span>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="decoder">decoder: <a href="https://circe.github.io/circe/api/io/circe/Decoder.html#io.circe.Decoder" class="extype" name="io.circe.Decoder">Decoder</a>[<span class="extype" name="purity.http4s.JsonClient.fetchAs.A">A</span>]</span>)</span><span class="result">: <a href="#Script[-D,+E,+A]=purity.script.ScriptT[F,D,E,A]" class="extmbr" name="purity.http4s.JsonClient.Script">Script</a>[<a href="http://www.scala-lang.org/api/2.12.4/scala/collection/immutable/List.html#scala.Any" class="extype" name="scala.collection.immutable.List">Any</a>, <a href="JsonClient$$ServiceError.html" class="extype" name="purity.http4s.JsonClient.ServiceError">ServiceError</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>], <span class="extype" name="purity.http4s.JsonClient.fetchAs.A">A</span>]</span>
+        <span class="name">fetchAs</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="request">request: <span class="extype" name="org.http4s.Request">Request</span>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="decoder">decoder: <a href="https://circe.github.io/circe/api/io/circe/Decoder.html#io.circe.Decoder" class="extype" name="io.circe.Decoder">Decoder</a>[<span class="extype" name="purity.http4s.JsonClient.fetchAs.A">A</span>]</span>)</span><span class="result">: <a href="#Script[-Dependencies,+Failures,+Value]=purity.script.ScriptT[F,Dependencies,Failures,Value]" class="extmbr" name="purity.http4s.JsonClient.Script">Script</a>[<a href="../logging/Logger.html" class="extype" name="purity.logging.Logger">Logger</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>], <a href="JsonClient$$ServiceError.html" class="extype" name="purity.http4s.JsonClient.ServiceError">ServiceError</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>], <span class="extype" name="purity.http4s.JsonClient.fetchAs.A">A</span>]</span>
       </span>
       
       
     </li><li name="purity.http4s.JsonClient#fetchAs" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="fetchAs[A](request:F[org.http4s.Request[F]])(implicitdecoder:io.circe.Decoder[A]):JsonClient.this.Script[Any,purity.http4s.JsonClient.ServiceError[F],A]"></a><a id="fetchAs[A](F[Request[F]])(Decoder[A]):Script[Any,ServiceError[F],A]"></a>
+      <a id="fetchAs[A](request:F[org.http4s.Request[F]])(implicitdecoder:io.circe.Decoder[A]):JsonClient.this.Script[purity.logging.Logger[F],purity.http4s.JsonClient.ServiceError[F],A]"></a><a id="fetchAs[A](F[Request[F]])(Decoder[A]):Script[Logger[F],ServiceError[F],A]"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/JsonClient.html#fetchAs[A](request:F[org.http4s.Request[F]])(implicitdecoder:io.circe.Decoder[A]):JsonClient.this.Script[Any,purity.http4s.JsonClient.ServiceError[F],A]" title="Permalink">
+      <a href="../../purity/http4s/JsonClient.html#fetchAs[A](request:F[org.http4s.Request[F]])(implicitdecoder:io.circe.Decoder[A]):JsonClient.this.Script[purity.logging.Logger[F],purity.http4s.JsonClient.ServiceError[F],A]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -2262,7 +2246,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">fetchAs</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="request">request: <span class="extype" name="purity.http4s.JsonClient.F">F</span>[<span class="extype" name="org.http4s.Request">Request</span>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>]]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="decoder">decoder: <a href="https://circe.github.io/circe/api/io/circe/Decoder.html#io.circe.Decoder" class="extype" name="io.circe.Decoder">Decoder</a>[<span class="extype" name="purity.http4s.JsonClient.fetchAs.A">A</span>]</span>)</span><span class="result">: <a href="#Script[-D,+E,+A]=purity.script.ScriptT[F,D,E,A]" class="extmbr" name="purity.http4s.JsonClient.Script">Script</a>[<a href="http://www.scala-lang.org/api/2.12.4/scala/collection/immutable/List.html#scala.Any" class="extype" name="scala.collection.immutable.List">Any</a>, <a href="JsonClient$$ServiceError.html" class="extype" name="purity.http4s.JsonClient.ServiceError">ServiceError</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>], <span class="extype" name="purity.http4s.JsonClient.fetchAs.A">A</span>]</span>
+        <span class="name">fetchAs</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="request">request: <span class="extype" name="purity.http4s.JsonClient.F">F</span>[<span class="extype" name="org.http4s.Request">Request</span>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>]]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="decoder">decoder: <a href="https://circe.github.io/circe/api/io/circe/Decoder.html#io.circe.Decoder" class="extype" name="io.circe.Decoder">Decoder</a>[<span class="extype" name="purity.http4s.JsonClient.fetchAs.A">A</span>]</span>)</span><span class="result">: <a href="#Script[-Dependencies,+Failures,+Value]=purity.script.ScriptT[F,Dependencies,Failures,Value]" class="extmbr" name="purity.http4s.JsonClient.Script">Script</a>[<a href="../logging/Logger.html" class="extype" name="purity.logging.Logger">Logger</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>], <a href="JsonClient$$ServiceError.html" class="extype" name="purity.http4s.JsonClient.ServiceError">ServiceError</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>], <span class="extype" name="purity.http4s.JsonClient.fetchAs.A">A</span>]</span>
       </span>
       
       
@@ -2337,9 +2321,9 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../script/ScriptDsl.html" class="extype" name="purity.script.ScriptDsl">ScriptDsl</a></dd></dl></div>
     </li><li name="purity.script.ScriptDsl#find" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="find[E,A](e:=&gt;E)(opt:Option[A])(implicitF:cats.Applicative[F]):ScriptDsl.this.Independent[E,A]"></a><a id="find[E,A](⇒E)(Option[A])(Applicative[F]):Independent[E,A]"></a>
+      <a id="find[E,A](opt:Option[A])(e:=&gt;E)(implicitF:cats.Applicative[F]):ScriptDsl.this.Independent[E,A]"></a><a id="find[E,A](Option[A])(⇒E)(Applicative[F]):Independent[E,A]"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/JsonClient.html#find[E,A](e:=&gt;E)(opt:Option[A])(implicitF:cats.Applicative[F]):ScriptDsl.this.Independent[E,A]" title="Permalink">
+      <a href="../../purity/http4s/JsonClient.html#find[E,A](opt:Option[A])(e:=&gt;E)(implicitF:cats.Applicative[F]):ScriptDsl.this.Independent[E,A]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -2348,7 +2332,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">find</span><span class="tparams">[<span name="E">E</span>, <span name="A">A</span>]</span><span class="params">(<span name="e">e: ⇒ <span class="extype" name="purity.script.ScriptDsl.find.E">E</span></span>)</span><span class="params">(<span name="opt">opt: <a href="http://www.scala-lang.org/api/2.12.4/scala/Option.html#scala.Option" class="extype" name="scala.Option">Option</a>[<span class="extype" name="purity.script.ScriptDsl.find.A">A</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>]</span>)</span><span class="result">: <a href="#Independent[+E,+A]=purity.script.ScriptT[F,Any,E,A]" class="extmbr" name="purity.http4s.JsonClient.Independent">Independent</a>[<span class="extype" name="purity.script.ScriptDsl.find.E">E</span>, <span class="extype" name="purity.script.ScriptDsl.find.A">A</span>]</span>
+        <span class="name">find</span><span class="tparams">[<span name="E">E</span>, <span name="A">A</span>]</span><span class="params">(<span name="opt">opt: <a href="http://www.scala-lang.org/api/2.12.4/scala/Option.html#scala.Option" class="extype" name="scala.Option">Option</a>[<span class="extype" name="purity.script.ScriptDsl.find.A">A</span>]</span>)</span><span class="params">(<span name="e">e: ⇒ <span class="extype" name="purity.script.ScriptDsl.find.E">E</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>]</span>)</span><span class="result">: <a href="#Independent[+E,+A]=purity.script.ScriptT[F,Any,E,A]" class="extmbr" name="purity.http4s.JsonClient.Independent">Independent</a>[<span class="extype" name="purity.script.ScriptDsl.find.E">E</span>, <span class="extype" name="purity.script.ScriptDsl.find.A">A</span>]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../script/ScriptDsl.html" class="extype" name="purity.script.ScriptDsl">ScriptDsl</a></dd></dl></div>
@@ -3706,9 +3690,9 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>QValueInstances</dd></dl></div>
     </li><li name="purity.script.ScriptDsl#raiseError" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="raiseError[E](e:E,logLine:purity.logging.LogLine)(implicitF:cats.Applicative[F]):ScriptDsl.this.Failed[E]"></a><a id="raiseError[E](E,LogLine)(Applicative[F]):Failed[E]"></a>
+      <a id="raiseError(e:Throwable)(implicitF:cats.MonadError[F,Throwable]):ScriptDsl.this.SideEffect[ScriptDsl.this.NoDependencies]"></a><a id="raiseError(Throwable)(MonadError[F,Throwable]):SideEffect[NoDependencies]"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/JsonClient.html#raiseError[E](e:E,logLine:purity.logging.LogLine)(implicitF:cats.Applicative[F]):ScriptDsl.this.Failed[E]" title="Permalink">
+      <a href="../../purity/http4s/JsonClient.html#raiseError(e:Throwable)(implicitF:cats.MonadError[F,Throwable]):ScriptDsl.this.SideEffect[ScriptDsl.this.NoDependencies]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -3717,14 +3701,14 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">raiseError</span><span class="tparams">[<span name="E">E</span>]</span><span class="params">(<span name="e">e: <span class="extype" name="purity.script.ScriptDsl.raiseError.E">E</span></span>, <span name="logLine">logLine: <a href="../logging/LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>]</span>)</span><span class="result">: <a href="#Failed[+E]=purity.script.ScriptT[F,Any,E,Nothing]" class="extmbr" name="purity.http4s.JsonClient.Failed">Failed</a>[<span class="extype" name="purity.script.ScriptDsl.raiseError.E">E</span>]</span>
+        <span class="name">raiseError</span><span class="params">(<span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/MonadError.html#cats.MonadError" class="extype" name="cats.MonadError">MonadError</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>, <span class="extype" name="scala.Throwable">Throwable</span>]</span>)</span><span class="result">: <a href="#SideEffect[-D]=purity.script.ScriptT[F,D,Nothing,Unit]" class="extmbr" name="purity.http4s.JsonClient.SideEffect">SideEffect</a>[<a href="#NoDependencies=Any" class="extmbr" name="purity.http4s.JsonClient.NoDependencies">NoDependencies</a>]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../script/ScriptDsl.html" class="extype" name="purity.script.ScriptDsl">ScriptDsl</a></dd></dl></div>
-    </li><li name="purity.script.ScriptDsl#raiseError" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="raiseError[E](e:E)(implicitF:cats.Applicative[F]):ScriptDsl.this.Failed[E]"></a><a id="raiseError[E](E)(Applicative[F]):Failed[E]"></a>
+    </li><li name="purity.script.ScriptDsl#raiseFailure" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="raiseFailure[E](e:E)(implicitF:cats.Applicative[F]):ScriptDsl.this.Failed[E]"></a><a id="raiseFailure[E](E)(Applicative[F]):Failed[E]"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/JsonClient.html#raiseError[E](e:E)(implicitF:cats.Applicative[F]):ScriptDsl.this.Failed[E]" title="Permalink">
+      <a href="../../purity/http4s/JsonClient.html#raiseFailure[E](e:E)(implicitF:cats.Applicative[F]):ScriptDsl.this.Failed[E]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -3733,7 +3717,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">raiseError</span><span class="tparams">[<span name="E">E</span>]</span><span class="params">(<span name="e">e: <span class="extype" name="purity.script.ScriptDsl.raiseError.E">E</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>]</span>)</span><span class="result">: <a href="#Failed[+E]=purity.script.ScriptT[F,Any,E,Nothing]" class="extmbr" name="purity.http4s.JsonClient.Failed">Failed</a>[<span class="extype" name="purity.script.ScriptDsl.raiseError.E">E</span>]</span>
+        <span class="name">raiseFailure</span><span class="tparams">[<span name="E">E</span>]</span><span class="params">(<span name="e">e: <span class="extype" name="purity.script.ScriptDsl.raiseFailure.E">E</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>]</span>)</span><span class="result">: <a href="#Failed[+E]=purity.script.ScriptT[F,Any,E,Nothing]" class="extmbr" name="purity.http4s.JsonClient.Failed">Failed</a>[<span class="extype" name="purity.script.ScriptDsl.raiseFailure.E">E</span>]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../script/ScriptDsl.html" class="extype" name="purity.script.ScriptDsl">ScriptDsl</a></dd></dl></div>
@@ -3866,9 +3850,9 @@
       
       
     </li><li name="purity.script.ScriptDsl#start" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="start(implicitF:cats.Applicative[F]):ScriptDsl.this.SideEffect"></a><a id="start(Applicative[F]):SideEffect"></a>
+      <a id="start(implicitF:cats.Applicative[F]):ScriptDsl.this.SideEffect[ScriptDsl.this.NoDependencies]"></a><a id="start(Applicative[F]):SideEffect[NoDependencies]"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/JsonClient.html#start(implicitF:cats.Applicative[F]):ScriptDsl.this.SideEffect" title="Permalink">
+      <a href="../../purity/http4s/JsonClient.html#start(implicitF:cats.Applicative[F]):ScriptDsl.this.SideEffect[ScriptDsl.this.NoDependencies]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -3877,7 +3861,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">start</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>]</span>)</span><span class="result">: <a href="#SideEffect=purity.script.ScriptT[F,Any,Nothing,Unit]" class="extmbr" name="purity.http4s.JsonClient.SideEffect">SideEffect</a></span>
+        <span class="name">start</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>]</span>)</span><span class="result">: <a href="#SideEffect[-D]=purity.script.ScriptT[F,D,Nothing,Unit]" class="extmbr" name="purity.http4s.JsonClient.SideEffect">SideEffect</a>[<a href="#NoDependencies=Any" class="extmbr" name="purity.http4s.JsonClient.NoDependencies">NoDependencies</a>]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../script/ScriptDsl.html" class="extype" name="purity.script.ScriptDsl">ScriptDsl</a></dd></dl></div>
@@ -3962,9 +3946,9 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>EntityDecoderInstances</dd></dl></div>
     </li><li name="purity.script.ScriptDsl#unit" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="unit(implicitF:cats.Applicative[F]):ScriptDsl.this.SideEffect"></a><a id="unit(Applicative[F]):SideEffect"></a>
+      <a id="unit(implicitF:cats.Applicative[F]):ScriptDsl.this.SideEffect[ScriptDsl.this.NoDependencies]"></a><a id="unit(Applicative[F]):SideEffect[NoDependencies]"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/JsonClient.html#unit(implicitF:cats.Applicative[F]):ScriptDsl.this.SideEffect" title="Permalink">
+      <a href="../../purity/http4s/JsonClient.html#unit(implicitF:cats.Applicative[F]):ScriptDsl.this.SideEffect[ScriptDsl.this.NoDependencies]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -3973,7 +3957,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">unit</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>]</span>)</span><span class="result">: <a href="#SideEffect=purity.script.ScriptT[F,Any,Nothing,Unit]" class="extmbr" name="purity.http4s.JsonClient.SideEffect">SideEffect</a></span>
+        <span class="name">unit</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>]</span>)</span><span class="result">: <a href="#SideEffect[-D]=purity.script.ScriptT[F,D,Nothing,Unit]" class="extmbr" name="purity.http4s.JsonClient.SideEffect">SideEffect</a>[<a href="#NoDependencies=Any" class="extmbr" name="purity.http4s.JsonClient.NoDependencies">NoDependencies</a>]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../script/ScriptDsl.html" class="extype" name="purity.script.ScriptDsl">ScriptDsl</a></dd></dl></div>

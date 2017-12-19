@@ -144,7 +144,7 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">ErrorHandler</span><span class="tparams">[<span name="F">F<span class="tparams">[<span name="_">_</span>]</span></span>]</span><span class="params">(<span name="run">run: <a href="http://www.scala-lang.org/api/2.12.4/scala/PartialFunction.html#scala.PartialFunction" class="extype" name="scala.PartialFunction">PartialFunction</a>[(<span class="extype" name="org.http4s.Request">Request</span>[<span class="extype" name="purity.http4s.JsonRequestHandler.ErrorHandler.F">F</span>], <span class="extype" name="scala.Throwable">Throwable</span>, <a href="../logging/LoggerFunction.html" class="extype" name="purity.logging.LoggerFunction">LoggerFunction</a>), <span class="extype" name="purity.http4s.JsonRequestHandler.ErrorHandler.F">F</span>[<span class="extype" name="org.http4s.Response">Response</span>[<span class="extype" name="purity.http4s.JsonRequestHandler.ErrorHandler.F">F</span>]]]</span>)</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.12.4/scala/Product.html#scala.Product" class="extype" name="scala.Product">Product</a> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a></span>
+        <span class="name">ErrorHandler</span><span class="tparams">[<span name="F">F<span class="tparams">[<span name="_">+_</span>]</span></span>]</span><span class="params">(<span name="run">run: <a href="http://www.scala-lang.org/api/2.12.4/scala/PartialFunction.html#scala.PartialFunction" class="extype" name="scala.PartialFunction">PartialFunction</a>[(<span class="extype" name="org.http4s.Request">Request</span>[<span class="extype" name="purity.http4s.JsonRequestHandler.ErrorHandler.F">F</span>], <span class="extype" name="scala.Throwable">Throwable</span>, <a href="../logging/Logger.html" class="extype" name="purity.logging.Logger">Logger</a>[<span class="extype" name="purity.http4s.JsonRequestHandler.ErrorHandler.F">F</span>]), <span class="extype" name="purity.http4s.JsonRequestHandler.ErrorHandler.F">F</span>[<span class="extype" name="org.http4s.Response">Response</span>[<span class="extype" name="purity.http4s.JsonRequestHandler.ErrorHandler.F">F</span>]]]</span>)</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.12.4/scala/Product.html#scala.Product" class="extype" name="scala.Product">Product</a> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a></span>
       </span>
       </h4>
 
@@ -200,9 +200,9 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="purity.http4s.JsonRequestHandler.ErrorHandler#&lt;init&gt;" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(run:PartialFunction[(org.http4s.Request[F],Throwable,purity.logging.LoggerFunction),F[org.http4s.Response[F]]]):purity.http4s.JsonRequestHandler.ErrorHandler[F]"></a><a id="&lt;init&gt;:ErrorHandler[F]"></a>
+      <a id="&lt;init&gt;(run:PartialFunction[(org.http4s.Request[F],Throwable,purity.logging.Logger[F]),F[org.http4s.Response[F]]]):purity.http4s.JsonRequestHandler.ErrorHandler[F]"></a><a id="&lt;init&gt;:ErrorHandler[F]"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/JsonRequestHandler$$ErrorHandler.html#&lt;init&gt;(run:PartialFunction[(org.http4s.Request[F],Throwable,purity.logging.LoggerFunction),F[org.http4s.Response[F]]]):purity.http4s.JsonRequestHandler.ErrorHandler[F]" title="Permalink">
+      <a href="../../purity/http4s/JsonRequestHandler$$ErrorHandler.html#&lt;init&gt;(run:PartialFunction[(org.http4s.Request[F],Throwable,purity.logging.Logger[F]),F[org.http4s.Response[F]]]):purity.http4s.JsonRequestHandler.ErrorHandler[F]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -211,7 +211,7 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">ErrorHandler</span><span class="params">(<span name="run">run: <a href="http://www.scala-lang.org/api/2.12.4/scala/PartialFunction.html#scala.PartialFunction" class="extype" name="scala.PartialFunction">PartialFunction</a>[(<span class="extype" name="org.http4s.Request">Request</span>[<span class="extype" name="purity.http4s.JsonRequestHandler.ErrorHandler.F">F</span>], <span class="extype" name="scala.Throwable">Throwable</span>, <a href="../logging/LoggerFunction.html" class="extype" name="purity.logging.LoggerFunction">LoggerFunction</a>), <span class="extype" name="purity.http4s.JsonRequestHandler.ErrorHandler.F">F</span>[<span class="extype" name="org.http4s.Response">Response</span>[<span class="extype" name="purity.http4s.JsonRequestHandler.ErrorHandler.F">F</span>]]]</span>)</span>
+        <span class="name">ErrorHandler</span><span class="params">(<span name="run">run: <a href="http://www.scala-lang.org/api/2.12.4/scala/PartialFunction.html#scala.PartialFunction" class="extype" name="scala.PartialFunction">PartialFunction</a>[(<span class="extype" name="org.http4s.Request">Request</span>[<span class="extype" name="purity.http4s.JsonRequestHandler.ErrorHandler.F">F</span>], <span class="extype" name="scala.Throwable">Throwable</span>, <a href="../logging/Logger.html" class="extype" name="purity.logging.Logger">Logger</a>[<span class="extype" name="purity.http4s.JsonRequestHandler.ErrorHandler.F">F</span>]), <span class="extype" name="purity.http4s.JsonRequestHandler.ErrorHandler.F">F</span>[<span class="extype" name="org.http4s.Response">Response</span>[<span class="extype" name="purity.http4s.JsonRequestHandler.ErrorHandler.F">F</span>]]]</span>)</span>
       </span>
       
       
@@ -290,9 +290,9 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="purity.http4s.JsonRequestHandler.ErrorHandler#check" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="check(request:org.http4s.Request[F],throwable:Throwable,loggerFunction:purity.logging.LoggerFunction):F[org.http4s.Response[F]]"></a><a id="check(Request[F],Throwable,LoggerFunction):F[Response[F]]"></a>
+      <a id="check(request:org.http4s.Request[F],throwable:Throwable,loggerFunction:purity.logging.Logger[F]):F[org.http4s.Response[F]]"></a><a id="check(Request[F],Throwable,Logger[F]):F[Response[F]]"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/JsonRequestHandler$$ErrorHandler.html#check(request:org.http4s.Request[F],throwable:Throwable,loggerFunction:purity.logging.LoggerFunction):F[org.http4s.Response[F]]" title="Permalink">
+      <a href="../../purity/http4s/JsonRequestHandler$$ErrorHandler.html#check(request:org.http4s.Request[F],throwable:Throwable,loggerFunction:purity.logging.Logger[F]):F[org.http4s.Response[F]]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -301,7 +301,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">check</span><span class="params">(<span name="request">request: <span class="extype" name="org.http4s.Request">Request</span>[<span class="extype" name="purity.http4s.JsonRequestHandler.ErrorHandler.F">F</span>]</span>, <span name="throwable">throwable: <span class="extype" name="scala.Throwable">Throwable</span></span>, <span name="loggerFunction">loggerFunction: <a href="../logging/LoggerFunction.html" class="extype" name="purity.logging.LoggerFunction">LoggerFunction</a></span>)</span><span class="result">: <span class="extype" name="purity.http4s.JsonRequestHandler.ErrorHandler.F">F</span>[<span class="extype" name="org.http4s.Response">Response</span>[<span class="extype" name="purity.http4s.JsonRequestHandler.ErrorHandler.F">F</span>]]</span>
+        <span class="name">check</span><span class="params">(<span name="request">request: <span class="extype" name="org.http4s.Request">Request</span>[<span class="extype" name="purity.http4s.JsonRequestHandler.ErrorHandler.F">F</span>]</span>, <span name="throwable">throwable: <span class="extype" name="scala.Throwable">Throwable</span></span>, <span name="loggerFunction">loggerFunction: <a href="../logging/Logger.html" class="extype" name="purity.logging.Logger">Logger</a>[<span class="extype" name="purity.http4s.JsonRequestHandler.ErrorHandler.F">F</span>]</span>)</span><span class="result">: <span class="extype" name="purity.http4s.JsonRequestHandler.ErrorHandler.F">F</span>[<span class="extype" name="org.http4s.Response">Response</span>[<span class="extype" name="purity.http4s.JsonRequestHandler.ErrorHandler.F">F</span>]]</span>
       </span>
       
       
@@ -473,9 +473,9 @@
       
       
     </li><li name="purity.http4s.JsonRequestHandler.ErrorHandler#run" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="run:PartialFunction[(org.http4s.Request[F],Throwable,purity.logging.LoggerFunction),F[org.http4s.Response[F]]]"></a><a id="run:PartialFunction[(Request[F],Throwable,LoggerFunction),F[Response[F]]]"></a>
+      <a id="run:PartialFunction[(org.http4s.Request[F],Throwable,purity.logging.Logger[F]),F[org.http4s.Response[F]]]"></a><a id="run:PartialFunction[(Request[F],Throwable,Logger[F]),F[Response[F]]]"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/JsonRequestHandler$$ErrorHandler.html#run:PartialFunction[(org.http4s.Request[F],Throwable,purity.logging.LoggerFunction),F[org.http4s.Response[F]]]" title="Permalink">
+      <a href="../../purity/http4s/JsonRequestHandler$$ErrorHandler.html#run:PartialFunction[(org.http4s.Request[F],Throwable,purity.logging.Logger[F]),F[org.http4s.Response[F]]]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -484,7 +484,7 @@
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">run</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.4/scala/PartialFunction.html#scala.PartialFunction" class="extype" name="scala.PartialFunction">PartialFunction</a>[(<span class="extype" name="org.http4s.Request">Request</span>[<span class="extype" name="purity.http4s.JsonRequestHandler.ErrorHandler.F">F</span>], <span class="extype" name="scala.Throwable">Throwable</span>, <a href="../logging/LoggerFunction.html" class="extype" name="purity.logging.LoggerFunction">LoggerFunction</a>), <span class="extype" name="purity.http4s.JsonRequestHandler.ErrorHandler.F">F</span>[<span class="extype" name="org.http4s.Response">Response</span>[<span class="extype" name="purity.http4s.JsonRequestHandler.ErrorHandler.F">F</span>]]]</span>
+        <span class="name">run</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.4/scala/PartialFunction.html#scala.PartialFunction" class="extype" name="scala.PartialFunction">PartialFunction</a>[(<span class="extype" name="org.http4s.Request">Request</span>[<span class="extype" name="purity.http4s.JsonRequestHandler.ErrorHandler.F">F</span>], <span class="extype" name="scala.Throwable">Throwable</span>, <a href="../logging/Logger.html" class="extype" name="purity.logging.Logger">Logger</a>[<span class="extype" name="purity.http4s.JsonRequestHandler.ErrorHandler.F">F</span>]), <span class="extype" name="purity.http4s.JsonRequestHandler.ErrorHandler.F">F</span>[<span class="extype" name="org.http4s.Response">Response</span>[<span class="extype" name="purity.http4s.JsonRequestHandler.ErrorHandler.F">F</span>]]]</span>
       </span>
       
       

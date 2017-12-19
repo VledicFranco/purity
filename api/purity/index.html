@@ -139,7 +139,7 @@
                         <a href="ConsistentParse.html" title="">ConsistentParse</a>
                       </li><li class="current-entities indented1">
                         <a class="object" href="Proposition$.html" title=""></a>
-                        <a class="class" href="Proposition.html" title="A data type for lazy consistency checks on a data structure."></a>
+                        <a class="trait" href="Proposition.html" title="A data type for lazy consistency checks on a data structure."></a>
                         <a href="Proposition.html" title="A data type for lazy consistency checks on a data structure.">Proposition</a>
                       </li><li class="current-entities indented1">
                         <a class="object" href="Truth$.html" title=""></a>
@@ -224,19 +224,19 @@
       </span>
       
       
-    </li><li name="purity.Proposition" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="Proposition[+E,-A]extendsProductwithSerializable"></a><a id="Proposition[+E,-A]:Proposition[E,A]"></a>
+    </li><li name="purity.Proposition" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="Proposition[+E,-A]extendsAnyRef"></a><a id="Proposition[+E,-A]:Proposition[E,A]"></a>
       <span class="permalink">
-      <a href="../purity/index.html#Proposition[+E,-A]extendsProductwithSerializable" title="Permalink">
+      <a href="../purity/index.html#Proposition[+E,-A]extendsAnyRef" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">case class</span>
+        <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a title="A data type for lazy consistency checks on a data structure." href="Proposition.html"><span class="name">Proposition</span></a><span class="tparams">[<span name="E">+E</span>, <span name="A">-A</span>]</span><span class="params">(<span name="check">check: (<span class="extype" name="purity.Proposition.A">A</span>) ⇒ <a href="Truth.html" class="extype" name="purity.Truth">Truth</a>[<span class="extype" name="purity.Proposition.E">E</span>]</span>)</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.12.4/scala/Product.html#scala.Product" class="extype" name="scala.Product">Product</a> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a></span>
+        <a title="A data type for lazy consistency checks on a data structure." href="Proposition.html"><span class="name">Proposition</span></a><span class="tparams">[<span name="E">+E</span>, <span name="A">-A</span>]</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.12.4/scala/collection/immutable/List.html#scala.AnyRef" class="extype" name="scala.collection.immutable.List">AnyRef</a></span>
       </span>
       
       <p class="shortcomment cmt">A data type for lazy consistency checks on a data structure.</p><div class="fullcomment"><div class="comment cmt"><p>A data type for lazy consistency checks on a data structure.</p><p>A <a href="Proposition.html" class="extype" name="purity.Proposition">Proposition</a> wraps a function that checks a proposition of a logical statement over a type. Combinators like leftMap,
@@ -256,7 +256,7 @@ a.check(<span class="num">9</span>)
 <span class="cmt">//c: purity.Proposition[String,User] = Proposition</span>
 
 c.check(User(<span class="lit">"FAF"</span>, <span class="num">21</span>))
-<span class="cmt">//res3: purity.Truth[String] = False(NonEmptyList(age should be less than 10, name code should be less than 3))</span></pre></div><dl class="paramcmts block"><dt class="tparam">E</dt><dd class="cmt"><p>type of the failure in case of an False result.</p></dd><dt class="tparam">A</dt><dd class="cmt"><p>type to be checked for consistency.</p></dd><dt class="param">check</dt><dd class="cmt"><p>function. Should check for proposition of a logical statement over type A</p></dd></dl></div>
+<span class="cmt">//res3: purity.Truth[String] = False(NonEmptyList(age should be less than 10, name code should be less than 3))</span></pre></div><dl class="paramcmts block"><dt class="tparam">E</dt><dd class="cmt"><p>type of the failure in case of an False result.</p></dd><dt class="tparam">A</dt><dd class="cmt"><p>type to be checked for consistency.</p></dd></dl></div>
     </li><li name="purity.Truth" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="Truth[+E]extendsAnyRef"></a><a id="Truth[+E]:Truth[E]"></a>
       <span class="permalink">
@@ -311,7 +311,7 @@ set to Unit.</p><p>Contains combinators map, not, &amp;&amp;, ||
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a title="" href="Proposition$.html"><span class="name">Proposition</span></a><span class="result"> extends <span class="extype" name="purity.PropositionFunctions">PropositionFunctions</span> with <span class="extype" name="purity.PropositionInstances">PropositionInstances</span> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a></span>
+        <a title="" href="Proposition$.html"><span class="name">Proposition</span></a><span class="result"> extends <span class="extype" name="purity.PropositionFunctions">PropositionFunctions</span> with <span class="extype" name="purity.PropositionInstances">PropositionInstances</span></span>
       </span>
       
       

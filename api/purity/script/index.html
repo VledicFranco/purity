@@ -143,10 +143,6 @@
                         <a href="ScriptT.html" title="This represents a program with dependencies D, domain failures E, and which produces an A, while side effects should be handled by F.">ScriptT</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
-                        <a class="object" href="future$.html" title=""></a>
-                        <a href="future$.html" title="">future</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
                         <a class="object" href="io$.html" title=""></a>
                         <a href="io$.html" title="">io</a>
                       </li>
@@ -229,9 +225,9 @@
       
       
     </li><li name="purity.script.ScriptT" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="ScriptT[F[+_],-D,+E,+A]extendsProductwithSerializable"></a><a id="ScriptT[F[+_],-D,+E,+A]:ScriptT[F,D,E,A]"></a>
+      <a id="ScriptT[F[+_],-D,+E,+A]extendsScriptDsl[F]withProductwithSerializable"></a><a id="ScriptT[F[+_],-D,+E,+A]:ScriptT[F,D,E,A]"></a>
       <span class="permalink">
-      <a href="../../purity/script/index.html#ScriptT[F[+_],-D,+E,+A]extendsProductwithSerializable" title="Permalink">
+      <a href="../../purity/script/index.html#ScriptT[F[+_],-D,+E,+A]extendsScriptDsl[F]withProductwithSerializable" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -240,13 +236,13 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a title="This represents a program with dependencies D, domain failures E, and which produces an A, while side effects should be handled by F." href="ScriptT.html"><span class="name">ScriptT</span></a><span class="tparams">[<span name="F">F<span class="tparams">[<span name="_">+_</span>]</span></span>, <span name="D">-D</span>, <span name="E">+E</span>, <span name="A">+A</span>]</span><span class="params">(<span name="definition">definition: <a href="ScriptT$.html#Definition[F[+_],-D,+E,+A]=D=&gt;F[(List[purity.logging.LogLine],Either[E,A])]" class="extmbr" name="purity.script.ScriptT.Definition">Definition</a>[<span class="extype" name="purity.script.ScriptT.F">F</span>, <span class="extype" name="purity.script.ScriptT.D">D</span>, <span class="extype" name="purity.script.ScriptT.E">E</span>, <span class="extype" name="purity.script.ScriptT.A">A</span>]</span>)</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.12.4/scala/Product.html#scala.Product" class="extype" name="scala.Product">Product</a> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a></span>
+        <a title="This represents a program with dependencies D, domain failures E, and which produces an A, while side effects should be handled by F." href="ScriptT.html"><span class="name">ScriptT</span></a><span class="tparams">[<span name="F">F<span class="tparams">[<span name="_">+_</span>]</span></span>, <span name="D">-D</span>, <span name="E">+E</span>, <span name="A">+A</span>]</span><span class="params">(<span name="definition">definition: <a href="ScriptT$.html#Definition[F[+_],-D,+E,+A]=D=&gt;F[Either[E,A]]" class="extmbr" name="purity.script.ScriptT.Definition">Definition</a>[<span class="extype" name="purity.script.ScriptT.F">F</span>, <span class="extype" name="purity.script.ScriptT.D">D</span>, <span class="extype" name="purity.script.ScriptT.E">E</span>, <span class="extype" name="purity.script.ScriptT.A">A</span>]</span>)</span><span class="result"> extends <a href="ScriptDsl.html" class="extype" name="purity.script.ScriptDsl">ScriptDsl</a>[<span class="extype" name="purity.script.ScriptT.F">F</span>] with <a href="http://www.scala-lang.org/api/2.12.4/scala/Product.html#scala.Product" class="extype" name="scala.Product">Product</a> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a></span>
       </span>
       
       <p class="shortcomment cmt">This represents a program with dependencies D, domain failures E, and which produces an A, while side effects should
 be handled by F.</p><div class="fullcomment"><div class="comment cmt"><p>This represents a program with dependencies D, domain failures E, and which produces an A, while side effects should
 be handled by F. Also it accumulates logging.</p><p>One may see this data type as a handcrafted <code>ReaderT[WriterT[EitherT[F, E, ?], LogLine], D, A]</code> or a way to compose
-functions with this signature: <code>D ⇒ F[(List[LogLine], Either[E, A])]</code></p><p>Use functions provided by the ScriptDSL type class to create and compose Script programs.</p><p>Note that domain failures are supposed to model what can possible go wrong within the domain of the function, lower
+functions with this signature: <code>D =&gt; F[(List[LogLine], Either[E, A])]</code></p><p>Use functions provided by the ScriptDSL type class to create and compose Script programs.</p><p>Note that domain failures are supposed to model what can possible go wrong within the domain of the function, lower
 level exceptions (like network failure) should be handled within the F[_] that the function <code>run</code> returns.
 </p></div><dl class="paramcmts block"><dt class="tparam">F</dt><dd class="cmt"><p>should be a monad that handles async, like Future, IO, Task, or Streams.</p></dd><dt class="tparam">D</dt><dd class="cmt"><p>dependencies of the program.</p></dd><dt class="tparam">E</dt><dd class="cmt"><p>domain failures of the program.</p></dd><dt class="tparam">A</dt><dd class="cmt"><p>value that the program produces.</p></dd><dt class="param">definition</dt><dd class="cmt"><p>function.</p></dd></dl></div>
     </li></ol>
@@ -270,22 +266,6 @@ level exceptions (like network failure) should be handled within the F[_] that t
       </span>
       <span class="symbol">
         <a title="" href="ScriptT$.html"><span class="name">ScriptT</span></a><span class="result"> extends <span class="extype" name="purity.script.ScriptTInstances">ScriptTInstances</span> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a></span>
-      </span>
-      
-      
-    </li><li name="purity.script.future" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="future"></a><a id="future:future"></a>
-      <span class="permalink">
-      <a href="../../purity/script/index.html#future" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a title="" href="future$.html"><span class="name">future</span></a><span class="result"> extends <a href="ScriptDsl.html" class="extype" name="purity.script.ScriptDsl">ScriptDsl</a>[<a href="http://www.scala-lang.org/api/2.12.4/scala/concurrent/Future.html#scala.concurrent.Future" class="extype" name="scala.concurrent.Future">Future</a>]</span>
       </span>
       
       
