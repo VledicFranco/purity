@@ -78,6 +78,9 @@ trait Proposition[+E, -A] {
 object Proposition extends PropositionFunctions with PropositionInstances {
 
   def apply[E, A](f: A => Truth[E]): Proposition[E, A] = (a: A) => f(a)
+
+  def apply[E, A](p: A => Boolean, e: E): Proposition[E, A] =
+    (a: A) => if(p(a)) True else (False(e))
 }
 
 private[purity] trait PropositionFunctions {
