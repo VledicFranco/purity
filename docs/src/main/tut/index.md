@@ -30,7 +30,7 @@ Purity uses `cats-core 1.0.0-MF` and `cats-effect 0.5`, it is published to Maven
 your build.sbt file:
 
 ```scala
-libraryDependencies += "com.francoara" %% "purity-core" % "0.1.0"
+libraryDependencies += "com.francoara" %% "purity-core" % "0.1.1"
 ```
 
 ## Copyright and license
