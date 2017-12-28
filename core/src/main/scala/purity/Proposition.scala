@@ -40,19 +40,19 @@ trait Proposition[+E, -A] {
   def check(a: A): Truth[E]
 
   def contramap[B](f: B => A): Proposition[E, B] =
-    Proposition(f andThen check)
+    a => (f andThen check)(a)
 
   def leftMap[E2](f: E => E2): Proposition[E2, A] =
-    Proposition[E2, A]( (a: A) => check(a).map(f))
+    a => check(a).map(f)
 
   def not[EE >: E](e: EE): Proposition[EE, A] =
-    Proposition[EE, A]( (a: A) => check(a).not(e))
+    a => check(a).not(e)
 
   def &&[EE >: E, AA <: A](g: Proposition[EE, AA]): Proposition[EE, AA] =
-    Proposition[EE, AA]((a : AA) => check(a) && g.check(a))
+    a => check(a) && g.check(a)
 
   def ||[EE >: E, AA <: A](g: Proposition[EE, AA]): Proposition[EE, AA] =
-    Proposition[EE, AA]((a : AA )=> check(a) || g.check(a))
+    a => check(a) || g.check(a)
 
   def optional: Proposition[E, Option[A]] =
     Proposition {

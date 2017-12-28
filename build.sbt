@@ -9,8 +9,6 @@ lazy val http4sVersion = "0.18.0-M5"
 
 lazy val cats = Def.setting("org.typelevel" %% "cats-core" % catsVersion)
 
-lazy val catsLaws = Def.setting("org.typelevel"  %% "cats-laws" % catsVersion)
-
 lazy val catsEffects = Def.setting("org.typelevel"  %% "cats-effect" % "0.5")
 
 lazy val tlConfig = Def.setting("com.typesafe" % "config" % "1.3.1")
@@ -20,6 +18,8 @@ lazy val http4sDsl = Def.setting("org.http4s"  %% "http4s-dsl" % http4sVersion)
 lazy val http4sCirce = Def.setting("org.http4s" %% "http4s-circe" % http4sVersion)
 
 lazy val http4sClient = Def.setting("org.http4s" %% "http4s-blaze-client" % http4sVersion)
+
+lazy val catsLaws = Def.setting("org.typelevel"  %% "cats-laws" % catsVersion % Test)
 
 lazy val discipline = Def.setting("org.typelevel" %% "discipline" % "0.8" % Test)
 
@@ -62,7 +62,7 @@ lazy val http4s = project.in(file("http4s"))
   .settings(commonSettings)
   .settings(publishSettings)
   .settings(librarySettings)
-  .settings(libraryDependencies ++= tlConfig.value :: http4sDsl.value :: http4sCirce.value :: http4sClient.value :: Nil)
+  .settings(libraryDependencies ++= http4sDsl.value :: http4sCirce.value :: http4sClient.value :: Nil)
   .dependsOn(core)
 
 lazy val test = project.in(file("test"))
@@ -85,7 +85,7 @@ lazy val commonSettings = Seq(
 
 lazy val librarySettings = Seq(
   resolvers += Resolver.sonatypeRepo("releases"),
-  libraryDependencies ++= cats.value :: catsEffects.value :: Nil
+  libraryDependencies ++= tlConfig.value :: cats.value :: catsEffects.value :: Nil
 )
 
 lazy val testSettings =
@@ -97,7 +97,7 @@ lazy val publishSettings = Seq(
   licenses := Seq("MIT" -> url("http://opensource.org/licenses/MIT")),
   scmInfo := Some(ScmInfo(url("https://github.com/francoara/purity"), "scm:git:git@github.com:francoara/purity.git")),
   autoAPIMappings := true,
-  apiURL := Some(url("http://typelevel.org/cats/api/")),
+  apiURL := Some(url("https://francoara.github.io/purity/api/")),
   publishArtifact in Test := false,
   pomIncludeRepository := { _ => false },
   publishTo := version { (v: String) =>
