@@ -1,8 +1,8 @@
 package purity
 
-import cats.{Applicative, Contravariant, MonadError}
+import cats.{Applicative, Contravariant}
 import cats.data.NonEmptyList
-import purity.script.{ScriptDsl, ScriptT}
+import purity.script.ScriptDsl
 import purity.Truth.{False, True}
 
 /**
@@ -31,7 +31,6 @@ import purity.Truth.{False, True}
  * //res3: purity.Truth[String] = False(NonEmptyList(age should be less than 10, name code should be less than 3))
  * }}}
  *
- * @param check function. Should check for proposition of a logical statement over type A
  * @tparam E type of the failure in case of an False result.
  * @tparam A type to be checked for consistency.
  */
@@ -77,9 +76,11 @@ trait Proposition[+E, -A] {
 
 object Proposition extends PropositionFunctions with PropositionInstances {
 
-  def apply[E, A](f: A => Truth[E]): Proposition[E, A] = (a: A) => f(a)
+  def apply[E, A](f: A => Truth[E]): Proposition[E, A] =
+    (a: A) => f(a)
 
-  def apply[E, A](p: A => Boolean, e: E): Proposition[E, A] = Proposition[E,A]( (a : A )=> if(p(a)) True else False[E](e))
+  def apply[E, A](p: A => Boolean, e: E): Proposition[E, A] =
+    Proposition[E,A]((a: A) => if(p(a)) True else False[E](e))
 }
 
 private[purity] trait PropositionFunctions {
@@ -87,6 +88,9 @@ private[purity] trait PropositionFunctions {
   def thatIsTrue[E, A]: Proposition[E, A] = Proposition(_ => True)
 
   def thatIsFalse[E, A](e: E): Proposition[E, A] = Proposition(_ => Truth.isFalse(e))
+
+  def fromPredicate[E, A](p: Predicate[A], e: E): Proposition[E, A] =
+    Proposition[E,A]((a: A) => if(p.check(a)) True else False[E](e))
 }
 
 private[purity] trait PropositionInstances {
