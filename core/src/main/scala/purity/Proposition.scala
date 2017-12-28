@@ -43,16 +43,16 @@ trait Proposition[+E, -A] {
     Proposition(f andThen check)
 
   def leftMap[E2](f: E => E2): Proposition[E2, A] =
-    Proposition[E2, A](check(_).map(f))
+    Proposition[E2, A]( (a: A) => check(a).map(f))
 
   def not[EE >: E](e: EE): Proposition[EE, A] =
-    Proposition[EE, A](check(_).not(e))
+    Proposition[EE, A]( (a: A) => check(a).not(e))
 
   def &&[EE >: E, AA <: A](g: Proposition[EE, AA]): Proposition[EE, AA] =
-    Proposition[EE, AA](a => check(a) && g.check(a))
+    Proposition[EE, AA]((a : AA) => check(a) && g.check(a))
 
   def ||[EE >: E, AA <: A](g: Proposition[EE, AA]): Proposition[EE, AA] =
-    Proposition[EE, AA](a => check(a) || g.check(a))
+    Proposition[EE, AA]((a : AA )=> check(a) || g.check(a))
 
   def optional: Proposition[E, Option[A]] =
     Proposition {
@@ -78,6 +78,8 @@ trait Proposition[+E, -A] {
 object Proposition extends PropositionFunctions with PropositionInstances {
 
   def apply[E, A](f: A => Truth[E]): Proposition[E, A] = (a: A) => f(a)
+
+  def apply[E, A](p: A => Boolean, e: E): Proposition[E, A] = Proposition[E,A]( (a : A )=> if(p(a)) True else False[E](e))
 }
 
 private[purity] trait PropositionFunctions {
