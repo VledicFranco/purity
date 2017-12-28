@@ -3,7 +3,7 @@ package purity.script
 import cats.effect.Effect
 import cats.{Applicative, Functor, MonadError}
 import purity.logging.LogLine._
-import purity.logging.{LogLine, Logger}
+import purity.logging.{LogLine, LoggerContainer}
 
 trait ScriptDsl[F[+_]] {
 
@@ -70,61 +70,61 @@ trait ScriptDsl[F[+_]] {
 
   object log {
 
-    def logline(line: LogLine)(implicit F: Effect[F]): SideEffect[Logger[F]] =
-      dependencies[Logger[F]].flatMap(l => script(l.log(line)))
+    def logline(line: LogLine)(implicit F: Effect[F]): SideEffect[LoggerContainer[F]] =
+      dependencies[LoggerContainer[F]].flatMap(l => script(l.logger.log(line)))
 
-    def debug(message: String)(implicit F: Effect[F]): SideEffect[Logger[F]] =
+    def debug(message: String)(implicit F: Effect[F]): SideEffect[LoggerContainer[F]] =
       logline(Debug(message))
 
-    def debug(e: Throwable)(implicit F: Effect[F]): SideEffect[Logger[F]] =
+    def debug(e: Throwable)(implicit F: Effect[F]): SideEffect[LoggerContainer[F]] =
       logline(Debug(e.getMessage, Some(e)))
 
-    def debug(message: String, e: Throwable)(implicit F: Effect[F]): SideEffect[Logger[F]] =
+    def debug(message: String, e: Throwable)(implicit F: Effect[F]): SideEffect[LoggerContainer[F]] =
       logline(Debug(message, Some(e)))
 
-    def error(message: String)(implicit F: Effect[F]): SideEffect[Logger[F]] =
+    def error(message: String)(implicit F: Effect[F]): SideEffect[LoggerContainer[F]] =
       logline(Error(message, None))
 
-    def error(e: Throwable)(implicit F: Effect[F]): SideEffect[Logger[F]] =
+    def error(e: Throwable)(implicit F: Effect[F]): SideEffect[LoggerContainer[F]] =
       logline(Error(e.getMessage, Some(e)))
 
-    def error(message: String, e: Throwable)(implicit F: Effect[F]): SideEffect[Logger[F]] =
+    def error(message: String, e: Throwable)(implicit F: Effect[F]): SideEffect[LoggerContainer[F]] =
       logline(Error(message, Some(e)))
 
-    def fatal(message: String)(implicit F: Effect[F]): SideEffect[Logger[F]] =
+    def fatal(message: String)(implicit F: Effect[F]): SideEffect[LoggerContainer[F]] =
       logline(Fatal(message, None))
 
-    def fatal(e: Throwable)(implicit F: Effect[F]): SideEffect[Logger[F]] =
+    def fatal(e: Throwable)(implicit F: Effect[F]): SideEffect[LoggerContainer[F]] =
       logline(Fatal(e.getMessage, Some(e)))
 
-    def fatal(message: String, e: Throwable)(implicit F: Effect[F]): SideEffect[Logger[F]] =
+    def fatal(message: String, e: Throwable)(implicit F: Effect[F]): SideEffect[LoggerContainer[F]] =
       logline(Fatal(message, Some(e)))
 
-    def info(message: String)(implicit F: Effect[F]): SideEffect[Logger[F]] =
+    def info(message: String)(implicit F: Effect[F]): SideEffect[LoggerContainer[F]] =
       logline(Info(message))
 
-    def info(e: Throwable)(implicit F: Effect[F]): SideEffect[Logger[F]] =
+    def info(e: Throwable)(implicit F: Effect[F]): SideEffect[LoggerContainer[F]] =
       logline(Info(e.getMessage, Some(e)))
 
-    def info(message: String, e: Throwable)(implicit F: Effect[F]): SideEffect[Logger[F]] =
+    def info(message: String, e: Throwable)(implicit F: Effect[F]): SideEffect[LoggerContainer[F]] =
       logline(Info(message, Some(e)))
 
-    def trace(message: String)(implicit F: Effect[F]): SideEffect[Logger[F]] =
+    def trace(message: String)(implicit F: Effect[F]): SideEffect[LoggerContainer[F]] =
       logline(Trace(message))
 
-    def trace(e: Throwable)(implicit F: Effect[F]): SideEffect[Logger[F]] =
+    def trace(e: Throwable)(implicit F: Effect[F]): SideEffect[LoggerContainer[F]] =
       logline(Trace(e.getMessage, Some(e)))
 
-    def trace(message: String, e: Throwable)(implicit F: Effect[F]): SideEffect[Logger[F]] =
+    def trace(message: String, e: Throwable)(implicit F: Effect[F]): SideEffect[LoggerContainer[F]] =
       logline(Trace(message, Some(e)))
 
-    def warn(message: String)(implicit F: Effect[F]): SideEffect[Logger[F]] =
+    def warn(message: String)(implicit F: Effect[F]): SideEffect[LoggerContainer[F]] =
       logline(Warn(message))
 
-    def warn(e: Throwable)(implicit F: Effect[F]): SideEffect[Logger[F]] =
+    def warn(e: Throwable)(implicit F: Effect[F]): SideEffect[LoggerContainer[F]] =
       logline(Warn(e.getMessage, Some(e)))
 
-    def warn(message: String, e: Throwable)(implicit F: Effect[F]): SideEffect[Logger[F]] =
+    def warn(message: String, e: Throwable)(implicit F: Effect[F]): SideEffect[LoggerContainer[F]] =
       logline(Warn(message, Some(e)))
   }
 }

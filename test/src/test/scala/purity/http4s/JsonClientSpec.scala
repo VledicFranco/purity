@@ -1,27 +1,51 @@
 package purity.http4s
 
 import cats.effect.IO
+import com.typesafe.config.{Config, ConfigFactory}
+import org.http4s.Uri
 import org.http4s.client.Client
 import org.http4s.dsl.io.uri
 import purity.http4s.JsonEchoService.{Ping, Pong}
 import purity.http4s.JsonClient.ServiceError
 import purity.ScriptSuite
-import purity.logging.{LogLevel, Logger, MutableConsole}
+import purity.config.ConfigContainer
+import purity.logging.{LogLevel, Logger, LoggerContainer, MutableConsole}
 
 class JsonClientSpec extends ScriptSuite[IO] {
 
-  val jsonClient: JsonClient[IO] = JsonClient(Client.fromHttpService(JsonEchoService.service))
+  val client: JsonClient[IO] = JsonClient(Client.fromHttpService(JsonEchoService.service))
 
-  val console: MutableConsole = MutableConsole(LogLevel.DebugLevel)
+  val console0: MutableConsole = MutableConsole(LogLevel.AllLevel)
 
-  implicit val logger: Logger[IO] = console.logger
+  val console1: MutableConsole = MutableConsole(LogLevel.AllLevel)
 
-  val response: Script[Logger[IO], ServiceError[IO], Pong] = jsonClient.on(uri("/ping")).post(Ping("pang")).andExpect[Pong]
+  val uriScript: CantFail[ConfigContainer, Uri] =
+    dependencies[ConfigContainer].map(c => Uri.fromString(c.config.getString("service.uri")).right.get)
+
+  val response0: Script[LoggerContainer[IO], ServiceError[IO], Pong] =
+    client.on(uri("/ping")).post(Ping("pang")).andExpect[Pong]
+
+  val response1: Script[ServiceTools[IO], ServiceError[IO], Pong] =
+    for {
+      tools <- dependencies[ServiceTools[IO]]
+      pong <- tools.jsonClient.on(uriScript).post(Ping("pang")).andExpect[Pong]
+    } yield pong
 
   describe("JsonClient") {
 
     it("logs the request information") {
-      proveThatAfter(response).itHoldsThat(console)(MutableConsole.hasAmountOfLines(3))
+      implicit val logger: LoggerContainer[IO] = console0.loggerContainer
+      proveThatAfter(response0).itHoldsThat(console0)(MutableConsole.hasAmountOfLines(4))
+    }
+
+    it("logs the request information with config uris") {
+      implicit val loggerWithConfig: ServiceTools[IO] =
+        new ServiceTools[IO] {
+          override def logger: Logger[IO] = console1.logger
+          override def config: Config = ConfigFactory.parseString(""" service.uri = "/ping" """)
+          override def jsonClient: JsonClient[IO] = client
+        }
+      proveThatAfter(response1).itHoldsThat(console1)(MutableConsole.hasAmountOfLines(4))
     }
   }
 }

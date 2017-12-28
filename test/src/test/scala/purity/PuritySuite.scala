@@ -8,7 +8,7 @@ import org.scalatest.prop.GeneratorDrivenPropertyChecks
 import org.scalatest.{Assertion, AsyncFunSpec, FunSuite, Matchers}
 import org.typelevel.discipline.scalatest.Discipline
 import purity.Truth.{False, True}
-import purity.logging.{LogLine, Logger}
+import purity.logging.{LogLine, LoggerContainer}
 import purity.script.ScriptDsl
 
 import scala.concurrent.{Future, Promise}
@@ -31,7 +31,7 @@ trait ScriptSuite[F[+_]] extends AsyncPuritySuite with ScriptDsl[F] {
   protected def assertThat[D, E, A]
       (script: Script[D, E, A])
       (f: A => Assertion)
-      (implicit dependencies: D with Logger[F], effect: Effect[F]): Future[Assertion] = {
+      (implicit dependencies: D with LoggerContainer[F], effect: Effect[F]): Future[Assertion] = {
     val p = Promise[Assertion]
     val Fa = script
       .logError(LogLine.fatal)
@@ -46,16 +46,16 @@ trait ScriptSuite[F[+_]] extends AsyncPuritySuite with ScriptDsl[F] {
   protected def proveThat[D, E, A]
       (script: Script[D, E, A])
       (p: Proposition[String, A])
-      (implicit dependencies: D with Logger[F], effect: Effect[F]): Future[Assertion] =
+      (implicit dependencies: D with LoggerContainer[F], effect: Effect[F]): Future[Assertion] =
     assertThat(script)(propositionAssertion(p))
 
   protected def proveThat[E, A]
       (script: Independent[E, A])
       (p: Proposition[String, A])
-      (implicit dependencies: Logger[F], effect: Effect[F]): Future[Assertion] =
+      (implicit dependencies: LoggerContainer[F], effect: Effect[F]): Future[Assertion] =
     assertThat(script)(propositionAssertion(p))(dependencies, effect)
 
-  protected case class AfterScript[D, E, A](script: Script[D, E, A])(implicit dependencies: D with Logger[F]) {
+  protected case class AfterScript[D, E, A](script: Script[D, E, A])(implicit dependencies: D with LoggerContainer[F]) {
 
     def itHoldsThat[B](other: => B)(p: Proposition[String, B])(implicit effect: Effect[F]): Future[Assertion] =
       assertThat(script){ _:A => propositionAssertion(p)(other) }
@@ -63,12 +63,12 @@ trait ScriptSuite[F[+_]] extends AsyncPuritySuite with ScriptDsl[F] {
 
   protected def proveThatAfter[D, E, A]
       (script: Script[D, E, A])
-      (implicit dependencies: D with Logger[F]): AfterScript[D, E, A] =
+      (implicit dependencies: D with LoggerContainer[F]): AfterScript[D, E, A] =
     AfterScript(script)(dependencies)
 
   protected def proveThatAfter[E, A]
       (script: Independent[E, A])
-      (implicit logger: Logger[F]): AfterScript[Any, E, A] =
+      (implicit logger: LoggerContainer[F]): AfterScript[Any, E, A] =
     AfterScript(script)(logger)
 
   protected def propositionAssertion[A](p: Proposition[String, A]): A => Assertion =

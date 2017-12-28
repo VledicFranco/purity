@@ -3,7 +3,7 @@ package purity.script
 import cats.effect.Effect
 import cats.{Functor, Monad, MonadError}
 import cats.implicits._
-import purity.logging.{LogLine, Logger}
+import purity.logging.{LogLine, LoggerContainer}
 import purity.script.ScriptT.Definition
 
 /**
@@ -99,17 +99,17 @@ case class ScriptT[F[+_], -D, +E, +A](definition: Definition[F, D, E, A]) extend
   /**
    * Adds a log line if the Script's domain failure E has failed.
    */
-  def logFailure(f: E => LogLine)(implicit M: Effect[F]): ScriptT[F, D with Logger[F], E, A] =
+  def logFailure(f: E => LogLine)(implicit M: Effect[F]): ScriptT[F, D with LoggerContainer[F], E, A] =
     recoverFailure(e => log.logline(f(e)).flatMap(_ => raiseFailure(e)))
 
   /**
     * Adds a log line if the Script's lower F has failed.
     */
-  def logError(f: Throwable => LogLine)(implicit M: Effect[F]): ScriptT[F, D with Logger[F], E, A] =
+  def logError(f: Throwable => LogLine)(implicit M: Effect[F]): ScriptT[F, D with LoggerContainer[F], E, A] =
     for {
-      logger <- dependencies[Logger[F]]
-      a <- ScriptT[F, D with Logger[F], E, A](d => M.handleErrorWith(definition(d)) { e =>
-        logger.log(f(e)) *> M.raiseError(e)
+      loggerContainer <- dependencies[LoggerContainer[F]]
+      a <- ScriptT[F, D with LoggerContainer[F], E, A](d => M.handleErrorWith(definition(d)) { e =>
+        loggerContainer.logger.log(f(e)) *> M.raiseError(e)
       })
     } yield a
 

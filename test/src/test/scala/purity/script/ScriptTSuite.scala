@@ -3,13 +3,13 @@ package purity.script
 import cats.effect.IO
 import org.scalatest.BeforeAndAfterEach
 import purity.ScriptSuite
-import purity.logging.{LogLevel, LogLine, Logger, MutableConsole}
+import purity.logging._
 
 class ScriptTSuite extends ScriptSuite[IO] with BeforeAndAfterEach {
 
   val console: MutableConsole = MutableConsole(LogLevel.DebugLevel)
 
-  implicit val logger: Logger[IO] = console.logger
+  implicit val logger: LoggerContainer[IO] = console.loggerContainer
 
   override def beforeEach(): Unit = console.buffer.clear()
 
