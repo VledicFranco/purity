@@ -13,7 +13,7 @@ import purity.logging.{LogLevel, Logger, LoggerContainer, MutableConsole}
 
 class JsonClientSpec extends ScriptSuite[IO] {
 
-  val client: JsonClient[IO] = JsonClient(Client.fromHttpService(JsonEchoService.service))
+  val client: JsonClient[IO] = JsonClient(IO(Client.fromHttpService(JsonEchoService.service)))
 
   val console0: MutableConsole = MutableConsole(LogLevel.AllLevel)
 

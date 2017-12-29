@@ -2,7 +2,7 @@ package purity.http4s
 
 import cats.implicits._
 import cats.effect.{Effect, Sync}
-import purity.logging.Logger
+import purity.logging.{Logger, LoggerContainer}
 import io.circe._
 import io.circe.syntax._
 import org.http4s._
@@ -55,17 +55,17 @@ case class JsonRequestHandler[F[+_]](
     * The configuration and logger required by the Script should be implicitly provided, as well as a function that should
     * map the Script failures to valid http4s responses.
     */
-  def apply[Req: Decoder, Res: Encoder, D <: Logger[F], E](request: Request[F], f: Req => Script[D, E, Res])(failureHandler: E => F[Response[F]])(implicit config: D): F[Response[F]] = {
+  def apply[Req: Decoder, Res: Encoder, D <: LoggerContainer[F], E](request: Request[F], f: Req => Script[D, E, Res])(failureHandler: E => F[Response[F]])(implicit config: D): F[Response[F]] = {
     val script: F[Script[D, E, Res]] = request.as[Req](Effect[F], jsonOf[F, Req]).map(f)
     val response = script.flatMap(_.foldF(
       config, failureHandler, res => Ok(res.asJson)))
     response.attempt.flatMap {
-      case Left(e) => errorHandler.check(request, e, config)
+      case Left(e) => errorHandler.check(request, e, config.logger)
       case Right(response1) => effect.pure(response1)
     }
   }
 
-  def noFailure[Req: Decoder, Res: Encoder, D <: Logger[F]](request: Request[F], f: Req => Script[D, Nothing, Res])(implicit config: D): F[Response[F]] =
+  def noFailure[Req: Decoder, Res: Encoder, D <: LoggerContainer[F]](request: Request[F], f: Req => Script[D, Nothing, Res])(implicit config: D): F[Response[F]] =
     this.apply(request, f)(_ => InternalServerError("This should be unreachable"))
 }
 

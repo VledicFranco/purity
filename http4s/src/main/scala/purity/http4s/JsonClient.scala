@@ -1,5 +1,6 @@
 package purity.http4s
 
+import cats.implicits._
 import cats.data.EitherT
 import cats.effect.{Effect, Sync}
 import io.circe.{Decoder, Encoder, Json, Printer}
@@ -28,7 +29,7 @@ object JsonClient {
   * - Lifts possible ServiceFailures to the Script type.
   */
 case class JsonClient[F[+_]](
-    client: Client[F],
+    client: F[Client[F]],
     jsonPrinter: Printer = JsonClient.DefaultJsonPrinter)
     (implicit effect: Effect[F])
   extends ScriptDsl[F] with Http4sDsl[F] {
@@ -38,7 +39,7 @@ case class JsonClient[F[+_]](
     override implicit def jsonDecoder[F[_]](implicit ev: Sync[F]): EntityDecoder[F, Json] = CirceInstances.defaultJsonDecoder
   }
 
-  def shutdown: F[Unit] = client.shutdown
+  def shutdown: F[Unit] = client.flatMap(_.shutdown)
 
   def on(uri: Uri): OnUri = OnUri(uri)
 
@@ -65,7 +66,7 @@ case class JsonClient[F[+_]](
   private def fire[A](request: Request[F])(implicit decoder: Decoder[A]): F[Either[ServiceError[F], (A, Json, Status)]] = {
     val m = circe.jsonDecoder.consumes.toList
     val r = request.putHeaders(Accept(MediaRangeAndQValue(m.head), m.tail.map(MediaRangeAndQValue(_)): _*))
-    client.fetch(r) { response =>
+    client.flatMap(_.fetch(r) { response =>
       val jsonAndA =
         for {
           json <- circe.jsonDecoder.decode(response, strict = false)
@@ -76,7 +77,7 @@ case class JsonClient[F[+_]](
           a <- failureMapped
         } yield (a, json, response.status)
       jsonAndA.leftMap(e => ServiceError(request, response, e)).value
-    }
+    })
   }
 
   case class OnUri(uri: Uri) {
