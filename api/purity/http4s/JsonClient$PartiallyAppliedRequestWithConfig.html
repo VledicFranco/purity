@@ -101,61 +101,79 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="purity">purity</a></dd></dl></div>
-    </li><li class="current-entities indented2">
-                        <a class="object" href="JsonClient$.html" title=""></a>
-                        <a class="class" href="JsonClient.html" title="Extra layer on top of a Blaze pooled http client."></a>
-                        <a href="JsonClient.html" title="Extra layer on top of a Blaze pooled http client.">JsonClient</a>
-                      </li><li class="current-entities indented2">
+    </li><li name="purity.http4s.JsonClient" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="JsonClient[F[+_]]extendsScriptDsl[F]withHttp4sDsl[F]withProductwithSerializable"></a><a id="JsonClient[F[+_]]:JsonClient[F]"></a>
+      <span class="permalink">
+      <a href="../../purity/http4s/index.html#JsonClient[F[+_]]extendsScriptDsl[F]withHttp4sDsl[F]withProductwithSerializable" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a title="Extra layer on top of a Blaze pooled http client." href="JsonClient.html"><span class="name">JsonClient</span></a><span class="tparams">[<span name="F">F<span class="tparams">[<span name="_">+_</span>]</span></span>]</span><span class="params">(<span name="client">client: <span class="extype" name="org.http4s.client.Client">Client</span>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>]</span>, <span name="jsonPrinter">jsonPrinter: <a href="https://circe.github.io/circe/api/io/circe/Printer.html#io.circe.Printer" class="extype" name="io.circe.Printer">Printer</a> = <span class="symbol"><span class="name"><a href="JsonClient$.html">JsonClient.DefaultJsonPrinter</a></span></span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="effect">effect: <span class="extype" name="cats.effect.Effect">Effect</span>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>]</span>)</span><span class="result"> extends <a href="../script/ScriptDsl.html" class="extype" name="purity.script.ScriptDsl">ScriptDsl</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>] with <span class="extype" name="org.http4s.dsl.Http4sDsl">Http4sDsl</span>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>] with <a href="http://www.scala-lang.org/api/2.12.4/scala/Product.html#scala.Product" class="extype" name="scala.Product">Product</a> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Extra layer on top of a Blaze pooled http client.</p><div class="fullcomment"><div class="comment cmt"><p>Extra layer on top of a Blaze pooled http client.
+- Lifts http4s client operations to the Script type.
+- Adds logging between requests and responses.
+- Lifts possible ServiceFailures to the Script type.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="purity.http4s">http4s</a></dd></dl></div>
+    </li><li class="current-entities indented3">
                         <span class="separator"></span>
-                        <a class="trait" href="JsonClientContainer.html" title=""></a>
-                        <a href="JsonClientContainer.html" title="">JsonClientContainer</a>
-                      </li><li class="current-entities indented2">
-                        <a class="object" href="" title=""></a>
-                        <a class="class" href="JsonRequestHandler.html" title=""></a>
-                        <a href="JsonRequestHandler.html" title="">JsonRequestHandler</a>
-                      </li><li class="current-entities indented2">
+                        <a class="class" href="JsonClient$OnUri.html" title=""></a>
+                        <a href="JsonClient$OnUri.html" title="">OnUri</a>
+                      </li><li class="current-entities indented3">
                         <span class="separator"></span>
-                        <a class="trait" href="ServiceTools.html" title=""></a>
-                        <a href="ServiceTools.html" title="">ServiceTools</a>
-                      </li><li class="current-entities indented2">
+                        <a class="class" href="JsonClient$OnUriWithConfig.html" title=""></a>
+                        <a href="JsonClient$OnUriWithConfig.html" title="">OnUriWithConfig</a>
+                      </li><li class="current-entities indented3">
                         <span class="separator"></span>
-                        <a class="class" href="SimpleServiceConfig.html" title="Intended to be used inside services which are dependencies."></a>
-                        <a href="SimpleServiceConfig.html" title="Intended to be used inside services which are dependencies.">SimpleServiceConfig</a>
+                        <a class="class" href="JsonClient$PartiallyAppliedRequest.html" title=""></a>
+                        <a href="JsonClient$PartiallyAppliedRequest.html" title="">PartiallyAppliedRequest</a>
+                      </li><li class="current-entities indented3">
+                        <span class="separator"></span>
+                        <a class="class" href="" title=""></a>
+                        <a href="" title="">PartiallyAppliedRequestWithConfig</a>
+                      </li><li class="current-entities indented3">
+                        <span class="separator"></span>
+                        <a class="object" href="../script/ScriptDsl$log$.html" title=""></a>
+                        <a href="../script/ScriptDsl$log$.html" title="">log</a>
                       </li>
               </ul>
             </div>
           </div>
           <div id="content">
-            <body class="object value">
+            <body class="class type">
       <div id="definition">
-        <a href="JsonRequestHandler.html" title="See companion class"><div class="big-circle object-companion-class">o</div></a>
-        <p id="owner"><a href="../index.html" class="extype" name="purity">purity</a>.<a href="index.html" class="extype" name="purity.http4s">http4s</a></p>
-        <h1><a href="JsonRequestHandler.html" title="See companion class">JsonRequestHandler</a><span class="permalink">
-      <a href="../../purity/http4s/JsonRequestHandler$.html" title="Permalink">
+        <div class="big-circle class">c</div>
+        <p id="owner"><a href="../index.html" class="extype" name="purity">purity</a>.<a href="index.html" class="extype" name="purity.http4s">http4s</a>.<a href="JsonClient.html" class="extype" name="purity.http4s.JsonClient">JsonClient</a></p>
+        <h1>PartiallyAppliedRequestWithConfig<span class="permalink">
+      <a href="../../purity/http4s/JsonClient$PartiallyAppliedRequestWithConfig.html" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span></h1>
-        <h3><span class="morelinks"><div>
-            Companion <a href="JsonRequestHandler.html" title="See companion class">class JsonRequestHandler</a>
-          </div></span></h3>
+        <h3><span class="morelinks"></span></h3>
       </div>
 
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">object</span>
+        <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">JsonRequestHandler</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a></span>
+        <span class="name">PartiallyAppliedRequestWithConfig</span><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.12.4/scala/collection/immutable/List.html#scala.AnyRef" class="extype" name="scala.collection.immutable.List">AnyRef</a></span>
       </span>
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/FrancoAra/purity/tree/master/http4s/src/main/scala/purity/http4s/JsonRequestHandler.scala" target="_blank">JsonRequestHandler.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/FrancoAra/purity/tree/master/http4s/src/main/scala/purity/http4s/JsonClient.scala" target="_blank">JsonClient.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
-          <div class="superTypes hiddenContent"><a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a>, <span class="extype" name="java.io.Serializable">Serializable</span>, <a href="http://www.scala-lang.org/api/2.12.4/scala/collection/immutable/List.html#scala.AnyRef" class="extype" name="scala.collection.immutable.List">AnyRef</a>, <a href="http://www.scala-lang.org/api/2.12.4/scala/collection/immutable/List.html#scala.Any" class="extype" name="scala.collection.immutable.List">Any</a></div>
+          <div class="superTypes hiddenContent"><a href="http://www.scala-lang.org/api/2.12.4/scala/collection/immutable/List.html#scala.AnyRef" class="extype" name="scala.collection.immutable.List">AnyRef</a>, <a href="http://www.scala-lang.org/api/2.12.4/scala/collection/immutable/List.html#scala.Any" class="extype" name="scala.collection.immutable.List">Any</a></div>
         </div></div>
         
 
@@ -181,7 +199,7 @@
                   <span class="filtertype">Inherited<br />
                   </span>
                   <ol id="linearization">
-                    <li class="in" name="purity.http4s.JsonRequestHandler"><span>JsonRequestHandler</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                    <li class="in" name="purity.http4s.JsonClient.PartiallyAppliedRequestWithConfig"><span>PartiallyAppliedRequestWithConfig</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                   </ol>
                 </div><div class="ancestors">
               <span class="filtertype"></span>
@@ -199,28 +217,28 @@
 
       <div id="template">
         <div id="allMembers">
-        
-
-        <div id="types" class="types members">
-              <h3>Type Members</h3>
-              <ol><li name="purity.http4s.JsonRequestHandler.ErrorHandler" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="ErrorHandler[F[+_]]extendsProductwithSerializable"></a><a id="ErrorHandler[F[+_]]:ErrorHandler[F]"></a>
+        <div id="constructors" class="members">
+              <h3>Instance Constructors</h3>
+              <ol><li name="purity.http4s.JsonClient.PartiallyAppliedRequestWithConfig#&lt;init&gt;" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="&lt;init&gt;(uri:JsonClient.this.CantFail[purity.config.ConfigContainer,org.http4s.Uri],body:A):JsonClient.this.PartiallyAppliedRequestWithConfig[A]"></a><a id="&lt;init&gt;:PartiallyAppliedRequestWithConfig[A]"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/JsonRequestHandler$.html#ErrorHandler[F[+_]]extendsProductwithSerializable" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$PartiallyAppliedRequestWithConfig.html#&lt;init&gt;(uri:JsonClient.this.CantFail[purity.config.ConfigContainer,org.http4s.Uri],body:A):JsonClient.this.PartiallyAppliedRequestWithConfig[A]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">case class</span>
+        <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <a title="" href="JsonRequestHandler$$ErrorHandler.html"><span class="name">ErrorHandler</span></a><span class="tparams">[<span name="F">F<span class="tparams">[<span name="_">+_</span>]</span></span>]</span><span class="params">(<span name="run">run: <a href="http://www.scala-lang.org/api/2.12.4/scala/PartialFunction.html#scala.PartialFunction" class="extype" name="scala.PartialFunction">PartialFunction</a>[(<span class="extype" name="org.http4s.Request">Request</span>[<span class="extype" name="purity.http4s.JsonRequestHandler.ErrorHandler.F">F</span>], <span class="extype" name="scala.Throwable">Throwable</span>, <a href="../logging/Logger.html" class="extype" name="purity.logging.Logger">Logger</a>[<span class="extype" name="purity.http4s.JsonRequestHandler.ErrorHandler.F">F</span>]), <span class="extype" name="purity.http4s.JsonRequestHandler.ErrorHandler.F">F</span>[<span class="extype" name="org.http4s.Response">Response</span>[<span class="extype" name="purity.http4s.JsonRequestHandler.ErrorHandler.F">F</span>]]]</span>)</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.12.4/scala/Product.html#scala.Product" class="extype" name="scala.Product">Product</a> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a></span>
+        <span class="name">PartiallyAppliedRequestWithConfig</span><span class="params">(<span name="uri">uri: <a href="JsonClient.html#CantFail[-D,+A]=purity.script.ScriptT[F,D,Nothing,A]" class="extmbr" name="purity.http4s.JsonClient.CantFail">JsonClient.CantFail</a>[<a href="../config/ConfigContainer.html" class="extype" name="purity.config.ConfigContainer">ConfigContainer</a>, <span class="extype" name="org.http4s.Uri">Uri</span>]</span>, <span name="body">body: <span class="extype" name="purity.http4s.JsonClient.PartiallyAppliedRequestWithConfig.A">A</span></span>)</span>
       </span>
       
       
     </li></ol>
             </div>
+
+        
 
         
 
@@ -230,7 +248,7 @@
                 <li name="scala.AnyRef#!=" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:Any):Boolean"></a><a id="!=(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/JsonRequestHandler$.html#!=(x$1:Any):Boolean" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$PartiallyAppliedRequestWithConfig.html#!=(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -246,7 +264,7 @@
     </li><li name="scala.AnyRef###" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="##():Int"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/JsonRequestHandler$.html###():Int" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$PartiallyAppliedRequestWithConfig.html###():Int" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -262,7 +280,7 @@
     </li><li name="scala.AnyRef#==" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="==(x$1:Any):Boolean"></a><a id="==(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/JsonRequestHandler$.html#==(x$1:Any):Boolean" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$PartiallyAppliedRequestWithConfig.html#==(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -275,10 +293,10 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="purity.http4s.JsonRequestHandler#DefaultErrorHandler" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="DefaultErrorHandler[F[+_]](implicitevidence$1:cats.effect.Effect[F]):purity.http4s.JsonRequestHandler.ErrorHandler[F]"></a><a id="DefaultErrorHandler[F[+_]](Effect[F]):ErrorHandler[F]"></a>
+    </li><li name="purity.http4s.JsonClient.PartiallyAppliedRequestWithConfig#andExpect" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="andExpect[B](implicitencoder:io.circe.Encoder[A],implicitdecoder:io.circe.Decoder[B]):JsonClient.this.Script[purity.logging.LoggerContainer[F]withpurity.config.ConfigContainer,purity.http4s.JsonClient.ServiceError[F],B]"></a><a id="andExpect[B](Encoder[A],Decoder[B]):JsonClient.Script[LoggerContainer[F]withConfigContainer,ServiceError[F],B]"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/JsonRequestHandler$.html#DefaultErrorHandler[F[+_]](implicitevidence$1:cats.effect.Effect[F]):purity.http4s.JsonRequestHandler.ErrorHandler[F]" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$PartiallyAppliedRequestWithConfig.html#andExpect[B](implicitencoder:io.circe.Encoder[A],implicitdecoder:io.circe.Decoder[B]):JsonClient.this.Script[purity.logging.LoggerContainer[F]withpurity.config.ConfigContainer,purity.http4s.JsonClient.ServiceError[F],B]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -287,30 +305,14 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">DefaultErrorHandler</span><span class="tparams">[<span name="F">F<span class="tparams">[<span name="_">+_</span>]</span></span>]</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="cats.effect.Effect">Effect</span>[<span class="extype" name="purity.http4s.JsonRequestHandler.DefaultErrorHandler.F">F</span>]</span>)</span><span class="result">: <a href="JsonRequestHandler$$ErrorHandler.html" class="extype" name="purity.http4s.JsonRequestHandler.ErrorHandler">ErrorHandler</a>[<span class="extype" name="purity.http4s.JsonRequestHandler.DefaultErrorHandler.F">F</span>]</span>
-      </span>
-      
-      
-    </li><li name="purity.http4s.JsonRequestHandler#DefaultJsonPrinter" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="DefaultJsonPrinter:io.circe.Printer"></a><a id="DefaultJsonPrinter:Printer"></a>
-      <span class="permalink">
-      <a href="../../purity/http4s/JsonRequestHandler$.html#DefaultJsonPrinter:io.circe.Printer" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">DefaultJsonPrinter</span><span class="result">: <a href="https://circe.github.io/circe/api/io/circe/Printer.html#io.circe.Printer" class="extype" name="io.circe.Printer">Printer</a></span>
+        <span class="name">andExpect</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="encoder">encoder: <a href="https://circe.github.io/circe/api/io/circe/Encoder.html#io.circe.Encoder" class="extype" name="io.circe.Encoder">Encoder</a>[<span class="extype" name="purity.http4s.JsonClient.PartiallyAppliedRequestWithConfig.A">A</span>]</span>, <span name="decoder">decoder: <a href="https://circe.github.io/circe/api/io/circe/Decoder.html#io.circe.Decoder" class="extype" name="io.circe.Decoder">Decoder</a>[<span class="extype" name="purity.http4s.JsonClient.PartiallyAppliedRequestWithConfig.andExpect.B">B</span>]</span>)</span><span class="result">: <a href="JsonClient.html#Script[-Dependencies,+Failures,+Value]=purity.script.ScriptT[F,Dependencies,Failures,Value]" class="extmbr" name="purity.http4s.JsonClient.Script">JsonClient.Script</a>[<a href="../logging/LoggerContainer.html" class="extype" name="purity.logging.LoggerContainer">LoggerContainer</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>] with <a href="../config/ConfigContainer.html" class="extype" name="purity.config.ConfigContainer">ConfigContainer</a>, <a href="JsonClient$$ServiceError.html" class="extype" name="purity.http4s.JsonClient.ServiceError">ServiceError</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>], <span class="extype" name="purity.http4s.JsonClient.PartiallyAppliedRequestWithConfig.andExpect.B">B</span>]</span>
       </span>
       
       
     </li><li name="scala.Any#asInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/JsonRequestHandler$.html#asInstanceOf[T0]:T0" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$PartiallyAppliedRequestWithConfig.html#asInstanceOf[T0]:T0" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -326,7 +328,7 @@
     </li><li name="scala.AnyRef#clone" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a><a id="clone():AnyRef"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/JsonRequestHandler$.html#clone():Object" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$PartiallyAppliedRequestWithConfig.html#clone():Object" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -350,7 +352,7 @@
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/JsonRequestHandler$.html#eq(x$1:AnyRef):Boolean" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$PartiallyAppliedRequestWithConfig.html#eq(x$1:AnyRef):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -366,7 +368,7 @@
     </li><li name="scala.AnyRef#equals" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="equals(x$1:Any):Boolean"></a><a id="equals(Any):Boolean"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/JsonRequestHandler$.html#equals(x$1:Any):Boolean" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$PartiallyAppliedRequestWithConfig.html#equals(x$1:Any):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -382,7 +384,7 @@
     </li><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/JsonRequestHandler$.html#finalize():Unit" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$PartiallyAppliedRequestWithConfig.html#finalize():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -404,7 +406,7 @@
     </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/JsonRequestHandler$.html#getClass():Class[_]" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$PartiallyAppliedRequestWithConfig.html#getClass():Class[_]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -423,7 +425,7 @@
     </li><li name="scala.AnyRef#hashCode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/JsonRequestHandler$.html#hashCode():Int" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$PartiallyAppliedRequestWithConfig.html#hashCode():Int" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -442,7 +444,7 @@
     </li><li name="scala.Any#isInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/JsonRequestHandler$.html#isInstanceOf[T0]:Boolean" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$PartiallyAppliedRequestWithConfig.html#isInstanceOf[T0]:Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -458,7 +460,7 @@
     </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/JsonRequestHandler$.html#ne(x$1:AnyRef):Boolean" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$PartiallyAppliedRequestWithConfig.html#ne(x$1:AnyRef):Boolean" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -474,7 +476,7 @@
     </li><li name="scala.AnyRef#notify" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/JsonRequestHandler$.html#notify():Unit" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$PartiallyAppliedRequestWithConfig.html#notify():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -493,7 +495,7 @@
     </li><li name="scala.AnyRef#notifyAll" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notifyAll():Unit"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/JsonRequestHandler$.html#notifyAll():Unit" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$PartiallyAppliedRequestWithConfig.html#notifyAll():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -512,7 +514,7 @@
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/JsonRequestHandler$.html#synchronized[T0](x$1:=&gt;T0):T0" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$PartiallyAppliedRequestWithConfig.html#synchronized[T0](x$1:=&gt;T0):T0" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -528,7 +530,7 @@
     </li><li name="scala.AnyRef#toString" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/JsonRequestHandler$.html#toString():String" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$PartiallyAppliedRequestWithConfig.html#toString():String" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -544,7 +546,7 @@
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/JsonRequestHandler$.html#wait():Unit" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$PartiallyAppliedRequestWithConfig.html#wait():Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -566,7 +568,7 @@
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait(x$1:Long,x$2:Int):Unit"></a><a id="wait(Long,Int):Unit"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/JsonRequestHandler$.html#wait(x$1:Long,x$2:Int):Unit" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$PartiallyAppliedRequestWithConfig.html#wait(x$1:Long,x$2:Int):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -588,7 +590,7 @@
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait(x$1:Long):Unit"></a><a id="wait(Long):Unit"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/JsonRequestHandler$.html#wait(x$1:Long):Unit" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$PartiallyAppliedRequestWithConfig.html#wait(x$1:Long):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -619,11 +621,7 @@
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="scala.Serializable">
-              <h3>Inherited from <a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a></h3>
-            </div><div class="parent" name="java.io.Serializable">
-              <h3>Inherited from <span class="extype" name="java.io.Serializable">Serializable</span></h3>
-            </div><div class="parent" name="scala.AnyRef">
+        <div class="parent" name="scala.AnyRef">
               <h3>Inherited from <a href="http://www.scala-lang.org/api/2.12.4/scala/collection/immutable/List.html#scala.AnyRef" class="extype" name="scala.collection.immutable.List">AnyRef</a></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <a href="http://www.scala-lang.org/api/2.12.4/scala/collection/immutable/List.html#scala.Any" class="extype" name="scala.collection.immutable.List">Any</a></h3>

@@ -117,6 +117,10 @@
                         <a class="object" href="Logger$.html" title=""></a>
                         <a class="trait" href="Logger.html" title=""></a>
                         <a href="Logger.html" title="">Logger</a>
+                      </li><li class="current-entities indented2">
+                        <span class="separator"></span>
+                        <a class="trait" href="LoggerContainer.html" title=""></a>
+                        <a href="LoggerContainer.html" title="">LoggerContainer</a>
                       </li>
               </ul>
             </div>
@@ -217,6 +221,38 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="Logger.html" class="extype" name="purity.logging.Logger">Logger</a></dd></dl></div>
+    </li><li name="purity.logging.ColorPrint#prSource" visbl="prt" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="prSource:Boolean"></a>
+      <span class="permalink">
+      <a href="../../purity/logging/ColorPrint.html#prSource:Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">prSource</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.4/scala/Boolean.html#scala.Boolean" class="extype" name="scala.Boolean">Boolean</a></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
+    </li><li name="purity.logging.ColorPrint#prTime" visbl="prt" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="prTime:Boolean"></a>
+      <span class="permalink">
+      <a href="../../purity/logging/ColorPrint.html#prTime:Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">prTime</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.4/scala/Boolean.html#scala.Boolean" class="extype" name="scala.Boolean">Boolean</a></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li></ol>
             </div>
 
@@ -344,9 +380,9 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Logger.html" class="extype" name="purity.logging.Logger">Logger</a></dd></dl></div>
     </li><li name="purity.logging.Logger#debug" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="debug(message:String,e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]"></a><a id="debug(String,Throwable)(Applicative[IO]):IO[Unit]"></a>
+      <a id="debug(message:String,e:Throwable)(implicitF:cats.Applicative[F],implicitfl:sourcecode.File,implicitcl:sourcecode.Line):F[Unit]"></a><a id="debug(String,Throwable)(Applicative[IO],File,Line):IO[Unit]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/ColorPrint.html#debug(message:String,e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]" title="Permalink">
+      <a href="../../purity/logging/ColorPrint.html#debug(message:String,e:Throwable)(implicitF:cats.Applicative[F],implicitfl:sourcecode.File,implicitcl:sourcecode.Line):F[Unit]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -355,14 +391,14 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">debug</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="cats.effect.IO">IO</span>]</span>)</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
+        <span class="name">debug</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="cats.effect.IO">IO</span>]</span>, <span name="fl">fl: <span class="extype" name="sourcecode.File">File</span></span>, <span name="cl">cl: <span class="extype" name="sourcecode.Line">Line</span></span>)</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Logger.html" class="extype" name="purity.logging.Logger">Logger</a></dd></dl></div>
     </li><li name="purity.logging.Logger#debug" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="debug(e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]"></a><a id="debug(Throwable)(Applicative[IO]):IO[Unit]"></a>
+      <a id="debug(e:Throwable)(implicitF:cats.Applicative[F],implicitfl:sourcecode.File,implicitcl:sourcecode.Line):F[Unit]"></a><a id="debug(Throwable)(Applicative[IO],File,Line):IO[Unit]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/ColorPrint.html#debug(e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]" title="Permalink">
+      <a href="../../purity/logging/ColorPrint.html#debug(e:Throwable)(implicitF:cats.Applicative[F],implicitfl:sourcecode.File,implicitcl:sourcecode.Line):F[Unit]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -371,14 +407,14 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">debug</span><span class="params">(<span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="cats.effect.IO">IO</span>]</span>)</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
+        <span class="name">debug</span><span class="params">(<span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="cats.effect.IO">IO</span>]</span>, <span name="fl">fl: <span class="extype" name="sourcecode.File">File</span></span>, <span name="cl">cl: <span class="extype" name="sourcecode.Line">Line</span></span>)</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Logger.html" class="extype" name="purity.logging.Logger">Logger</a></dd></dl></div>
     </li><li name="purity.logging.Logger#debug" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="debug(message:String)(implicitF:cats.Applicative[F]):F[Unit]"></a><a id="debug(String)(Applicative[IO]):IO[Unit]"></a>
+      <a id="debug(message:String)(implicitF:cats.Applicative[F],implicitfl:sourcecode.File,implicitcl:sourcecode.Line):F[Unit]"></a><a id="debug(String)(Applicative[IO],File,Line):IO[Unit]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/ColorPrint.html#debug(message:String)(implicitF:cats.Applicative[F]):F[Unit]" title="Permalink">
+      <a href="../../purity/logging/ColorPrint.html#debug(message:String)(implicitF:cats.Applicative[F],implicitfl:sourcecode.File,implicitcl:sourcecode.Line):F[Unit]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -387,7 +423,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">debug</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="cats.effect.IO">IO</span>]</span>)</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
+        <span class="name">debug</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="cats.effect.IO">IO</span>]</span>, <span name="fl">fl: <span class="extype" name="sourcecode.File">File</span></span>, <span name="cl">cl: <span class="extype" name="sourcecode.Line">Line</span></span>)</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Logger.html" class="extype" name="purity.logging.Logger">Logger</a></dd></dl></div>
@@ -424,9 +460,9 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="purity.logging.Logger#error" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="error(message:String,e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]"></a><a id="error(String,Throwable)(Applicative[IO]):IO[Unit]"></a>
+      <a id="error(message:String,e:Throwable)(implicitF:cats.Applicative[F],implicitfl:sourcecode.File,implicitcl:sourcecode.Line):F[Unit]"></a><a id="error(String,Throwable)(Applicative[IO],File,Line):IO[Unit]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/ColorPrint.html#error(message:String,e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]" title="Permalink">
+      <a href="../../purity/logging/ColorPrint.html#error(message:String,e:Throwable)(implicitF:cats.Applicative[F],implicitfl:sourcecode.File,implicitcl:sourcecode.Line):F[Unit]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -435,14 +471,14 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">error</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="cats.effect.IO">IO</span>]</span>)</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
+        <span class="name">error</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="cats.effect.IO">IO</span>]</span>, <span name="fl">fl: <span class="extype" name="sourcecode.File">File</span></span>, <span name="cl">cl: <span class="extype" name="sourcecode.Line">Line</span></span>)</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Logger.html" class="extype" name="purity.logging.Logger">Logger</a></dd></dl></div>
     </li><li name="purity.logging.Logger#error" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="error(e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]"></a><a id="error(Throwable)(Applicative[IO]):IO[Unit]"></a>
+      <a id="error(e:Throwable)(implicitF:cats.Applicative[F],implicitfl:sourcecode.File,implicitcl:sourcecode.Line):F[Unit]"></a><a id="error(Throwable)(Applicative[IO],File,Line):IO[Unit]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/ColorPrint.html#error(e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]" title="Permalink">
+      <a href="../../purity/logging/ColorPrint.html#error(e:Throwable)(implicitF:cats.Applicative[F],implicitfl:sourcecode.File,implicitcl:sourcecode.Line):F[Unit]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -451,14 +487,14 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">error</span><span class="params">(<span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="cats.effect.IO">IO</span>]</span>)</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
+        <span class="name">error</span><span class="params">(<span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="cats.effect.IO">IO</span>]</span>, <span name="fl">fl: <span class="extype" name="sourcecode.File">File</span></span>, <span name="cl">cl: <span class="extype" name="sourcecode.Line">Line</span></span>)</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Logger.html" class="extype" name="purity.logging.Logger">Logger</a></dd></dl></div>
     </li><li name="purity.logging.Logger#error" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="error(message:String)(implicitF:cats.Applicative[F]):F[Unit]"></a><a id="error(String)(Applicative[IO]):IO[Unit]"></a>
+      <a id="error(message:String)(implicitF:cats.Applicative[F],implicitfl:sourcecode.File,implicitcl:sourcecode.Line):F[Unit]"></a><a id="error(String)(Applicative[IO],File,Line):IO[Unit]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/ColorPrint.html#error(message:String)(implicitF:cats.Applicative[F]):F[Unit]" title="Permalink">
+      <a href="../../purity/logging/ColorPrint.html#error(message:String)(implicitF:cats.Applicative[F],implicitfl:sourcecode.File,implicitcl:sourcecode.Line):F[Unit]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -467,14 +503,14 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">error</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="cats.effect.IO">IO</span>]</span>)</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
+        <span class="name">error</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="cats.effect.IO">IO</span>]</span>, <span name="fl">fl: <span class="extype" name="sourcecode.File">File</span></span>, <span name="cl">cl: <span class="extype" name="sourcecode.Line">Line</span></span>)</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Logger.html" class="extype" name="purity.logging.Logger">Logger</a></dd></dl></div>
     </li><li name="purity.logging.Logger#fatal" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="fatal(message:String,e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]"></a><a id="fatal(String,Throwable)(Applicative[IO]):IO[Unit]"></a>
+      <a id="fatal(message:String,e:Throwable)(implicitF:cats.Applicative[F],implicitfl:sourcecode.File,implicitcl:sourcecode.Line):F[Unit]"></a><a id="fatal(String,Throwable)(Applicative[IO],File,Line):IO[Unit]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/ColorPrint.html#fatal(message:String,e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]" title="Permalink">
+      <a href="../../purity/logging/ColorPrint.html#fatal(message:String,e:Throwable)(implicitF:cats.Applicative[F],implicitfl:sourcecode.File,implicitcl:sourcecode.Line):F[Unit]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -483,14 +519,14 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">fatal</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="cats.effect.IO">IO</span>]</span>)</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
+        <span class="name">fatal</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="cats.effect.IO">IO</span>]</span>, <span name="fl">fl: <span class="extype" name="sourcecode.File">File</span></span>, <span name="cl">cl: <span class="extype" name="sourcecode.Line">Line</span></span>)</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Logger.html" class="extype" name="purity.logging.Logger">Logger</a></dd></dl></div>
     </li><li name="purity.logging.Logger#fatal" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="fatal(e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]"></a><a id="fatal(Throwable)(Applicative[IO]):IO[Unit]"></a>
+      <a id="fatal(e:Throwable)(implicitF:cats.Applicative[F],implicitfl:sourcecode.File,implicitcl:sourcecode.Line):F[Unit]"></a><a id="fatal(Throwable)(Applicative[IO],File,Line):IO[Unit]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/ColorPrint.html#fatal(e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]" title="Permalink">
+      <a href="../../purity/logging/ColorPrint.html#fatal(e:Throwable)(implicitF:cats.Applicative[F],implicitfl:sourcecode.File,implicitcl:sourcecode.Line):F[Unit]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -499,14 +535,14 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">fatal</span><span class="params">(<span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="cats.effect.IO">IO</span>]</span>)</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
+        <span class="name">fatal</span><span class="params">(<span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="cats.effect.IO">IO</span>]</span>, <span name="fl">fl: <span class="extype" name="sourcecode.File">File</span></span>, <span name="cl">cl: <span class="extype" name="sourcecode.Line">Line</span></span>)</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Logger.html" class="extype" name="purity.logging.Logger">Logger</a></dd></dl></div>
     </li><li name="purity.logging.Logger#fatal" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="fatal(message:String)(implicitF:cats.Applicative[F]):F[Unit]"></a><a id="fatal(String)(Applicative[IO]):IO[Unit]"></a>
+      <a id="fatal(message:String)(implicitF:cats.Applicative[F],implicitfl:sourcecode.File,implicitcl:sourcecode.Line):F[Unit]"></a><a id="fatal(String)(Applicative[IO],File,Line):IO[Unit]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/ColorPrint.html#fatal(message:String)(implicitF:cats.Applicative[F]):F[Unit]" title="Permalink">
+      <a href="../../purity/logging/ColorPrint.html#fatal(message:String)(implicitF:cats.Applicative[F],implicitfl:sourcecode.File,implicitcl:sourcecode.Line):F[Unit]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -515,7 +551,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">fatal</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="cats.effect.IO">IO</span>]</span>)</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
+        <span class="name">fatal</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="cats.effect.IO">IO</span>]</span>, <span name="fl">fl: <span class="extype" name="sourcecode.File">File</span></span>, <span name="cl">cl: <span class="extype" name="sourcecode.Line">Line</span></span>)</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Logger.html" class="extype" name="purity.logging.Logger">Logger</a></dd></dl></div>
@@ -580,9 +616,9 @@
               
         </dd></dl></div>
     </li><li name="purity.logging.Logger#info" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="info(message:String,e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]"></a><a id="info(String,Throwable)(Applicative[IO]):IO[Unit]"></a>
+      <a id="info(message:String,e:Throwable)(implicitF:cats.Applicative[F],implicitfl:sourcecode.File,implicitcl:sourcecode.Line):F[Unit]"></a><a id="info(String,Throwable)(Applicative[IO],File,Line):IO[Unit]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/ColorPrint.html#info(message:String,e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]" title="Permalink">
+      <a href="../../purity/logging/ColorPrint.html#info(message:String,e:Throwable)(implicitF:cats.Applicative[F],implicitfl:sourcecode.File,implicitcl:sourcecode.Line):F[Unit]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -591,14 +627,14 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">info</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="cats.effect.IO">IO</span>]</span>)</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
+        <span class="name">info</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="cats.effect.IO">IO</span>]</span>, <span name="fl">fl: <span class="extype" name="sourcecode.File">File</span></span>, <span name="cl">cl: <span class="extype" name="sourcecode.Line">Line</span></span>)</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Logger.html" class="extype" name="purity.logging.Logger">Logger</a></dd></dl></div>
     </li><li name="purity.logging.Logger#info" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="info(e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]"></a><a id="info(Throwable)(Applicative[IO]):IO[Unit]"></a>
+      <a id="info(e:Throwable)(implicitF:cats.Applicative[F],implicitfl:sourcecode.File,implicitcl:sourcecode.Line):F[Unit]"></a><a id="info(Throwable)(Applicative[IO],File,Line):IO[Unit]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/ColorPrint.html#info(e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]" title="Permalink">
+      <a href="../../purity/logging/ColorPrint.html#info(e:Throwable)(implicitF:cats.Applicative[F],implicitfl:sourcecode.File,implicitcl:sourcecode.Line):F[Unit]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -607,14 +643,14 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">info</span><span class="params">(<span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="cats.effect.IO">IO</span>]</span>)</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
+        <span class="name">info</span><span class="params">(<span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="cats.effect.IO">IO</span>]</span>, <span name="fl">fl: <span class="extype" name="sourcecode.File">File</span></span>, <span name="cl">cl: <span class="extype" name="sourcecode.Line">Line</span></span>)</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Logger.html" class="extype" name="purity.logging.Logger">Logger</a></dd></dl></div>
     </li><li name="purity.logging.Logger#info" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="info(message:String)(implicitF:cats.Applicative[F]):F[Unit]"></a><a id="info(String)(Applicative[IO]):IO[Unit]"></a>
+      <a id="info(message:String)(implicitF:cats.Applicative[F],implicitfl:sourcecode.File,implicitcl:sourcecode.Line):F[Unit]"></a><a id="info(String)(Applicative[IO],File,Line):IO[Unit]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/ColorPrint.html#info(message:String)(implicitF:cats.Applicative[F]):F[Unit]" title="Permalink">
+      <a href="../../purity/logging/ColorPrint.html#info(message:String)(implicitF:cats.Applicative[F],implicitfl:sourcecode.File,implicitcl:sourcecode.Line):F[Unit]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -623,7 +659,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">info</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="cats.effect.IO">IO</span>]</span>)</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
+        <span class="name">info</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="cats.effect.IO">IO</span>]</span>, <span name="fl">fl: <span class="extype" name="sourcecode.File">File</span></span>, <span name="cl">cl: <span class="extype" name="sourcecode.Line">Line</span></span>)</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Logger.html" class="extype" name="purity.logging.Logger">Logger</a></dd></dl></div>
@@ -762,9 +798,9 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="purity.logging.Logger#trace" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="trace(message:String,e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]"></a><a id="trace(String,Throwable)(Applicative[IO]):IO[Unit]"></a>
+      <a id="trace(message:String,e:Throwable)(implicitF:cats.Applicative[F],implicitfl:sourcecode.File,implicitcl:sourcecode.Line):F[Unit]"></a><a id="trace(String,Throwable)(Applicative[IO],File,Line):IO[Unit]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/ColorPrint.html#trace(message:String,e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]" title="Permalink">
+      <a href="../../purity/logging/ColorPrint.html#trace(message:String,e:Throwable)(implicitF:cats.Applicative[F],implicitfl:sourcecode.File,implicitcl:sourcecode.Line):F[Unit]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -773,14 +809,14 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">trace</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="cats.effect.IO">IO</span>]</span>)</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
+        <span class="name">trace</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="cats.effect.IO">IO</span>]</span>, <span name="fl">fl: <span class="extype" name="sourcecode.File">File</span></span>, <span name="cl">cl: <span class="extype" name="sourcecode.Line">Line</span></span>)</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Logger.html" class="extype" name="purity.logging.Logger">Logger</a></dd></dl></div>
     </li><li name="purity.logging.Logger#trace" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="trace(e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]"></a><a id="trace(Throwable)(Applicative[IO]):IO[Unit]"></a>
+      <a id="trace(e:Throwable)(implicitF:cats.Applicative[F],implicitfl:sourcecode.File,implicitcl:sourcecode.Line):F[Unit]"></a><a id="trace(Throwable)(Applicative[IO],File,Line):IO[Unit]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/ColorPrint.html#trace(e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]" title="Permalink">
+      <a href="../../purity/logging/ColorPrint.html#trace(e:Throwable)(implicitF:cats.Applicative[F],implicitfl:sourcecode.File,implicitcl:sourcecode.Line):F[Unit]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -789,14 +825,14 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">trace</span><span class="params">(<span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="cats.effect.IO">IO</span>]</span>)</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
+        <span class="name">trace</span><span class="params">(<span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="cats.effect.IO">IO</span>]</span>, <span name="fl">fl: <span class="extype" name="sourcecode.File">File</span></span>, <span name="cl">cl: <span class="extype" name="sourcecode.Line">Line</span></span>)</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Logger.html" class="extype" name="purity.logging.Logger">Logger</a></dd></dl></div>
     </li><li name="purity.logging.Logger#trace" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="trace(message:String)(implicitF:cats.Applicative[F]):F[Unit]"></a><a id="trace(String)(Applicative[IO]):IO[Unit]"></a>
+      <a id="trace(message:String)(implicitF:cats.Applicative[F],implicitfl:sourcecode.File,implicitcl:sourcecode.Line):F[Unit]"></a><a id="trace(String)(Applicative[IO],File,Line):IO[Unit]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/ColorPrint.html#trace(message:String)(implicitF:cats.Applicative[F]):F[Unit]" title="Permalink">
+      <a href="../../purity/logging/ColorPrint.html#trace(message:String)(implicitF:cats.Applicative[F],implicitfl:sourcecode.File,implicitcl:sourcecode.Line):F[Unit]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -805,7 +841,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">trace</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="cats.effect.IO">IO</span>]</span>)</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
+        <span class="name">trace</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="cats.effect.IO">IO</span>]</span>, <span name="fl">fl: <span class="extype" name="sourcecode.File">File</span></span>, <span name="cl">cl: <span class="extype" name="sourcecode.Line">Line</span></span>)</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Logger.html" class="extype" name="purity.logging.Logger">Logger</a></dd></dl></div>
@@ -878,9 +914,9 @@
               
         </dd></dl></div>
     </li><li name="purity.logging.Logger#warn" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="warn(message:String,e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]"></a><a id="warn(String,Throwable)(Applicative[IO]):IO[Unit]"></a>
+      <a id="warn(message:String,e:Throwable)(implicitF:cats.Applicative[F],implicitfl:sourcecode.File,implicitcl:sourcecode.Line):F[Unit]"></a><a id="warn(String,Throwable)(Applicative[IO],File,Line):IO[Unit]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/ColorPrint.html#warn(message:String,e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]" title="Permalink">
+      <a href="../../purity/logging/ColorPrint.html#warn(message:String,e:Throwable)(implicitF:cats.Applicative[F],implicitfl:sourcecode.File,implicitcl:sourcecode.Line):F[Unit]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -889,14 +925,14 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">warn</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="cats.effect.IO">IO</span>]</span>)</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
+        <span class="name">warn</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="cats.effect.IO">IO</span>]</span>, <span name="fl">fl: <span class="extype" name="sourcecode.File">File</span></span>, <span name="cl">cl: <span class="extype" name="sourcecode.Line">Line</span></span>)</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Logger.html" class="extype" name="purity.logging.Logger">Logger</a></dd></dl></div>
     </li><li name="purity.logging.Logger#warn" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="warn(e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]"></a><a id="warn(Throwable)(Applicative[IO]):IO[Unit]"></a>
+      <a id="warn(e:Throwable)(implicitF:cats.Applicative[F],implicitfl:sourcecode.File,implicitcl:sourcecode.Line):F[Unit]"></a><a id="warn(Throwable)(Applicative[IO],File,Line):IO[Unit]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/ColorPrint.html#warn(e:Throwable)(implicitF:cats.Applicative[F]):F[Unit]" title="Permalink">
+      <a href="../../purity/logging/ColorPrint.html#warn(e:Throwable)(implicitF:cats.Applicative[F],implicitfl:sourcecode.File,implicitcl:sourcecode.Line):F[Unit]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -905,14 +941,14 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">warn</span><span class="params">(<span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="cats.effect.IO">IO</span>]</span>)</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
+        <span class="name">warn</span><span class="params">(<span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="cats.effect.IO">IO</span>]</span>, <span name="fl">fl: <span class="extype" name="sourcecode.File">File</span></span>, <span name="cl">cl: <span class="extype" name="sourcecode.Line">Line</span></span>)</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Logger.html" class="extype" name="purity.logging.Logger">Logger</a></dd></dl></div>
     </li><li name="purity.logging.Logger#warn" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="warn(message:String)(implicitF:cats.Applicative[F]):F[Unit]"></a><a id="warn(String)(Applicative[IO]):IO[Unit]"></a>
+      <a id="warn(message:String)(implicitF:cats.Applicative[F],implicitfl:sourcecode.File,implicitcl:sourcecode.Line):F[Unit]"></a><a id="warn(String)(Applicative[IO],File,Line):IO[Unit]"></a>
       <span class="permalink">
-      <a href="../../purity/logging/ColorPrint.html#warn(message:String)(implicitF:cats.Applicative[F]):F[Unit]" title="Permalink">
+      <a href="../../purity/logging/ColorPrint.html#warn(message:String)(implicitF:cats.Applicative[F],implicitfl:sourcecode.File,implicitcl:sourcecode.Line):F[Unit]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -921,7 +957,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">warn</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="cats.effect.IO">IO</span>]</span>)</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
+        <span class="name">warn</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="F">F: <a href="http://typelevel.org/cats/api/cats/Applicative.html#cats.Applicative" class="extype" name="cats.Applicative">Applicative</a>[<span class="extype" name="cats.effect.IO">IO</span>]</span>, <span name="fl">fl: <span class="extype" name="sourcecode.File">File</span></span>, <span name="cl">cl: <span class="extype" name="sourcecode.Line">Line</span></span>)</span><span class="result">: <span class="extype" name="cats.effect.IO">IO</span>[<a href="http://www.scala-lang.org/api/2.12.4/scala/Unit.html#scala.Unit" class="extype" name="scala.Unit">Unit</a>]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Logger.html" class="extype" name="purity.logging.Logger">Logger</a></dd></dl></div>

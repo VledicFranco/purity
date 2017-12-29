@@ -769,9 +769,9 @@ which you require it's produced value.
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ScriptDsl.html" class="extype" name="purity.script.ScriptDsl">ScriptDsl</a></dd></dl></div>
     </li><li name="purity.script.ScriptT#logError" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="logError(f:Throwable=&gt;purity.logging.LogLine)(implicitM:cats.effect.Effect[F]):purity.script.ScriptT[F,Dwithpurity.logging.Logger[F],E,A]"></a><a id="logError((Throwable)⇒LogLine)(Effect[F]):ScriptT[F,DwithLogger[F],E,A]"></a>
+      <a id="logError(f:Throwable=&gt;purity.logging.LogLine)(implicitM:cats.effect.Effect[F]):purity.script.ScriptT[F,Dwithpurity.logging.LoggerContainer[F],E,A]"></a><a id="logError((Throwable)⇒LogLine)(Effect[F]):ScriptT[F,DwithLoggerContainer[F],E,A]"></a>
       <span class="permalink">
-      <a href="../../purity/script/ScriptT.html#logError(f:Throwable=&gt;purity.logging.LogLine)(implicitM:cats.effect.Effect[F]):purity.script.ScriptT[F,Dwithpurity.logging.Logger[F],E,A]" title="Permalink">
+      <a href="../../purity/script/ScriptT.html#logError(f:Throwable=&gt;purity.logging.LogLine)(implicitM:cats.effect.Effect[F]):purity.script.ScriptT[F,Dwithpurity.logging.LoggerContainer[F],E,A]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -780,14 +780,14 @@ which you require it's produced value.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">logError</span><span class="params">(<span name="f">f: (<span class="extype" name="scala.Throwable">Throwable</span>) ⇒ <a href="../logging/LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="M">M: <span class="extype" name="cats.effect.Effect">Effect</span>[<span class="extype" name="purity.script.ScriptT.F">F</span>]</span>)</span><span class="result">: <a href="" class="extype" name="purity.script.ScriptT">ScriptT</a>[<span class="extype" name="purity.script.ScriptT.F">F</span>, <span class="extype" name="purity.script.ScriptT.D">D</span> with <a href="../logging/Logger.html" class="extype" name="purity.logging.Logger">Logger</a>[<span class="extype" name="purity.script.ScriptT.F">F</span>], <span class="extype" name="purity.script.ScriptT.E">E</span>, <span class="extype" name="purity.script.ScriptT.A">A</span>]</span>
+        <span class="name">logError</span><span class="params">(<span name="f">f: (<span class="extype" name="scala.Throwable">Throwable</span>) ⇒ <a href="../logging/LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="M">M: <span class="extype" name="cats.effect.Effect">Effect</span>[<span class="extype" name="purity.script.ScriptT.F">F</span>]</span>)</span><span class="result">: <a href="" class="extype" name="purity.script.ScriptT">ScriptT</a>[<span class="extype" name="purity.script.ScriptT.F">F</span>, <span class="extype" name="purity.script.ScriptT.D">D</span> with <a href="../logging/LoggerContainer.html" class="extype" name="purity.logging.LoggerContainer">LoggerContainer</a>[<span class="extype" name="purity.script.ScriptT.F">F</span>], <span class="extype" name="purity.script.ScriptT.E">E</span>, <span class="extype" name="purity.script.ScriptT.A">A</span>]</span>
       </span>
       
       <p class="shortcomment cmt">Adds a log line if the Script's lower F has failed.</p>
     </li><li name="purity.script.ScriptT#logFailure" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="logFailure(f:E=&gt;purity.logging.LogLine)(implicitM:cats.effect.Effect[F]):purity.script.ScriptT[F,Dwithpurity.logging.Logger[F],E,A]"></a><a id="logFailure((E)⇒LogLine)(Effect[F]):ScriptT[F,DwithLogger[F],E,A]"></a>
+      <a id="logFailure(f:E=&gt;purity.logging.LogLine)(implicitM:cats.effect.Effect[F]):purity.script.ScriptT[F,Dwithpurity.logging.LoggerContainer[F],E,A]"></a><a id="logFailure((E)⇒LogLine)(Effect[F]):ScriptT[F,DwithLoggerContainer[F],E,A]"></a>
       <span class="permalink">
-      <a href="../../purity/script/ScriptT.html#logFailure(f:E=&gt;purity.logging.LogLine)(implicitM:cats.effect.Effect[F]):purity.script.ScriptT[F,Dwithpurity.logging.Logger[F],E,A]" title="Permalink">
+      <a href="../../purity/script/ScriptT.html#logFailure(f:E=&gt;purity.logging.LogLine)(implicitM:cats.effect.Effect[F]):purity.script.ScriptT[F,Dwithpurity.logging.LoggerContainer[F],E,A]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -796,7 +796,7 @@ which you require it's produced value.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">logFailure</span><span class="params">(<span name="f">f: (<span class="extype" name="purity.script.ScriptT.E">E</span>) ⇒ <a href="../logging/LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="M">M: <span class="extype" name="cats.effect.Effect">Effect</span>[<span class="extype" name="purity.script.ScriptT.F">F</span>]</span>)</span><span class="result">: <a href="" class="extype" name="purity.script.ScriptT">ScriptT</a>[<span class="extype" name="purity.script.ScriptT.F">F</span>, <span class="extype" name="purity.script.ScriptT.D">D</span> with <a href="../logging/Logger.html" class="extype" name="purity.logging.Logger">Logger</a>[<span class="extype" name="purity.script.ScriptT.F">F</span>], <span class="extype" name="purity.script.ScriptT.E">E</span>, <span class="extype" name="purity.script.ScriptT.A">A</span>]</span>
+        <span class="name">logFailure</span><span class="params">(<span name="f">f: (<span class="extype" name="purity.script.ScriptT.E">E</span>) ⇒ <a href="../logging/LogLine.html" class="extype" name="purity.logging.LogLine">LogLine</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="M">M: <span class="extype" name="cats.effect.Effect">Effect</span>[<span class="extype" name="purity.script.ScriptT.F">F</span>]</span>)</span><span class="result">: <a href="" class="extype" name="purity.script.ScriptT">ScriptT</a>[<span class="extype" name="purity.script.ScriptT.F">F</span>, <span class="extype" name="purity.script.ScriptT.D">D</span> with <a href="../logging/LoggerContainer.html" class="extype" name="purity.logging.LoggerContainer">LoggerContainer</a>[<span class="extype" name="purity.script.ScriptT.F">F</span>], <span class="extype" name="purity.script.ScriptT.E">E</span>, <span class="extype" name="purity.script.ScriptT.A">A</span>]</span>
       </span>
       
       <p class="shortcomment cmt">Adds a log line if the Script's domain failure E has failed.</p>

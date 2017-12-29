@@ -85,6 +85,22 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="_root_">root</a></dd></dl></div>
+    </li><li name="purity.config" visbl="pub" class="indented2 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="config"></a><a id="config:config"></a>
+      <span class="permalink">
+      <a href="../purity/index.html#config" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../config/index.html"><span class="name">config</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="purity">purity</a></dd></dl></div>
     </li><li name="purity.http4s" visbl="pub" class="indented2 current" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="http4s"></a><a id="http4s:http4s"></a>
       <span class="permalink">
@@ -106,9 +122,17 @@
                         <a class="class" href="JsonClient.html" title="Extra layer on top of a Blaze pooled http client."></a>
                         <a href="JsonClient.html" title="Extra layer on top of a Blaze pooled http client.">JsonClient</a>
                       </li><li class="current-entities indented2">
+                        <span class="separator"></span>
+                        <a class="trait" href="JsonClientContainer.html" title=""></a>
+                        <a href="JsonClientContainer.html" title="">JsonClientContainer</a>
+                      </li><li class="current-entities indented2">
                         <a class="object" href="JsonRequestHandler$.html" title=""></a>
                         <a class="class" href="JsonRequestHandler.html" title=""></a>
                         <a href="JsonRequestHandler.html" title="">JsonRequestHandler</a>
+                      </li><li class="current-entities indented2">
+                        <span class="separator"></span>
+                        <a class="trait" href="ServiceTools.html" title=""></a>
+                        <a href="ServiceTools.html" title="">ServiceTools</a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
                         <a class="class" href="SimpleServiceConfig.html" title="Intended to be used inside services which are dependencies."></a>
@@ -228,6 +252,22 @@
 - Adds logging between requests and responses.
 - Lifts possible ServiceFailures to the Script type.
 </p></div></div>
+    </li><li name="purity.http4s.JsonClientContainer" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="JsonClientContainer[F[+_]]extendsAnyRef"></a><a id="JsonClientContainer[F[+_]]:JsonClientContainer[F]"></a>
+      <span class="permalink">
+      <a href="../../purity/http4s/index.html#JsonClientContainer[F[+_]]extendsAnyRef" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="JsonClientContainer.html"><span class="name">JsonClientContainer</span></a><span class="tparams">[<span name="F">F<span class="tparams">[<span name="_">+_</span>]</span></span>]</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.12.4/scala/collection/immutable/List.html#scala.AnyRef" class="extype" name="scala.collection.immutable.List">AnyRef</a></span>
+      </span>
+      
+      
     </li><li name="purity.http4s.JsonRequestHandler" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="JsonRequestHandler[F[+_]]extendsScriptDsl[F]withHttp4sDsl[F]withProductwithSerializable"></a><a id="JsonRequestHandler[F[+_]]:JsonRequestHandler[F]"></a>
       <span class="permalink">
@@ -241,6 +281,22 @@
       </span>
       <span class="symbol">
         <a title="" href="JsonRequestHandler.html"><span class="name">JsonRequestHandler</span></a><span class="tparams">[<span name="F">F<span class="tparams">[<span name="_">+_</span>]</span></span>]</span><span class="params">(<span name="errorHandler">errorHandler: <a href="JsonRequestHandler$$ErrorHandler.html" class="extype" name="purity.http4s.JsonRequestHandler.ErrorHandler">ErrorHandler</a>[<span class="extype" name="purity.http4s.JsonRequestHandler.F">F</span>]</span>, <span name="jsonPrinter">jsonPrinter: <a href="https://circe.github.io/circe/api/io/circe/Printer.html#io.circe.Printer" class="extype" name="io.circe.Printer">Printer</a> = <span class="defval" name='<span class="name"><a href="JsonRequestHandler$.html">JsonRequestHandler.DefaultJsonPrinter</a></span>'>...</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="effect">effect: <span class="extype" name="cats.effect.Effect">Effect</span>[<span class="extype" name="purity.http4s.JsonRequestHandler.F">F</span>]</span>)</span><span class="result"> extends <a href="../script/ScriptDsl.html" class="extype" name="purity.script.ScriptDsl">ScriptDsl</a>[<span class="extype" name="purity.http4s.JsonRequestHandler.F">F</span>] with <span class="extype" name="org.http4s.dsl.Http4sDsl">Http4sDsl</span>[<span class="extype" name="purity.http4s.JsonRequestHandler.F">F</span>] with <a href="http://www.scala-lang.org/api/2.12.4/scala/Product.html#scala.Product" class="extype" name="scala.Product">Product</a> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a></span>
+      </span>
+      
+      
+    </li><li name="purity.http4s.ServiceTools" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ServiceTools[F[+_]]extendsJsonClientContainer[F]withLoggerContainer[F]withConfigContainer"></a><a id="ServiceTools[F[+_]]:ServiceTools[F]"></a>
+      <span class="permalink">
+      <a href="../../purity/http4s/index.html#ServiceTools[F[+_]]extendsJsonClientContainer[F]withLoggerContainer[F]withConfigContainer" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="ServiceTools.html"><span class="name">ServiceTools</span></a><span class="tparams">[<span name="F">F<span class="tparams">[<span name="_">+_</span>]</span></span>]</span><span class="result"> extends <a href="JsonClientContainer.html" class="extype" name="purity.http4s.JsonClientContainer">JsonClientContainer</a>[<span class="extype" name="purity.http4s.ServiceTools.F">F</span>] with <a href="../logging/LoggerContainer.html" class="extype" name="purity.logging.LoggerContainer">LoggerContainer</a>[<span class="extype" name="purity.http4s.ServiceTools.F">F</span>] with <a href="../config/ConfigContainer.html" class="extype" name="purity.config.ConfigContainer">ConfigContainer</a></span>
       </span>
       
       
