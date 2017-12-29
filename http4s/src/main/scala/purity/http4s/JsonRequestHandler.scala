@@ -1,7 +1,7 @@
 package purity.http4s
 
 import cats.implicits._
-import cats.effect.Effect
+import cats.effect.{Effect, Sync}
 import purity.logging.Logger
 import io.circe._
 import io.circe.syntax._
@@ -44,7 +44,7 @@ case class JsonRequestHandler[F[+_]](
 
   private val circeInstances: CirceInstances = new CirceInstances {
     override protected def defaultPrinter: Printer = jsonPrinter
-    override implicit def jsonDecoder[G[_]: Effect]: EntityDecoder[G, Json] = CirceInstances.defaultJsonDecoder
+    override implicit def jsonDecoder[F[_]](implicit ev: Sync[F]): EntityDecoder[F, Json] = CirceInstances.defaultJsonDecoder
   }
 
   import circeInstances._

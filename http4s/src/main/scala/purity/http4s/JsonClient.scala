@@ -1,7 +1,7 @@
 package purity.http4s
 
 import cats.data.EitherT
-import cats.effect.Effect
+import cats.effect.{Effect, Sync}
 import io.circe.{Decoder, Encoder, Json, Printer}
 import org.http4s.{EntityDecoder, InvalidMessageBodyFailure, MessageFailure, Request, Response, Status, Uri}
 import org.http4s.client.Client
@@ -35,7 +35,7 @@ case class JsonClient[F[+_]](
 
   private val circe: CirceInstances = new CirceInstances {
     override protected def defaultPrinter: Printer = jsonPrinter
-    override implicit def jsonDecoder[G[_]: Effect]: EntityDecoder[G, Json] = CirceInstances.defaultJsonDecoder
+    override implicit def jsonDecoder[F[_]](implicit ev: Sync[F]): EntityDecoder[F, Json] = CirceInstances.defaultJsonDecoder
   }
 
   def shutdown: F[Unit] = client.shutdown
