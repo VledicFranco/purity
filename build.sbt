@@ -9,9 +9,11 @@ lazy val http4sVersion = "0.18.0-M5"
 
 lazy val cats = Def.setting("org.typelevel" %% "cats-core" % catsVersion)
 
-lazy val catsEffects = Def.setting("org.typelevel"  %% "cats-effect" % "0.5")
+lazy val catsEffects = Def.setting("org.typelevel" %% "cats-effect" % "0.5")
 
 lazy val tlConfig = Def.setting("com.typesafe" % "config" % "1.3.1")
+
+lazy val sourcecode = Def.setting("com.lihaoyi" %% "sourcecode" % "0.1.4")
 
 lazy val http4sDsl = Def.setting("org.http4s"  %% "http4s-dsl" % http4sVersion)
 
@@ -85,7 +87,7 @@ lazy val commonSettings = Seq(
 
 lazy val librarySettings = Seq(
   resolvers += Resolver.sonatypeRepo("releases"),
-  libraryDependencies ++= tlConfig.value :: cats.value :: catsEffects.value :: Nil
+  libraryDependencies ++= tlConfig.value :: cats.value :: catsEffects.value :: sourcecode.value :: Nil
 )
 
 lazy val testSettings =
