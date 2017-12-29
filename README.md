@@ -22,11 +22,11 @@ domain logic, and all of our beloved category theory concepts.
 
 ## Getting Started
 
-Purity uses `cats-core 1.0.0-MF` and `cats-effect 0.5`, it is published to Maven Central, you can just add the following to
+Purity uses `cats-core 1.0.0` and `cats-effect 0.7`, it is published to Maven Central, you can just add the following to
 your build.sbt file:
 
 ```scala
-libraryDependencies += "com.francoara" %% "purity-core" % "0.1.1"
+libraryDependencies += "com.francoara" %% "purity-core" % "0.2.0"
 ```
 
 ## Copyright and license
