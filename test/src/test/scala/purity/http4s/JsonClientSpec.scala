@@ -27,8 +27,9 @@ class JsonClientSpec extends ScriptSuite[IO] {
 
   val response1: Script[ServiceTools[IO], ServiceError[IO], Pong] =
     for {
-      tools <- dependencies[ServiceTools[IO]]
-      pong <- tools.jsonClient.on(uriScript).post(Ping("pang")).andExpect[Pong]
+      tools <- dependencies[JsonClientContainer[IO]]
+      client <- tools.jsonClient
+      pong <- client.on(uriScript).post(Ping("pang")).andExpect[Pong]
     } yield pong
 
   describe("JsonClient") {
@@ -43,7 +44,7 @@ class JsonClientSpec extends ScriptSuite[IO] {
         new ServiceTools[IO] {
           override def logger: Logger[IO] = console1.logger
           override def config: Config = ConfigFactory.parseString(""" service.uri = "/ping" """)
-          override def jsonClient: JsonClient[IO] = client
+          override def jsonClient: CantFail[ConfigContainer, JsonClient[IO]] = pure(client)
         }
       proveThatAfter(response1).itHoldsThat(console1)(MutableConsole.hasAmountOfLines(4))
     }

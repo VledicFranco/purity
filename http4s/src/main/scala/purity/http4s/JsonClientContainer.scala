@@ -1,6 +1,9 @@
 package purity.http4s
 
-trait JsonClientContainer[F[+_]] {
+import purity.config.ConfigContainer
+import purity.script.ScriptDsl
 
-  def jsonClient: JsonClient[F]
+trait JsonClientContainer[F[+_]] extends ScriptDsl[F] {
+
+  def jsonClient: CantFail[ConfigContainer, JsonClient[F]]
 }
