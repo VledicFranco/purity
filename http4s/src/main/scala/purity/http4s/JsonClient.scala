@@ -45,22 +45,22 @@ case class JsonClient[F[+_]](
 
   def on(uri: CantFail[ConfigContainer, Uri]): OnUriWithConfig = OnUriWithConfig(uri)
 
-  def fetchAs[A](request: F[Request[F]])(implicit decoder: Decoder[A]): Script[LoggerContainer[F], ServiceError[F], A] = {
+  def fetchAs[A](request: F[Request[F]])(implicit decoder: Decoder[A], fl: sourcecode.File, cl: sourcecode.Line): Script[LoggerContainer[F], ServiceError[F], A] = {
     for {
       r <- liftF(request)
       from = s"${r.method.name}: ${r.uri.renderString}"
-      _ <- log.debug(s"Requesting $from")
+      _ <- log.debug(s"Requesting $from")(effect, fl, cl)
       a <- liftFE(fire(r))
         .logFailure { e =>
-          LogLine.error(s"($from) -> (response status code: ${e.response.status.code}): ${e.failure.message}", e.failure)
+          LogLine.error(s"($from) -> (response status code: ${e.response.status.code}): ${e.failure.message}", e.failure)(fl, cl)
         }
-      _ <- log.debug(s"Response ${a._3.code} from $from")
-      _ <- log.trace(s"POST json response: ${a._2}")
+      _ <- log.debug(s"Response ${a._3.code} from $from")(effect, fl, cl)
+      _ <- log.trace(s"POST json response: ${a._2}")(effect, fl, cl)
     } yield a._1
   }
 
-  def fetchAs[A](request: Request[F])(implicit decoder: Decoder[A]): Script[LoggerContainer[F], ServiceError[F], A] =
-    fetchAs(effect.pure(request))
+  def fetchAs[A](request: Request[F])(implicit decoder: Decoder[A], fl: sourcecode.File, cl: sourcecode.Line): Script[LoggerContainer[F], ServiceError[F], A] =
+    fetchAs(effect.pure(request))(decoder, fl, cl)
 
   /** Same as client.fetchAs from http4s, but it lifts the Message error into an F[Either[ServiceError[F], A]]. */
   private def fire[A](request: Request[F])(implicit decoder: Decoder[A]): F[Either[ServiceError[F], (A, Json, Status)]] = {
@@ -82,8 +82,11 @@ case class JsonClient[F[+_]](
 
   case class OnUri(uri: Uri) {
 
-    def get[A](implicit decoder: Decoder[A]): Script[LoggerContainer[F], ServiceError[F], A] =
-      fetchAs[A](Request[F](method = GET, uri = uri))
+    def get[A](implicit decoder: Decoder[A], fl: sourcecode.File, cl: sourcecode.Line): Script[LoggerContainer[F], ServiceError[F], A] =
+      fetchAs[A](Request[F](method = GET, uri = uri))(decoder, fl, cl)
+
+    def getWithDecoder[A](decoder: Decoder[A])(implicit fl: sourcecode.File, cl: sourcecode.Line): Script[LoggerContainer[F], ServiceError[F], A] =
+      get(decoder, fl, cl)
 
     def post[A](body: A): PartiallyAppliedRequest[A] =
       PartiallyAppliedRequest[A](uri, body)
@@ -91,20 +94,26 @@ case class JsonClient[F[+_]](
 
   case class PartiallyAppliedRequest[A](uri: Uri, body: A) {
 
-    def andExpect[B](implicit encoder: Encoder[A], decoder: Decoder[B]): Script[LoggerContainer[F], ServiceError[F], B] =
+    def andExpect[B](implicit encoder: Encoder[A], decoder: Decoder[B], fl: sourcecode.File, cl: sourcecode.Line): Script[LoggerContainer[F], ServiceError[F], B] =
       for {
-        _ <- log.trace(s"POST json request: ${encoder(body).pretty(Printer.spaces2)}")
-        response <- fetchAs[B](Request.apply[F](method = POST, uri = uri).withBody(body)(effect, circe.jsonEncoderOf))
+        _ <- log.trace(s"POST json request: ${encoder(body).pretty(Printer.spaces2)}")(effect, fl, cl)
+        response <- fetchAs[B](Request.apply[F](method = POST, uri = uri).withBody(body)(effect, circe.jsonEncoderOf))(decoder, fl, cl)
       } yield response
+
+    def andExpectWithDecoder[B](decoder: Decoder[B])(implicit encoder: Encoder[A], fl: sourcecode.File, cl: sourcecode.Line): Script[LoggerContainer[F], ServiceError[F], B] =
+      andExpect(encoder, decoder, fl, cl)
   }
 
   case class OnUriWithConfig(uri: CantFail[ConfigContainer, Uri]) {
 
-    def get[A](implicit decoder: Decoder[A]): Script[LoggerContainer[F] with ConfigContainer, ServiceError[F], A] =
+    def get[A](implicit decoder: Decoder[A], fl: sourcecode.File, cl: sourcecode.Line): Script[LoggerContainer[F] with ConfigContainer, ServiceError[F], A] =
       for {
         endpoint <- uri
-        response ← on(endpoint).get[A]
+        response ← on(endpoint).get[A](decoder, fl, cl)
       } yield response
+
+    def getWithDecoder[A](decoder: Decoder[A])(implicit fl: sourcecode.File, cl: sourcecode.Line): Script[LoggerContainer[F] with ConfigContainer, ServiceError[F], A] =
+      get(decoder, fl, cl)
 
     def post[A](body: A): PartiallyAppliedRequestWithConfig[A] =
       new PartiallyAppliedRequestWithConfig[A](uri, body)
@@ -112,11 +121,14 @@ case class JsonClient[F[+_]](
 
   class PartiallyAppliedRequestWithConfig[A](uri: CantFail[ConfigContainer, Uri], body: A) {
 
-    def andExpect[B](implicit encoder: Encoder[A], decoder: Decoder[B]): Script[LoggerContainer[F] with ConfigContainer, ServiceError[F], B] =
+    def andExpect[B](implicit encoder: Encoder[A], decoder: Decoder[B], fl: sourcecode.File, cl: sourcecode.Line): Script[LoggerContainer[F] with ConfigContainer, ServiceError[F], B] =
       for {
         endpoint <- uri
-        response <- on(endpoint).post(body).andExpect[B]
+        response <- on(endpoint).post(body).andExpect[B](encoder, decoder, fl, cl)
       } yield response
+
+    def andExpectWithDecoder[B](decoder: Decoder[B])(implicit encoder: Encoder[A], fl: sourcecode.File, cl: sourcecode.Line): Script[LoggerContainer[F] with ConfigContainer, ServiceError[F], B] =
+      andExpect(encoder, decoder, fl, cl)
   }
 }
 
