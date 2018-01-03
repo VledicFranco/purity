@@ -15,7 +15,7 @@ trait Predicate[-A] {
     a => check(a) && that.check(a)
 
   def or[AA <: A](that: Predicate[AA]): Predicate[AA] =
-    a => check(a) && that.check(a)
+    a => check(a) || that.check(a)
 
   def toProposition[E](e: E, es: E*): Proposition[E, A] =
     this.toProposition(NonEmptyList(e, es.toList))
