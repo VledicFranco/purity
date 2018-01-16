@@ -19,9 +19,8 @@ useful tool for several of your use cases.</p>
 
 <p>Also Script accumulates log lines using the <code class="highlighter-rouge">purity.logging.LogLine</code> type.</p>
 
-<p>For ease of use, purity provides two implementations of the ScriptT, one with <code class="highlighter-rouge">cats.effects.IO</code> and the other with
-Scala’s Future. The former (which is recommended over Futures) is located at <code class="highlighter-rouge">purity.script.io.Script</code>, and the latter
-at <code class="highlighter-rouge">purity.script.future.Script</code>. Also the same packages contain all of the functions you will need.</p>
+<p>For ease of use, purity provides an implementation of ScriptT and it’s DSL using <code class="highlighter-rouge">cats.effects.IO</code>. The former
+is located at <code class="highlighter-rouge">purity.script.io.Script</code>. Such package contains all of the functions you will need.</p>
 
 <h4 id="a-quick-example-in-code">A quick example in code</h4>
 
@@ -31,7 +30,7 @@ project.</p>
 
 <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">cats.effect.IO</span>
 <span class="k">import</span> <span class="nn">purity.script.io.</span><span class="o">{</span><span class="nc">Script</span><span class="o">,</span> <span class="n">dependencies</span><span class="o">,</span> <span class="n">find</span><span class="o">,</span> <span class="n">log</span><span class="o">,</span> <span class="n">script</span><span class="o">,</span> <span class="n">scriptE</span><span class="o">}</span>
-<span class="k">import</span> <span class="nn">purity.logging.</span><span class="o">{</span><span class="nc">ColorPrint</span><span class="o">,</span> <span class="nc">LogLevel</span><span class="o">,</span> <span class="nc">LoggerFunction</span><span class="o">}</span>
+<span class="k">import</span> <span class="nn">purity.logging.</span><span class="o">{</span><span class="nc">ColorPrint</span><span class="o">,</span> <span class="nc">LogLevel</span><span class="o">,</span> <span class="nc">Logger</span><span class="o">,</span> <span class="nc">LoggerContainer</span><span class="o">}</span>
 
 <span class="k">object</span> <span class="nc">UserAuth0</span> <span class="o">{</span>
 
@@ -72,13 +71,6 @@ project.</p>
     <span class="c1">// Mock of the actual service call
 </span>    <span class="nc">IO</span><span class="o">.</span><span class="n">pure</span><span class="o">(</span><span class="nc">Right</span><span class="o">(</span><span class="mi">1</span><span class="o">))</span>
 
-  <span class="k">def</span> <span class="n">authentication</span><span class="o">(</span><span class="n">credentials</span><span class="k">:</span> <span class="kt">Credentials</span><span class="o">)</span><span class="k">:</span> <span class="kt">Script</span><span class="o">[</span><span class="kt">AuthenticationServiceConfig</span>, <span class="kt">WrongCredentials</span>, <span class="kt">UserId</span><span class="o">]</span> <span class="k">=</span>
-    <span class="k">for</span> <span class="o">{</span>
-      <span class="n">config</span> <span class="k">&lt;-</span> <span class="n">dependencies</span><span class="o">[</span><span class="kt">AuthenticationServiceConfig</span><span class="o">]</span>
-      <span class="k">_</span> <span class="k">&lt;-</span> <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="o">(</span><span class="n">s</span><span class="s">"Authenticating $credentials using service ${config.authServiceUrl}"</span><span class="o">)</span>
-      <span class="n">userId</span> <span class="k">&lt;-</span> <span class="n">scriptE</span><span class="o">(</span><span class="n">authenticationIO</span><span class="o">(</span><span class="n">credentials</span><span class="o">,</span> <span class="n">config</span><span class="o">))</span>
-    <span class="o">}</span> <span class="k">yield</span> <span class="n">userId</span>
-
   <span class="cm">/** Tries to fetch a user from the database.
     *  Note that it requires some configuration as well.
     *  The function returns also a cats IO because querying the database accesses the network.
@@ -87,17 +79,9 @@ project.</p>
     <span class="c1">// Mock of the actual query
 </span>    <span class="nc">IO</span><span class="o">.</span><span class="n">pure</span><span class="o">(</span><span class="nc">Some</span><span class="o">(</span><span class="nc">User</span><span class="o">(</span><span class="s">"franco@lambda.org"</span><span class="o">,</span> <span class="mi">27</span><span class="o">)))</span>
 
-  <span class="k">def</span> <span class="n">queryUser</span><span class="o">(</span><span class="n">userId</span><span class="k">:</span> <span class="kt">UserId</span><span class="o">)</span><span class="k">:</span> <span class="kt">Script</span><span class="o">[</span><span class="kt">DatabaseConfig</span>, <span class="kt">UserNotFound</span>, <span class="kt">User</span><span class="o">]</span> <span class="k">=</span>
-    <span class="k">for</span> <span class="o">{</span>
-      <span class="n">config</span> <span class="k">&lt;-</span> <span class="n">dependencies</span><span class="o">[</span><span class="kt">DatabaseConfig</span><span class="o">]</span>
-      <span class="k">_</span> <span class="k">&lt;-</span> <span class="n">log</span><span class="o">.</span><span class="n">trace</span><span class="o">(</span><span class="n">s</span><span class="s">"Querying for user $userId in database ${config.databaseUri}"</span><span class="o">)</span>
-      <span class="n">maybeUser</span> <span class="k">&lt;-</span> <span class="n">script</span><span class="o">(</span><span class="n">queryUserIO</span><span class="o">(</span><span class="n">userId</span><span class="o">,</span> <span class="n">config</span><span class="o">))</span>
-      <span class="n">user</span> <span class="k">&lt;-</span> <span class="n">find</span><span class="o">(</span><span class="nc">UserNotFound</span><span class="o">(</span><span class="n">userId</span><span class="o">))(</span><span class="n">maybeUser</span><span class="o">)</span>
-    <span class="o">}</span> <span class="k">yield</span> <span class="n">user</span>
-
   <span class="cm">/** Our highly expressive Script programs. */</span>
 
-  <span class="k">type</span> <span class="kt">GetUserConfiguration</span> <span class="o">=</span> <span class="nc">AuthenticationServiceConfig</span> <span class="k">with</span> <span class="nc">DatabaseConfig</span>
+  <span class="k">type</span> <span class="kt">GetUserConfiguration</span> <span class="o">=</span> <span class="nc">AuthenticationServiceConfig</span> <span class="k">with</span> <span class="nc">DatabaseConfig</span> <span class="k">with</span> <span class="nc">LoggerContainer</span><span class="o">[</span><span class="kt">IO</span><span class="o">]</span>
 
   <span class="k">type</span> <span class="kt">GetUserFailure</span> <span class="o">=</span> <span class="nc">Either</span><span class="o">[</span><span class="kt">WrongCredentials</span>, <span class="kt">UserNotFound</span><span class="o">]</span>
 
@@ -110,22 +94,38 @@ project.</p>
   <span class="k">def</span> <span class="n">fetchUserAge</span><span class="o">(</span><span class="n">credentials</span><span class="k">:</span> <span class="kt">Credentials</span><span class="o">)</span><span class="k">:</span> <span class="kt">Script</span><span class="o">[</span><span class="kt">GetUserConfiguration</span>, <span class="kt">GetUserFailure</span>, <span class="kt">Int</span><span class="o">]</span> <span class="k">=</span>
     <span class="n">authenticatedUser</span><span class="o">(</span><span class="n">credentials</span><span class="o">).</span><span class="n">map</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">age</span><span class="o">)</span>
 
-  <span class="cm">/** Finally provide the dependencies, logging, and failure handler in a function that handles the communication layer
+  <span class="k">def</span> <span class="n">authentication</span><span class="o">(</span><span class="n">credentials</span><span class="k">:</span> <span class="kt">Credentials</span><span class="o">)</span><span class="k">:</span> <span class="kt">Script</span><span class="o">[</span><span class="kt">AuthenticationServiceConfig</span> <span class="kt">with</span> <span class="kt">LoggerContainer</span><span class="o">[</span><span class="kt">IO</span><span class="o">]</span>, <span class="kt">WrongCredentials</span>, <span class="kt">UserId</span><span class="o">]</span> <span class="k">=</span>
+    <span class="k">for</span> <span class="o">{</span>
+      <span class="n">config</span> <span class="k">&lt;-</span> <span class="n">dependencies</span><span class="o">[</span><span class="kt">AuthenticationServiceConfig</span><span class="o">]</span>
+      <span class="k">_</span> <span class="k">&lt;-</span> <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="o">(</span><span class="n">s</span><span class="s">"Authenticating $credentials using service ${config.authServiceUrl}"</span><span class="o">)</span>
+      <span class="n">userId</span> <span class="k">&lt;-</span> <span class="n">scriptE</span><span class="o">(</span><span class="n">authenticationIO</span><span class="o">(</span><span class="n">credentials</span><span class="o">,</span> <span class="n">config</span><span class="o">))</span>
+    <span class="o">}</span> <span class="k">yield</span> <span class="n">userId</span>
+
+  <span class="k">def</span> <span class="n">queryUser</span><span class="o">(</span><span class="n">userId</span><span class="k">:</span> <span class="kt">UserId</span><span class="o">)</span><span class="k">:</span> <span class="kt">Script</span><span class="o">[</span><span class="kt">DatabaseConfig</span> <span class="kt">with</span> <span class="kt">LoggerContainer</span><span class="o">[</span><span class="kt">IO</span><span class="o">]</span>, <span class="kt">UserNotFound</span>, <span class="kt">User</span><span class="o">]</span> <span class="k">=</span>
+    <span class="k">for</span> <span class="o">{</span>
+      <span class="n">config</span> <span class="k">&lt;-</span> <span class="n">dependencies</span><span class="o">[</span><span class="kt">DatabaseConfig</span><span class="o">]</span>
+      <span class="k">_</span> <span class="k">&lt;-</span> <span class="n">log</span><span class="o">.</span><span class="n">trace</span><span class="o">(</span><span class="n">s</span><span class="s">"Querying for user $userId in database ${config.databaseUri}"</span><span class="o">)</span>
+      <span class="n">maybeUser</span> <span class="k">&lt;-</span> <span class="n">script</span><span class="o">(</span><span class="n">queryUserIO</span><span class="o">(</span><span class="n">userId</span><span class="o">,</span> <span class="n">config</span><span class="o">))</span>
+      <span class="n">user</span> <span class="k">&lt;-</span> <span class="n">find</span><span class="o">(</span><span class="n">maybeUser</span><span class="o">)(</span><span class="nc">UserNotFound</span><span class="o">(</span><span class="n">userId</span><span class="o">))</span>
+    <span class="o">}</span> <span class="k">yield</span> <span class="n">user</span>
+
+  <span class="cm">/** Finally provide the dependencies and success/failure handlers in a function that handles the communication layer
     * (Probably for your http library).
     */</span>
   <span class="k">def</span> <span class="n">ageRequest</span><span class="o">(</span><span class="n">credentials</span><span class="k">:</span> <span class="kt">Credentials</span><span class="o">)</span><span class="k">:</span> <span class="kt">IO</span><span class="o">[</span><span class="kt">Response</span><span class="o">]</span> <span class="k">=</span>
-    <span class="n">fetchUserAge</span><span class="o">(</span><span class="n">credentials</span><span class="o">).</span><span class="n">fold</span><span class="o">(</span><span class="n">config</span><span class="o">,</span> <span class="n">logger</span><span class="o">,</span> <span class="n">failureHandler</span><span class="o">,</span> <span class="n">successHandler</span><span class="o">)</span>
+    <span class="n">fetchUserAge</span><span class="o">(</span><span class="n">credentials</span><span class="o">).</span><span class="n">fold</span><span class="o">(</span><span class="n">config</span><span class="o">,</span> <span class="n">failureHandler</span><span class="o">,</span> <span class="n">successHandler</span><span class="o">)</span>
 
   <span class="k">val</span> <span class="n">config</span><span class="k">:</span> <span class="kt">GetUserConfiguration</span> <span class="o">=</span>
-    <span class="k">new</span> <span class="nc">DatabaseConfig</span> <span class="k">with</span> <span class="nc">AuthenticationServiceConfig</span> <span class="o">{</span>
+    <span class="k">new</span> <span class="nc">DatabaseConfig</span> <span class="k">with</span> <span class="nc">AuthenticationServiceConfig</span> <span class="k">with</span> <span class="nc">LoggerContainer</span><span class="o">[</span><span class="kt">IO</span><span class="o">]</span> <span class="o">{</span>
+
       <span class="k">val</span> <span class="n">databaseUri</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"some:uri"</span>
       <span class="k">val</span> <span class="n">databasePassword</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"some-password"</span>
       <span class="k">val</span> <span class="n">databaseUsername</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"root"</span>
       <span class="k">val</span> <span class="n">authServiceUrl</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"auth.service/auth"</span>
       <span class="k">val</span> <span class="n">authServiceToken</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"1234567890"</span>
-    <span class="o">}</span>
 
-  <span class="k">val</span> <span class="n">logger</span><span class="k">:</span> <span class="kt">LoggerFunction</span> <span class="o">=</span> <span class="nc">ColorPrint</span><span class="o">(</span><span class="nc">LogLevel</span><span class="o">.</span><span class="nc">AllLevel</span><span class="o">)</span>
+      <span class="k">val</span> <span class="n">logger</span><span class="k">:</span> <span class="kt">Logger</span><span class="o">[</span><span class="kt">IO</span><span class="o">]</span> <span class="k">=</span> <span class="nc">ColorPrint</span><span class="o">(</span><span class="nc">LogLevel</span><span class="o">.</span><span class="nc">AllLevel</span><span class="o">,</span> <span class="n">printSource</span> <span class="k">=</span> <span class="kc">true</span><span class="o">,</span> <span class="n">printTime</span> <span class="k">=</span> <span class="kc">true</span><span class="o">)</span>
+    <span class="o">}</span>
 
   <span class="k">def</span> <span class="n">failureHandler</span><span class="o">(</span><span class="n">failure</span><span class="k">:</span> <span class="kt">GetUserFailure</span><span class="o">)</span><span class="k">:</span> <span class="kt">Response</span> <span class="o">=</span>
     <span class="n">failure</span> <span class="k">match</span> <span class="o">{</span>

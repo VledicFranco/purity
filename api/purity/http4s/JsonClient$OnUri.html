@@ -113,7 +113,7 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a title="Extra layer on top of a Blaze pooled http client." href="JsonClient.html"><span class="name">JsonClient</span></a><span class="tparams">[<span name="F">F<span class="tparams">[<span name="_">+_</span>]</span></span>]</span><span class="params">(<span name="client">client: <span class="extype" name="org.http4s.client.Client">Client</span>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>]</span>, <span name="jsonPrinter">jsonPrinter: <a href="https://circe.github.io/circe/api/io/circe/Printer.html#io.circe.Printer" class="extype" name="io.circe.Printer">Printer</a> = <span class="symbol"><span class="name"><a href="JsonClient$.html">JsonClient.DefaultJsonPrinter</a></span></span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="effect">effect: <span class="extype" name="cats.effect.Effect">Effect</span>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>]</span>)</span><span class="result"> extends <a href="../script/ScriptDsl.html" class="extype" name="purity.script.ScriptDsl">ScriptDsl</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>] with <span class="extype" name="org.http4s.dsl.Http4sDsl">Http4sDsl</span>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>] with <a href="http://www.scala-lang.org/api/2.12.4/scala/Product.html#scala.Product" class="extype" name="scala.Product">Product</a> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a></span>
+        <a title="Extra layer on top of a Blaze pooled http client." href="JsonClient.html"><span class="name">JsonClient</span></a><span class="tparams">[<span name="F">F<span class="tparams">[<span name="_">+_</span>]</span></span>]</span><span class="params">(<span name="client">client: <span class="extype" name="purity.http4s.JsonClient.F">F</span>[<span class="extype" name="org.http4s.client.Client">Client</span>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>]]</span>, <span name="jsonPrinter">jsonPrinter: <a href="https://circe.github.io/circe/api/io/circe/Printer.html#io.circe.Printer" class="extype" name="io.circe.Printer">Printer</a> = <span class="symbol"><span class="name"><a href="JsonClient$.html">JsonClient.DefaultJsonPrinter</a></span></span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="effect">effect: <span class="extype" name="cats.effect.Effect">Effect</span>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>]</span>)</span><span class="result"> extends <a href="../script/ScriptDsl.html" class="extype" name="purity.script.ScriptDsl">ScriptDsl</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>] with <span class="extype" name="org.http4s.dsl.Http4sDsl">Http4sDsl</span>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>] with <a href="http://www.scala-lang.org/api/2.12.4/scala/Product.html#scala.Product" class="extype" name="scala.Product">Product</a> with <a href="http://www.scala-lang.org/api/2.12.4/scala/Serializable.html#scala.Serializable" class="extype" name="scala.Serializable">Serializable</a></span>
       </span>
       
       <p class="shortcomment cmt">Extra layer on top of a Blaze pooled http client.</p><div class="fullcomment"><div class="comment cmt"><p>Extra layer on top of a Blaze pooled http client.
@@ -372,9 +372,9 @@
               
         </dd></dl></div>
     </li><li name="purity.http4s.JsonClient.OnUri#get" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="get[A](implicitdecoder:io.circe.Decoder[A]):JsonClient.this.Script[purity.logging.LoggerContainer[F],purity.http4s.JsonClient.ServiceError[F],A]"></a><a id="get[A](Decoder[A]):JsonClient.Script[LoggerContainer[F],ServiceError[F],A]"></a>
+      <a id="get[A](implicitdecoder:io.circe.Decoder[A],implicitfl:sourcecode.File,implicitcl:sourcecode.Line):JsonClient.this.Script[purity.logging.LoggerContainer[F],purity.http4s.JsonClient.ServiceError[F],A]"></a><a id="get[A](Decoder[A],File,Line):JsonClient.Script[LoggerContainer[F],ServiceError[F],A]"></a>
       <span class="permalink">
-      <a href="../../purity/http4s/JsonClient$OnUri.html#get[A](implicitdecoder:io.circe.Decoder[A]):JsonClient.this.Script[purity.logging.LoggerContainer[F],purity.http4s.JsonClient.ServiceError[F],A]" title="Permalink">
+      <a href="../../purity/http4s/JsonClient$OnUri.html#get[A](implicitdecoder:io.circe.Decoder[A],implicitfl:sourcecode.File,implicitcl:sourcecode.Line):JsonClient.this.Script[purity.logging.LoggerContainer[F],purity.http4s.JsonClient.ServiceError[F],A]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -383,7 +383,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">get</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="decoder">decoder: <a href="https://circe.github.io/circe/api/io/circe/Decoder.html#io.circe.Decoder" class="extype" name="io.circe.Decoder">Decoder</a>[<span class="extype" name="purity.http4s.JsonClient.OnUri.get.A">A</span>]</span>)</span><span class="result">: <a href="JsonClient.html#Script[-Dependencies,+Failures,+Value]=purity.script.ScriptT[F,Dependencies,Failures,Value]" class="extmbr" name="purity.http4s.JsonClient.Script">JsonClient.Script</a>[<a href="../logging/LoggerContainer.html" class="extype" name="purity.logging.LoggerContainer">LoggerContainer</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>], <a href="JsonClient$$ServiceError.html" class="extype" name="purity.http4s.JsonClient.ServiceError">ServiceError</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>], <span class="extype" name="purity.http4s.JsonClient.OnUri.get.A">A</span>]</span>
+        <span class="name">get</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="decoder">decoder: <a href="https://circe.github.io/circe/api/io/circe/Decoder.html#io.circe.Decoder" class="extype" name="io.circe.Decoder">Decoder</a>[<span class="extype" name="purity.http4s.JsonClient.OnUri.get.A">A</span>]</span>, <span name="fl">fl: <span class="extype" name="sourcecode.File">File</span></span>, <span name="cl">cl: <span class="extype" name="sourcecode.Line">Line</span></span>)</span><span class="result">: <a href="JsonClient.html#Script[-Dependencies,+Failures,+Value]=purity.script.ScriptT[F,Dependencies,Failures,Value]" class="extmbr" name="purity.http4s.JsonClient.Script">JsonClient.Script</a>[<a href="../logging/LoggerContainer.html" class="extype" name="purity.logging.LoggerContainer">LoggerContainer</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>], <a href="JsonClient$$ServiceError.html" class="extype" name="purity.http4s.JsonClient.ServiceError">ServiceError</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>], <span class="extype" name="purity.http4s.JsonClient.OnUri.get.A">A</span>]</span>
       </span>
       
       
@@ -406,6 +406,22 @@
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="purity.http4s.JsonClient.OnUri#getWithDecoder" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getWithDecoder[A](decoder:io.circe.Decoder[A])(implicitfl:sourcecode.File,implicitcl:sourcecode.Line):JsonClient.this.Script[purity.logging.LoggerContainer[F],purity.http4s.JsonClient.ServiceError[F],A]"></a><a id="getWithDecoder[A](Decoder[A])(File,Line):JsonClient.Script[LoggerContainer[F],ServiceError[F],A]"></a>
+      <span class="permalink">
+      <a href="../../purity/http4s/JsonClient$OnUri.html#getWithDecoder[A](decoder:io.circe.Decoder[A])(implicitfl:sourcecode.File,implicitcl:sourcecode.Line):JsonClient.this.Script[purity.logging.LoggerContainer[F],purity.http4s.JsonClient.ServiceError[F],A]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getWithDecoder</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="decoder">decoder: <a href="https://circe.github.io/circe/api/io/circe/Decoder.html#io.circe.Decoder" class="extype" name="io.circe.Decoder">Decoder</a>[<span class="extype" name="purity.http4s.JsonClient.OnUri.getWithDecoder.A">A</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="fl">fl: <span class="extype" name="sourcecode.File">File</span></span>, <span name="cl">cl: <span class="extype" name="sourcecode.Line">Line</span></span>)</span><span class="result">: <a href="JsonClient.html#Script[-Dependencies,+Failures,+Value]=purity.script.ScriptT[F,Dependencies,Failures,Value]" class="extmbr" name="purity.http4s.JsonClient.Script">JsonClient.Script</a>[<a href="../logging/LoggerContainer.html" class="extype" name="purity.logging.LoggerContainer">LoggerContainer</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>], <a href="JsonClient$$ServiceError.html" class="extype" name="purity.http4s.JsonClient.ServiceError">ServiceError</a>[<span class="extype" name="purity.http4s.JsonClient.F">F</span>], <span class="extype" name="purity.http4s.JsonClient.OnUri.getWithDecoder.A">A</span>]</span>
+      </span>
+      
+      
     </li><li name="scala.Any#isInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <span class="permalink">
