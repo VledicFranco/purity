@@ -23,9 +23,8 @@ Script is in reality an implementation of `ScriptT[F[_], D, E, A]` (a monad tran
 
 Also Script accumulates log lines using the `purity.logging.LogLine` type.
 
-For ease of use, purity provides two implementations of the ScriptT, one with `cats.effects.IO` and the other with
-Scala's Future. The former (which is recommended over Futures) is located at `purity.script.io.Script`, and the latter
-at `purity.script.future.Script`. Also the same packages contain all of the functions you will need.
+For ease of use, purity provides an implementation of ScriptT and it's DSL using `cats.effects.IO`. The former
+is located at `purity.script.io.Script`. Such package contains all of the functions you will need.
 
 #### A quick example in code
 
@@ -36,7 +35,7 @@ project.
 ```scala
 import cats.effect.IO
 import purity.script.io.{Script, dependencies, find, log, script, scriptE}
-import purity.logging.{ColorPrint, LogLevel, LoggerFunction}
+import purity.logging.{ColorPrint, LogLevel, Logger, LoggerContainer}
 
 object UserAuth0 {
 
@@ -77,13 +76,6 @@ object UserAuth0 {
     // Mock of the actual service call
     IO.pure(Right(1))
 
-  def authentication(credentials: Credentials): Script[AuthenticationServiceConfig, WrongCredentials, UserId] =
-    for {
-      config <- dependencies[AuthenticationServiceConfig]
-      _ <- log.info(s"Authenticating $credentials using service ${config.authServiceUrl}")
-      userId <- scriptE(authenticationIO(credentials, config))
-    } yield userId
-
   /** Tries to fetch a user from the database.
     *  Note that it requires some configuration as well.
     *  The function returns also a cats IO because querying the database accesses the network.
@@ -92,17 +84,9 @@ object UserAuth0 {
     // Mock of the actual query
     IO.pure(Some(User("franco@lambda.org", 27)))
 
-  def queryUser(userId: UserId): Script[DatabaseConfig, UserNotFound, User] =
-    for {
-      config <- dependencies[DatabaseConfig]
-      _ <- log.trace(s"Querying for user $userId in database ${config.databaseUri}")
-      maybeUser <- script(queryUserIO(userId, config))
-      user <- find(UserNotFound(userId))(maybeUser)
-    } yield user
-
   /** Our highly expressive Script programs. */
 
-  type GetUserConfiguration = AuthenticationServiceConfig with DatabaseConfig
+  type GetUserConfiguration = AuthenticationServiceConfig with DatabaseConfig with LoggerContainer[IO]
 
   type GetUserFailure = Either[WrongCredentials, UserNotFound]
 
@@ -115,22 +99,38 @@ object UserAuth0 {
   def fetchUserAge(credentials: Credentials): Script[GetUserConfiguration, GetUserFailure, Int] =
     authenticatedUser(credentials).map(_.age)
 
-  /** Finally provide the dependencies, logging, and failure handler in a function that handles the communication layer
+  def authentication(credentials: Credentials): Script[AuthenticationServiceConfig with LoggerContainer[IO], WrongCredentials, UserId] =
+    for {
+      config <- dependencies[AuthenticationServiceConfig]
+      _ <- log.info(s"Authenticating $credentials using service ${config.authServiceUrl}")
+      userId <- scriptE(authenticationIO(credentials, config))
+    } yield userId
+
+  def queryUser(userId: UserId): Script[DatabaseConfig with LoggerContainer[IO], UserNotFound, User] =
+    for {
+      config <- dependencies[DatabaseConfig]
+      _ <- log.trace(s"Querying for user $userId in database ${config.databaseUri}")
+      maybeUser <- script(queryUserIO(userId, config))
+      user <- find(maybeUser)(UserNotFound(userId))
+    } yield user
+
+  /** Finally provide the dependencies and success/failure handlers in a function that handles the communication layer
     * (Probably for your http library).
     */
   def ageRequest(credentials: Credentials): IO[Response] =
-    fetchUserAge(credentials).fold(config, logger, failureHandler, successHandler)
+    fetchUserAge(credentials).fold(config, failureHandler, successHandler)
 
   val config: GetUserConfiguration =
-    new DatabaseConfig with AuthenticationServiceConfig {
+    new DatabaseConfig with AuthenticationServiceConfig with LoggerContainer[IO] {
+
       val databaseUri: String = "some:uri"
       val databasePassword: String = "some-password"
       val databaseUsername: String = "root"
       val authServiceUrl: String = "auth.service/auth"
       val authServiceToken: String = "1234567890"
-    }
 
-  val logger: LoggerFunction = ColorPrint(LogLevel.AllLevel)
+      val logger: Logger[IO] = ColorPrint(LogLevel.AllLevel, printSource = true, printTime = true)
+    }
 
   def failureHandler(failure: GetUserFailure): Response =
     failure match {
