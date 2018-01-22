@@ -229,9 +229,9 @@ private[purity] trait ScriptTMonadError[F[+_], D, E] extends MonadError[ScriptT[
 }
 
 
-private[purity] trait ScriptTSync[F[+_], D, E] extends Sync[ScriptT[F, D, E, ?]] with ScriptDsl[F] {
+private[purity] trait ScriptTSync[F[+_], D, E] extends Sync[ScriptT[F, D, E, ?]] with ScriptTMonad[F, D, E] with ScriptDsl[F] {
 
-  implicit val F: Sync[F]
+  override implicit val F: Sync[F]
 
   override def suspend[A](thunk: =>ScriptT[F, D, E, A]): ScriptT[F, D, E, A] =
     ScriptT[F, D, E, A](d ⇒ F.suspend(thunk.definition(d)))
@@ -241,21 +241,6 @@ private[purity] trait ScriptTSync[F[+_], D, E] extends Sync[ScriptT[F, D, E, ?]]
 
   override def handleErrorWith[A](fa: ScriptT[F, D, E, A])(f: Throwable => ScriptT[F, D, E, A]): ScriptT[F, D, E, A] =
     ScriptT[F, D, E, A](d ⇒ F.handleErrorWith(fa.definition(d))(f.andThen(_.definition(d))))
-
-  override def pure[A](x: A): ScriptT[F, D, E, A] =
-    ScriptT[F, D, E, A](_ => F.pure(Right(x)))
-
-  override def flatMap[A, B](fa: ScriptT[F, D, E, A])(f: A => ScriptT[F, D, E, B]): ScriptT[F, D, E, B] =
-    fa.flatMap(f)
-
-  override def tailRecM[A, B](a: A)(f: A => ScriptT[F, D, E, Either[A, B]]): ScriptT[F, D, E, B] =
-    ScriptT[F, D, E, B](d => F.tailRecM(a)(a0 =>
-      F.map(f(a0).definition(d)) {
-        case Left(e) => Right(Left(e))
-        case Right(Left(a1)) => Left(a1)
-        case Right(Right(b)) => Right(Right(b))
-      }
-    ))
 }
 
 private[purity] trait ScriptTLiftIO[F[+_], D, E] extends LiftIO[ScriptT[F, D, E, ?]] with ScriptDsl[F] {
