@@ -1,8 +1,8 @@
 package purity.script
 
-import cats.effect.Effect
-import cats.{Functor, Monad, MonadError}
+import cats.effect._
 import cats.implicits._
+import cats.{Functor, Monad, MonadError}
 import purity.logging.{LogLine, LoggerContainer}
 import purity.script.ScriptT.Definition
 
@@ -164,6 +164,30 @@ private[purity] trait ScriptTInstances0 {
     new ScriptTMonadError[F, D, E] {
       override implicit val F: MonadError[F, Throwable] = F0
     }
+
+  implicit def stdSyncForScript[F[+_], D, E](implicit F0: Sync[F]): Sync[ScriptT[F, D, E, ?]] =
+    new ScriptTSync[F, D, E] {
+      override implicit val F: Sync[F] = F0
+    }
+
+  implicit def stdLiftIOForScript[F[+_], D, E](implicit F0: LiftIO[F], F1: Functor[F]): LiftIO[ScriptT[F, D, E, ?]] =
+    new ScriptTLiftIO[F, D, E] {
+      override implicit val F: LiftIO[F] = F0
+      override implicit val FF: Functor[F] = F1
+    }
+
+  implicit def stdAsyncForScript[F[+_], D, E](implicit F0: Async[F]): Async[ScriptT[F, D, E, ?]] =
+    new ScriptTAsync[F, D, E] {
+      override implicit val F: Async[F] = F0
+      override implicit val FF: Functor[F] = F0
+    }
+
+  implicit def stdEffectForScript[F[+_], D](implicit F0: Effect[F], D0: D): Effect[ScriptT[F, D, Throwable, ?]] =
+    new ScriptTEffect[F, D] {
+      override implicit val F: Effect[F] = F0
+      override implicit val FF: Functor[F] = F0
+      override implicit val Dependencies: D = D0
+    }
 }
 
 private[purity] trait ScriptTFunctor[F[+_], D, E] extends Functor[ScriptT[F, D, E, ?]] {
@@ -195,7 +219,7 @@ private[purity] trait ScriptTMonad[F[+_], D, E] extends Monad[ScriptT[F, D, E, ?
 
 private[purity] trait ScriptTMonadError[F[+_], D, E] extends MonadError[ScriptT[F, D, E, ?], E] with ScriptTMonad[F, D, E] {
 
-  implicit val F: MonadError[F, Throwable]
+  override implicit val F: MonadError[F, Throwable]
 
   override def raiseError[A](e: E): ScriptT[F, D, E, A] =
     ScriptT[F, Any, E, Nothing](_ => F.pure(Left(e)))
@@ -204,3 +228,59 @@ private[purity] trait ScriptTMonadError[F[+_], D, E] extends MonadError[ScriptT[
     fa.recoverFailure(f)
 }
 
+
+private[purity] trait ScriptTSync[F[+_], D, E] extends Sync[ScriptT[F, D, E, ?]] with ScriptDsl[F] {
+
+  implicit val F: Sync[F]
+
+  override def suspend[A](thunk: =>ScriptT[F, D, E, A]): ScriptT[F, D, E, A] =
+    ScriptT[F, D, E, A](d ⇒ F.suspend(thunk.definition(d)))
+
+  override def raiseError[A](e: Throwable): ScriptT[F, D, E, A] =
+    liftF(F.raiseError(e))
+
+  override def handleErrorWith[A](fa: ScriptT[F, D, E, A])(f: Throwable => ScriptT[F, D, E, A]): ScriptT[F, D, E, A] =
+    ScriptT[F, D, E, A](d ⇒ F.handleErrorWith(fa.definition(d))(f.andThen(_.definition(d))))
+
+  override def pure[A](x: A): ScriptT[F, D, E, A] =
+    ScriptT[F, D, E, A](_ => F.pure(Right(x)))
+
+  override def flatMap[A, B](fa: ScriptT[F, D, E, A])(f: A => ScriptT[F, D, E, B]): ScriptT[F, D, E, B] =
+    fa.flatMap(f)
+
+  override def tailRecM[A, B](a: A)(f: A => ScriptT[F, D, E, Either[A, B]]): ScriptT[F, D, E, B] =
+    ScriptT[F, D, E, B](d => F.tailRecM(a)(a0 =>
+      F.map(f(a0).definition(d)) {
+        case Left(e) => Right(Left(e))
+        case Right(Left(a1)) => Left(a1)
+        case Right(Right(b)) => Right(Right(b))
+      }
+    ))
+}
+
+private[purity] trait ScriptTLiftIO[F[+_], D, E] extends LiftIO[ScriptT[F, D, E, ?]] with ScriptDsl[F] {
+
+  implicit val F: LiftIO[F]
+  implicit val FF: Functor[F]
+
+  override def liftIO[A](ioa: IO[A]): ScriptT[F, D, E, A] =
+    liftF(F.liftIO(ioa))
+}
+
+private[purity] trait ScriptTAsync[F[+_], D, E] extends Async[ScriptT[F, D, E, ?]] with ScriptTSync[F, D, E] with ScriptTLiftIO[F, D, E] {
+
+  override implicit val F: Async[F]
+
+  override def async[A](k: (Either[Throwable, A] => Unit) => Unit): ScriptT[F, D, E, A] =
+    liftF(F.async(k))
+}
+
+private[purity] trait ScriptTEffect[F[+_], D] extends Effect[ScriptT[F, D, Throwable, ?]] with ScriptTAsync[F, D, Throwable] {
+
+  override implicit val F: Effect[F]
+
+  implicit val Dependencies: D
+
+  override def runAsync[A](fa: ScriptT[F, D, Throwable, A])(cb: Either[Throwable, A] => IO[Unit]): IO[Unit] =
+    F.runAsync(fa.foldF(Dependencies, F.raiseError, F.pure)(F))(cb)
+}

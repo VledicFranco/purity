@@ -1,11 +1,14 @@
 package purity
 
 import cats.Eq
+import cats.effect.laws.util.TestContext
 import cats.effect.{Effect, IO}
 import cats.instances.AllInstances
 import cats.syntax.{AllSyntax, EqOps}
+import org.scalactic.source
+import org.scalatest._
 import org.scalatest.prop.GeneratorDrivenPropertyChecks
-import org.scalatest.{Assertion, AsyncFunSpec, FunSuite, Matchers}
+import org.typelevel.discipline.Laws
 import org.typelevel.discipline.scalatest.Discipline
 import purity.Truth.{False, True}
 import purity.logging.{LogLine, LoggerContainer}
@@ -15,7 +18,22 @@ import scala.concurrent.{Future, Promise}
 
 trait AsyncPuritySuite extends AsyncFunSpec with CommonPuritySuite
 
-trait PuritySuite extends FunSuite with Discipline with CommonPuritySuite
+trait PuritySuite extends FunSuite with Discipline with CommonPuritySuite {
+
+  def testAsync[A](name: String, tags: Tag*)(f: TestContext => Unit)(implicit pos: source.Position): Unit =
+    test(name, tags:_*)(f(TestContext()))(pos)
+
+  /** For discipline tests. */
+  def checkAllAsync(name: String, f: TestContext => Laws#RuleSet) {
+    val context = TestContext()
+    val ruleSet = f(context)
+
+    for ((id, prop) ← ruleSet.all.properties)
+      test(name + "." + id) {
+        check(prop)
+      }
+  }
+}
 
 trait CommonPuritySuite extends Matchers
   with GeneratorDrivenPropertyChecks
