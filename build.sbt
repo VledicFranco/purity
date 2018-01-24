@@ -3,13 +3,15 @@ import sbt.Keys._
 
 organization in ThisBuild := "com.francoara"
 
-lazy val catsVersion = "1.0.0"
+lazy val catsVersion = "1.0.1"
+
+lazy val catsEffectVersion = "0.8"
 
 lazy val http4sVersion = "0.18.0-M7"
 
 lazy val cats = Def.setting("org.typelevel" %% "cats-core" % catsVersion)
 
-lazy val catsEffects = Def.setting("org.typelevel" %% "cats-effect" % "0.7")
+lazy val catsEffects = Def.setting("org.typelevel" %% "cats-effect" % catsEffectVersion)
 
 lazy val tlConfig = Def.setting("com.typesafe" % "config" % "1.3.1")
 
@@ -22,6 +24,8 @@ lazy val http4sCirce = Def.setting("org.http4s" %% "http4s-circe" % http4sVersio
 lazy val http4sClient = Def.setting("org.http4s" %% "http4s-blaze-client" % http4sVersion)
 
 lazy val catsLaws = Def.setting("org.typelevel"  %% "cats-laws" % catsVersion % Test)
+
+lazy val catsEffectLaws = Def.setting("org.typelevel"  %% "cats-effect-laws" % catsEffectVersion % Test)
 
 lazy val discipline = Def.setting("org.typelevel" %% "discipline" % "0.8" % Test)
 
@@ -91,7 +95,7 @@ lazy val librarySettings = Seq(
 )
 
 lazy val testSettings =
-  Seq(libraryDependencies ++= catsLaws.value :: discipline.value :: scalatest.value :: scalacheck.value :: Nil)
+  Seq(libraryDependencies ++= catsLaws.value :: catsEffectLaws.value :: discipline.value :: scalatest.value :: scalacheck.value :: Nil)
 
 lazy val publishSettings = Seq(
   publishMavenStyle := true,

@@ -1,15 +1,16 @@
 package purity.discipline
 
 import cats.Functor
+import cats.effect.laws.util.TestInstances
 import cats.kernel._
 import cats.kernel.laws._
 import cats.laws.discipline.SemigroupalTests.Isomorphisms
 import org.scalacheck.Arbitrary
-import purity.{Predicate, Proposition, Truth}
-import purity.logging.{LogLine, Logger}
+import purity.logging.LogLine
 import purity.script.ScriptT
+import purity.{Predicate, Proposition, Truth}
 
-object eq {
+object eq extends TestInstances {
 
   implicit def eqForThrowable: Eq[Throwable] = Eq.fromUniversalEquals
 
