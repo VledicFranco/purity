@@ -142,7 +142,7 @@ case class ScriptT[F[+_], -D, +E, +A](definition: Definition[F, D, E, A]) extend
 
   /** Alias for foldF */
   def runF[B](dependencies: D, onFailure: E => F[B], onSuccess: A => F[B])(implicit F: Monad[F]): F[B] =
-    this.runF(dependencies, onFailure, onSuccess)
+    this.foldF(dependencies, onFailure, onSuccess)
 }
 
 object ScriptT extends ScriptTInstances {
