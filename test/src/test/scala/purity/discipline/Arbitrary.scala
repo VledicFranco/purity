@@ -2,8 +2,6 @@ package purity.discipline
 
 import cats.effect.IO
 import org.scalacheck.{Arbitrary, Gen}
-import purity.{Predicate, Proposition}
-import purity.Truth.{False, True}
 import purity.logging.{ColorPrint, LogLevel, LogLine, Logger}
 import purity.script.ScriptT
 
@@ -45,15 +43,4 @@ object arbitrary {
         logger <- Gen.oneOf(Logger.VoidLogs[IO], ColorPrint(level))
       } yield logger
     )
-
-  implicit def arbitraryProposition[E, A](implicit E: Arbitrary[E]): Arbitrary[Proposition[E, A]] =
-    Arbitrary(for {
-      result <- Arbitrary.arbitrary[Boolean]
-      error <- E.arbitrary
-    } yield Proposition[E, A]((_: A) => if(result) True else False(error)))
-
-  implicit def arbitraryPredicate[A]: Arbitrary[Predicate[A]] =
-    Arbitrary(for {
-      result <- Arbitrary.arbitrary[Boolean]
-    } yield Predicate[A]((_: A) => result))
 }

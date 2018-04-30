@@ -23,6 +23,8 @@ lazy val http4sCirce = Def.setting("org.http4s" %% "http4s-circe" % http4sVersio
 
 lazy val http4sClient = Def.setting("org.http4s" %% "http4s-blaze-client" % http4sVersion)
 
+lazy val matryoshka = Def.setting("com.slamdata" %% "matryoshka-core" % "0.18.3")
+
 lazy val catsLaws = Def.setting("org.typelevel"  %% "cats-laws" % catsVersion % Test)
 
 lazy val catsEffectLaws = Def.setting("org.typelevel"  %% "cats-effect-laws" % catsEffectVersion % Test)
@@ -91,7 +93,7 @@ lazy val commonSettings = Seq(
 
 lazy val librarySettings = Seq(
   resolvers += Resolver.sonatypeRepo("releases"),
-  libraryDependencies ++= tlConfig.value :: cats.value :: catsEffects.value :: sourcecode.value :: Nil
+  libraryDependencies ++= tlConfig.value :: cats.value :: catsEffects.value :: sourcecode.value :: matryoshka.value :: Nil
 )
 
 lazy val testSettings =

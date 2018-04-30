@@ -8,7 +8,7 @@ import cats.laws.discipline.SemigroupalTests.Isomorphisms
 import org.scalacheck.Arbitrary
 import purity.logging.LogLine
 import purity.script.ScriptT
-import purity.{Predicate, Proposition, Truth}
+//import purity.{Predicate, PropositionT, Truth}
 
 object eq extends TestInstances {
 
@@ -34,6 +34,7 @@ object eq extends TestInstances {
         fs._1.map { case (a, _) => a } <-> fs._2
     }
 
+  /*
   implicit def eqForTruth[E]: Eq[Truth[E]] =
     Eq.fromUniversalEquals
 
@@ -64,4 +65,5 @@ object eq extends TestInstances {
         samples.forall(s => f.check(s) == g.check(s))
       }
     }
+    */
 }
