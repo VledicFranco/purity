@@ -1,13 +1,15 @@
 package purity
 
 import cats.Functor
+import matryoshka.data.Mu
+import matryoshka.implicits._
 
-case class FormalSpec1[F[+_], A1, B](postCondition: A1 => PropositionT[F, String, B]) {
+case class FormalSpec1[F[_], A1, B](postCondition: A1 => PropositionT[F, Mu[Truth], B]) {
 
-  def check(program: A1 => B)(a: A1)(implicit F: Functor[F]): F[(String, Boolean)] = {
-    val b = program(a)
-    F.map(postCondition(a).check(b)) { truth =>
-      truth.fold[(String, Boolean)](Truth.tracker)
+  def check(a1: A1)(program: A1 => B)(implicit F: Functor[F]): F[(String, Boolean)] = {
+    val b = program(a1)
+    F.map(postCondition(a1).check(b)) { result: Mu[Truth] =>
+      result.cata(Truth.tracker)
     }
   }
 }

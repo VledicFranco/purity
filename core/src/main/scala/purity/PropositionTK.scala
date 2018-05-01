@@ -5,6 +5,7 @@ import purity.Truth.{False, True}
 
 trait PropositionTK[F[+_], P, K[_]] { p =>
 
+  /*
   def check[A](ka: K[A]): F[Truth[P]]
 
   def contramapLower[A, B](f: B => K[A]): PropositionT[F, P, B] =
@@ -21,6 +22,7 @@ trait PropositionTK[F[+_], P, K[_]] { p =>
       override def check[A](ka: K[A]): F[Truth[P]] =
         F.map(p.check(ka))(t => t.not)
     }
+    */
 
   /*
   def &&[AA <: K](q: PropositionTK[F, P, AA])(implicit F: Applicative[F]): PropositionTK[F, P, AA] =
