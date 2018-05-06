@@ -3,7 +3,7 @@ package purity
 import cats.{Eq, Show}
 import scalaz.Functor
 import matryoshka._
-import matryoshka.implicits._
+import matryoshka.data.Mu
 import purity.Truth._
 
 sealed trait Truth[T]
@@ -22,7 +22,7 @@ object Truth extends TruthFunctions with TruthInstances {
 
   final case class Or[T](p: T, q: T) extends Truth[T]
 
-  val tracker: Algebra[Truth, (String, Boolean)] =  {
+  val tracker: Algebra[Truth, (String, Boolean)] = {
     case True(tag) =>
       (tag.getOrElse("T"), true)
 
@@ -31,25 +31,33 @@ object Truth extends TruthFunctions with TruthInstances {
 
     case Equals(x, y, eq, pr) =>
       if(eq.eqv(x(), y())) ("T", true)
-      else (s"(${pr.show(x())} == ${pr.show(y())} :: false)", false)
+      else (s"(${pr.show(x())} == ${pr.show(y())})", false)
 
     case Not((pTag, p)) =>
       if(!p) ("T", true)
-      else (s"(!$pTag :: false)", false)
+      else (s"(!$pTag)", false)
 
     case And((pTag, p), (qTag, q)) =>
       if (p && q) ("T", true)
-      else if (p) (s"(true && $qTag :: false)", false)
-      else if (q) (s"($pTag :: false && true)", false)
-      else (s"($pTag :: false && $qTag :: false)", false)
+      else if (p) (s"(T && $qTag)", false)
+      else if (q) (s"($pTag && T)", false)
+      else (s"($pTag && $qTag)", false)
 
     case Or((pTag, p), (qTag, q)) =>
       if (p || q) ("T", true)
-      else (s"($pTag :: false || $qTag :: false)", false)
+      else (s"($pTag || $qTag)", false)
   }
+
+  case class Contradiction(track: String) extends RuntimeException
 }
 
-private[purity] trait TruthFunctions {
+private[purity] trait TruthFunctions { functions =>
+
+  def isTrue[T](tag: String)(implicit ev0: Corecursive.Aux[T, Truth]): T =
+    ev0.embed(True[T](Some(tag)))
+
+  def isFalse[T](tag: String)(implicit ev0: Corecursive.Aux[T, Truth]): T =
+    ev0.embed(False[T](Some(tag)))
 
   def =:=[T, X](x: => X, y: => X)(implicit ev0: Corecursive.Aux[T, Truth], ev1: Eq[X], ev2: Show[X]): T =
     ev0.embed(Equals[T, X](() => x, () => y, ev1, ev2))
@@ -57,16 +65,36 @@ private[purity] trait TruthFunctions {
   def not[T](p: T)(implicit ev0: Corecursive.Aux[T, Truth]): T =
     ev0.embed(Not[T](p))
 
-  def &&[T](q: T, p: T)(implicit ev0: Corecursive.Aux[T, Truth]): T =
+  def &&[T](p: T, q: T)(implicit ev0: Corecursive.Aux[T, Truth]): T =
     ev0.embed(And[T](p, q))
 
-  /*
-  def ||[T](q: Truth[A]): Truth[A] = Or(p, q)
+  def ||[T](p: T, q: T)(implicit ev0: Corecursive.Aux[T, Truth]): T =
+    ev0.embed(Or[T](p, q))
 
-  def ==>[T](q: Truth[A]): Truth[A] = not || q
+  def ==>[T](p: T, q: T)(implicit ev0: Corecursive.Aux[T, Truth]): T =
+    ||(not(p), q)
 
-  def xor[T](q: Truth[A]): Truth[A] = (p || q) && (p && q).not
-  */
+  def xor[T](p: T, q: T)(implicit ev0: Corecursive.Aux[T, Truth]): T =
+    &&(||(p, q), not(&&(p, q)))
+
+  class OpsForTruth[T](p: T)(implicit ev0: Corecursive.Aux[T, Truth]) {
+
+    def not: T = functions.not(p)
+
+    def &&(q: T): T = functions.&&(p, q)
+
+    def ||(q: T): T = functions.||(p, q)
+
+    def ==>(q: T): T = functions.==>(p, q)
+
+    def xor(q: T): T = functions.xor(p, q)
+  }
+
+  class OpsForAny[X](x: => X) {
+
+    def =:=(y: => X)(implicit ev1: Eq[X], ev2: Show[X]): Mu[Truth] =
+      functions.=:=[Mu[Truth], X](x, y)
+  }
 }
 
 private[purity] trait TruthInstances {
@@ -83,24 +111,4 @@ private[purity] trait TruthInstances {
           case Or(p, q) => Or(f(p), f(q))
         }
     }
-  /** Monoid using the && combinator */
-  /*
-  implicit def stdMonoidForProposition[A]: Monoid[Truth[A]] =
-    new Monoid[Truth[A]] {
-      override def empty: Truth[A] = True
-      override def combine(x: Truth[A], y: Truth[A]): Truth[A] = x && y
-    }
-  */
-
-  /** Semigroup using the || combinator */
-  /*
-  def orSemigroupForProposition: Semigroup[Truth[A]] =
-    new Semigroup[Truth[A]] {
-      override def combine(x: Truth[A], y: Truth[A]): Truth[A] = x || y
-    }
-  */
-}
-
-trait TruthSyntaxForTruth {
-
 }

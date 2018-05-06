@@ -7,6 +7,7 @@ import purity.logging._
 
 class ScriptTSuite extends ScriptSuite[IO] with BeforeAndAfterEach {
 
+  /*
   val console: MutableConsole = MutableConsole(LogLevel.DebugLevel)
 
   implicit val logger: LoggerContainer[IO] = console.loggerContainer
@@ -29,4 +30,5 @@ class ScriptTSuite extends ScriptSuite[IO] with BeforeAndAfterEach {
       proveThatAfter(script).itHoldsThat(console)(MutableConsole.hasAmountOfLines(1))
     }
   }
+  */
 }

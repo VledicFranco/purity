@@ -13,6 +13,8 @@ import purity.logging.{LogLevel, Logger, LoggerContainer, MutableConsole}
 
 class JsonClientSpec extends ScriptSuite[IO] {
 
+  /*
+
   val client: JsonClient[IO] = JsonClient(IO(Client.fromHttpService(JsonEchoService.service)))
 
   val console0: MutableConsole = MutableConsole(LogLevel.AllLevel)
@@ -49,5 +51,6 @@ class JsonClientSpec extends ScriptSuite[IO] {
       proveThatAfter(response1).itHoldsThat(console1)(MutableConsole.hasAmountOfLines(4))
     }
   }
+  */
 }
 

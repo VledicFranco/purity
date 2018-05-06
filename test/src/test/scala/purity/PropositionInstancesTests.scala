@@ -12,7 +12,6 @@ class PropositionInstancesTests extends PuritySuite {
   /*
   checkAll("Proposition[String, ?]",
     ContravariantTests[Proposition[String, ?]].contravariant[Int, Int, Int])
-    */
 
   case class GameState()
 
@@ -38,5 +37,6 @@ class PropositionInstancesTests extends PuritySuite {
   test("test 1") {
 
   }
+    */
 }
 

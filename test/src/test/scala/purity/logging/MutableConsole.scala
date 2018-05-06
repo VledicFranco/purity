@@ -2,7 +2,7 @@ package purity.logging
 
 import cats.implicits._
 import cats.effect.IO
-import purity.PropositionT
+import purity.PropositionTR
 import purity.Truth.{False, True}
 import purity.logging.MutableConsole.ConsoleBuffer
 

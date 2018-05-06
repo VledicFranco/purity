@@ -46,6 +46,7 @@ trait CommonPuritySuite extends Matchers
 
 trait ScriptSuite[F[+_]] extends AsyncPuritySuite with ScriptDsl[F] {
 
+  /*
   protected def assertThat[D, E, A]
       (script: Script[D, E, A])
       (f: A => Assertion)
@@ -94,4 +95,5 @@ trait ScriptSuite[F[+_]] extends AsyncPuritySuite with ScriptDsl[F] {
       case True           => assert(1 == 1)
       case False(reasons) => fail(reasons.toList.mkString(" and "))
     }
+    */
 }
