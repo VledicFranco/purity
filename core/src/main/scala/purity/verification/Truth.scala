@@ -1,10 +1,10 @@
-package purity
+package purity.verification
 
 import cats.{Eq, Show}
-import scalaz.Functor
 import matryoshka._
 import matryoshka.data.Mu
-import purity.Truth._
+import scalaz.Functor
+import purity.verification.Truth._
 
 sealed trait Truth[T]
 

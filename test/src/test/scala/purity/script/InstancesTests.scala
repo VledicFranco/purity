@@ -16,8 +16,4 @@ class InstancesTests extends PuritySuite {
 
   checkAll("ScriptT[IO, Int, Int, ?]",
     MonadErrorTests[ScriptT[IO, Int, Int, ?], Int].monadError[Int, Int, Int])
-
-//  checkAllAsync("ScriptT[IO, Int, Int, ?]",
-//    implicit ec ⇒ EffectTests[ScriptT[IO, Int, Throwable, ?]].effect[Int, Int, Int])
-
 }

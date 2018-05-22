@@ -1,6 +1,5 @@
 package purity.logging
 
-import cats.effect.IO
 import purity.PuritySuite
 import purity.discipline.arbitrary._
 

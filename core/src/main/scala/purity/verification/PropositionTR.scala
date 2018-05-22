@@ -1,10 +1,9 @@
-package purity
+package purity.verification
 
 import cats._
 import cats.implicits._
 import matryoshka.Corecursive
-import matryoshka.data.Mu
-import purity.Truth.{False, True}
+import purity.verification.Truth.{False, True}
 
 final case class PropositionTR[F[_], T, A](check: A => F[T])(implicit ev0: Corecursive.Aux[T, Truth]) {
 
