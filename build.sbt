@@ -23,6 +23,8 @@ lazy val http4sCirce = Def.setting("org.http4s" %% "http4s-circe" % http4sVersio
 
 lazy val http4sClient = Def.setting("org.http4s" %% "http4s-blaze-client" % http4sVersion)
 
+lazy val matryoshka = Def.setting("com.slamdata" %% "matryoshka-core" % "0.18.3")
+
 lazy val catsLaws = Def.setting("org.typelevel"  %% "cats-laws" % catsVersion % Test)
 
 lazy val catsEffectLaws = Def.setting("org.typelevel"  %% "cats-effect-laws" % catsEffectVersion % Test)
@@ -37,8 +39,8 @@ lazy val purity = project.in(file("."))
   .settings(moduleName := "root")
   .settings(commonSettings)
   .settings(noPublishSettings)
-  .aggregate(core, http4s, test)
-  .dependsOn(core, http4s, test % "test-internal -> test")
+  .aggregate(core, test)
+  .dependsOn(core, test % "test-internal -> test")
 
 lazy val core = project.in(file("core"))
   .settings(moduleName := "purity-core", name := "Purity core")
@@ -60,15 +62,7 @@ lazy val example = project.in(file("example"))
   .settings(commonSettings)
   .settings(librarySettings)
   .settings(noPublishSettings)
-  .aggregate(core, http4s)
-  .dependsOn(core, http4s)
-
-lazy val http4s = project.in(file("http4s"))
-  .settings(moduleName := "purity-http4s", name := "Purity http4s")
-  .settings(commonSettings)
-  .settings(publishSettings)
-  .settings(librarySettings)
-  .settings(libraryDependencies ++= http4sDsl.value :: http4sCirce.value :: http4sClient.value :: Nil)
+  .aggregate(core)
   .dependsOn(core)
 
 lazy val test = project.in(file("test"))
@@ -77,8 +71,8 @@ lazy val test = project.in(file("test"))
   .settings(librarySettings)
   .settings(testSettings)
   .settings(noPublishSettings)
-  .aggregate(core, http4s)
-  .dependsOn(core, http4s)
+  .aggregate(core)
+  .dependsOn(core)
 
 lazy val commonSettings = Seq(
   scalaVersion := "2.12.4",
@@ -91,7 +85,7 @@ lazy val commonSettings = Seq(
 
 lazy val librarySettings = Seq(
   resolvers += Resolver.sonatypeRepo("releases"),
-  libraryDependencies ++= tlConfig.value :: cats.value :: catsEffects.value :: sourcecode.value :: Nil
+  libraryDependencies ++= tlConfig.value :: cats.value :: catsEffects.value :: sourcecode.value :: matryoshka.value :: Nil
 )
 
 lazy val testSettings =

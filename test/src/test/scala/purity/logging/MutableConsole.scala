@@ -2,8 +2,6 @@ package purity.logging
 
 import cats.implicits._
 import cats.effect.IO
-import purity.Proposition
-import purity.Truth.{False, True}
 import purity.logging.MutableConsole.ConsoleBuffer
 
 import scala.collection.mutable
@@ -36,13 +34,6 @@ object MutableConsole {
   type ConsoleBuffer = mutable.MutableList[LogLine]
 
   def emptyBuffer: ConsoleBuffer = mutable.MutableList.empty[LogLine]
-
-  def hasAmountOfLines(n: Int): Proposition[String, MutableConsole] =
-    Proposition { console =>
-      val lines = console.buffer.length
-      if (lines == n) True
-      else False(s"The mutable console should have $n lines, but contains $lines:${console.buffer.mkString("\n","\n","\n")}")
-    }
 }
 
 
