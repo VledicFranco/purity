@@ -3,12 +3,8 @@ package purity.discipline
 import cats.effect.IO
 import org.scalacheck.{Arbitrary, Gen}
 import purity.logging.{ColorPrint, LogLevel, LogLine, Logger}
-import purity.script.ScriptT
 
 object arbitrary {
-
-  implicit def arbitraryScriptT[F[+_], D, E, A](implicit F: Arbitrary[F[Either[E, A]]]): Arbitrary[ScriptT[F, D, E, A]] =
-    Arbitrary(F.arbitrary.map(x => ScriptT((_: D) => x)))
 
   implicit def arbitraryLogLine: Arbitrary[LogLine] =
     Arbitrary(
