@@ -2,7 +2,6 @@ package purity.verification
 
 import cats.{Eq, Show}
 import matryoshka._
-import matryoshka.data.Mu
 import scalaz.Functor
 import purity.verification.Truth._
 
@@ -53,47 +52,49 @@ object Truth extends TruthFunctions with TruthInstances {
 
 private[purity] trait TruthFunctions { functions =>
 
-  def isTrue[T](tag: String)(implicit ev0: Corecursive.Aux[T, Truth]): T =
-    ev0.embed(True[T](Some(tag)))
+  private val ev0 = implicitly[Corecursive.Aux[TruthFix, Truth]]
 
-  def isFalse[T](tag: String)(implicit ev0: Corecursive.Aux[T, Truth]): T =
-    ev0.embed(False[T](Some(tag)))
+  def veritas(tag: String): TruthFix =
+    ev0.embed(True[TruthFix](Some(tag)))
 
-  def =:=[T, X](x: => X, y: => X)(implicit ev0: Corecursive.Aux[T, Truth], ev1: Eq[X], ev2: Show[X]): T =
-    ev0.embed(Equals[T, X](() => x, () => y, ev1, ev2))
+  def falsum(tag: String): TruthFix =
+    ev0.embed(False[TruthFix](Some(tag)))
 
-  def not[T](p: T)(implicit ev0: Corecursive.Aux[T, Truth]): T =
-    ev0.embed(Not[T](p))
+  def =:=[X](x: => X, y: => X)(implicit ev1: Eq[X], ev2: Show[X]): TruthFix =
+    ev0.embed(Equals[TruthFix, X](() => x, () => y, ev1, ev2))
 
-  def &&[T](p: T, q: T)(implicit ev0: Corecursive.Aux[T, Truth]): T =
-    ev0.embed(And[T](p, q))
+  def not(p: TruthFix): TruthFix =
+    ev0.embed(Not[TruthFix](p))
 
-  def ||[T](p: T, q: T)(implicit ev0: Corecursive.Aux[T, Truth]): T =
-    ev0.embed(Or[T](p, q))
+  def &&(p: TruthFix, q: TruthFix): TruthFix =
+    ev0.embed(And[TruthFix](p, q))
 
-  def ==>[T](p: T, q: T)(implicit ev0: Corecursive.Aux[T, Truth]): T =
+  def ||(p: TruthFix, q: TruthFix): TruthFix =
+    ev0.embed(Or[TruthFix](p, q))
+
+  def ==>(p: TruthFix, q: TruthFix): TruthFix =
     ||(not(p), q)
 
-  def xor[T](p: T, q: T)(implicit ev0: Corecursive.Aux[T, Truth]): T =
+  def xor(p: TruthFix, q: TruthFix): TruthFix =
     &&(||(p, q), not(&&(p, q)))
 
-  class OpsForTruth[T](p: T)(implicit ev0: Corecursive.Aux[T, Truth]) {
+  class OpsForTruth(p: TruthFix) {
 
-    def not: T = functions.not(p)
+    def not: TruthFix = functions.not(p)
 
-    def &&(q: T): T = functions.&&(p, q)
+    def &&(q: TruthFix): TruthFix = functions.&&(p, q)
 
-    def ||(q: T): T = functions.||(p, q)
+    def ||(q: TruthFix): TruthFix = functions.||(p, q)
 
-    def ==>(q: T): T = functions.==>(p, q)
+    def ==>(q: TruthFix): TruthFix = functions.==>(p, q)
 
-    def xor(q: T): T = functions.xor(p, q)
+    def xor(q: TruthFix): TruthFix = functions.xor(p, q)
   }
 
   class OpsForAny[X](x: => X) {
 
-    def =:=(y: => X)(implicit ev1: Eq[X], ev2: Show[X]): Mu[Truth] =
-      functions.=:=[Mu[Truth], X](x, y)
+    def =:=(y: => X)(implicit ev1: Eq[X], ev2: Show[X]): TruthFix =
+      functions.=:=[X](x, y)
   }
 }
 
