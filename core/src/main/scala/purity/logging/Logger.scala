@@ -6,11 +6,7 @@ import cats.kernel.Monoid
 import purity.logging.LogLevel._
 import purity.logging.LogLine._
 
-trait Logger[F[+_]] {
-
-  protected val level: LogLevel
-
-  protected def logEffect(line: LogLine): F[Unit]
+case class Logger[F[_]](level: LogLevel, logEffect: LogLine => F[Unit]) {
 
   def log(line: LogLine)(implicit F: Applicative[F]): F[Unit] =
     if (line.level >= level) logEffect(line) else F.pure(Unit)
@@ -70,9 +66,10 @@ trait Logger[F[+_]] {
     log(Warn(message, Some(e))(fl, cl))
 
   def andThen(that: Logger[F])(implicit ev: Applicative[F]): Logger[F] =
-    Logger[F]({
+    Logger[F](
+      if (level >= that.level) level else that.level,
       line => log(line) *> that.log(line)
-    }, if (level >= that.level) level else that.level)
+    )
 
   def compose(that: Logger[F])(implicit ev: Applicative[F]): Logger[F] =
     that.andThen(this)
@@ -80,15 +77,9 @@ trait Logger[F[+_]] {
 
 object Logger {
 
-  def apply[F[+_]](f: LogLine => F[Unit], l: LogLevel): Logger[F] =
-    new Logger[F] {
-      override val level: LogLevel = l
-      override def logEffect(line: LogLine): F[Unit] = f(line)
-    }
+  def VoidLogs[F[_]](implicit F: Applicative[F]): Logger[F] = Logger[F](_ => F.pure(()), OffLevel)
 
-  def VoidLogs[F[+_]](implicit F: Applicative[F]): Logger[F] = Logger[F](_ => F.pure(()), OffLevel)
-
-  implicit def monoidInstanceForLoggerFunctions[F[+_]](implicit F: Applicative[F]): Monoid[Logger[F]] =
+  implicit def monoidInstanceForLoggerFunctions[F[_]](implicit F: Applicative[F]): Monoid[Logger[F]] =
     new Monoid[Logger[F]] {
       override def empty: Logger[F] = VoidLogs[F]
       override def combine(x: Logger[F], y: Logger[F]): Logger[F] = x andThen y

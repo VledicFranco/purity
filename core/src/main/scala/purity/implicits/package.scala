@@ -1,13 +1,16 @@
 package purity
 
-import matryoshka.Corecursive
-import verification.Truth
+import verification.TruthTracker
+import TruthTracker._
 
 package object implicits {
 
-  implicit def toTruthOpsForTruth[T](a: T)(implicit ev0: Corecursive.Aux[T, Truth]): Truth.OpsForTruth[T] =
-    new Truth.OpsForTruth[T](a)
+  implicit def toTruthOpsForTruth(a: Truth): OpsForTruth =
+    new OpsForTruth(a)
 
-  implicit def toTruthOpsForAny[X](x: X): Truth.OpsForAny[X] =
-    new Truth.OpsForAny[X](x)
+  implicit def toTruthOpsForAny[A](x: A): OpsForAny[A] =
+    new OpsForAny[A](x)
+
+  implicit def toTruthOpsForString(name: String): OpsForString =
+    new OpsForString(name)
 }

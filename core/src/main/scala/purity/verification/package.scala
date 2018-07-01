@@ -7,9 +7,9 @@ package object verification {
 
   type TruthValue = Mu[Truth]
 
-  type Proposition[A] = PropositionTR[Id, Mu[Truth], A]
+  type Proposition[A] = PropositionF[Id, Mu[Truth], A]
 
-  type PropositionT[F[_], A] = PropositionTR[F, Mu[Truth], A]
+  type PropositionT[F[_], A] = PropositionF[F, Mu[Truth], A]
 
   type Spec1[A1, B] = Spec1T[Id, A1, B]
 
@@ -18,13 +18,13 @@ package object verification {
   object Proposition {
 
     def apply[A](f: A => Mu[Truth]): Proposition[A] =
-      new PropositionTR[Id, Mu[Truth], A](f)
+      new PropositionF[Id, Mu[Truth], A](f)
   }
 
   object PropositionT {
 
     def apply[F[_], A](f: A => F[Mu[Truth]]): PropositionT[F, A] =
-      new PropositionTR[F, Mu[Truth], A](f)
+      new PropositionF[F, Mu[Truth], A](f)
   }
 
   object Spec1 {
