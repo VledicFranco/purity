@@ -1,13 +1,15 @@
 package purity.verification
 
-import cats.Contravariant
+import cats.{Contravariant, Order}
+import cats.implicits._
 import matryoshka.Corecursive
-import purity.verification.TruthF.{False, True}
+
+import scala.annotation.tailrec
 
 case class PropositionF[A, T](check: A => T)(implicit cor: Corecursive.Aux[T, TruthF]) {
 
-  val functions: TruthFunctions[T] = {
-    new TruthFunctions[T] {}
+  val functions: TruthFFunctions[T] = {
+    new TruthFFunctions[T] {}
   }
 
   def contramap[B](f: B => A): PropositionF[B, T] =
@@ -42,15 +44,48 @@ case class PropositionF[A, T](check: A => T)(implicit cor: Corecursive.Aux[T, Tr
   override def toString: String = "PropositionF"
 }
 
-object PropositionF extends PropositionFFunctions with PropositionTInstances
+object PropositionF extends PropositionTInstances
 
-private[purity] trait PropositionFFunctions {
+abstract class PropositionFFunctions[T](implicit cor: Corecursive.Aux[T, TruthF]) extends TruthFFunctions[T]()(cor) {
 
-  def tautology[A, T](implicit cor: Corecursive.Aux[T, TruthF]): PropositionF[A, T] =
-    PropositionF[A, T](_ => cor.embed(True[T]()))
+  def apply[A](f: A => T): PropositionF[A, T] =
+    new PropositionF[A, T](f)
 
-  def contradiction[A, T](implicit cor: Corecursive.Aux[T, TruthF]): PropositionF[A, T] =
-    PropositionF[A, T](_ => cor.embed(False[T]()))
+  def tautology[A]: PropositionF[A, T] =
+    PropositionF[A, T](_ => veritas)
+
+  def contradiction[A]: PropositionF[A, T] =
+    PropositionF[A, T](_ => falsum)
+
+  def define[A](name: String, f: A => T): PropositionF[A, T] =
+    new PropositionF[A, T](a => definition(f(a), name))
+
+  def |<=|[A](other: A)(implicit ord: Order[A]): PropositionF[A, T] =
+    define("LessThan", (a: A) => cond(a <= other))
+
+  def |>=|[A](other: A)(implicit ord: Order[A]): PropositionF[A, T] =
+    define("GreaterThan", (a: A) => cond(a <= other))
+
+  def areOrdered[A](implicit ord: Order[A]): PropositionF[List[A], T] =
+    define("Ordered", { xs: List[A] =>
+      @tailrec def ordered(xs0: List[A]): T =
+        xs0 match {
+          case x0 :: x1 :: ys =>
+            if (x0 <= x1) ordered(x1 :: ys)
+            else falsum
+          case _ :: Nil =>
+            veritas
+          case Nil =>
+            veritas
+        }
+      ordered(xs)
+    })
+
+  class OpsForString(name: String) {
+
+    def =/\=[A](f: A => T): PropositionF[A, T] =
+      define(name, f)
+  }
 }
 
 private[purity] trait PropositionTInstances {

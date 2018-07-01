@@ -21,27 +21,21 @@ object TruthF extends TruthInstances {
 
   case class IfThenElse[T](p: T, q: T, r: T) extends TruthF[T]
 
-  case class Define[T](name: String, p: T) extends TruthF[T]
+  case class Definition[T](name: String, p: T) extends TruthF[T]
 
   case class Contradiction(track: String) extends RuntimeException
 }
 
-private[purity] abstract class TruthFunctions[T](implicit cor: Corecursive.Aux[T, TruthF]) { functions =>
+abstract class TruthFFunctions[T](implicit cor: Corecursive.Aux[T, TruthF]) { functions =>
 
-  def define(p: T, str: String): T =
-    cor.embed(Define(str, p))
+  def definition(p: T, str: String): T =
+    cor.embed(Definition(str, p))
 
   def veritas: T =
     cor.embed(True[T]())
 
   def falsum: T =
     cor.embed(False[T]())
-
-  def =:=[A](x: A, y: A)(implicit eq: Eq[A]): T =
-    if (eq.eqv(x, y))
-      define(veritas, x.toString + " == " + y.toString)
-    else
-      define(falsum, x.toString + " was not equal to " + y.toString)
 
   def not(p: T): T =
     cor.embed(Not[T](p))
@@ -58,9 +52,13 @@ private[purity] abstract class TruthFunctions[T](implicit cor: Corecursive.Aux[T
   def xor(p: T, q: T): T =
     &&(||(p, q), not(&&(p, q)))
 
-  class OpsForTruth(p: T) {
+  def cond[A](p: Boolean): T =
+    if(p) veritas else falsum
 
-    def define(str: String): T = functions.define(p, str)
+  def =:=[A](x: A, y: A)(implicit eq: Eq[A]): T =
+    cond(eq.eqv(x, y))
+
+  class OpsForTruth(p: T) {
 
     def not: T = functions.not(p)
 
@@ -78,12 +76,6 @@ private[purity] abstract class TruthFunctions[T](implicit cor: Corecursive.Aux[T
     def =:=(y: => A)(implicit ev1: Eq[A]): T =
       functions.=:=[A](x, y)
   }
-
-  class OpsForString(name: String) {
-
-    def =/\=(p: T): T =
-      functions.define(p, name)
-  }
 }
 
 private[purity] trait TruthInstances {
@@ -98,7 +90,7 @@ private[purity] trait TruthInstances {
           case And(p, q) => And(f(p), f(q))
           case Or(p, q) => Or(f(p), f(q))
           case IfThenElse(p, q, r) => IfThenElse(f(p), f(q), f(r))
-          case Define(name, p) => Define(name, f(p))
+          case Definition(name, p) => Definition(name, f(p))
         }
     }
 }

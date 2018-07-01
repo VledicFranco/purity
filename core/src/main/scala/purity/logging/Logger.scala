@@ -77,7 +77,7 @@ case class Logger[F[_]](level: LogLevel, logEffect: LogLine => F[Unit]) {
 
 object Logger {
 
-  def VoidLogs[F[_]](implicit F: Applicative[F]): Logger[F] = Logger[F](_ => F.pure(()), OffLevel)
+  def VoidLogs[F[_]](implicit F: Applicative[F]): Logger[F] = Logger[F](OffLevel, _ => F.pure(()))
 
   implicit def monoidInstanceForLoggerFunctions[F[_]](implicit F: Applicative[F]): Monoid[Logger[F]] =
     new Monoid[Logger[F]] {

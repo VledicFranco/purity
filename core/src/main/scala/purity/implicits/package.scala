@@ -1,16 +1,15 @@
 package purity
 
-import verification.TruthTracker
-import TruthTracker._
+import verification.{Proposition, Truth}
 
 package object implicits {
 
-  implicit def toTruthOpsForTruth(a: Truth): OpsForTruth =
-    new OpsForTruth(a)
+  implicit def toTruthOpsForTruth(a: Truth): Truth.OpsForTruth =
+    new Truth.OpsForTruth(a)
 
-  implicit def toTruthOpsForAny[A](x: A): OpsForAny[A] =
-    new OpsForAny[A](x)
+  implicit def toTruthOpsForAny[A](x: A): Truth.OpsForAny[A] =
+    new Truth.OpsForAny[A](x)
 
-  implicit def toTruthOpsForString(name: String): OpsForString =
-    new OpsForString(name)
+  implicit def toPropositionOpsForString(name: String): Proposition.OpsForString =
+    new Proposition.OpsForString(name)
 }
