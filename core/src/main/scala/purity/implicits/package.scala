@@ -1,6 +1,6 @@
 package purity
 
-import verification.{Proposition, Truth}
+import verification.{Proposition, Spec, Truth}
 
 package object implicits {
 
@@ -12,4 +12,7 @@ package object implicits {
 
   implicit def toPropositionOpsForString(name: String): Proposition.OpsForString =
     new Proposition.OpsForString(name)
+
+  implicit def toSpec1OpsForString(name: String): Spec.SpecOpsForString =
+    new Spec.SpecOpsForString(name)
 }

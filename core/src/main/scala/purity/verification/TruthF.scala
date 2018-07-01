@@ -40,17 +40,17 @@ abstract class TruthFFunctions[T](implicit cor: Corecursive.Aux[T, TruthF]) { fu
   def not(p: T): T =
     cor.embed(Not[T](p))
 
-  def &&(p: T, q: T): T =
+  def /\(p: T, q: T): T =
     cor.embed(And[T](p, q))
 
-  def ||(p: T, q: T): T =
+  def \/(p: T, q: T): T =
     cor.embed(Or[T](p, q))
 
   def ==>(p: T, q: T): T =
-    ||(not(p), q)
+    \/(not(p), q)
 
   def xor(p: T, q: T): T =
-    &&(||(p, q), not(&&(p, q)))
+    /\(\/(p, q), not(/\(p, q)))
 
   def cond[A](p: Boolean): T =
     if(p) veritas else falsum
@@ -62,9 +62,9 @@ abstract class TruthFFunctions[T](implicit cor: Corecursive.Aux[T, TruthF]) { fu
 
     def not: T = functions.not(p)
 
-    def &&(q: T): T = functions.&&(p, q)
+    def /\(q: T): T = functions./\(p, q)
 
-    def ||(q: T): T = functions.||(p, q)
+    def \/(q: T): T = functions.\/(p, q)
 
     def ==>(q: T): T = functions.==>(p, q)
 

@@ -13,7 +13,7 @@ object Truth extends TruthFFunctions[Truth] {
 
   private[purity] type Evaluation = Boolean
 
-  val algebra: Algebra[TruthF, (LatestDefinition, Definitions, Evaluation)] = {
+  val tracker: Algebra[TruthF, (LatestDefinition, Definitions, Evaluation)] = {
     case True() =>
       ("true", Nil, true)
 
@@ -33,6 +33,10 @@ object Truth extends TruthFFunctions[Truth] {
       (s"if ($pLatest) then ($qLatest) else ($rLatest)", pDefinitions ++ qDefinitions ++ rDefinitions, if (p) q else r)
 
     case Definition(name, (latest, definitions, p)) =>
-      (name, (name, latest) :: definitions, p)
+      val evalSymbol =
+        if(p) Console.GREEN + "☑ " + Console.RESET
+        else Console.RED + "☒ " + Console.RESET
+      val name0 = evalSymbol + Console.MAGENTA + name + Console.RESET
+      (s"$name0", (s"$name0", latest) :: definitions, p)
   }
 }

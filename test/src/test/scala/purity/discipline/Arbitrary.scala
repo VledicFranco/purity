@@ -36,7 +36,7 @@ object arbitrary {
     Arbitrary(
       for {
         level <- Arbitrary.arbitrary[LogLevel]
-        logger <- Gen.oneOf(Logger.VoidLogs[IO], ColorPrint(level))
+        logger <- Gen.oneOf(Logger.VoidLogs[IO], ColorPrint[IO](level))
       } yield logger
     )
 }

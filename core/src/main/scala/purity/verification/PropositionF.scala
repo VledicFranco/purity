@@ -12,6 +12,9 @@ case class PropositionF[A, T](check: A => T)(implicit cor: Corecursive.Aux[T, Tr
     new TruthFFunctions[T] {}
   }
 
+  def tag(name: String): PropositionF[A, T] =
+    new PropositionF[A, T](a => functions.definition(check(a), name))
+
   def contramap[B](f: B => A): PropositionF[B, T] =
     PropositionF(f andThen check)
 
@@ -21,11 +24,11 @@ case class PropositionF[A, T](check: A => T)(implicit cor: Corecursive.Aux[T, Tr
   def not: PropositionF[A, T] =
     PropositionF(a => functions.not(check(a)))
 
-  def &&(q: PropositionF[A, T]): PropositionF[A, T] =
-    op(q)(functions.&&)
+  def /\(q: PropositionF[A, T]): PropositionF[A, T] =
+    op(q)(functions./\)
 
-  def ||(q: PropositionF[A, T]): PropositionF[A, T] =
-    op(q)(functions.||)
+  def \/(q: PropositionF[A, T]): PropositionF[A, T] =
+    op(q)(functions.\/)
 
   def ==>(q: PropositionF[A, T]): PropositionF[A, T] =
     op(q)(functions.==>)
@@ -33,10 +36,15 @@ case class PropositionF[A, T](check: A => T)(implicit cor: Corecursive.Aux[T, Tr
   def xor(q: PropositionF[A, T]): PropositionF[A, T] =
     op(q)(functions.xor)
 
-  def onList: PropositionF[List[A], T] =
-    PropositionF { xs: List[A] =>
-      xs.foldLeft(functions.veritas)((x, y) => functions.&&(x, check(y)))
-    }
+  def forAllInList: PropositionF[List[A], T] =
+    PropositionF[List[A], T] { xs: List[A] =>
+      xs.foldLeft(functions.veritas)((x, y) => functions./\(x, check(y)))
+    }.tag("ForAllInList")
+
+  def existsInList: PropositionF[List[A], T] =
+    PropositionF[List[A], T] { xs: List[A] =>
+      xs.foldLeft(functions.veritas)((x, y) => functions.\/(x, check(y)))
+    }.tag("ExistsInList")
 
   private def op(q: PropositionF[A, T])(f: (T, T) => T): PropositionF[A, T] =
     PropositionF(a => f(check(a), q.check(a)))
@@ -60,11 +68,17 @@ abstract class PropositionFFunctions[T](implicit cor: Corecursive.Aux[T, TruthF]
   def define[A](name: String, f: A => T): PropositionF[A, T] =
     new PropositionF[A, T](a => definition(f(a), name))
 
-  def |<=|[A](other: A)(implicit ord: Order[A]): PropositionF[A, T] =
+  def lessThan[A](other: A)(implicit ord: Order[A]): PropositionF[A, T] =
     define("LessThan", (a: A) => cond(a <= other))
 
-  def |>=|[A](other: A)(implicit ord: Order[A]): PropositionF[A, T] =
+  def greaterThan[A](other: A)(implicit ord: Order[A]): PropositionF[A, T] =
     define("GreaterThan", (a: A) => cond(a <= other))
+
+  val positiveInt: PropositionF[Int, T] =
+    define("PositiveInt", (a: Int) => cond(a > 0))
+
+  def sameLength[A](xs: List[A]): PropositionF[List[A], T] =
+    define("SameLength", (ys: List[A]) => =:=(xs.length, ys.length))
 
   def areOrdered[A](implicit ord: Order[A]): PropositionF[List[A], T] =
     define("Ordered", { xs: List[A] =>
